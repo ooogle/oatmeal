@@ -2,6 +2,7 @@
 
 
 if (window.DeviceMotionEvent) {
+    alert("device motion is abailable");
     window.addEventListener('devicemotion', function(eventData) {   
         // Acceleration
       alert(eventData.acceleration.x);
@@ -19,5 +20,7 @@ if (window.DeviceMotionEvent) {
         console.log(eventData.rotationRate.gamma);
     }, false);
 }
-
+else{
+    alert("device motion is not available");
+}
 </script>
