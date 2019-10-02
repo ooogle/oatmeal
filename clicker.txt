@@ -11,7 +11,7 @@ Settings
 	building cost increase:115%
 	building cost refund:50%
 	spritesheet:icons, 263 by 354, https://oatmeal.gq/oat2.png
-	stylesheet:clicker.css
+	stylesheet:http://orteil.dashnet.org/igm/stuff/bigBlue.css
 
 Layout
 	use default
@@ -123,4 +123,3 @@ Upgrades
 		
 
 	//golden carrot upgrades
-	
