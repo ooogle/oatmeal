@@ -1,0 +1,127 @@
+Let's make a game!
+	name:Oat Clicker
+	by:Me
+	desc:Ya liek oats?
+	created:25/7/2024
+	updated:24/10/2025
+	version:1
+
+Settings
+	background:https://oatmeal.gq/oats1.jpg
+	building cost increase:115%
+	building cost refund:50%
+	spritesheet:icons, 263 by 354, https://oatmeal.gq/oat2.png
+	stylesheet:stuff/bigBlue.css
+
+Layout
+	use default
+		
+Buttons
+	*bunnyButton
+		name:Make an oat
+		desc:Click da oatz
+		on click:anim icon wobble
+		on click:yield 1 oat
+		on click:if (have goldenTouch and chance(1%)) yield 1 goldenOat
+		icon:https://oatmeal.gq/oat2.png
+		no text
+		class:bigButton hasFlares
+		icon class:shadowed
+		tooltip origin:bottom
+		tooltip class:red
+		
+Resources
+	*oat|oats
+		name:Oat|Oats
+		desc:Get dem oats
+		icon:icons[0,0]
+		class:noBackground
+		show earned
+		
+	*goldenOat|goldenOats
+		name:Golden oat|Golden oats
+		desc:Fancy oatz
+		icon:icons[0,1]
+		class:noBackground
+		hidden when 0
+		
+Shinies
+	*luckyOat
+		on click:log Woop
+		movement:onRight moveLeft fade bounce:0.05
+		frequency:60
+		frequency variation:30
+		icon:https://amindfullmom.com/wp-content/uploads/2018/02/Instant-Pot-Creamy-Oatmeal_.jpg
+		class:bigButton
+		on click:
+			$boost=1
+			if (have clover) $boost=4
+			if (chance(25%))
+				//get at least 7, or between 1 and 3 minutes of our bunny production
+				$amount=max(7,random(oats:ps*60*1,oats:ps*60*3))*$boost
+				toast All dem oat.
+				yield $amount oats
+			else
+				$amount=1*$boost
+				toast all dem oatz
+				yield $amount goldenOat
+			end
+		end
+
+Buildings
+	*TEMPLATE
+		on click:anim glow
+		
+	*bowl|bowls
+		name:Oat Bowl|Oat Boawlz
+		desc:A plac to put yer oatz in
+		icon:icons[3,0]
+		cost:15 oats
+		on tick:yield 0.1 oat
+		unlocked
+	
+	*pot|pots
+		name:Oat pot|Oat pots
+		desc:Liek a bowl but bigger
+		icon:icons[3,1]
+		cost:100 oats
+		on tick:yield 0.5 oats
+		req:100 oats:earned	
+Upgrades
+	*TEMPLATE
+		on click:anim glow
+	
+	//food upgrades
+	//inspiration : http://rabbit.org/suggested-vegetables-and-fruits-for-a-rabbit-diet/
+	
+	*cinnamon
+		name:cinnamon
+		desc:Yummih
+		icon:icons[1,1]
+		cost:100 oats
+		passive:increase oat yield of oatButton by 1
+		req:10 oat:earned
+		
+	*hunny
+		name:hunny
+		desc:NAWM NAWM
+		icon:icons[1,2]
+		cost:200 oats
+		passive:increase oat yield of oatButton by 1
+		req:50 oats:earned
+		
+	
+	//building upgrades
+	
+	*buildingUpgrade1
+		name:Shlorpy bottles
+		desc:SHLORP SLOPR SLORP
+		icon:icons[2,0] icons[3,0]
+		cost:1000 oats
+		passive:multiply yield of bowl by 2
+		passive:multiply yield of pot by 2
+		req:(bowls>=10 or pots>=10)
+		
+
+	//golden carrot upgrades
+	
