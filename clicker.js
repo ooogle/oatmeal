@@ -38,14 +38,7 @@ G.Launch=function()
 {
 	if (!INFRAME)
 	{
-		l('topBar').innerHTML=
-		'<div><b>Idle Game Maker</b>&trade; &copy; <a href="http://orteil.dashnet.org" target="_blank">Orteil</a>, 2017 - <a href="http://dashnet.org" target="_blank">DashNet</a></div>'+
-		'<div><a href="http://twitter.com/orteil42" target="_blank">twitter</a></div>'+
-		'<div><a href="http://orteil42.tumblr.com" target="_blank">tumblr</a></div>'+
-		'<div>Help? Bugs? Ideas? Check out the <a href="http://forum.dashnet.org" target="_blank">forum</a>!</div>'+
-		'<div><a href="./help.html" target="_blank">Game-making help</a></div>'+
-		'<div>Also : <a href="http://orteil.dashnet.org/cookieclicker/" target="_blank">Cookie Clicker</a></div>'+
-		'';
+		
 	}
 
 	G.Init=function(){};
