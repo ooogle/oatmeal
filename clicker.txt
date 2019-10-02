@@ -137,7 +137,7 @@ Achievements
 	*oatAchiev3
 		name:Hecc yah!
 		desc:Lookit! 25! That's 5 SKWARED!
-		req:25 oas
+		req:25 oats
 	*oatAchiev4
 		name:69
 		desc:nice
