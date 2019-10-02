@@ -122,4 +122,42 @@ Upgrades
 		req:(bowls>=10 or pots>=10)
 		
 
-	//golden carrot upgrades
+	*TEMPLATE
+		on click:anim glow
+		
+	*oatAchiev1
+		name:Ya got oatz
+		desc:GUDDJOB! Ya started the gam!
+		req:1 oat
+		
+	*oatAchiev2
+		name:WOW!
+		desc:Ten oatz! Now that's a lot!
+		req:10 oats
+	*oatAchiev3
+		name:Hecc yah!
+		desc:Lookit! 25! That's 5 SKWARED!
+		req:25 oas
+	*oatAchiev4
+		name:69
+		desc:nice
+		req:69 oats
+	*oatAchiev5
+		name:Whoa!
+		desc:FIFDIE OATZ!!!!!!! That's halfway to a hunred!
+		req:50 oats
+	*oatAchiev6
+		name:Three Quarters
+		desc:Man, 75, that's like 3/4 of the way to a hundred!
+		req:75 oats
+	*oatAchiev7
+		name:Da Big Bowl
+		desc:Lookit all dem oatz!
+		req:100 oats
+		
+		
+		
+		
+		
+		
+		
