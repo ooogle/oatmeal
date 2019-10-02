@@ -22,7 +22,6 @@ Buttons
 		desc:Click da oatz
 		on click:anim icon wobble
 		on click:yield 1 oat
-		on click:if (have goldenTouch and chance(1%)) yield 1 goldenOat
 		icon:https://oatmeal.gq/oat2.png
 		no text
 		class:bigButton hasFlares
