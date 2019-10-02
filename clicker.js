@@ -385,7 +385,7 @@ if (!INFRAME)
 			}
 			if (G.vars.g)
 			{
-				l('game').innerHTML='<iframe id="player" src="player.html"></iframe>';
+				l('game').innerHTML='<iframe id="player" src="http://orteil.dashnet.org/igm/player.html"></iframe>';
 			}
 			else
 			{
@@ -410,7 +410,7 @@ if (!INFRAME)
 		}
 		else if (e.data.refresh)
 		{
-			l('game').innerHTML='<iframe id="player" src="player.html"></iframe>';
+			l('game').innerHTML='<iframe id="player" src="http://orteil.dashnet.org/igm/player.html"></iframe>';
 			setTimeout(function(){l('player').contentWindow.postMessage({launch:true,loc:window.location.origin,vars:G.vars,code:e.data.refresh},'*');},100);
 		}
 	});
@@ -460,7 +460,7 @@ else
 				{
 					if (e.data.code) TOPARSE=e.data.code;
 					G.urlVars=e.data.vars;
-					LoadScript('game.js?v='+(document.lastModified),G._Init);
+					LoadScript('http://orteil.dashnet.org/igm/game.js?v='+(document.lastModified),G._Init);
 				}
 			}
 		}
