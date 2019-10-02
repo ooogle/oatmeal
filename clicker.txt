@@ -121,7 +121,7 @@ Upgrades
 		passive:multiply yield of pot by 2
 		req:(bowls>=10 or pots>=10)
 		
-
+Achievements
 	*TEMPLATE
 		on click:anim glow
 		
