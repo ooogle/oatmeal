@@ -16,7 +16,7 @@ Layout
 	use default
 		
 Buttons
-	*bunnyButton
+	*oatButton
 		name:Make an oat
 		desc:Click da oatz
 		on click:anim icon wobble
@@ -53,7 +53,7 @@ Shinies
 		class:bigButton
 		on click:
 			$boost=1
-			if (have clover) $boost=4
+			
 			if (chance(25%))
 				//get at least 7, or between 1 and 3 minutes of our bunny production
 				$amount=max(7,random(oats:ps*60*1,oats:ps*60*3))*$boost
