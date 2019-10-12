@@ -1,4 +1,705 @@
 <!doctype html>
+<title>Oat Clicker</title>
+<link rel="shortcut icon" href="https://oatmeal.gq/oat2.png">
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script>
-	window.location='http://orteil.dashnet.org/igm/?g=https://oatmeal.gq/clicker.txt';
+  var oat_count = 0;
+  var addition = 1;
+  var bowls = 0;
+  var spoons = 0;
+  var pots = 0;
+  let root = document.documentElement;
+  var spoon_addition = 1;
+  var cinnamons = 0;
+  function roundate(num) {
+    return Math.round(num * 2) / 2;
+  }
+  function updatecount() {
+    var ops = spoons*spoon_addition;
+    ops = ops/10; 
+    document.getElementById("oats").innerHTML = "Oats: " + Math.round(oat_count);
+    document.getElementById("spoon-things").innerHTML=" Owned: "+spoons;
+    document.getElementById("bowl-things").innerHTML=" Owned: "+bowls;
+    document.getElementById("pot-things").innerHTML=" Owned: "+pots;
+    document.getElementById("cinnamon-things").innerHTML=" Tastiness: "+cinnamons;
+    document.getElementById("bs-things").innerHTML=" Spoon size: "+spoon_addition;
+    document.getElementById("ops").innerHTML="Per second: "+ops;
+    if (oat_count >= Number(document.getElementById("bowl_prices").innerHTML)) {
+      document.getElementById("bowl_prices").classList.remove("not-enough-money");
+      document.getElementById("bowl_prices").classList.add("enough-money");
+      document.getElementById("bowl_label").classList.remove("not-enough-money");
+      document.getElementById("bowl_label").classList.add("enough-money");
+    }
+    else {
+      document.getElementById("bowl_prices").classList.add("not-enough-money");
+      document.getElementById("bowl_prices").classList.remove("enough-money");
+      document.getElementById("bowl_label").classList.add("not-enough-money");
+      document.getElementById("bowl_label").classList.remove("enough-money");
+    }
+    if (oat_count >= Number(document.getElementById("pot_prices").innerHTML)) {
+      document.getElementById("pot_prices").classList.remove("not-enough-money");
+      document.getElementById("pot_prices").classList.add("enough-money");
+      document.getElementById("pot_label").classList.remove("not-enough-money");
+      document.getElementById("pot_label").classList.add("enough-money");
+    }
+    else {
+      document.getElementById("pot_prices").classList.add("not-enough-money");
+      document.getElementById("pot_prices").classList.remove("enough-money");
+      document.getElementById("pot_label").classList.add("not-enough-money");
+      document.getElementById("pot_label").classList.remove("enough-money");
+    }
+    if (oat_count >= Number(document.getElementById("spoon_prices").innerHTML)) {
+      document.getElementById("spoon_prices").classList.remove("not-enough-money");
+      document.getElementById("spoon_prices").classList.add("enough-money");
+      document.getElementById("spoon_label").classList.remove("not-enough-money");
+      document.getElementById("spoon_label").classList.add("enough-money");
+    }
+    else {
+      document.getElementById("spoon_prices").classList.add("not-enough-money");
+      document.getElementById("spoon_prices").classList.remove("enough-money");
+      document.getElementById("spoon_label").classList.add("not-enough-money");
+      document.getElementById("spoon_label").classList.remove("enough-money");
+    }
+    if (oat_count >= Number(document.getElementById("bs_prices").innerHTML)) {
+      document.getElementById("bs_prices").classList.remove("not-enough-money");
+      document.getElementById("bs_prices").classList.add("enough-money");
+      document.getElementById("bs_label").classList.remove("not-enough-money");
+      document.getElementById("bs_label").classList.add("enough-money");
+    }
+    else {
+      document.getElementById("bs_prices").classList.add("not-enough-money");
+      document.getElementById("bs_prices").classList.remove("enough-money");
+      document.getElementById("bs_label").classList.add("not-enough-money");
+      document.getElementById("bs_label").classList.remove("enough-money");
+    }
+    if (oat_count >= Number(document.getElementById("cinnamon_prices").innerHTML)) {
+      document.getElementById("cinnamon_prices").classList.remove("not-enough-money");
+      document.getElementById("cinnamon_prices").classList.add("enough-money");
+      document.getElementById("cinnamon_label").classList.remove("not-enough-money");
+      document.getElementById("cinnamon_label").classList.add("enough-money");
+    }
+    else {
+      document.getElementById("cinnamon_prices").classList.add("not-enough-money");
+      document.getElementById("cinnamon_prices").classList.remove("enough-money");
+      document.getElementById("cinnamon_label").classList.add("not-enough-money");
+      document.getElementById("cinnamon_label").classList.remove("enough-money");
+    }
+    Cookies.set('oat_count', oat_count, {
+      expires: 1000000
+    });
+  }
+  function randomate(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+  function oat_fall(){
+    var x = randomate(5,410);
+    var y = randomate(-50, 80);
+    var imagE = document.createElement("img"); 
+    imagE.src = "https://oatmeal.gq/oat2.png";
+    imagE.className="falling-oat";
+    imagE.id = x;
+    imagE.style="left: "+x+"px; top: "+y+"px;";
+    document.getElementById('falling-oats').appendChild(imagE);
+    setTimeout(function(){document.getElementById(x).remove();}, 7900);
+  }
+  function oat_clicked() {
+    oat_count += Number(addition);
+    oat_count = roundate(Number(oat_count));
+    updatecount();
+    oat_fall();
+  }
+  function oat_clicked_by_boost(adishin) {
+    oat_count += Number(adishin);
+    oat_count = roundate(Number(oat_count));
+    updatecount();
+    var wait = randomate(0, 4000);
+    setTimeout(function(){
+      oat_fall();
+    }, wait);
+  }
+  function startgame() {
+    if (Cookies.get('oat_count') != null) {
+      oat_count = Number(Cookies.get('oat_count'));
+      addition = Number(Cookies.get('addition'));
+      bowls = Number(Cookies.get('bowls'));
+      cinnamons = Number(Cookies.get('cinnamons'));
+      spoons = Number(Cookies.get('spoons'));
+      pots = Number(Cookies.get('pots'));
+      spoon_addition = Number(Cookies.get('spoon_addition'));
+      document.getElementById("bowl_prices").innerHTML = Cookies.get("bowl_price");
+      document.getElementById("pot_prices").innerHTML = Cookies.get("pot_price");
+      document.getElementById("spoon_prices").innerHTML = Cookies.get("spoon_price");
+      document.getElementById("bs_prices").innerHTML = Cookies.get("bs_price");
+      document.getElementById("cinnamon_prices").innerHTML = Cookies.get("cinnamon_price");
+      if (spoons != 0) {
+        spoon();
+      }
+      if (cinnamons != 0) {
+        cinnamon();
+      }
+      updatecount();
+    }
+    else {
+      Cookies.set("bowl_price", 100, {
+      expires: 1000000
+    });
+    Cookies.set("pot_price", 1500, {
+      expires: 1000000
+    });
+    Cookies.set("bs_price", 200, {
+      expires: 1000000
+    });
+      Cookies.set("spoon_price", 50, {
+      expires: 1000000
+    });
+    Cookies.set("cinnamon_price", 400, {
+      expires: 1000000
+    });
+      Cookies.set('oat_count', 0, {
+      expires: 1000000
+    });
+    Cookies.set('spoons', 0, {
+      expires: 1000000
+    });
+    Cookies.set('bowls', 0, {
+      expires: 1000000
+    });
+    Cookies.set('pots', 0, {
+      expires: 1000000
+    });
+    Cookies.set('cinnamons', 0, {
+      expires: 1000000
+    });
+    Cookies.set('addition', 1, {
+      expires: 1000000
+    });
+    Cookies.set('spoon_addition', 1, {
+      expires: 1000000
+    });
+    }
+  }
+  function oat_bowl() {
+    if (oat_count >= Number(document.getElementById("bowl_prices").innerHTML)) {
+      if (bowls == 0) {
+        addition += 1;
+        bowls = 1;
+        Cookies.set('addition', addition, {
+      expires: 1000000
+    });
+        oat_count = oat_count - Number(document.getElementById("bowl_prices").innerHTML);
+        updatecount();
+      }
+      else {
+        bowls=bowls+1;
+        if(randomate(0,10000) == 1){
+          addition = addition + 5;
+          oat_count+=1000
+        }
+        else{
+        addition = addition + 1;
+        }
+        oat_count = oat_count - Number(document.getElementById("bowl_prices").innerHTML);
+        document.getElementById("bowl_prices").innerHTML = "" + roundate(Number(document.getElementById("bowl_prices").innerHTML) * 1.15);
+        Cookies.set('addition', addition, {
+      expires: 1000000
+    });
+    
+        Cookies.set('bowls', bowls, {
+      expires: 1000000
+    });
+        Cookies.set('bowl_price', Number(document.getElementById("bowl_prices").innerHTML), {
+      expires: 1000000
+    });
+    
+      }
+      updatecount();
+    }
+  }
+  function oat_pot() {
+    if (oat_count >= Number(document.getElementById("pot_prices").innerHTML)) {
+      if (pots == 0) {
+        addition += 5;
+        pots = 1;
+        Cookies.set('addition', addition, {
+      expires: 1000000
+    });
+        oat_count = oat_count - Number(document.getElementById("pot_prices").innerHTML);
+        updatecount();
+      }
+      else {
+        pots=pots+1;
+        if(randomate(0,10000) == 1){
+          addition = addition + 20;
+          oat_count+=1000
+        }
+        else{
+        addition = addition + 5;
+        }
+        oat_count = oat_count - Number(document.getElementById("pot_prices").innerHTML);
+        document.getElementById("pot_prices").innerHTML = "" + roundate(Number(document.getElementById("pot_prices").innerHTML) * 5.34);
+        Cookies.set('addition', addition, {
+      expires: 1000000
+    });
+    
+        Cookies.set('pots', pots, {
+      expires: 1000000
+    });
+        Cookies.set('pot_price', Number(document.getElementById("pot_prices").innerHTML), {
+      expires: 1000000
+    });
+    
+      }
+      updatecount();
+    }
+  }
+  function bs_clicked() {
+    if (oat_count >= Number(document.getElementById("bs_prices").innerHTML)) {
+        spoon_addition += 1;
+        Cookies.set('spoon_addition', addition, {
+      expires: 1000000
+    });
+        oat_count = oat_count - Number(document.getElementById("bs_prices").innerHTML);
+        document.getElementById("bs_prices").innerHTML = "" + roundate(Number(document.getElementById("bs_prices").innerHTML) * 2.33);
+       
+        Cookies.set('bs_price', Number(document.getElementById("bs_prices").innerHTML), {
+      expires: 1000000
+    });
+    
+      
+      updatecount();
+    }
+  }
+  function spoon_clicked() {
+    if (oat_count >= Number(document.getElementById("spoon_prices").innerHTML)) {
+      if (spoons == 0) {
+        spoons = 1;
+        Cookies.set('spoons', spoons, {
+      expires: 1000000
+    });
+        oat_count = oat_count - Number(document.getElementById("spoon_prices").innerHTML);
+        updatecount();
+      }
+      else {
+        spoons += 1;
+        oat_count = oat_count - Number(document.getElementById("spoon_prices").innerHTML);
+        document.getElementById("spoon_prices").innerHTML = "" + roundate(Number(document.getElementById("spoon_prices").innerHTML) * 1.15);
+        Cookies.set('spoons', spoons, {
+      expires: 1000000
+    });
+        Cookies.set('spoon_price', Number(document.getElementById("spoon_prices").innerHTML), {
+      expires: 1000000
+    });
+        updatecount();
+      }
+      if (spoons == 1) {
+        spoon();
+      }
+      
+      updatecount();
+    }
+  }
+function spoon() {
+    setTimeout(function () {
+      for (var i = 0; i < spoons; i++) {
+        oat_clicked_by_boost(Number(spoon_addition));
+      }
+      spoon();
+    }, 10000);
+    return "you have " + spoons + " spoons!";
+  }
+  function cinnamon_clicked() {
+    if (oat_count >= Number(document.getElementById("cinnamon_prices").innerHTML)) {
+      if (cinnamons == 0) {
+        cinnamons = 1;
+        oat_count = oat_count - Number(document.getElementById("cinnamon_prices").innerHTML);
+        updatecount();
+        Cookies.set('cinnamons', cinnamons, {
+      expires: 1000000
+    });
+      }
+      else {
+        cinnamons += 1;
+        oat_count = oat_count - Number(document.getElementById("cinnamon_prices").innerHTML);
+        document.getElementById("cinnamon_prices").innerHTML = "" + roundate(Number(document.getElementById("cinnamon_prices").innerHTML) * 1.15);
+        Cookies.set('cinnamons', cinnamons, {
+      expires: 1000000
+    });
+        Cookies.set('cinnamon_price', Number(document.getElementById("cinnamon_prices").innerHTML), {
+      expires: 1000000
+    });
+        updatecount();
+      }
+      if (cinnamons == 1) {
+        cinnamon();
+      }
+      
+      updatecount();
+    }
+  }
+  function cinnamon() {
+    setTimeout(function () {
+      if(randomate(0, 5000) == 10){
+       oat_count+=oat_count;
+       console.log('wow! double oats!');
+       Cookies.set('oat_count', oats, {
+      expires: 1000000
+    });
+       updatecount();
+
+      }
+      cinnamon();
+    }, 60000);
+  }
 </script>
+<style>
+  :root {
+    --x-value:1700%;
+    --z:-9;
+  }
+  .background-image {
+  background-image: url('https://oatmeal.gq/oats1.jpg');
+  background-size: cover;
+  display: block;
+  filter: blur(2px) brightness(90%);
+  -webkit-filter: blur(2px) brightness(90%);;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top:0;
+  position: fixed;
+  right: 0;
+  z-index: -10;
+  overflow: hidden;
+}
+
+
+  * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+  }
+
+  @media only screen and (min-width: 600px) {
+    th {
+      height: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+      word-wrap: normal;
+      top: 0px;
+        overflow: -moz-scrollbars-none;
+    }
+    tr,table{
+      top:100px;
+    }
+    #boosterz{
+      width:37%;
+      padding-left: 0px;
+    }
+    *{
+      overflow: hidden;
+    }
+    .scores {
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1), 0px 0px 20px rgba(0, 0, 0, 1), 0px 0px 30px rgba(0, 0, 0, 1), 0px 0px 80px rgba(0, 0, 0, 1);
+    font-size: 25px;
+    font-family: sans-serif;
+    font-weight: lighter;
+  }
+  #booster-box{
+    padding-left: 80px;
+  }
+  #main-thing{
+    padding-left:110px;
+    padding-right:10px;
+  }
+  #oats{
+    font-size:31.5px;
+  }
+  }
+
+  @media only screen and (max-width: 600px) {
+    #oats{
+    font-size:30px;
+  }
+    th {
+      width: 90%;
+      height: 33.33%;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      word-wrap: normal;
+      display: table;
+    }
+    .scores {
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1), 0px 0px 20px rgba(0, 0, 0, 1), 0px 0px 30px rgba(0, 0, 0, 1), 0px 0px 80px rgba(0, 0, 0, 1);
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: lighter;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  }
+
+  .main-clicker {
+    transition: 0.15s;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 263px;
+    cursor: pointer;
+  }
+
+  .main-clicker:hover {
+    animation: wiggle 2s;
+  }
+
+  .main-clicker:active {
+    transform: scale(0.8);
+  }
+
+  .booster {
+    margin-top: 20px;
+    border-color: darkblue;
+    border-style: solid;
+    background: #0068df;
+    text-align: left;
+    transition: 0.15s;
+  }
+
+  .booster:active {
+    transform: scale(0.9);
+  }
+
+  .booster * {
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+  }
+
+  .booster-title {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px !important;
+  }
+
+  .not-enough-money {
+    color: red !important;
+  }
+
+  .enough-money {
+    color: rgb(0, 255, 0) !important;
+  }
+  .falling-oat{
+    position:absolute;
+    animation: falling-oat 8s;
+    width:30px;
+    display:block;
+    z-index: var(--z);
+    filter: brightness(105%);
+    -webkit-filter: brightness(105%);
+  }
+  @keyframes wiggle {
+    0% {
+      transform: scale(1);
+    }
+
+    6.25% {
+      transform: scale(0.75);
+    }
+
+    8.75% {
+      transform: scale(0.7);
+    }
+
+    25% {
+      transform: scale(1);
+    }
+
+    32.5% {
+      transform: scale(0.95);
+    }
+
+    42.5% {
+      transform: scale(1.0);
+    }
+
+    52% {
+      transform: scale(0.97);
+    }
+
+    62% {
+      transform: scale(1);
+    }
+
+    72% {
+      transform: scale(0.98);
+    }
+
+    82% {
+      transform: scale(1);
+    }
+
+    93% {
+      transform: scale(0.99);
+    }
+  }
+  .booster-container{
+    
+    -ms-overflow-style: none;
+    height: 95%;
+    top: 10px;
+    padding-right: 17px;
+    box-sizing: content-box;
+  }
+  .booster-container::-webkit-scrollbar { width: 0px !important }
+  *::-webkit-scrollbar { 
+    width: 0px !important;
+    -webkit-appearance: none;
+   }
+  @keyframes gold {
+    0% {
+      transform: translate(80%, 0%);
+      opacity: 0;
+    }
+
+    10% {
+      transform: translate(60%, 800%);
+      opacity: 1;
+    }
+
+    25% {
+      transform: translate(50%, 00%);
+    }
+
+    35% {
+      transform: translate(40%, 900%);
+    }
+
+    50% {
+      transform: translate(30%, 00%);
+
+    }
+
+    70% {
+      transform: translate(20%, 700%);
+
+    }
+
+    80% {
+      transform: translate(10%, 00%);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translate(0%, 0%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes falling-oat{
+    0% {
+      transform: translate(0%, -80%);
+      opacity: 0;
+    }
+
+    30% {
+      opacity: 1;
+    }
+
+    100% {
+      transform: translate(0%, 1500%);
+      opacity: 0;
+    }
+  }
+ .ops{
+   font: size 15px;
+   color:white;
+   text-shadow: 0px 0px 10px rgba(0, 0, 0, 1), 0px 0px 20px rgba(0, 0, 0, 1), 0px 0px 30px rgba(0, 0, 0, 1), 0px 0px 80px rgba(0, 0, 0, 1);
+   font-family: sans-serif;
+    font-weight: lighter;
+ }
+</style>
+<div id="falling-oats">
+<!-- Oats will fall below-->
+</div>
+<div class="background-image"></div>
+<body onload="startgame()">
+  <table style="width:100%" draggable="false">
+    <tr draggable="false">
+      <th draggable="false" id="main-thing">
+        <br>
+        <br>
+        <span class="scores">
+          <span id="oats">Oats: 0</span>
+        </span>
+        <br>
+        <span class="ops" id="ops">Per second: 0</span>
+        <br>
+        <br>
+        <br>
+        <img src="https://oatmeal.gq/oat2.png" draggable=false class="main-clicker" onclick="oat_clicked()" id="oat_image">
+        <br>
+      </th>
+      <th id="boosterz">
+        <br><br>
+        <span class="scores">Boosters</span>
+        <div class="booster-container" id="booster-box">
+        <div class="booster" onclick="spoon_clicked()">
+          <br>
+          <span class="booster-title">Spoon</span>
+          <p> Scoops up more oats every 10 seconds<span class="not-enough-money" id="spoon_label"><span id="spoon_prices" class="not-enough-money">50</span> oats</span><span id="spoon-things">Owned: 0</span></p>
+        </div>
+        <div class="booster" onclick="oat_bowl()">
+          <br>
+          <span class="booster-title">Oat Bowl</span>
+          <p > A place to store oats <span class="not-enough-money" id="bowl_label"><span id="bowl_prices"
+                class="not-enough-money">100</span> oats</span> <span id="bowl-things">Owned: 0</span></p>
+        </div>
+        <div class="booster" onclick="oat_pot()">
+            <br>
+            <span class="booster-title">Oat Pot</span>
+            <p > A big place to store oats <span class="not-enough-money" id="pot_label"><span id="pot_prices" class="not-enough-money">1500</span> oats</span> <span id="pot-things">Owned: 0</span></p>
+          </div>
+
+        </div>
+      </th>
+      <th>
+        <span class="scores">
+          Upgrades
+        </span>
+        <div class="booster-container">
+            <div class="booster" onclick="bs_clicked()">
+                <br>
+                <span class="booster-title">Bigger Spoons</span>
+                <p > Increases how many oats 1 spoon gives<span class="not-enough-money" id="bs_label"><span id="bs_prices" class="not-enough-money">200</span> oats</span> <span id="bs-things">Spoon size: 1</span></p>
+            </div>
+            <div class="booster" onclick="cinnamon_clicked()">
+                <br>
+                <span class="booster-title">Cinnamon</span>
+                <p > Makes your oatmeal taste better<span class="not-enough-money" id="cinnamon_label"><span id="cinnamon_prices" class="not-enough-money">400</span> oats</span> <span id="cinnamon-things">Tastiness: 0</span></p>
+            </div>
+          </div>
+          
+      </th>
+      <th style="width:5%">
+          <iframe data-aa="1249371" src="//acceptable.a-ads.com/1249371" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden; top:0;" allowtransparency="true"></iframe><iframe data-aa="1249371" src="//acceptable.a-ads.com/1249371" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="false"></iframe><iframe data-aa="1249371" src="//acceptable.a-ads.com/1249371" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe>
+      </th>
+      
+    </tr>
+    
+  </table>
+  <br><br><br><br>
+</body>
