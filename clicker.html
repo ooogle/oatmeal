@@ -17,10 +17,11 @@
 <meta property="twitter:image" content="https://oatmeal.gq/oat_clicker_logo.png">
 <!-- *phew* meta tags are over! -->
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+<script src="http://madrobby.github.io/keymaster/keymaster.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap" rel="stylesheet">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="viewport" content="width=device-width, initial-scale=1 minimum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
 <!-- oop! nevermind ^^ -->
 <script>
   var oat_count = 0;
@@ -31,19 +32,26 @@
   let root = document.documentElement;
   var spoon_addition = 1;
   var cinnamons = 0;
+  var pso = true;
+  key('p', function(){toggleps()})
   function roundate(num) {
     return Math.round(num * 2) / 2;
   }
   function updatecount() {
     var ops = spoons*spoon_addition;
     ops = ops/10; 
+    if(pso){
+      document.getElementById("ops").innerHTML="Per second: "+ops;
+    }
+    else{
+      document.getElementById("ops").innerHTML="Per click: "+addition;
+    }
     document.getElementById("oats").innerHTML = "Oats: " + Math.round(oat_count);
     document.getElementById("spoon-things").innerHTML=" Owned: "+spoons;
     document.getElementById("bowl-things").innerHTML=" Owned: "+bowls;
     document.getElementById("pot-things").innerHTML=" Owned: "+pots;
     document.getElementById("cinnamon-things").innerHTML=" Tastiness: "+cinnamons;
     document.getElementById("bs-things").innerHTML=" Spoon size: "+spoon_addition;
-    document.getElementById("ops").innerHTML="Per second: "+ops;
     if (oat_count >= Number(document.getElementById("bowl_prices").innerHTML)) {
       document.getElementById("bowl_prices").classList.remove("not-enough-money");
       document.getElementById("bowl_prices").classList.add("enough-money");
@@ -136,6 +144,15 @@
     setTimeout(function(){
       oat_fall();
     }, wait);
+  }
+  function toggleps(){
+    if(pso){
+      pso = false;
+    }
+    else{
+      pso = true;
+    }
+    updatecount();
   }
   function startgame() {
     if (Cookies.get('oat_count') != null) {
@@ -664,7 +681,7 @@ function spoon() {
           <span id="oats">Oats: 0</span>
         </span>
         <br>
-        <span class="ops" id="ops">Per second: 0</span>
+        <span class="ops" id="ops" ondblclick="toggleps()">Per second: 0</span>
         <br>
         <br>
         <br>
