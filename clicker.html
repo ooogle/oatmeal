@@ -36,7 +36,7 @@
   var pso = true;
   var fall_sprite = "https://oatmeal.gq/oat2.png";
   key('p', function(){toggleps()});
-  key('g', function(){fall_sprite="https://raw.githubusercontent.com/ooogle/oatmeal/master/fly.png"});
+  key('g', function(){fall_sprite="https://raw.githubusercontent.com/ooogle/oatmeal/master/fly.png";  root.style.setProperty('--height', '3500%')});
   function roundate(num) {
     return Math.round(num * 2) / 2;
   }
@@ -395,6 +395,7 @@ function spoon() {
   :root {
     --x-value:1700%;
     --z:-9;
+    --height: 1500%;
   }
   .background-image {
   background-image: url('https://oatmeal.gq/oats1.jpg');
@@ -662,7 +663,7 @@ function spoon() {
     }
 
     100% {
-      transform: translate(0%, 1500%);
+      transform: translate(0%, var(--height));
       opacity: 0;
     }
   }
