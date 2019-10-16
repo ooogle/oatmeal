@@ -33,7 +33,9 @@
   var spoon_addition = 1;
   var cinnamons = 0;
   var pso = true;
-  key('p', function(){toggleps()})
+  var fall_sprite = "https://oatmeal.gq/oat2.png";
+  key('p', function(){toggleps()});
+  key('g', function(){fall_sprite="https://raw.githubusercontent.com/ooogle/oatmeal/master/fly.png"});
   function roundate(num) {
     return Math.round(num * 2) / 2;
   }
@@ -123,7 +125,7 @@
     var x = randomate(5,410);
     var y = randomate(-50, 80);
     var imagE = document.createElement("img"); 
-    imagE.src = "https://oatmeal.gq/oat2.png";
+    imagE.src = fall_sprite;
     imagE.className="falling-oat";
     imagE.id = x;
     imagE.style="left: "+x+"px; top: "+y+"px;";
