@@ -474,6 +474,12 @@ function spoon() {
   #ads{
     width: 90%;
   }
+  .booster {
+    background-size: 80px !important;
+  }
+  #bowl{
+    background-position-y: 8% !important;
+  }
     th {
       width: 90%;
       height: 33.33%;
@@ -515,7 +521,9 @@ function spoon() {
   .main-clicker:active {
     transform: scale(0.8);
   }
-
+.icon{
+  display:inline;
+}
   .booster {
     margin-top: 20px;
     border-color: darkblue;
@@ -680,7 +688,34 @@ function spoon() {
    font-family: sans-serif;
     font-weight: lighter;
  }
-
+#spoon{
+  background-image: url(https://oatmeal.gq/sprites/spoon.png);
+  background-repeat: no-repeat;
+  background-position: 0% 100%;
+}
+#bowl{
+  background-image: url(https://oatmeal.gq/sprites/oat_bowl.png);
+  background-repeat: no-repeat;
+  background-position: 0% 100%;
+}
+#pot{
+  background-image: url(https://oatmeal.gq/sprites/oat_pot.png);
+  background-repeat: no-repeat;
+  background-position: 0% 100%;
+  
+}
+#bss{
+  background-image: url(https://oatmeal.gq/sprites/big-spoon.png);
+  background-repeat: no-repeat;
+  background-position: 0% 75%;
+  background-size: 85px;
+}
+#cinnamon{
+  background-image: url(https://oatmeal.gq/sprites/cinnamon.png);
+  background-repeat: no-repeat;
+  background-position: 0% 60%;
+  
+}
 </style>
 <div id="falling-oats">
 <!-- Oats will fall below-->
@@ -707,21 +742,21 @@ function spoon() {
         <br><br>
         <span class="scores">Boosters</span>
         <div class="booster-container" id="booster-box">
-        <div class="booster" onclick="spoon_clicked()">
-          <br>
+        <div class="booster" onclick="spoon_clicked()" id="spoon">
+          <br> <span style="width:15%; height:100%; display: inline-block;"></span>
           <span class="booster-title">Spoon</span>
-          <p> Scoops up more oats every 10 seconds<span class="not-enough-money" id="spoon_label"><span id="spoon_prices" class="not-enough-money">50</span> oats</span><span id="spoon-things">Owned: 0</span></p>
+          <p style="padding-left:20%">  Scoops up more oats every 10 seconds <span class="not-enough-money" id="spoon_label"><span id="spoon_prices" class="not-enough-money">50</span> oats</span><span id="spoon-things">Owned: 0</span></p>
         </div>
-        <div class="booster" onclick="oat_bowl()">
-          <br>
+        <div class="booster" onclick="oat_bowl()" id="bowl">
+          <br><span style="width:20%; height:100%; display: inline-block;"></span>
           <span class="booster-title">Oat Bowl</span>
-          <p > A place to store oats <span class="not-enough-money" id="bowl_label"><span id="bowl_prices"
+          <p style="padding-left:20%"> A place to store oats <span class="not-enough-money" id="bowl_label"><span id="bowl_prices"
                 class="not-enough-money">100</span> oats</span> <span id="bowl-things">Owned: 0</span></p>
         </div>
-        <div class="booster" onclick="oat_pot()">
-            <br>
+        <div class="booster" onclick="oat_pot()" id="pot">
+            <br><span style="width:20%; height:100%; display: inline-block;"></span>
             <span class="booster-title">Oat Pot</span>
-            <p > A big place to store oats <span class="not-enough-money" id="pot_label"><span id="pot_prices" class="not-enough-money">1500</span> oats</span> <span id="pot-things">Owned: 0</span></p>
+            <p style="padding-left:25%"> A big place to store oats <span class="not-enough-money" id="pot_label"><span id="pot_prices" class="not-enough-money">1500</span> oats</span> <span id="pot-things">Owned: 0</span></p>
           </div>
 
         </div>
@@ -731,15 +766,15 @@ function spoon() {
           Upgrades
         </span>
         <div class="booster-container">
-            <div class="booster" onclick="bs_clicked()">
-                <br>
+            <div class="booster" onclick="bs_clicked()" id="bss">
+                <br><span style="width:20%; height:100%; display: inline-block;"></span>
                 <span class="booster-title">Bigger Spoons</span>
-                <p > Increases how many oats 1 spoon gives<span class="not-enough-money" id="bs_label"><span id="bs_prices" class="not-enough-money">200</span> oats</span> <span id="bs-things">Spoon size: 1</span></p>
+                <p style="padding-left:25%"> Increases how many oats 1 spoon gives<span class="not-enough-money" id="bs_label"><span id="bs_prices" class="not-enough-money">200</span> oats</span> <span id="bs-things">Spoon size: 1</span></p>
             </div>
-            <div class="booster" onclick="cinnamon_clicked()">
-                <br>
+            <div class="booster" onclick="cinnamon_clicked()" id="cinnamon">
+                <br><span style="width:20%; height:100%; display: inline-block;"></span>
                 <span class="booster-title">Cinnamon</span>
-                <p > Makes your oatmeal taste better<span class="not-enough-money" id="cinnamon_label"><span id="cinnamon_prices" class="not-enough-money">400</span> oats</span> <span id="cinnamon-things">Tastiness: 0</span></p>
+                <p style="padding-left:25%"> Makes your oatmeal taste better<span class="not-enough-money" id="cinnamon_label"><span id="cinnamon_prices" class="not-enough-money">400</span> oats</span> <span id="cinnamon-things">Tastiness: 0</span></p>
             </div>
           </div>
           
