@@ -34,11 +34,20 @@
   var spoon_addition = 1;
   var cinnamons = 0;
   var pso = true;
+  var merchable = true;
   var fall_sprite = "https://oatmeal.gq/oat2.png";
   key('p', function(){toggleps()});
   key('g', function(){fall_sprite="https://raw.githubusercontent.com/ooogle/oatmeal/master/fly.png";  root.style.setProperty('--height', '3500%')});
   function roundate(num) {
     return Math.round(num * 2) / 2;
+  }
+  function merch(){
+    document.getElementById("merch-box").classList.add("merch-box");
+    document.getElementById("merch-box").classList.remove("hid-merch-box");
+    setTimeout(function(){
+      document.getElementById("merch-box").classList.remove("merch-box");
+    document.getElementById("merch-box").classList.add("hid-merch-box");
+    }, 15000);
   }
   function updatecount() {
     var ops = spoons*spoon_addition;
@@ -48,6 +57,13 @@
     }
     else{
       document.getElementById("ops").innerHTML="Per click: "+addition;
+    }
+    if(merchable && oat_count >= 100 && document.hidden == false){
+      merch();
+      merchable = false;
+      setTimeout(function(){
+        merchable = true;
+      }, 2400000)
     }
     document.getElementById("oats").innerHTML = "Oats: " + Math.round(oat_count);
     document.getElementById("spoon-things").innerHTML=" Owned: "+spoons;
@@ -177,6 +193,10 @@
       if (cinnamons != 0) {
         cinnamon();
       }
+      merchable = false;
+      setTimeout(function(){
+        merchable = true;
+      }, 60000)
       updatecount();
     }
     else {
@@ -414,7 +434,7 @@ function spoon() {
 }
 
 
-  * {
+  *,body,html {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -435,6 +455,15 @@ function spoon() {
       top: 0px;
         overflow: -moz-scrollbars-none;
     }
+    .falling-oat{
+      position:fixed;
+    }
+    .hid-merch-box{
+      left:630px;
+    }
+    .merch-box{
+      left:630px;
+    }
     tr,table{
       top:100px;
     }
@@ -442,9 +471,7 @@ function spoon() {
       width:37%;
       padding-left: 0px;
     }
-    *{
-      overflow: hidden;
-    }
+   
     .scores {
     color: white;
     text-shadow: 0px 0px 10px rgba(0, 0, 0, 1), 0px 0px 20px rgba(0, 0, 0, 1), 0px 0px 30px rgba(0, 0, 0, 1), 0px 0px 80px rgba(0, 0, 0, 1);
@@ -470,6 +497,15 @@ function spoon() {
   @media only screen and (max-width: 600px) {
     #oats{
     font-size:30px;
+  }
+  .falling-oat{
+    position: absolute;
+  }
+  .hid-merch-box{
+    left:30%;
+  }
+  .merch-box{
+    left: 30%;
   }
   #ads{
     width: 90%;
@@ -526,7 +562,7 @@ function spoon() {
 }
   .booster {
     margin-top: 20px;
-    border-color: darkblue;
+    border-color: #00008b;
     border-style: solid;
     background: #0068df;
     text-align: left;
@@ -560,7 +596,6 @@ function spoon() {
     color: rgb(0, 255, 0) !important;
   }
   .falling-oat{
-    position:absolute;
     animation: falling-oat 8s;
     width:30px;
     display:block;
@@ -716,7 +751,75 @@ function spoon() {
   background-position: 0% 60%;
   
 }
+.arrow_box {
+	position: relative;
+	background: #0068df;
+	border: 4px solid #00008b;
+  height:125px;
+  background-image: url(https://oatmeal.gq/sprites/merch.png);
+  background-repeat: no-repeat;
+  background-position: 10% 20px;
+  background-size: 100px;
+}
+.before-merch-box, .after-merch-box{
+	bottom: 100%;
+	left: 5%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.after-merch-box {
+	border-color: rgba(0, 104, 223, 0);
+	border-bottom-color: #0068df;
+	border-width: 10px;
+	margin-left: 3px;
+  z-index: 12;
+}
+.before-merch-box {
+	border-color: rgba(0, 0, 139, 0);
+	border-bottom-color: #00008b;
+	border-width: 16px;
+	margin-left: -3px;
+  z-index:12;
+}
+.merch-box{
+position:fixed;
+z-index: 12;
+top:20px;
+overflow: visible !important;
+cursor: pointer;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 1), 0px 0px 20px;
+animation: merch 0.25s;
+}
+.hid-merch-box{
+  position:fixed;
+  opacity: 0;
+  transition: 0.25s;
+  z-index: 12;
+  top: -20px;
+}
+@keyframes merch {
+  0%{
+    top:-50px;
+    opacity: 0;
+  }
+  100%{
+    top:20px;
+    opacity: 1;
+  }
+}
 </style>
+<div id="merch-box" class="hid-merch-box" onclick="window.open('https://teespring.com/stores/oat-clicker'); document.getElementById('merch-box').classList.remove('merch-box'); document.getElementById('merch-box').classList.add('hid-merch-box');">
+  <div class="arrow_box">
+  <div class="before-merch-box"></div>
+  <span class="booster-title" style="margin: 20px;">Oat Clicker Merch!</span>
+  <div class="after-merch-box"></div>
+  </div>
+  </div>
 <div id="falling-oats">
 <!-- Oats will fall below-->
 </div>
@@ -728,7 +831,7 @@ function spoon() {
         <br>
         <br>
         <span class="scores">
-          <span id="oats">Oats: 0</span>
+          <span id="oats" ondblclick="toggleps()">Oats: 0</span>
         </span>
         <br>
         <span class="ops" id="ops" ondblclick="toggleps()">Per second: 0</span>
