@@ -198,6 +198,10 @@
         merchable = true;
       }, 60000)
       updatecount();
+      document.getElementById("loading").classList.add("fadeout");
+      setTimeout(function(){
+        document.getElementById("loading").outerHTML = "";
+      }, 600)
     }
     else {
       Cookies.set("bowl_price", 100, {
@@ -812,7 +816,35 @@ animation: merch 0.25s;
     opacity: 1;
   }
 }
+#loading{
+  z-index: 12;
+  width:100% !important;
+  height: 100% !important;;
+  background:black;
+  color:white;
+  position: fixed;
+  top:0px;
+  left:0px;
+  text-align: center;
+}
+.fadeout{
+  opacity: 0;
+  animation: fadeout 0.5s;
+}
+@keyframes fadeout {
+  0%{
+    display: block !important;
+    opacity:1;
+  }
+  99%{
+    opacity:0;
+  }
+  100%{
+    display:none;
+  }
+}
 </style>
+<div id="loading"><br><br> <span class="scores">Loading...</span></div>
 <div id="merch-box" class="hid-merch-box" onclick="window.open('https://teespring.com/stores/oat-clicker'); document.getElementById('merch-box').classList.remove('merch-box'); document.getElementById('merch-box').classList.add('hid-merch-box');">
   <div class="arrow_box">
   <div class="before-merch-box"></div>
@@ -823,8 +855,10 @@ animation: merch 0.25s;
 <div id="falling-oats">
 <!-- Oats will fall below-->
 </div>
+
 <div class="background-image"></div>
 <body onload="startgame()">
+  
   <table style="width:100%" draggable="false">
     <tr draggable="false">
       <th draggable="false" id="main-thing">
