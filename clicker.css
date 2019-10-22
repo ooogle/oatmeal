@@ -78,11 +78,17 @@
   #oats{
     font-size:31.5px;
   }
+  #reset{
+    display: none;
+  }
   }
 
   @media only screen and (max-width: 600px) {
     #oats{
     font-size:30px;
+  }
+  #reset{
+    display: block;
   }
   .falling-oat{
     position: absolute;
