@@ -1,0 +1,427 @@
+:root {
+    --x-value:1700%;
+    --z:-9;
+    --height: 1500%;
+  }
+  .background-image {
+  background-image: url('https://oatmeal.gq/oats1.jpg');
+  background-size: cover;
+  display: block;
+  filter: blur(2px) brightness(90%);
+  -webkit-filter: blur(2px) brightness(90%);;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top:0;
+  position: fixed;
+  right: 0;
+  z-index: -10;
+  overflow: hidden;
+}
+
+
+  *,body,html {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+  }
+
+  @media only screen and (min-width: 600px) {
+    th {
+      height: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+      word-wrap: normal;
+      top: 0px;
+        overflow: -moz-scrollbars-none;
+    }
+    .falling-oat{
+      position:fixed;
+    }
+    .hid-merch-box{
+      left:630px;
+    }
+    .merch-box{
+      left:630px;
+    }
+    tr,table{
+      top:100px;
+    }
+    #boosterz{
+      width:37%;
+      padding-left: 0px;
+    }
+   
+    .scores {
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1), 0px 0px 20px rgba(0, 0, 0, 1), 0px 0px 30px rgba(0, 0, 0, 1), 0px 0px 80px rgba(0, 0, 0, 1);
+    font-size: 25px;
+    font-family: sans-serif;
+    font-weight: lighter;
+  }
+  #ads{
+    width:5%;
+  }
+  #booster-box{
+    padding-left: 80px;
+  }
+  #main-thing{
+    padding-left:110px;
+    padding-right:10px;
+  }
+  #oats{
+    font-size:31.5px;
+  }
+  }
+
+  @media only screen and (max-width: 600px) {
+    #oats{
+    font-size:30px;
+  }
+  .falling-oat{
+    position: absolute;
+  }
+  .hid-merch-box{
+    left:30%;
+  }
+  .merch-box{
+    left: 30%;
+  }
+  #ads{
+    width: 90%;
+  }
+  .booster {
+    background-size: 80px !important;
+  }
+  #bowl{
+    background-position-y: 8% !important;
+  }
+    th {
+      width: 90%;
+      height: 33.33%;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      word-wrap: normal;
+      display: table;
+    }
+    html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+    .scores {
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1), 0px 0px 20px rgba(0, 0, 0, 1), 0px 0px 30px rgba(0, 0, 0, 1), 0px 0px 80px rgba(0, 0, 0, 1);
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: lighter;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  }
+
+  .main-clicker {
+    transition: 0.15s;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 263px;
+    cursor: pointer;
+  }
+
+  .main-clicker:hover {
+    animation: wiggle 2s;
+  }
+
+  .main-clicker:active {
+    transform: scale(0.8);
+  }
+.icon{
+  display:inline;
+}
+  .booster {
+    margin-top: 20px;
+    border-color: #00008b;
+    border-style: solid;
+    background: #0068df;
+    text-align: left;
+    transition: 0.15s;
+  }
+
+  .booster:active {
+    transform: scale(0.9);
+  }
+
+  .booster * {
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+  }
+
+  .booster-title {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px !important;
+  }
+
+  .not-enough-money {
+    color: red !important;
+  }
+
+  .enough-money {
+    color: rgb(0, 255, 0) !important;
+  }
+  .falling-oat{
+    animation: falling-oat 8s;
+    width:30px;
+    display:block;
+    z-index: var(--z);
+    filter: brightness(105%);
+    -webkit-filter: brightness(105%);
+  }
+  @keyframes wiggle {
+    0% {
+      transform: scale(1);
+    }
+
+    6.25% {
+      transform: scale(0.75);
+    }
+
+    8.75% {
+      transform: scale(0.7);
+    }
+
+    25% {
+      transform: scale(1);
+    }
+
+    32.5% {
+      transform: scale(0.95);
+    }
+
+    42.5% {
+      transform: scale(1.0);
+    }
+
+    52% {
+      transform: scale(0.97);
+    }
+
+    62% {
+      transform: scale(1);
+    }
+
+    72% {
+      transform: scale(0.98);
+    }
+
+    82% {
+      transform: scale(1);
+    }
+
+    93% {
+      transform: scale(0.99);
+    }
+  }
+  .booster-container{
+    
+    -ms-overflow-style: none;
+    height: 95%;
+    top: 10px;
+    padding-right: 17px;
+    box-sizing: content-box;
+  }
+  .booster-container::-webkit-scrollbar { width: 0px !important }
+  *::-webkit-scrollbar { 
+    width: 0px !important;
+    -webkit-appearance: none;
+   }
+  @keyframes gold {
+    0% {
+      transform: translate(80%, 0%);
+      opacity: 0;
+    }
+
+    10% {
+      transform: translate(60%, 800%);
+      opacity: 1;
+    }
+
+    25% {
+      transform: translate(50%, 00%);
+    }
+
+    35% {
+      transform: translate(40%, 900%);
+    }
+
+    50% {
+      transform: translate(30%, 00%);
+
+    }
+
+    70% {
+      transform: translate(20%, 700%);
+
+    }
+
+    80% {
+      transform: translate(10%, 00%);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translate(0%, 0%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes falling-oat{
+    0% {
+      transform: translate(0%, -80%);
+      opacity: 0;
+    }
+
+    30% {
+      opacity: 1;
+    }
+
+    100% {
+      transform: translate(0%, var(--height));
+      opacity: 0;
+    }
+  }
+ .ops{
+   font: size 15px;
+   color:white;
+   text-shadow: 0px 0px 10px rgba(0, 0, 0, 1), 0px 0px 20px rgba(0, 0, 0, 1), 0px 0px 30px rgba(0, 0, 0, 1), 0px 0px 80px rgba(0, 0, 0, 1);
+   font-family: sans-serif;
+    font-weight: lighter;
+ }
+#spoon{
+  background-image: url(https://oatmeal.gq/sprites/spoon.png);
+  background-repeat: no-repeat;
+  background-position: 0% 100%;
+}
+#bowl{
+  background-image: url(https://oatmeal.gq/sprites/oat_bowl.png);
+  background-repeat: no-repeat;
+  background-position: 0% 100%;
+}
+#pot{
+  background-image: url(https://oatmeal.gq/sprites/oat_pot.png);
+  background-repeat: no-repeat;
+  background-position: 0% 100%;
+  
+}
+#bss{
+  background-image: url(https://oatmeal.gq/sprites/big-spoon.png);
+  background-repeat: no-repeat;
+  background-position: 0% 75%;
+  background-size: 85px;
+}
+#cinnamon{
+  background-image: url(https://oatmeal.gq/sprites/cinnamon.png);
+  background-repeat: no-repeat;
+  background-position: 0% 60%;
+  
+}
+.arrow_box {
+	position: relative;
+	background: #0068df;
+	border: 4px solid #00008b;
+  height:125px;
+  background-image: url(https://oatmeal.gq/sprites/merch.png);
+  background-repeat: no-repeat;
+  background-position: 10% 20px;
+  background-size: 100px;
+}
+.before-merch-box, .after-merch-box{
+	bottom: 100%;
+	left: 5%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.after-merch-box {
+	border-color: rgba(0, 104, 223, 0);
+	border-bottom-color: #0068df;
+	border-width: 10px;
+	margin-left: 3px;
+  z-index: 12;
+}
+.before-merch-box {
+	border-color: rgba(0, 0, 139, 0);
+	border-bottom-color: #00008b;
+	border-width: 16px;
+	margin-left: -3px;
+  z-index:12;
+}
+.merch-box{
+position:fixed;
+z-index: 12;
+top:20px;
+overflow: visible !important;
+cursor: pointer;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 1), 0px 0px 20px;
+animation: merch 0.25s;
+}
+.hid-merch-box{
+  position:fixed;
+  opacity: 0;
+  transition: 0.25s;
+  z-index: 12;
+  top: -2000px;
+}
+@keyframes merch {
+  0%{
+    top:-50px;
+    opacity: 0;
+  }
+  100%{
+    top:20px;
+    opacity: 1;
+  }
+}
+#loading{
+  z-index: 12;
+  width:100% !important;
+  height: 100% !important;;
+  background:black;
+  color:white;
+  position: fixed;
+  top:0px;
+  left:0px;
+  text-align: center;
+}
+.fadeout{
+  opacity: 0;
+  animation: fadeout 0.5s;
+}
+@keyframes fadeout {
+  0%{
+    display: block !important;
+    opacity:1;
+  }
+  99%{
+    opacity:0;
+  }
+  100%{
+    display:none;
+  }
+}
