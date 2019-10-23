@@ -20,7 +20,7 @@
 }
 
 
-  *,body,html {
+  body,html {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -29,7 +29,8 @@
     -ms-user-select: none;
     user-select: none;
     -ms-overflow-style: none;
-    overflow: -moz-scrollbars-none;
+    overflow: scroll;
+    scrollbar-width: none;
   }
 
   @media only screen and (min-width: 600px) {
@@ -39,7 +40,8 @@
       padding-right: 20px;
       word-wrap: normal;
       top: 0px;
-        overflow: -moz-scrollbars-none;
+        overflow: scroll;
+        scrollbar-width: none;
     }
     .falling-oat{
       position:fixed;
@@ -81,6 +83,32 @@
   #reset{
     display: none;
   }
+  }
+  #achievments{
+    overflow: scroll;
+    scrollbar-width: none;
+    z-index: -9;
+    height: 100%;
+    position: fixed;
+    left:100px;
+  }
+  .ach{
+    bottom:0% !important;
+    margin-block: 5px !important;
+    z-index: 12 !important;
+  }
+  #x-box{
+    width:20px;
+    height:20px;
+    z-index:12;
+    position: fixed;
+    left:33.3%;
+    top: -19px;
+    background-image:url(https://oatmeal.gq/sprites/x-icon.png);
+    background-attachment: scroll;
+    background-position: center;
+    background-size: 25px;
+    display:none;
   }
 
   @media only screen and (max-width: 600px) {
@@ -241,9 +269,9 @@
     }
   }
   .booster-container{
-    
     -ms-overflow-style: none;
-    height: 95%;
+    scrollbar-width: none;
+    overflow:scroll !important;
     top: 10px;
     padding-right: 17px;
     box-sizing: content-box;
