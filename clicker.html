@@ -49,8 +49,10 @@
   }
   function checkupdates(){
   var reck = new XMLHttpRequest();
-  reck.addEventListener("load", function(){console.log( this.responseText);
-  if(this.responseText != version){
+  reck.addEventListener("load", function(){
+    console.log(reck)
+    console.log(reck.responseText != version)
+  if(reck.responseText != version){
     document.getElementById("update-box").classList.add("merch-box");
     document.getElementById("update-box").classList.remove("hid-merch-box");
   }
