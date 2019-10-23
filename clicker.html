@@ -32,6 +32,7 @@
   var bowls = 0;
   var spoons = 0;
   var pots = 0;
+  var achevs ="0";
   let root = document.documentElement;
   var spoon_addition = 1;
   var cinnamons = 0;
@@ -233,6 +234,7 @@
       spoons = Number(Cookies.get('spoons'));
       pots = Number(Cookies.get('pots'));
       spoon_addition = Number(Cookies.get('spoon_addition'));
+      achevs=Cookies.get("achievements");
       document.getElementById("bowl_prices").innerHTML = Cookies.get("bowl_price");
       document.getElementById("pot_prices").innerHTML = Cookies.get("pot_price");
       document.getElementById("spoon_prices").innerHTML = Cookies.get("spoon_price");
@@ -473,6 +475,7 @@ function spoon() {
     Cookies.set('achievements',thing+" "+id,  {
       expires: 1000000
       });
+      achevs=Cookies.get("achievements");
       setTimeout(function(){
         document.getElementById(id).outerHTML="";
       if(document.getElementById('achievments').innerHTML=="\n"){    
