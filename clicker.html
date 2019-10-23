@@ -19,6 +19,7 @@
 <meta property="twitter:image" content="https://oatmeal.gq/oat_clicker_logo.png">
 <!-- *phew* meta tags are over! -->
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+<script src="extrastuff.js"></script>
 <script src="https://madrobby.github.io/keymaster/keymaster.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap" rel="stylesheet">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -138,6 +139,7 @@
     Cookies.set('oat_count', oat_count, {
       expires: 1000000
     });
+    checkacheivs();
   }
   function randomate(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
@@ -180,6 +182,9 @@
   function reset(){
     if(confirm("are you sure you would like to reset your game? \n you will lose all of your oats and buildings")){
       Cookies.set("bowl_price", 100, {
+      expires: 1000000
+    });
+    Cookies.set('achievements', 0, {
       expires: 1000000
     });
     Cookies.set("pot_price", 1500, {
@@ -278,6 +283,9 @@
       expires: 1000000
     });
     Cookies.set('cinnamons', 0, {
+      expires: 1000000
+    });
+    Cookies.set('achievements', 0, {
       expires: 1000000
     });
     Cookies.set('addition', 1, {
@@ -454,6 +462,26 @@ function spoon() {
       setTimeout(function(){loading()}, 3000)
     }
   }
+  function hideacheivments(){
+    document.getElementById("achievments").innerHTML="";
+    document.getElementById("x-box").style.display="none";
+  }
+  function achieve(id,title){
+    var thing = Cookies.get('achievements')
+    document.getElementById("x-box").style.display="block";
+    document.getElementById("achievments").innerHTML='<div class="booster ach" id="'+id+'"><span class="booster-title">Acheivement Unlocked</span><br><np>'+title+'</np></div>'+document.getElementById("achievments").innerHTML;
+    Cookies.set('achievements',thing+" "+id,  {
+      expires: 1000000
+      });
+      setTimeout(function(){
+        document.getElementById(id).outerHTML="";
+      if(document.getElementById('achievments').innerHTML=="\n"){    
+    document.getElementById("x-box").style.display="none";
+      }
+      }, 4000)
+
+    
+  }
   function cinnamon() {
     setTimeout(function () {
       if(randomate(0, 5000) == 10){
@@ -474,7 +502,7 @@ function spoon() {
 
 <div id="loading" ><br><br> <span class="scores">Loading...</span>
 <br><br><br><span id="loader-text" > </span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" onload="loading()"></div>
-<div id="merch-box" class="hid-merch-box" onclick="window.open('https://teespring.com/stores/oat-clicker'); document.getElementById('merch-box').classList.remove('merch-box'); document.getElementById('merch-box').classList.add('hid-merch-box');">
+<div id="merch-box" class="hid-merch-box" onclick="window.open('https://teespring.com/stores/oat-clicker'); document.getElementById('merch-box').classList.remove('merch-box'); document.getElementById('merch-box').classList.add('hid-merch-box'); achieve('merch','you saw the merch!');">
   <div class="arrow_box">
   <div class="before-merch-box"></div>
   <span class="booster-title" style="margin: 20px;">Oat Clicker Merch!</span>
@@ -484,6 +512,9 @@ function spoon() {
 <div id="falling-oats">
 <!-- Oats will fall below-->
 </div>
+<div id="achievments">
+</div>
+<div id="x-box" class="booster" onclick="hideacheivments()"></div>
 <div class="background-image"></div>
 <body onload="startgame()">
   
