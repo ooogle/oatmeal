@@ -32,6 +32,7 @@
   var bowls = 0;
   var spoons = 0;
   var pots = 0;
+  var version = "tom holland";
   var achevs ="0";
   let root = document.documentElement;
   var spoon_addition = 1;
@@ -45,6 +46,18 @@
   key('g', function(){fall_sprite="https://raw.githubusercontent.com/ooogle/oatmeal/master/fly.png";  root.style.setProperty('--height', '3500%')});
   function roundate(num) {
     return Math.round(num * 2) / 2;
+  }
+  function checkupdates(){
+  var reck = new XMLHttpRequest();
+  reck.addEventListener("load", function(){console.log( this.responseText);
+  if(this.responseText != version){
+    document.getElementById("update-box").classList.add("merch-box");
+    document.getElementById("update-box").classList.remove("hid-merch-box");
+  }
+  });
+  reck.open("GET", "version.txt");
+  reck.send();
+  setTimeout(function(){checkupdates()}, 720000);
   }
   function merch(){
     document.getElementById("merch-box").classList.add("merch-box");
@@ -300,6 +313,7 @@
     });
     }
     stillloading=false;
+    setTimeout(function(){checkupdates()}, 720000);
   }
   function oat_bowl() {
     if (oat_count >= Number(document.getElementById("bowl_prices").innerHTML)) {
@@ -514,6 +528,13 @@ function spoon() {
   <div class="after-merch-box"></div>
   </div>
   </div>
+  <div id="update-box" class="hid-merch-box" onclick="window.location=window.location;">
+    <div class="arrow_box1">
+    <div class="before-merch-box"></div>
+    <span class="booster-title" style="margin: 20px;">New update available! </span><br><np style="color:white; margin-left:20px;">click to update</np>
+    <div class="after-merch-box"></div>
+    </div>
+    </div>
 <div id="falling-oats">
 <!-- Oats will fall below-->
 </div>
