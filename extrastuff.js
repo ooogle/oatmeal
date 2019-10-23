@@ -47,4 +47,19 @@ function checkacheivs(){
     if(achevs.includes('420_oats') == false && oat_count >= 420){
         achieve('420_oats','420 oats: blaze it!');
     }
+    if(achevs.includes('million_oats') == false && oat_count >= 1000000){
+        achieve('million_oats','A whole million oats');
+    }
+    if(achevs.includes('25_oats') == false && oat_count >= 25){
+        achieve('25_oats','A whole twenty five oats');
+    }
+    if(achevs.includes('lottery_master') == false && cinnamons >= 20){
+        achieve('lottery_master','Lottery master: You\'re a real big gambler');
+    }
+    if(achevs.includes('300_oats') == false && oat_count >= 300){
+        achieve('300_oats','A whole 300 oats');
+    }
+    if(achevs.includes('pressed_g') == false && fall_sprite=="https://raw.githubusercontent.com/ooogle/oatmeal/master/fly.png"){
+        achieve('pressed_g','You absolutely terrible person! I<i>told</i> you not to press G!');
+    }
 }
