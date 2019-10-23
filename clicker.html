@@ -234,7 +234,9 @@
       spoons = Number(Cookies.get('spoons'));
       pots = Number(Cookies.get('pots'));
       spoon_addition = Number(Cookies.get('spoon_addition'));
+      if(Cookies.get("achievements")!=null){
       achevs=Cookies.get("achievements");
+      }
       document.getElementById("bowl_prices").innerHTML = Cookies.get("bowl_price");
       document.getElementById("pot_prices").innerHTML = Cookies.get("pot_price");
       document.getElementById("spoon_prices").innerHTML = Cookies.get("spoon_price");
