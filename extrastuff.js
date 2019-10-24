@@ -59,6 +59,9 @@ function checkacheivs(){
     if(achevs.includes('300_oats') == false && oat_count >= 300){
         achieve('300_oats','A whole 300 oats');
     }
+    if(achevs.includes('2-mil_oats') == false && oat_count >= 2000000){
+        achieve('2-mil_oats','A whole 2 million oats');
+    }
     if(achevs.includes('pressed_g') == false && fall_sprite=="https://raw.githubusercontent.com/ooogle/oatmeal/master/fly.png"){
         achieve('pressed_g','You absolutely terrible person! I<i>told</i> you not to press G!');
     }

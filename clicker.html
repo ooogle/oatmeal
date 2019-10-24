@@ -19,6 +19,8 @@
 <meta property="twitter:image" content="https://oatmeal.gq/oat_clicker_logo.png">
 <!-- *phew* meta tags are over! -->
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+<script src="//cdn.rawgit.com/erosson/swarm-numberformat/v0.1.0/dist/swarm-numberformat.min.js"></script>
+<script src="https://raw.githubusercontent.com/erosson/swarm-numberformat/master/src/parse.js"></script>
 <script src="extrastuff.js"></script>
 <script src="https://madrobby.github.io/keymaster/keymaster.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap" rel="stylesheet">
@@ -32,7 +34,7 @@
   var bowls = 0;
   var spoons = 0;
   var pots = 0;
-  var version = "tom holland";
+  var version = "tom holland is hot";
   var achevs ="0";
   let root = document.documentElement;
   var spoon_addition = 1;
@@ -73,10 +75,10 @@
     var ops = spoons*spoon_addition;
     ops = ops/10; 
     if(pso){
-      document.getElementById("ops").innerHTML="Per second: "+ops;
+      document.getElementById("ops").innerHTML="Per second: "+numberformat.format(ops, {sigfigs: 4});
     }
     else{
-      document.getElementById("ops").innerHTML="Per click: "+addition;
+      document.getElementById("ops").innerHTML="Per click: "+numberformat.format(addition, {sigfigs: 4});
     }
     if(merchable && oat_count >= 100 && document.hidden == false){
       merch();
@@ -85,8 +87,8 @@
         merchable = true;
       }, 2400000)
     }
-    document.getElementById("oats").innerHTML = "Oats: " + Math.round(oat_count);
-    document.title=Math.round(oat_count)+" Oats - Oat Clicker"
+    document.getElementById("oats").innerHTML = "Oats: " +numberformat.format( Math.round(oat_count),  {sigfigs: 4});
+    document.title=numberformat.format(Math.round(oat_count),  {sigfigs: 4})+" Oats - Oat Clicker"
     document.getElementById("spoon-things").innerHTML=" Owned: "+spoons;
     document.getElementById("bowl-things").innerHTML=" Owned: "+bowls;
     document.getElementById("pot-things").innerHTML=" Owned: "+pots;
@@ -338,7 +340,7 @@
         addition = addition + 1;
         }
         oat_count = oat_count - Number(document.getElementById("bowl_prices").innerHTML);
-        document.getElementById("bowl_prices").innerHTML = "" + roundate(Number(document.getElementById("bowl_prices").innerHTML) * 1.15);
+        document.getElementById("bowl_prices").innerHTML = "" +Number(document.getElementById("bowl_prices").innerHTML) * 1.15;
         Cookies.set('addition', addition, {
       expires: 1000000
     });
@@ -346,7 +348,7 @@
         Cookies.set('bowls', bowls, {
       expires: 1000000
     });
-        Cookies.set('bowl_price', Number(document.getElementById("bowl_prices").innerHTML), {
+        Cookies.set('bowl_price',  numberformat.parse(document.getElementById("bowl_prices").innerHTML), {
       expires: 1000000
     });
     
@@ -421,7 +423,7 @@
       else {
         spoons += 1;
         oat_count = oat_count - Number(document.getElementById("spoon_prices").innerHTML);
-        document.getElementById("spoon_prices").innerHTML = "" + roundate(Number(document.getElementById("spoon_prices").innerHTML) * 1.15);
+        document.getElementById("spoon_prices").innerHTML = "" +  roundate(Number(document.getElementById("spoon_prices").innerHTML) * 1.15);
         Cookies.set('spoons', spoons, {
       expires: 1000000
     });
