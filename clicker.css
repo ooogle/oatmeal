@@ -192,7 +192,7 @@
   .booster:active {
     transform: scale(0.9);
   }
-
+ 
   .booster * {
     padding-left: 10px;
     padding-top: 10px;

@@ -53,6 +53,12 @@ function checkacheivs(){
     if(achevs.includes('25_oats') == false && oat_count >= 25){
         achieve('25_oats','A whole twenty five oats');
     }
+    if(achevs.includes('30_oats') == false && oat_count >= 30){
+        achieve('30_oats','Quaker: you have 30 oats');
+    }
+    if(achevs.includes('45_oats') == false && oat_count >= 45){
+        achieve('45_oats','Brother, may I have some oats?');
+    }
     if(achevs.includes('lottery_master') == false && cinnamons >= 20){
         achieve('lottery_master','Lottery master: You\'re a real big gambler');
     }
