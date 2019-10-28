@@ -92,6 +92,19 @@
     position: fixed;
     left:100px;
   }
+  .slightly-transparent{
+    opacity: 0.9;
+    transform: scale(0.99);
+    background: #0068df;
+  }
+  .slightly-transparent:active{
+    opacity: 0.9;
+    transform: scale(0.99) !important;
+    background: #0068df;
+  }
+  .slightly-transparent:hover{
+    background: #0068df !important;
+  }
   .ach{
     bottom:0% !important;
     margin-block: 5px !important;
@@ -189,7 +202,9 @@
     text-align: left;
     transition: 0.15s;
   }
-
+  .booster:hover{
+    background: #0276fc;
+  }
   .booster:active {
     transform: scale(0.9);
   }
@@ -344,33 +359,31 @@
    font-family: sans-serif;
     font-weight: lighter;
  }
-#spoon{
-  background-image: url(https://oatmeal.gq/sprites/spoon.png);
-  background-repeat: no-repeat;
-  background-position: 0% 100%;
+#spoon,#spoon:hover{
+  background-image: url(https://oatmeal.gq/sprites/spoon.png) !important;
+  background-repeat: no-repeat !important;
+  background-position: 0% 100% !important;
 }
-#bowl{
-  background-image: url(https://oatmeal.gq/sprites/oat_bowl.png);
-  background-repeat: no-repeat;
-  background-position: 0% 100%;
+#bowl,#bowl:hover{
+  background-image: url(https://oatmeal.gq/sprites/oat_bowl.png) !important;
+  background-repeat: no-repeat !important;
+  background-position: 0% 100% !important;
 }
-#pot{
-  background-image: url(https://oatmeal.gq/sprites/oat_pot.png);
-  background-repeat: no-repeat;
-  background-position: 0% 100%;
-  
+#pot,#pot:hover{
+  background-image: url(https://oatmeal.gq/sprites/oat_pot.png) !important;
+  background-repeat: no-repeat !important;
+  background-position: 0% 100% !important; 
 }
-#bss{
-  background-image: url(https://oatmeal.gq/sprites/big-spoon.png);
-  background-repeat: no-repeat;
-  background-position: 0% 75%;
-  background-size: 85px;
+#bss,#bss:hover{
+  background-image: url(https://oatmeal.gq/sprites/big-spoon.png) !important;
+  background-repeat: no-repeat !important;
+  background-position: 0% 75% !important;
+  background-size: 85px !important;
 }
-#cinnamon{
-  background-image: url(https://oatmeal.gq/sprites/cinnamon.png);
-  background-repeat: no-repeat;
-  background-position: 0% 60%;
-  
+#cinnamon,#cinnamon:hover{
+  background-image: url(https://oatmeal.gq/sprites/cinnamon.png) !important;
+  background-repeat: no-repeat !important;
+  background-position: 0% 60% !important;
 }
 .arrow_box {
 	position: relative;

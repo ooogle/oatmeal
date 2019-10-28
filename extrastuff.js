@@ -1,4 +1,6 @@
 function checkacheivs(){
+    var ops = spoons*spoon_addition;
+    ops = ops/10; 
     if(achevs.includes('1click') == false && oat_count == 1){
         achieve('1click','Click: you clicked the oat!');
     }
@@ -35,6 +37,9 @@ function checkacheivs(){
     if(achevs.includes('1000-oats') == false && oat_count >= 1000){
         achieve('1000-oats','Bob\'s red mill: you have one thousand oats');
     }
+    if(achevs.includes('10-ops') == false && ops >= 10){
+        achieve('10-ops','Ten OPS! That\'s a lotta OATS!');
+    }
     if(achevs.includes('cinnamon1') == false && cinnamons >= 1){
         achieve('cinnamon1','The lottery is a risky business');
     }
@@ -64,6 +69,12 @@ function checkacheivs(){
     }
     if(achevs.includes('300_oats') == false && oat_count >= 300){
         achieve('300_oats','A whole 300 oats');
+    }
+    if(achevs.includes('600_oats') == false && oat_count >= 600){
+        achieve('600_oats','Man, six hundred');
+    }
+    if(achevs.includes('600_oats') == false && oat_count >= 600){
+        achieve('600_oats','Man, six hundred');
     }
     if(achevs.includes('2-mil_oats') == false && oat_count >= 2000000){
         achieve('2-mil_oats','A whole 2 million oats');
