@@ -46,6 +46,9 @@ function checkacheivs(){
     if(achevs.includes('spoon_guru') == false && spoons >= 50){
         achieve('spoon_guru','Spoon Guru: you have fifty spoons');
     }
+    if(achevs.includes('spoon_lord') == false && spoons >= 100){
+        achieve('spoon_lord','Spoon lord: you have one hundred spoons');
+    }
     if(achevs.includes('150_oats') == false && oat_count >= 150){
         achieve('150_oats','You have 150 oats! That\'s a lot!');
     }

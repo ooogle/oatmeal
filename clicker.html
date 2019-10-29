@@ -33,8 +33,9 @@
   var bowls = 0;
   var spoons = 0;
   var pots = 0;
-  var version = "tom holland is like super hot and sexy";
+  var version = "tom holland is like super hot and sexy and stuff";
   var achevs ="0";
+  var clicksound = null;
   let root = document.documentElement;
   var spoon_addition = 1;
   var cinnamons = 0;
@@ -44,7 +45,11 @@
   var fall_sprite = "https://oatmeal.gq/oat2.png";
   key('p', function(){toggleps()});
   key('r', function(){reset()});
-  key('g', function(){fall_sprite="https://raw.githubusercontent.com/ooogle/oatmeal/master/fly.png";  root.style.setProperty('--height', '3500%')});
+  key('g', function(){fall_sprite="https://raw.githubusercontent.com/ooogle/oatmeal/master/fly.png"; root.style.setProperty('--height', '3500%');
+  clicksound = "https://oatmeal.gq/sprites/sfx/Blub.mp3";
+  var a = new Audio(clicksound);
+  a.play();
+});
   function roundate(num) {
     return Math.round(num * 2) / 2;
   }
@@ -93,12 +98,12 @@
     }
     document.getElementById("oats").innerHTML = "Oats: " +numberformat.format( Math.round(oat_count),  {sigfigs: 4});
     document.title=numberformat.format(Math.round(oat_count),  {sigfigs: 4})+" Oats - Oat Clicker"
-    document.getElementById("spoon-things").innerHTML=" Owned: "+spoons;
-    document.getElementById("bowl-things").innerHTML=" Owned: "+bowls;
-    document.getElementById("pot-things").innerHTML=" Owned: "+pots;
-    document.getElementById("cinnamon-things").innerHTML=" Tastiness: "+cinnamons;
-    document.getElementById("bs-things").innerHTML=" Spoon size: "+spoon_addition;
-    if (oat_count >= Number(document.getElementById("bowl_prices").innerHTML)) {
+    document.getElementById("spoon-things").innerHTML="Owned: "+numberformat.format(spoons , {sigfigs: 4});
+    document.getElementById("bowl-things").innerHTML=" Owned: "+numberformat.format(bowls, {sigfigs:4});
+    document.getElementById("pot-things").innerHTML=" Owned: "+numberformat.format(pots, {sigfigs:4});
+    document.getElementById("cinnamon-things").innerHTML=" Tastiness: "+numberformat.format(cinnamons, {sigfigs:4});
+    document.getElementById("bs-things").innerHTML=" Spoon size: "+numberformat.format(spoon_addition,{sigfigs:4});
+    if (oat_count >= Number(document.getElementById("bowl_prices").getAttribute('price'))) {
       document.getElementById("bowl_prices").classList.remove("not-enough-money");
       document.getElementById("bowl_prices").classList.add("enough-money");
       document.getElementById("bowl_label").classList.remove("not-enough-money");
@@ -112,7 +117,7 @@
       document.getElementById("bowl_label").classList.remove("enough-money");
       document.getElementById("bowl").classList.add("slightly-transparent");
     }
-    if (oat_count >= Number(document.getElementById("pot_prices").innerHTML)) {
+    if (oat_count >= Number(document.getElementById("pot_prices").getAttribute('price'))) {
       document.getElementById("pot_prices").classList.remove("not-enough-money");
       document.getElementById("pot_prices").classList.add("enough-money");
       document.getElementById("pot_label").classList.remove("not-enough-money");
@@ -126,7 +131,7 @@
       document.getElementById("pot_label").classList.remove("enough-money");
       document.getElementById("pot").classList.add("slightly-transparent");
     }
-    if (oat_count >= Number(document.getElementById("spoon_prices").innerHTML)) {
+    if (oat_count >= Number(document.getElementById("spoon_prices").getAttribute("price"))) {
       document.getElementById("spoon_prices").classList.remove("not-enough-money");
       document.getElementById("spoon_prices").classList.add("enough-money");
       document.getElementById("spoon_label").classList.remove("not-enough-money");
@@ -140,7 +145,7 @@
       document.getElementById("spoon_label").classList.remove("enough-money");
       document.getElementById("spoon").classList.add("slightly-transparent");
     }
-    if (oat_count >= Number(document.getElementById("bs_prices").innerHTML)) {
+    if (oat_count >= Number(document.getElementById("bs_prices").getAttribute("price"))) {
       document.getElementById("bs_prices").classList.remove("not-enough-money");
       document.getElementById("bs_prices").classList.add("enough-money");
       document.getElementById("bs_label").classList.remove("not-enough-money");
@@ -154,7 +159,7 @@
       document.getElementById("bs_label").classList.remove("enough-money");
       document.getElementById("bss").classList.add("slightly-transparent");
     }
-    if (oat_count >= Number(document.getElementById("cinnamon_prices").innerHTML)) {
+    if (oat_count >= Number(document.getElementById("cinnamon_prices").getAttribute("price"))) {
       document.getElementById("cinnamon_prices").classList.remove("not-enough-money");
       document.getElementById("cinnamon_prices").classList.add("enough-money");
       document.getElementById("cinnamon_label").classList.remove("not-enough-money");
@@ -177,19 +182,27 @@
     return Math.floor(Math.random() * (max - min)) + min;
   }
   function oat_fall(){
+    if(document.hidden==false){
     var x = randomate(5,410);
     var y = randomate(-50, 80);
+    var idd = randomate(-100000,200000000);
+    idd = "falling-oat-number-"+idd;
     var imagE = document.createElement("img"); 
     imagE.src = fall_sprite;
     imagE.className="falling-oat";
-    imagE.id = x;
+    imagE.id = idd;
     imagE.style="left: "+x+"px; top: "+y+"px;";
     document.getElementById('falling-oats').appendChild(imagE);
-    setTimeout(function(){document.getElementById(x).remove();}, 7900);
+    setTimeout(function(){document.getElementById(idd).remove();}, 7900);
+    }
   }
   function oat_clicked() {
     oat_count += Number(addition);
     oat_count = roundate(Number(oat_count));
+    if(clicksound != null){
+      var a = new Audio(clicksound);
+      a.play()
+    }
     updatecount();
     oat_fall();
   }
@@ -268,11 +281,16 @@
       if(Cookies.get("achievements")!=null){
       achevs=Cookies.get("achievements");
       }
-      document.getElementById("bowl_prices").innerHTML = Cookies.get("bowl_price");
-      document.getElementById("pot_prices").innerHTML = Cookies.get("pot_price");
-      document.getElementById("spoon_prices").innerHTML = Cookies.get("spoon_price");
-      document.getElementById("bs_prices").innerHTML = Cookies.get("bs_price");
-      document.getElementById("cinnamon_prices").innerHTML = Cookies.get("cinnamon_price");
+      document.getElementById("bowl_prices").setAttribute("price",Cookies.get("bowl_price"));
+      document.getElementById("bowl_prices").innerHTML = numberformat.format(Number(Cookies.get("bowl_price")),{sigfigs:4});
+      document.getElementById("pot_prices").setAttribute("price",Cookies.get("pot_price"));
+      document.getElementById("pot_prices").innerHTML = numberformat.format(Number(Cookies.get("pot_price")),{sigfigs:4});
+      document.getElementById("spoon_prices").innerHTML =numberformat.format(Number(Cookies.get("spoon_price")), {sigfigs:4});
+      document.getElementById("spoon_prices").setAttribute('price',Cookies.get("spoon_price"));
+      document.getElementById("bs_prices").innerHTML =numberformat.format(Number(Cookies.get("bs_price")), {sigfigs:4});
+      document.getElementById("bs_prices").setAttribute('price',Cookies.get("bs_price"));
+      document.getElementById("cinnamon_prices").innerHTML =numberformat.format(Number(Cookies.get("cinnamon_price")), {sigfigs:4});
+      document.getElementById("cinnamon_prices").setAttribute('price',Cookies.get("cinnamon_price"));
       if (spoons != 0) {
         spoon();
       }
@@ -335,27 +353,29 @@
     setTimeout(function(){checkupdates()}, 720000);
   }
   function oat_bowl() {
-    if (oat_count >= Number(document.getElementById("bowl_prices").innerHTML)) {
+    if (oat_count >= Number(document.getElementById("bowl_prices").getAttribute("price"))) {
       if (bowls == 0) {
         addition += 1;
         bowls = 1;
         Cookies.set('addition', addition, {
       expires: 1000000
     });
-        oat_count = oat_count - Number(document.getElementById("bowl_prices").innerHTML);
+        oat_count = oat_count - Number(document.getElementById("bowl_prices").getAttribute("price"));
         updatecount();
       }
       else {
         bowls=bowls+1;
         if(randomate(0,10000) == 1){
-          addition = addition + 5;
-          oat_count+=1000
+          addition = addition + bowls*5;
+          oat_count+=100000
+          achieve("lottery","You just won the Oat Lottery!")
         }
         else{
         addition = addition + 1;
         }
-        oat_count = oat_count - Number(document.getElementById("bowl_prices").innerHTML);
-        document.getElementById("bowl_prices").innerHTML = "" +roundate(Number(document.getElementById("bowl_prices").innerHTML) * 1.15);
+        oat_count = oat_count - Number(document.getElementById("bowl_prices").getAttribute("price"));
+        document.getElementById("bowl_prices").innerHTML = "" +numberformat.format( roundate(Number(document.getElementById("bowl_prices").getAttribute("price")) * 1.15), {sigfigs:4});
+        document.getElementById("bowl_prices").setAttribute("price", roundate(Number(document.getElementById("bowl_prices").getAttribute("price")) * 1.15) );
         Cookies.set('addition', addition, {
       expires: 1000000
     });
@@ -363,7 +383,7 @@
         Cookies.set('bowls', bowls, {
       expires: 1000000
     });
-        Cookies.set('bowl_price', document.getElementById("bowl_prices").innerHTML, {
+        Cookies.set('bowl_price', document.getElementById("bowl_prices").getAttribute("price"), {
       expires: 1000000
     });
     
@@ -373,14 +393,14 @@
     updatecount()
   }
   function oat_pot() {
-    if (oat_count >= Number(document.getElementById("pot_prices").innerHTML)) {
+    if (oat_count >= Number(document.getElementById("pot_prices").getAttribute('price'))) {
       if (pots == 0) {
         addition += 5;
         pots = 1;
         Cookies.set('addition', addition, {
       expires: 1000000
     });
-        oat_count = oat_count - Number(document.getElementById("pot_prices").innerHTML);
+        oat_count = oat_count - Number(document.getElementById("pot_prices").getAttribute('price'));
         updatecount();
       }
       else {
@@ -392,8 +412,10 @@
         else{
         addition = addition + 5;
         }
-        oat_count = oat_count - Number(document.getElementById("pot_prices").innerHTML);
-        document.getElementById("pot_prices").innerHTML = "" + roundate(Number(document.getElementById("pot_prices").innerHTML) * 5.34);
+        oat_count = oat_count - Number(document.getElementById("pot_prices").getAttribute("price"));
+        document.getElementById("pot_prices").innerHTML = "" +numberformat.format(roundate(Number(document.getElementById("pot_prices").getAttribute("price")) * 5.34), {sigfigs:4});
+
+        document.getElementById("pot_prices").setAttribute("price", roundate(Number(document.getElementById("pot_prices").getAttribute("price")) * 5.34));
         Cookies.set('addition', addition, {
       expires: 1000000
     });
@@ -401,7 +423,7 @@
         Cookies.set('pots', pots, {
       expires: 1000000
     });
-        Cookies.set('pot_price', Number(document.getElementById("pot_prices").innerHTML), {
+        Cookies.set('pot_price', Number(document.getElementById("pot_prices").getAttribute("price")), {
       expires: 1000000
     });
     
@@ -410,15 +432,16 @@
     }
   }
   function bs_clicked() {
-    if (oat_count >= Number(document.getElementById("bs_prices").innerHTML)) {
+    if (oat_count >= Number(document.getElementById("bs_prices").getAttribute("price"))) {
         spoon_addition += 1;
         Cookies.set('spoon_addition', addition, {
       expires: 1000000
     });
-        oat_count = oat_count - Number(document.getElementById("bs_prices").innerHTML);
-        document.getElementById("bs_prices").innerHTML = "" + roundate(Number(document.getElementById("bs_prices").innerHTML) * 2.33);
+        oat_count = oat_count - Number(document.getElementById("bs_prices").getAttribute('price'));
+        document.getElementById("bs_prices").innerHTML = "" +numberformat.format( roundate(Number(document.getElementById("bs_prices").getAttribute("price")) * 2.33), {sigfigs:4});
+        document.getElementById("bs_prices").setAttribute("price", roundate(Number(document.getElementById("bs_prices").getAttribute("price")) * 2.33))
        
-        Cookies.set('bs_price', Number(document.getElementById("bs_prices").innerHTML), {
+        Cookies.set('bs_price', Number(document.getElementById("bs_prices").getAttribute("price")), {
       expires: 1000000
     });
     
@@ -427,23 +450,24 @@
     }
   }
   function spoon_clicked() {
-    if (oat_count >= Number(document.getElementById("spoon_prices").innerHTML)) {
+    if (oat_count >= Number(document.getElementById("spoon_prices").getAttribute('price'))) {
       if (spoons == 0) {
         spoons = 1;
         Cookies.set('spoons', spoons, {
       expires: 1000000
     });
-        oat_count = oat_count - Number(document.getElementById("spoon_prices").innerHTML);
+        oat_count = oat_count - Number(document.getElementById("spoon_prices").getAttribute('price'));
         updatecount();
       }
       else {
         spoons += 1;
-        oat_count = oat_count - Number(document.getElementById("spoon_prices").innerHTML);
-        document.getElementById("spoon_prices").innerHTML = "" +  roundate(Number(document.getElementById("spoon_prices").innerHTML) * 1.15);
+        oat_count = oat_count - Number(document.getElementById("spoon_prices").getAttribute('price'));
+        document.getElementById("spoon_prices").innerHTML = "" + numberformat.format(roundate(Number(document.getElementById("spoon_prices").getAttribute('price')) * 1.15), {sigfigs:4});
+        document.getElementById("spoon_prices").setAttribute('price', roundate(Number(document.getElementById("spoon_prices").getAttribute('price')) * 1.15));
         Cookies.set('spoons', spoons, {
       expires: 1000000
     });
-        Cookies.set('spoon_price', Number(document.getElementById("spoon_prices").innerHTML), {
+        Cookies.set('spoon_price', Number(document.getElementById("spoon_prices").getAttribute("price")), {
       expires: 1000000
     });
         updatecount();
@@ -458,17 +482,17 @@
 function spoon() {
     setTimeout(function () {
       for (var i = 0; i < spoons; i++) {
-        oat_clicked_by_boost(Number(spoon_addition));
+        oat_clicked_by_boost(Number(spoon_addition)); 
       }
       spoon();
     }, 10000);
     return "you have " + spoons + " spoons!";
   }
   function cinnamon_clicked() {
-    if (oat_count >= Number(document.getElementById("cinnamon_prices").innerHTML)) {
+    if (oat_count >= Number(document.getElementById("cinnamon_prices").getAttribute('price'))) {
       if (cinnamons == 0) {
         cinnamons = 1;
-        oat_count = oat_count - Number(document.getElementById("cinnamon_prices").innerHTML);
+        oat_count = oat_count - Number(document.getElementById("cinnamon_prices").getAttribute('price'));
         updatecount();
         Cookies.set('cinnamons', cinnamons, {
       expires: 1000000
@@ -476,12 +500,13 @@ function spoon() {
       }
       else {
         cinnamons += 1;
-        oat_count = oat_count - Number(document.getElementById("cinnamon_prices").innerHTML);
-        document.getElementById("cinnamon_prices").innerHTML = "" + roundate(Number(document.getElementById("cinnamon_prices").innerHTML) * 1.15);
+        oat_count = oat_count - Number(document.getElementById("cinnamon_prices").getAttribute('price'));
+        document.getElementById("cinnamon_prices").innerHTML = "" +numberformat.format( roundate(Number(document.getElementById("cinnamon_prices").getAttribute('price')) * 1.15), {sigfigs:4});
+        document.getElementById('cinnamon_prices').setAttribute('price', roundate(Number(document.getElementById("cinnamon_prices").getAttribute('price')) * 1.15))
         Cookies.set('cinnamons', cinnamons, {
       expires: 1000000
     });
-        Cookies.set('cinnamon_price', Number(document.getElementById("cinnamon_prices").innerHTML), {
+        Cookies.set('cinnamon_price', Number(document.getElementById("cinnamon_prices").getAttribute('price')), {
       expires: 1000000
     });
         updatecount();
@@ -507,15 +532,15 @@ function spoon() {
   function achieve(id,title){
     var thing = Cookies.get('achievements')
     document.getElementById("x-box").style.display="block";
-    document.getElementById("achievments").innerHTML='<div class="booster ach" id="'+id+'"><span class="booster-title">Achievement Unlocked</span><br><np>'+title+'</np></div>'+document.getElementById("achievments").innerHTML;
+    document.getElementById("achievments").innerHTML='<div class="booster ach" id="achev-'+id+'"><span class="booster-title">Achievement Unlocked</span><br><np>'+title+'</np></div>'+document.getElementById("achievments").innerHTML;
     Cookies.set('achievements',thing+" "+id,  {
       expires: 1000000
       });
       achevs=Cookies.get("achievements");
       setTimeout(function(){
-        document.getElementById(id).outerHTML="";
-      if(document.getElementById('achievments').innerHTML=="\n"){    
-    document.getElementById("x-box").style.display="none";
+        document.getElementById("achev-"+id).outerHTML="";
+      if(document.getElementById('achievments').innerHTML.includes("achev-")!=true){    
+   hideacheivments()
       }
       }, 4000)
 
@@ -526,6 +551,7 @@ function spoon() {
       if(randomate(0, 5000) == 10){
        oat_count+=oat_count;
        console.log('wow! double oats!');
+       acheive("lottery","you won the lottery!")
        Cookies.set('oat_count', oats, {
       expires: 1000000
     });
@@ -587,18 +613,18 @@ function spoon() {
         <div class="booster" onclick="spoon_clicked()" id="spoon">
           <br> <span style="width:15%; height:100%; display: inline-block;"></span>
           <span class="booster-title">Spoon</span>
-          <p style="padding-left:20%">  Scoops up more oats every 10 seconds <span class="not-enough-money" id="spoon_label"><span id="spoon_prices" class="not-enough-money">50</span> oats</span><span id="spoon-things">Owned: 0</span></p>
+          <p style="padding-left:20%">  Scoops up more oats every 10 seconds <span class="not-enough-money" id="spoon_label"><span id="spoon_prices"  price="50" class="not-enough-money">50</span> oats</span><span id="spoon-things">Owned: 0</span></p>
         </div>
         <div class="booster" onclick="oat_bowl()" id="bowl">
           <br><span style="width:20%; height:100%; display: inline-block;"></span>
           <span class="booster-title">Oat Bowl</span>
-          <p style="padding-left:20%"> A place to store oats <span class="not-enough-money" id="bowl_label"><span id="bowl_prices"
+          <p style="padding-left:20%"> A place to store oats <span class="not-enough-money" id="bowl_label"><span id="bowl_prices" price="100"
                 class="not-enough-money">100</span> oats</span> <span id="bowl-things">Owned: 0</span></p>
         </div>
         <div class="booster" onclick="oat_pot()" id="pot">
             <br><span style="width:20%; height:100%; display: inline-block;"></span>
             <span class="booster-title">Oat Pot</span>
-            <p style="padding-left:25%"> A big place to store oats <span class="not-enough-money" id="pot_label"><span id="pot_prices" class="not-enough-money">1500</span> oats</span> <span id="pot-things">Owned: 0</span></p>
+            <p style="padding-left:25%"> A big place to store oats <span class="not-enough-money" id="pot_label"><span id="pot_prices" price="1500" class="not-enough-money">1500</span> oats</span> <span id="pot-things">Owned: 0</span></p>
           </div>
 
         </div>
@@ -611,12 +637,12 @@ function spoon() {
             <div class="booster" onclick="bs_clicked()" id="bss">
                 <br><span style="width:20%; height:100%; display: inline-block;"></span>
                 <span class="booster-title">Bigger Spoons</span>
-                <p style="padding-left:25%"> Increases how many oats 1 spoon gives<span class="not-enough-money" id="bs_label"><span id="bs_prices" class="not-enough-money">200</span> oats</span> <span id="bs-things">Spoon size: 1</span></p>
+                <p style="padding-left:25%"> Increases how many oats 1 spoon gives<span class="not-enough-money" id="bs_label"><span id="bs_prices" price="200" class="not-enough-money">200</span> oats</span> <span id="bs-things">Spoon size: 1</span></p>
             </div>
             <div class="booster" onclick="cinnamon_clicked()" id="cinnamon">
                 <br><span style="width:20%; height:100%; display: inline-block;"></span>
                 <span class="booster-title">Cinnamon</span>
-                <p style="padding-left:25%"> Makes your oatmeal taste better<span class="not-enough-money" id="cinnamon_label"><span id="cinnamon_prices" class="not-enough-money">400</span> oats</span> <span id="cinnamon-things">Tastiness: 0</span></p>
+                <p style="padding-left:25%"> Makes your oatmeal taste better<span class="not-enough-money" id="cinnamon_label"><span id="cinnamon_prices" price="400" class="not-enough-money">400</span> oats</span> <span id="cinnamon-things">Tastiness: 0</span></p>
             </div>
           </div>
           
