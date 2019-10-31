@@ -55,6 +55,9 @@ function checkacheivs(){
     if(achevs.includes('420_oats') == false && oat_count >= 420){
         achieve('420_oats','420 oats: blaze it!');
     }
+    if(achevs.includes('bil_oats') == false && oat_count >= 1000000000){
+        achieve('bil_oats','One billion oats oats... wow. just wow.');
+    }
     if(achevs.includes('million_oats') == false && oat_count >= 1000000){
         achieve('million_oats','A whole million oats');
     }

@@ -80,14 +80,15 @@
   #oats{
     font-size:31.5px;
   }
-  #reset{
+  .reset{
     display: none;
   }
   }
   #achievments{
     overflow: scroll, -moz-scrollbars-none;
     scrollbar-width: none;
-    z-index: -9;
+    z-index: 15;
+    pointer-events: none;
     height: 100%;
     position: fixed;
     left:100px;
@@ -114,7 +115,7 @@
   #x-box{
     width:20px;
     height:20px;
-    z-index:12;
+    z-index:18;
     position: fixed;
     left:33.3%;
     top: -19px;
@@ -129,7 +130,7 @@
     #oats{
     font-size:30px;
   }
-  #reset{
+  .reset{
     display: block;
   }
   .falling-oat{
