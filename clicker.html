@@ -33,7 +33,7 @@
   var bowls = 0;
   var spoons = 0;
   var pots = 0;
-  var version = "OH MY GAWD TOM HOLLAND IS SO HOT!!!!!!";
+  var version = "OH MY GAWD TOM HOLLAND IS SO HOT!!!!!!!";
   var achevs ="0";
   var clicksound = null;
   let root = document.documentElement;
@@ -381,8 +381,15 @@ else{
       spoon_addition = Number(Cookies.get('spoon_addition'));
         if(Cookies.get("cows") != null){
           cows = Number(Cookies.get("cows"));
+          if(Cookies.get("cow_price") != null){
           document.getElementById("cow_prices").setAttribute("price",Cookies.get("cow_price"));
       document.getElementById("cow_prices").innerHTML = numberformat.format(Number(Cookies.get("cow_price")),{sigfigs:4});
+          }
+          else{
+            Cookies.set("cow_price", 230, {
+      expires: 1000000
+    });
+          }
         }
         else{
           cows = 0;
