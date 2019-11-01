@@ -1,6 +1,7 @@
 function checkacheivs(){
     var ops = spoons*spoon_addition;
-    ops = ops/10; 
+    ops = ops/10;
+    ops += cows/2;
     if(achevs.includes('1click') == false && oat_count == 1){
         achieve('1click','Click: you clicked the oat!');
     }
@@ -27,6 +28,24 @@ function checkacheivs(){
     }
     if(achevs.includes('pot1') == false && pots >= 1){
         achieve('pot1','Your first oat pot');
+    }
+    if(achevs.includes('cow1') == false && cows >= 1){
+        achieve('cow1','Your first oat cow');
+    }
+    if(achevs.includes('cow10') == false && cows >= 10){
+        achieve('cow10','Farmer: you have lots of cows');
+    }
+    if(achevs.includes('cow20') == false && cows >= 20){
+        achieve('cow20','Local legend: you are known for your numerous cows');
+    }
+    if(achevs.includes('cow30') == false && cows >= 30){
+        achieve('cow30','Mad cow disease: you are obsessed with your cows');
+    }
+    if(achevs.includes('cow40') == false && cows >= 40){
+        achieve('cow40','PETA has its eye on you. One wrong move and your cows could be confiscated');
+    }
+    if(achevs.includes('cow50') == false && cows >= 50){
+        achieve('cow50','Great cow Guru: keep an eye on your feilds...');
     }
     if(achevs.includes('200-oats') == false && oat_count >= 200){
         achieve('200-oats','Two Hundred oats! wow!');
@@ -89,3 +108,29 @@ function checkacheivs(){
         achieve('pressed_g','You absolutely terrible person! I<i>told</i> you not to press G!');
     }
 }
+function spoon() {
+    setTimeout(function () {
+      for (var i = 0; i < spoons; i++) {
+        oat_clicked_by_boost(Number(spoon_addition)); 
+      }
+      spoon();
+    }, 10000);
+    return "you have " + spoons + " spoons!";
+  }
+  
+  function cow() {
+    setTimeout(function () {
+        var thinggg = 0;
+        if(cows <= 50){
+      for (var i = 0; i < cows; i++) {
+        oat_clicked_by_boost(1); 
+          }
+        }
+        else{
+            for(var i = 0; i < cows; i+=3){
+                oat_clicked_by_boost(3);
+            }
+        }
+      cow();
+    }, 2000);
+  }

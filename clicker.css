@@ -18,8 +18,9 @@
   z-index: -10;
   overflow: hidden;
 }
-
-
+.appear{
+  animation: appear 0.4s;
+}
   body,html {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -29,18 +30,27 @@
     -ms-user-select: none;
     user-select: none;
     -ms-overflow-style: none;
-    overflow: scroll, -moz-scrollbars-none;
     scrollbar-width: none;
   }
 
   @media only screen and (min-width: 600px) {
+    
+    html,body{
+      overflow-y: hidden;
+    }
+    .booster-container{
+      bottom:10px;
+      height: 85vh;
+      overflow: scroll;
+    }
+    table{
+      bottom:0px;
+    }
     th {
-      height: 100%;
       padding-left: 20px;
       padding-right: 20px;
       word-wrap: normal;
-      top: 0px;
-        overflow: scroll, -moz-scrollbars-none;
+        overflow: hidden;
         scrollbar-width: none;
     }
     .falling-oat{
@@ -132,6 +142,7 @@
   }
   .reset{
     display: block;
+    margin-top: 5px !important;
   }
   .falling-oat{
     position: absolute;
@@ -144,9 +155,6 @@
   }
   #ads{
     width: 90%;
-  }
-  .booster {
-    background-size: 80px !important;
   }
   #bowl{
     background-position-y: 8% !important;
@@ -195,6 +203,7 @@
 .icon{
   display:inline;
 }
+
   .booster {
     margin-top: 20px;
     border-color: #00008b;
@@ -375,6 +384,11 @@
   background-repeat: no-repeat !important;
   background-position: 0% 100% !important; 
 }
+#cow,#cow:hover{
+  background-image: url(https://oatmeal.gq/sprites/oat_cow.png) !important;
+  background-repeat: no-repeat !important;
+  background-position: 0% 100% !important; 
+}
 #bss,#bss:hover{
   background-image: url(https://oatmeal.gq/sprites/big-spoon.png) !important;
   background-repeat: no-repeat !important;
@@ -480,5 +494,20 @@ animation: merch 0.25s;
   }
   100%{
     display:none;
+  }
+}
+@keyframes appear{
+  0%{
+    opacity: 0;
+    height: 0px;
+  }
+  30%{
+    opacity: 1;
+  }
+  99%{
+    height: 140px;
+  }
+  100%{
+    height: auto;
   }
 }

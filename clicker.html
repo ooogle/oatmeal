@@ -33,13 +33,15 @@
   var bowls = 0;
   var spoons = 0;
   var pots = 0;
-  var version = "tom holland is super hot and sexy and i love him";
+  var version = "OH MY GAWD TOM HOLLAND IS SO HOT!!!!!!";
   var achevs ="0";
   var clicksound = null;
   let root = document.documentElement;
   var spoon_addition = 1;
   var cinnamons = 0;
   var pso = true;
+  var cows = 0;
+  var firsttimecow = true;
   var stillloading=true;
   var merchable = true;
   var fall_sprite = "https://oatmeal.gq/oat2.png";
@@ -79,7 +81,8 @@ key('s', function(){prompt('PRESS CONTROL+C TO COPY \n here is your save code:',
   }
   function updatecount() {
     var ops = spoons*spoon_addition;
-    ops = ops/10; 
+    ops = ops/10;
+    ops += cows/2;
     if(pso){
       if(ops > 200){
       document.getElementById("ops").innerHTML="Per second: "+numberformat.format(ops, {sigfigs: 4});
@@ -103,6 +106,7 @@ key('s', function(){prompt('PRESS CONTROL+C TO COPY \n here is your save code:',
     document.getElementById("spoon-things").innerHTML="Owned: "+numberformat.format(spoons , {sigfigs: 4});
     document.getElementById("bowl-things").innerHTML=" Owned: "+numberformat.format(bowls, {sigfigs:4});
     document.getElementById("pot-things").innerHTML=" Owned: "+numberformat.format(pots, {sigfigs:4});
+    document.getElementById("cow-things").innerHTML=" Owned: "+numberformat.format(cows, {sigfigs:4});
     document.getElementById("cinnamon-things").innerHTML=" Tastiness: "+numberformat.format(cinnamons, {sigfigs:4});
     document.getElementById("bs-things").innerHTML=" Spoon size: "+numberformat.format(spoon_addition,{sigfigs:4});
     if (oat_count >= Number(document.getElementById("bowl_prices").getAttribute('price'))) {
@@ -118,6 +122,20 @@ key('s', function(){prompt('PRESS CONTROL+C TO COPY \n here is your save code:',
       document.getElementById("bowl_label").classList.add("not-enough-money");
       document.getElementById("bowl_label").classList.remove("enough-money");
       document.getElementById("bowl").classList.add("slightly-transparent");
+    }
+    if (oat_count >= Number(document.getElementById("cow_prices").getAttribute('price'))) {
+      document.getElementById("cow_prices").classList.remove("not-enough-money");
+      document.getElementById("cow_prices").classList.add("enough-money");
+      document.getElementById("cow_label").classList.remove("not-enough-money");
+      document.getElementById("cow_label").classList.add("enough-money");
+      document.getElementById("cow").classList.remove("slightly-transparent");
+    }
+    else {
+      document.getElementById("cow_prices").classList.add("not-enough-money");
+      document.getElementById("cow_prices").classList.remove("enough-money");
+      document.getElementById("cow_label").classList.add("not-enough-money");
+      document.getElementById("cow_label").classList.remove("enough-money");
+      document.getElementById("cow").classList.add("slightly-transparent");
     }
     if (oat_count >= Number(document.getElementById("pot_prices").getAttribute('price'))) {
       document.getElementById("pot_prices").classList.remove("not-enough-money");
@@ -178,13 +196,25 @@ key('s', function(){prompt('PRESS CONTROL+C TO COPY \n here is your save code:',
     Cookies.set('oat_count', oat_count, {
       expires: 1000000
     });
+    
+      if(oat_count >= 230 || cows > 0){
+          document.getElementById("cow").style.display="block";
+          if(firsttimecow){
+            firsttimecow = false;
+            document.getElementById("cow").classList.add("appear");
+          }
+        }
+        else{
+          document.getElementById("cow").style.display="none";
+        }
+    
     checkacheivs();
-  }
+      }
   function randomate(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
   function oat_fall(){
-    if(document.hidden==false){
+    if(document.hidden == false){
     var x = randomate(5,410);
     var y = randomate(-50, 80);
     var idd = randomate(-100000,200000000);
@@ -240,6 +270,12 @@ key('s', function(){prompt('PRESS CONTROL+C TO COPY \n here is your save code:',
     Cookies.set("bs_price", 200, {
       expires: 1000000
     });
+    Cookies.set("cows", 0, {
+      expires: 1000000
+    });
+    Cookies.set("cow_price", 230, {
+      expires: 1000000
+    });
       Cookies.set("spoon_price", 50, {
       expires: 1000000
     });
@@ -272,7 +308,7 @@ key('s', function(){prompt('PRESS CONTROL+C TO COPY \n here is your save code:',
     }
   }
 function createsave(){
-  var save = "{\"oats\":"+oat_count+", \"addition\":"+addition+", \"achevs\": \""+achevs+"\", \"bowls\":"+bowls+", \"cinnamons\":"+cinnamons+" ,\"spoons\":"+spoons+" , \"pots\":"+pots+" ,\"spoon_addition\":"+spoon_addition+" ,\"bowl_price\":"+Number(document.getElementById("bowl_prices").getAttribute("price"))+" ,\"pot_price\":"+Number(document.getElementById("pot_prices").getAttribute("price"))+" , \"spoon_price\":"+Number(document.getElementById("spoon_prices").getAttribute("price"))+",\"bs_price\":"+Number(document.getElementById("bs_prices").getAttribute("price"))+" ,\"cinnamon_price\":"+Number(document.getElementById("cinnamon_prices").getAttribute("price"))+"}";
+  var save = "{\"oats\":"+oat_count+", \"addition\":"+addition+", \"achevs\": \""+achevs+"\", \"bowls\":"+bowls+", \"cinnamons\":"+cinnamons+" ,\"spoons\":"+spoons+" , \"pots\":"+pots+" , \"cows\":"+cows+" ,\"spoon_addition\":"+spoon_addition+" ,\"bowl_price\":"+Number(document.getElementById("bowl_prices").getAttribute("price"))+" ,\"pot_price\":"+Number(document.getElementById("pot_prices").getAttribute("price"))+" , \"cow_price\":"+Number(document.getElementById("cow_prices").getAttribute("price"))+" , \"spoon_price\":"+Number(document.getElementById("spoon_prices").getAttribute("price"))+",\"bs_price\":"+Number(document.getElementById("bs_prices").getAttribute("price"))+" ,\"cinnamon_price\":"+Number(document.getElementById("cinnamon_prices").getAttribute("price"))+"}";
   save = window.btoa(save);
   save=save+"-oat-clicker-save";
   save = window.btoa(save);
@@ -280,6 +316,7 @@ function createsave(){
 }
 function loadsave(save){
 save = window.atob(save);
+if(save.includes("-oat-clicker-save")){
 save = save.replace("-oat-clicker-save","");
 save = window.atob(save);
 save = JSON.parse(save);
@@ -289,6 +326,18 @@ bowls = Number(save.bowls);
 cinnamons = Number(save.cinnamons);
 spoons = Number(save.spoons);
 pots = Number(save.pots);
+if(save.cows != null){
+  cows = save.cows
+  document.getElementById("cow_prices").innerHTML =numberformat.format(Number(save.cow_price), {sigfigs:4});
+document.getElementById("cow_prices").setAttribute('price', save.cow_price);
+Cookies.set("cows", cows, {expires:1000000});
+}
+else{
+  cows = 0;
+  Cookies.set("cows", 0, {expires:1000000});
+  document.getElementById("cow_prices").innerHTML =numberformat.format(Number(230), {sigfigs:4});
+document.getElementById("cow_prices").setAttribute('price', 230);
+}
 spoon_addition = Number(save.spoon_addition);
 achevs = save.achevs;
 document.getElementById("bowl_prices").setAttribute("price",save.bowl_price);
@@ -301,12 +350,6 @@ document.getElementById("bs_prices").innerHTML =numberformat.format(Number(save.
 document.getElementById("bs_prices").setAttribute('price', save.bs_price);
 document.getElementById("cinnamon_prices").innerHTML =numberformat.format(Number(save.cinnamon_price), {sigfigs:4});
 document.getElementById("cinnamon_prices").setAttribute('price',save.cinnamon_price);
-if (spoons != 0) {
-        spoon();
-} 
-if (cinnamons != 0) {
-        cinnamon();
-}
 Cookies.set("oat_count",oat_count, {expires: 1000000});
 Cookies.set("addition", addition, {expires:1000000});
 Cookies.set("bowls", bowls, {expires:1000000});
@@ -323,6 +366,10 @@ Cookies.set("cinnamon_price",document.getElementById("cinnamon_prices").getAttri
 updatecount();
 startgame()
 }
+else{
+  alert("invalid save!");
+}
+}
   function startgame() {
     if (Cookies.get('oat_count') != null) {
       oat_count = Number(Cookies.get('oat_count'));
@@ -332,6 +379,27 @@ startgame()
       spoons = Number(Cookies.get('spoons'));
       pots = Number(Cookies.get('pots'));
       spoon_addition = Number(Cookies.get('spoon_addition'));
+        if(Cookies.get("cows") != null){
+          cows = Number(Cookies.get("cows"));
+          document.getElementById("cow_prices").setAttribute("price",Cookies.get("cow_price"));
+      document.getElementById("cow_prices").innerHTML = numberformat.format(Number(Cookies.get("cow_price")),{sigfigs:4});
+        }
+        else{
+          cows = 0;
+          Cookies.set("cows", 0, {
+      expires: 1000000
+    });
+        }
+        if (cows != 0) {
+          firsttimecow = false;
+          cow();
+      }
+        if(oat_count >= 230 || cows > 0){
+          document.getElementById("cow").style.display="block";
+        }
+        else{
+          document.getElementById("cow").style.display="none";
+        }
       if(Cookies.get("achievements")!=null){
       achevs=Cookies.get("achievements");
       }
@@ -363,6 +431,12 @@ startgame()
       expires: 1000000
     });
     Cookies.set("pot_price", 1500, {
+      expires: 1000000
+    });
+    Cookies.set("cows", 0, {
+      expires: 1000000
+    });
+    Cookies.set("cow_price", 230, {
       expires: 1000000
     });
     Cookies.set("bs_price", 200, {
@@ -533,14 +607,35 @@ startgame()
       updatecount();
     }
   }
-function spoon() {
-    setTimeout(function () {
-      for (var i = 0; i < spoons; i++) {
-        oat_clicked_by_boost(Number(spoon_addition)); 
+  function cow_clicked() {
+    if (oat_count >= Number(document.getElementById("cow_prices").getAttribute('price'))) {
+      if (cows == 0) {
+        cows = 1;
+        Cookies.set('cows', cows, {
+      expires: 1000000
+    });
+        oat_count = oat_count - Number(document.getElementById("cow_prices").getAttribute('price'));
+        updatecount();
       }
-      spoon();
-    }, 10000);
-    return "you have " + spoons + " spoons!";
+      else {
+        cows += 1;
+        oat_count = oat_count - Number(document.getElementById("cow_prices").getAttribute('price'));
+        document.getElementById("cow_prices").innerHTML = "" + numberformat.format(roundate(Number(document.getElementById("cow_prices").getAttribute('price')) * 1.25), {sigfigs:4});
+        document.getElementById("cow_prices").setAttribute('price', roundate(Number(document.getElementById("cow_prices").getAttribute('price')) * 1.15));
+        Cookies.set('cows', cows, {
+      expires: 1000000
+    });
+        Cookies.set('cow_price', Number(document.getElementById("cow_prices").getAttribute("price")), {
+      expires: 1000000
+    });
+        updatecount();
+      }
+      if (cows == 1) {
+        cow();
+      }
+      
+      updatecount();
+    }
   }
   function cinnamon_clicked() {
     if (oat_count >= Number(document.getElementById("cinnamon_prices").getAttribute('price'))) {
@@ -573,8 +668,8 @@ function spoon() {
     }
   }
   function loading(){
-    var quotes = ["Press P or double-click to switch between oats per second and per click","Don't press G", "Cinnamon is a bad investment", "Screw cookies","Click that oat!", "Oat clicker merch! <a href='https://oatmeal.gq/merch'> Click Here!</a>","Oat Pots are expensive for a reason", "<q>This is a dictatorship!</q> —Jim the Spoon","Hey kid, want some oats?","Well, I say that sounds fine!","Got 99 spoons but slow ain't one","Is this <i>really</i> a good use of your time?","Winning the oat lottery is unlikely, but nice","OATS!?!??!","no, it's not <q>just like cookie clicker.</q>","<q>nice</q> — your 69th oat","what do you mean, <q>undefined</q>?","ALL HAIL","Take a moment to ask youself: <q>Am I mentally insane?</q> <br>If you answered <q>yes</q> to any of the ten above questions, then you probably are. If not, then you probably are not insane.<br> If you are insane, please contact a doctore immediately","i'll give you an oat if you get in my van","no, it's not a dumb game","IT'S RAINING OATS!!!","Fun fact: October 29th is National Oatmeal Day","Fun fact: January is National Oatmeal Month","Ya liek oats?","Spoons, now with extra-strong handles!","Beware of the spoons","Cinnamon is a lottery ticket to riches and fortune","Fun fact: Oat milk comes from oat cows","Press R to reset your game.","Cinnamon is a scam","Brother, may I have some oats?","Praying to the oat god twice a day may grant you a longer life","Oats are good for your bones","Eat Oats!","Fun fact: Cookie Clicker game saves are just base64 encoded with the string %21END%21 at the end. Oat clicker saves are much more secure."];
-    document.getElementById("loader-text").innerHTML=quotes[randomate(0,37)];
+    var quotes = ["Press P or double-click to switch between oats per second and per click","Don't press G", "Cinnamon is a bad investment", "Screw cookies","Click that oat!", "Oat clicker merch! <a href='https://oatmeal.gq/merch'> Click Here!</a>","Oat Pots are expensive for a reason", "<q>This is a dictatorship!</q> —Jim the Spoon","Hey kid, want some oats?","Well, I say that sounds fine!","Got 99 spoons but slow ain't one","Is this <i>really</i> a good use of your time?","Winning the oat lottery is unlikely, but nice","OATS!?!??!","no, it's not <q>just like cookie clicker.</q>","<q>nice</q> — your 69th oat","what do you mean, <q>undefined</q>?","ALL HAIL","Take a moment to ask youself: <q>Am I mentally insane?</q> <br>If you answered <q>yes</q> to any of the ten above questions, then you probably are. If not, then you probably are not insane.<br> If you are insane, please contact a doctore immediately","i'll give you an oat if you get in my van","no, it's not a dumb game","IT'S RAINING OATS!!!","Fun fact: October 29th is National Oatmeal Day","Fun fact: January is National Oatmeal Month","Ya liek oats?","Spoons, now with extra-strong handles!","Beware of the spoons","Cinnamon is a lottery ticket to riches and fortune","Fun fact: Oat milk comes from oat cows","Press R to reset your game.","Cinnamon is a scam","Brother, may I have some oats?","Praying to the oat god twice a day may grant you a longer life","Oats are good for your bones","Eat Oats!","Fun fact: Cookie Clicker game saves are just base64 encoded with the string %21END%21 at the end. Oat clicker saves are much more secure.","Press S to get a save code. Press L to load your game from one."];
+    document.getElementById("loader-text").innerHTML=quotes[randomate(0,38)];
     if(stillloading){
       setTimeout(function(){loading()}, 3000)
     }
@@ -670,10 +765,16 @@ function spoon() {
           <p style="padding-left:20%">  Scoops up more oats every 10 seconds <span class="not-enough-money" id="spoon_label"><span id="spoon_prices"  price="50" class="not-enough-money">50</span> oats</span><span id="spoon-things">Owned: 0</span></p>
         </div>
         <div class="booster" onclick="oat_bowl()" id="bowl">
-          <br><span style="width:20%; height:100%; display: inline-block;"></span>
+          <br><span style="width:15%; height:100%; display: inline-block;"></span>
           <span class="booster-title">Oat Bowl</span>
           <p style="padding-left:20%"> A place to store oats <span class="not-enough-money" id="bowl_label"><span id="bowl_prices" price="100"
                 class="not-enough-money">100</span> oats</span> <span id="bowl-things">Owned: 0</span></p>
+        </div>
+        <div class="booster" onclick="cow_clicked()" id="cow">
+          <br><span style="width:15%; height:100%; display: inline-block;"></span>
+          <span class="booster-title">Oat Cow</span>
+          <p style="padding-left:20%">Makes oat milk, which dries into oats every 2 seconds <span class="not-enough-money" id="cow_label"><span id="cow_prices" price="230"
+                class="not-enough-money">230  </span> oats</span> <span id="cow-things">Owned: 0</span></p>
         </div>
         <div class="booster" onclick="oat_pot()" id="pot">
             <br><span style="width:20%; height:100%; display: inline-block;"></span>
@@ -704,7 +805,7 @@ function spoon() {
       <th id="ads">
           <iframe data-aa="1256773" src="//acceptable.a-ads.com/1256773" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe><iframe data-aa="1256773" src="//acceptable.a-ads.com/1256773" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe><iframe data-aa="1256773" src="//acceptable.a-ads.com/1256773" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe>
           <div class="booster reset" onclick="reset()"><span class="booster-title">Reset game</span></div>
-          <div class="booster reset" onclick="prompt('PRESS CONTROL+C TO COPY \n here is your save code:',createsave())"><span class="booster-title">Save game</span></div>
+          <div class="booster reset" onclick="prompt('COPY THE TEXT IN THE BOX \n here is your save code:',createsave())"><span class="booster-title">Save game</span></div>
           <div class="booster reset" onclick='loadsave(prompt("what is your save code?"))'><span class="booster-title">Load game</span></div>
       </th>
     </tr>
