@@ -33,7 +33,7 @@
   var bowls = 0;
   var spoons = 0;
   var pots = 0;
-  var version = "OH MY GAWD TOM HOLLAND IS SO HOT!!!!!!!";
+  var version = "versoin";
   var achevs ="0";
   var clicksound = null;
   let root = document.documentElement;
@@ -42,8 +42,15 @@
   var pso = true;
   var cows = 0;
   var firsttimecow = true;
+  var granarys = 0;
+  var firsttimegranary = true;
+  var temples = 0;
+  var firsttimetemple = true;
+  var god_count = 1;
+  var firsttimepoly = true;
   var stillloading=true;
   var merchable = true;
+  var ops = 0;
   var fall_sprite = "https://oatmeal.gq/oat2.png";
   key('p', function(){toggleps()});
   key('r', function(){reset()});
@@ -80,9 +87,11 @@ key('s', function(){prompt('PRESS CONTROL+C TO COPY \n here is your save code:',
     }, 15000);
   }
   function updatecount() {
-    var ops = spoons*spoon_addition;
+    ops = spoons*spoon_addition;
     ops = ops/10;
     ops += cows/2;
+    ops += granarys*5/2;
+    ops += temples*god_count*15/2;
     if(pso){
       if(ops > 200){
       document.getElementById("ops").innerHTML="Per second: "+numberformat.format(ops, {sigfigs: 4});
@@ -101,13 +110,19 @@ key('s', function(){prompt('PRESS CONTROL+C TO COPY \n here is your save code:',
         merchable = true;
       }, 2400000)
     }
-    document.getElementById("oats").innerHTML = "Oats: " +numberformat.format( Math.round(oat_count),  {sigfigs: 4});
+    if(god_count>1){
+      document.getElementById("godgods").innerHTML="Appeases the oat gods";
+    }
+    document.getElementById("oats").innerHTML = "Oats: " +numberformat.format( Math.round(oat_count),  {sigfigs: 4}).replace(" thousand","k");
     document.title=numberformat.format(Math.round(oat_count),  {sigfigs: 4})+" Oats - Oat Clicker"
     document.getElementById("spoon-things").innerHTML="Owned: "+numberformat.format(spoons , {sigfigs: 4});
     document.getElementById("bowl-things").innerHTML=" Owned: "+numberformat.format(bowls, {sigfigs:4});
     document.getElementById("pot-things").innerHTML=" Owned: "+numberformat.format(pots, {sigfigs:4});
     document.getElementById("cow-things").innerHTML=" Owned: "+numberformat.format(cows, {sigfigs:4});
+    document.getElementById("granary-things").innerHTML=" Owned: "+numberformat.format(granarys, {sigfigs:4});
+    document.getElementById("temple-things").innerHTML=" Owned: "+numberformat.format(temples, {sigfigs:4});
     document.getElementById("cinnamon-things").innerHTML=" Tastiness: "+numberformat.format(cinnamons, {sigfigs:4});
+    document.getElementById("polytheism-things").innerHTML=" Gods: "+numberformat.format(god_count, {sigfigs:4});
     document.getElementById("bs-things").innerHTML=" Spoon size: "+numberformat.format(spoon_addition,{sigfigs:4});
     if (oat_count >= Number(document.getElementById("bowl_prices").getAttribute('price'))) {
       document.getElementById("bowl_prices").classList.remove("not-enough-money");
@@ -193,21 +208,100 @@ key('s', function(){prompt('PRESS CONTROL+C TO COPY \n here is your save code:',
       document.getElementById("cinnamon_label").classList.remove("enough-money");
       document.getElementById("cinnamon").classList.add("slightly-transparent");
     }
+    if (oat_count >= Number(document.getElementById("granary_prices").getAttribute("price"))) {
+      document.getElementById("granary_prices").classList.remove("not-enough-money");
+      document.getElementById("granary_prices").classList.add("enough-money");
+      document.getElementById("granary_label").classList.remove("not-enough-money");
+      document.getElementById("granary_label").classList.add("enough-money");
+      document.getElementById("granary").classList.remove("slightly-transparent");
+    }
+    else {
+      document.getElementById("granary_prices").classList.add("not-enough-money");
+      document.getElementById("granary_prices").classList.remove("enough-money");
+      document.getElementById("granary_label").classList.add("not-enough-money");
+      document.getElementById("granary_label").classList.remove("enough-money");
+      document.getElementById("granary").classList.add("slightly-transparent");
+    }
+    if (oat_count >= Number(document.getElementById("temple_prices").getAttribute("price"))) {
+      document.getElementById("temple_prices").classList.remove("not-enough-money");
+      document.getElementById("temple_prices").classList.add("enough-money");
+      document.getElementById("temple_label").classList.remove("not-enough-money");
+      document.getElementById("temple_label").classList.add("enough-money");
+      document.getElementById("temple").classList.remove("slightly-transparent");
+    }
+    else {
+      document.getElementById("temple_prices").classList.add("not-enough-money");
+      document.getElementById("temple_prices").classList.remove("enough-money");
+      document.getElementById("temple_label").classList.add("not-enough-money");
+      document.getElementById("temple_label").classList.remove("enough-money");
+      document.getElementById("temple").classList.add("slightly-transparent");
+    }
+    if (oat_count >= Number(document.getElementById("polytheism_prices").getAttribute("price"))) {
+      document.getElementById("polytheism_prices").classList.remove("not-enough-money");
+      document.getElementById("polytheism_prices").classList.add("enough-money");
+      document.getElementById("polytheism_label").classList.remove("not-enough-money");
+      document.getElementById("polytheism_label").classList.add("enough-money");
+      document.getElementById("polytheism").classList.remove("slightly-transparent");
+    }
+    else {
+      document.getElementById("polytheism_prices").classList.add("not-enough-money");
+      document.getElementById("polytheism_prices").classList.remove("enough-money");
+      document.getElementById("polytheism_label").classList.add("not-enough-money");
+      document.getElementById("polytheism_label").classList.remove("enough-money");
+      document.getElementById("polytheism").classList.add("slightly-transparent");
+    }
     Cookies.set('oat_count', oat_count, {
       expires: 1000000
     });
-    
+    //Show upgrades when they are unlocked
       if(oat_count >= 230 || cows > 0){
           document.getElementById("cow").style.display="block";
           if(firsttimecow){
             firsttimecow = false;
+            achieve("cow_unlocked","You unlocked Oat Cows!","Booster Unlocked");
             document.getElementById("cow").classList.add("appear");
           }
         }
         else{
           document.getElementById("cow").style.display="none";
         }
-    
+
+        if(oat_count >= 500 || granarys > 0){
+          document.getElementById("granary").style.display="block";
+          if(firsttimegranary){
+            firsttimegranary = false;
+            achieve("granary_unlocked","You unlocked Granaries!","Booster Unlocked");
+            document.getElementById("granary").classList.add("appear");
+          }
+        }
+        else{
+          document.getElementById("granary").style.display="none";
+        }
+        //show temples:
+        if(oat_count >= 2000 || temples > 0){
+          document.getElementById("temple").style.display="block";
+          if(firsttimetemple){
+            firsttimetemple = false;
+            achieve("temple_unlocked","You unlocked Temples!","Booster Unlocked");
+            document.getElementById("temple").classList.add("appear");
+          }
+        }
+        else{
+          document.getElementById("temple").style.display="none";
+        }
+        //show polytheism
+        if(temples > 1 || god_count > 1){
+          document.getElementById("polytheism").style.display="block";
+          if(firsttimepoly){
+            firsttimepoly = false;
+            achieve("poly_unlocked","You unlocked Polytheism!","Upgrade Unlocked");
+            document.getElementById("polytheism").classList.add("appear");
+          }
+        }
+        else{
+          document.getElementById("polytheism").style.display="none";
+        }
+        //check for acheivments
     checkacheivs();
       }
   function randomate(min, max) {
@@ -288,6 +382,24 @@ key('s', function(){prompt('PRESS CONTROL+C TO COPY \n here is your save code:',
     Cookies.set('spoons', 0, {
       expires: 1000000
     });
+    Cookies.set('granarys', 0, {
+      expires: 1000000
+    });
+    Cookies.set('granary_price', 700, {
+      expires: 1000000
+    });
+    Cookies.set('temples', 0, {
+      expires: 1000000
+    });
+    Cookies.set('temple_price', 5000, {
+      expires: 1000000
+    });
+    Cookies.set('god_count', 1, {
+      expires: 1000000
+    });
+    Cookies.set('polytheism_price', 6000, {
+      expires: 1000000
+    });
     Cookies.set('bowls', 0, {
       expires: 1000000
     });
@@ -308,7 +420,7 @@ key('s', function(){prompt('PRESS CONTROL+C TO COPY \n here is your save code:',
     }
   }
 function createsave(){
-  var save = "{\"oats\":"+oat_count+", \"addition\":"+addition+", \"achevs\": \""+achevs+"\", \"bowls\":"+bowls+", \"cinnamons\":"+cinnamons+" ,\"spoons\":"+spoons+" , \"pots\":"+pots+" , \"cows\":"+cows+" ,\"spoon_addition\":"+spoon_addition+" ,\"bowl_price\":"+Number(document.getElementById("bowl_prices").getAttribute("price"))+" ,\"pot_price\":"+Number(document.getElementById("pot_prices").getAttribute("price"))+" , \"cow_price\":"+Number(document.getElementById("cow_prices").getAttribute("price"))+" , \"spoon_price\":"+Number(document.getElementById("spoon_prices").getAttribute("price"))+",\"bs_price\":"+Number(document.getElementById("bs_prices").getAttribute("price"))+" ,\"cinnamon_price\":"+Number(document.getElementById("cinnamon_prices").getAttribute("price"))+"}";
+  var save = "{\"oats\":"+oat_count+", \"addition\":"+addition+", \"achevs\": \""+achevs+"\", \"bowls\":"+bowls+", \"cinnamons\":"+cinnamons+" ,\"spoons\":"+spoons+" , \"pots\":"+pots+" , \"cows\":"+cows+" , \"granarys\":"+granarys+"  ,\"temples\":"+temples+"  , \"god_count\":"+god_count+" , \"spoon_addition\":"+spoon_addition+" ,\"bowl_price\":"+Number(document.getElementById("bowl_prices").getAttribute("price"))+" ,\"pot_price\":"+Number(document.getElementById("pot_prices").getAttribute("price"))+" , \"cow_price\":"+Number(document.getElementById("cow_prices").getAttribute("price"))+" , \"granary_price\":"+Number(document.getElementById("granary_prices").getAttribute("price"))+", \"spoon_price\":"+Number(document.getElementById("spoon_prices").getAttribute("price"))+" , \"polytheism_price\":"+Number(document.getElementById("polytheism_prices").getAttribute("price"))+" ,\"bs_price\":"+Number(document.getElementById("bs_prices").getAttribute("price"))+" , \"temple_price\":"+Number(document.getElementById("temple_prices").getAttribute("price"))+" ,\"cinnamon_price\":"+Number(document.getElementById("cinnamon_prices").getAttribute("price"))+"}";
   save = window.btoa(save);
   save=save+"-oat-clicker-save";
   save = window.btoa(save);
@@ -338,6 +450,40 @@ else{
   document.getElementById("cow_prices").innerHTML =numberformat.format(Number(230), {sigfigs:4});
 document.getElementById("cow_prices").setAttribute('price', 230);
 }
+if(save.granarys != null){
+  granarys = save.granarys
+  document.getElementById("granary_prices").innerHTML =numberformat.format(Number(save.granary_price), {sigfigs:4});
+document.getElementById("granary_prices").setAttribute('price', save.granary_price);
+Cookies.set("granarys", granarys, {expires:1000000});
+}
+else{
+  granarys = 0;
+  Cookies.set("granarys", 0, {expires:1000000});
+  document.getElementById("granary_prices").innerHTML =numberformat.format(Number(700), {sigfigs:4});
+document.getElementById("granary_prices").setAttribute('price', 700);
+}
+if(save.temples != null){
+  temples = save.temples
+  document.getElementById("temple_prices").innerHTML =numberformat.format(Number(save.temple_price), {sigfigs:4});
+document.getElementById("temple_prices").setAttribute('price', save.temple_price);
+Cookies.set("temples", temples, {expires:1000000});
+god_count = save.god_count
+  document.getElementById("polytheism_prices").innerHTML =numberformat.format(Number(save.polytheism_price), {sigfigs:4});
+document.getElementById("polytheism_prices").setAttribute('price', save.polytheism_price);
+Cookies.set("god_count", god_count, {expires:1000000});
+}
+else{
+  temples = 0;
+  Cookies.set("temples", 0, {expires:1000000});
+  document.getElementById("temple_prices").innerHTML =numberformat.format(Number(700), {sigfigs:4});
+document.getElementById("temple_prices").setAttribute('price', 700);
+
+god_count = 1;
+  document.getElementById("polytheism_prices").innerHTML =numberformat.format(Number(6000), {sigfigs:4});
+document.getElementById("polytheism_prices").setAttribute('price', 6000);
+Cookies.set("god_count", 1, {expires:1000000});
+}
+
 spoon_addition = Number(save.spoon_addition);
 achevs = save.achevs;
 document.getElementById("bowl_prices").setAttribute("price",save.bowl_price);
@@ -407,6 +553,93 @@ else{
         else{
           document.getElementById("cow").style.display="none";
         }
+        //granary stuff:
+        if(Cookies.get("granarys") != null){
+          granarys = Number(Cookies.get("granarys"));
+          if(Cookies.get("granary_price") != null){
+          document.getElementById("granary_prices").setAttribute("price",Cookies.get("granary_price"));
+      document.getElementById("granary_prices").innerHTML = numberformat.format(Number(Cookies.get("granary_price")),{sigfigs:4});
+          }
+          else{
+            Cookies.set("granary_price", 700, {
+      expires: 1000000
+    });
+          }
+        }
+        else{
+          granarys = 0;
+          Cookies.set("granarys", 0, {
+      expires: 1000000
+    });
+        }
+        if (granarys != 0) {
+          firsttimegranary = false;
+          granary();
+      }
+        if(oat_count >= 500 || granarys > 0){
+          document.getElementById("granary").style.display="block";
+        }
+        else{
+          document.getElementById("granary").style.display="none";
+        }
+        //temple stuff:
+        if(Cookies.get("temples") != null){
+          temples = Number(Cookies.get("temples"));
+          if(Cookies.get("temple_price") != null){
+          document.getElementById("temple_prices").setAttribute("price",Cookies.get("temple_price"));
+      document.getElementById("temple_prices").innerHTML = numberformat.format(Number(Cookies.get("temple_price")),{sigfigs:4});
+          }
+          else{
+            Cookies.set("temple_price", 700, {
+      expires: 1000000
+    });
+          }
+        }
+        else{
+          temples = 0;
+          Cookies.set("temples", 0, {
+      expires: 1000000
+    });
+        }
+        if (temples != 0) {
+          firsttimetemple = false;
+          temple();
+      }
+        if(oat_count >= 500 || temples > 0){
+          document.getElementById("temple").style.display="block";
+        }
+        else{
+          document.getElementById("temple").style.display="none";
+        }
+        //polytheism garbage
+        if(Cookies.get("god_count") != null){
+          god_count = Number(Cookies.get("god_count"));
+          if(Cookies.get("polytheism_price") != null){
+          document.getElementById("polytheism_prices").setAttribute("price",Cookies.get("polytheism_price"));
+      document.getElementById("polytheism_prices").innerHTML = numberformat.format(Number(Cookies.get("polytheism_price")),{sigfigs:4});
+          }
+          else{
+            Cookies.set("polytheism_price", 6000, {
+      expires: 1000000
+    });
+          }
+          if (god_count != 0) {
+          firsttimepoly = false;
+      }
+        }
+        else{
+          god_count = 1;
+          Cookies.set("god_count", 1, {
+      expires: 1000000
+    });
+        }
+        if(temples > 1 || god_count > 1){
+          document.getElementById("polytheism").style.display="block";
+        }
+        else{
+          document.getElementById("polytheism").style.display="none";
+        }
+        //other stuff:
       if(Cookies.get("achievements")!=null){
       achevs=Cookies.get("achievements");
       }
@@ -430,7 +663,7 @@ else{
       setTimeout(function(){
         merchable = true;
       }, 600000)
-      updatecount();
+   
      
     }
     else {
@@ -444,6 +677,24 @@ else{
       expires: 1000000
     });
     Cookies.set("cow_price", 230, {
+      expires: 1000000
+    });
+    Cookies.set("granarys", 0, {
+      expires: 1000000
+    });
+    Cookies.set("granary_price", 700, {
+      expires: 1000000
+    });
+    Cookies.set("temples", 0, {
+      expires: 1000000
+    });
+    Cookies.set("temple_price", 5000, {
+      expires: 1000000
+    });
+    Cookies.set("god_count", 1, {
+      expires: 1000000
+    });
+    Cookies.set("polytheism_price", 6000, {
       expires: 1000000
     });
     Cookies.set("bs_price", 200, {
@@ -480,13 +731,21 @@ else{
       expires: 1000000
     });
     }
+    
+    document.getElementById("cow").style.display="none";
+    document.getElementById("granary").style.display="none";
+    document.getElementById("temple").style.display="none";
+    document.getElementById("polytheism").style.display="none";
+    updatecount();
     document.getElementById("loading").classList.add("fadeout");
       setTimeout(function(){
         document.getElementById("loading").outerHTML = "";
-      }, 600)
+      }, 600);
+     
     stillloading=false;
     setTimeout(function(){checkupdates()}, 720000);
   }
+// stuff getting clicked
   function oat_bowl() {
     if (oat_count >= Number(document.getElementById("bowl_prices").getAttribute("price"))) {
       if (bowls == 0) {
@@ -569,7 +828,7 @@ else{
   function bs_clicked() {
     if (oat_count >= Number(document.getElementById("bs_prices").getAttribute("price"))) {
         spoon_addition += 1;
-        Cookies.set('spoon_addition', addition, {
+        Cookies.set('spoon_addition', spoon_addition, {
       expires: 1000000
     });
         oat_count = oat_count - Number(document.getElementById("bs_prices").getAttribute('price'));
@@ -674,9 +933,90 @@ else{
       updatecount();
     }
   }
+  function granary_clicked() {
+    if (oat_count >= Number(document.getElementById("granary_prices").getAttribute('price'))) {
+      if (granarys == 0) {
+        granarys = 1;
+        Cookies.set('granarys', granarys, {
+      expires: 1000000
+    });
+        oat_count = oat_count - Number(document.getElementById("granary_prices").getAttribute('price'));
+        updatecount();
+      }
+      else {
+        granarys += 1;
+        oat_count = oat_count - Number(document.getElementById("granary_prices").getAttribute('price'));
+        document.getElementById("granary_prices").innerHTML = "" + numberformat.format(roundate(Number(document.getElementById("granary_prices").getAttribute('price')) * 1.25), {sigfigs:4});
+        document.getElementById("granary_prices").setAttribute('price', roundate(Number(document.getElementById("granary_prices").getAttribute('price')) * 1.25));
+        Cookies.set('granarys', granarys, {
+      expires: 1000000
+    });
+        Cookies.set('granary_price', Number(document.getElementById("granary_prices").getAttribute("price")), {
+      expires: 1000000
+    });
+        updatecount();
+      }
+      if (granarys == 1) {
+        granary();
+      }
+      
+      updatecount();
+    }
+  }
+//temple stuff:
+function temple_clicked() {
+    if (oat_count >= Number(document.getElementById("temple_prices").getAttribute('price'))) {
+      if (temples == 0) {
+        temples = 1;
+        Cookies.set('temples', temples, {
+      expires: 1000000
+    });
+        oat_count = oat_count - Number(document.getElementById("temple_prices").getAttribute('price'));
+        updatecount();
+      }
+      else {
+        temples += 1;
+        oat_count = oat_count - Number(document.getElementById("temple_prices").getAttribute('price'));
+        document.getElementById("temple_prices").innerHTML = "" + numberformat.format(roundate(Number(document.getElementById("temple_prices").getAttribute('price')) * 1.1), {sigfigs:4});
+        document.getElementById("temple_prices").setAttribute('price', roundate(Number(document.getElementById("temple_prices").getAttribute('price')) * 1.1));
+        Cookies.set('temples', temples, {
+      expires: 1000000
+    });
+        Cookies.set('temple_price', Number(document.getElementById("temple_prices").getAttribute("price")), {
+      expires: 1000000
+    });
+        updatecount();
+      }
+      if (temples == 1) {
+        temple();
+      }
+      
+     
+    }
+    updatecount();
+  }
+  function polytheism_clicked() {
+    if (oat_count >= Number(document.getElementById("polytheism_prices").getAttribute("price"))) {
+        god_count += 1;
+        Cookies.set('god_count', god_count, {
+      expires: 1000000
+    });
+        oat_count = oat_count - Number(document.getElementById("polytheism_prices").getAttribute('price'));
+        document.getElementById("polytheism_prices").innerHTML = "" +numberformat.format( roundate(Number(document.getElementById("polytheism_prices").getAttribute("price")) * 1.13), {sigfigs:4});
+        document.getElementById("polytheism_prices").setAttribute("price", roundate(Number(document.getElementById("polytheism_prices").getAttribute("price")) * 1.13))
+       
+        Cookies.set('polytheism_price', Number(document.getElementById("polytheism_prices").getAttribute("price")), {
+      expires: 1000000
+    });
+    
+      
+      updatecount();
+    }
+  }
+  //other stuff
   function loading(){
-    var quotes = ["Press P or double-click to switch between oats per second and per click","Don't press G", "Cinnamon is a bad investment", "Screw cookies","Click that oat!", "Oat clicker merch! <a href='https://oatmeal.gq/merch'> Click Here!</a>","Oat Pots are expensive for a reason", "<q>This is a dictatorship!</q> —Jim the Spoon","Hey kid, want some oats?","Well, I say that sounds fine!","Got 99 spoons but slow ain't one","Is this <i>really</i> a good use of your time?","Winning the oat lottery is unlikely, but nice","OATS!?!??!","no, it's not <q>just like cookie clicker.</q>","<q>nice</q> — your 69th oat","what do you mean, <q>undefined</q>?","ALL HAIL","Take a moment to ask youself: <q>Am I mentally insane?</q> <br>If you answered <q>yes</q> to any of the ten above questions, then you probably are. If not, then you probably are not insane.<br> If you are insane, please contact a doctore immediately","i'll give you an oat if you get in my van","no, it's not a dumb game","IT'S RAINING OATS!!!","Fun fact: October 29th is National Oatmeal Day","Fun fact: January is National Oatmeal Month","Ya liek oats?","Spoons, now with extra-strong handles!","Beware of the spoons","Cinnamon is a lottery ticket to riches and fortune","Fun fact: Oat milk comes from oat cows","Press R to reset your game.","Cinnamon is a scam","Brother, may I have some oats?","Praying to the oat god twice a day may grant you a longer life","Oats are good for your bones","Eat Oats!","Fun fact: Cookie Clicker game saves are just base64 encoded with the string %21END%21 at the end. Oat clicker saves are much more secure.","Press S to get a save code. Press L to load your game from one."];
-    document.getElementById("loader-text").innerHTML=quotes[randomate(0,38)];
+    var quotes = ["Press P or double-click to switch between oats per second and per click","Don't press G", "Cinnamon is a bad investment", "Screw cookies","Click that oat!", "Oat clicker merch! <a href='https://oatmeal.gq/merch'> Click Here!</a>","Oat Pots are expensive for a reason", "<q>This is a dictatorship!</q> —Jim the Spoon","Hey kid, want some oats?","Well, I say that sounds fine!","Got 99 spoons but slow ain't one","Is this <i>really</i> a good use of your time?","Winning the oat lottery is unlikely, but nice","OATS!?!??!","no, it's not <q>just like cookie clicker.</q>","<q>nice</q> — your 69th oat","what do you mean, <q>undefined</q>?","ALL HAIL","Take a moment to ask youself: <q>Am I mentally insane?</q> <br>If you answered <q>yes</q> to any of the ten above questions, then you probably are. If not, then you probably are not insane.<br> If you are insane, please contact a doctore immediately","i'll give you an oat if you get in my van","no, it's not a dumb game","IT'S RAINING OATS!!!","Fun fact: October 29th is National Oatmeal Day","Fun fact: January is National Oatmeal Month","Ya liek oats?","Spoons, now with extra-strong handles!","Beware of the spoons","Cinnamon is a lottery ticket to riches and fortune","Fun fact: Oat milk comes from oat cows","Press R to reset your game.","Cinnamon is a scam","Brother, may I have some oats?","Praying to the oat god twice a day may grant you a longer life","Oats are good for your bones","Eat Oats!","Fun fact: Cookie Clicker game saves are just base64 encoded with the string %21END%21 at the end. Oat clicker saves are much more secure.","Press S to get a save code. Press L to load your game from one.","Joe has more oats than you","Who's Joe?","500 gods are better than one.","don't be a hacker!","I worship the many gods of oat","make yourself a bowl of oats while you wait."];
+    document.getElementById("loader-text").innerHTML=quotes[randomate(0,45)];
     if(stillloading){
       setTimeout(function(){loading()}, 3000)
     }
@@ -685,10 +1025,15 @@ else{
     document.getElementById("achievments").innerHTML="";
     document.getElementById("x-box").style.display="none";
   }
-  function achieve(id,title){
+  function achieve(id,title,thingz){
     var thing = Cookies.get('achievements')
     document.getElementById("x-box").style.display="block";
+    if(thingz != null){
+      document.getElementById("achievments").innerHTML='<div class="booster ach" id="achev-'+id+'"><span class="booster-title">'+thingz+'</span><br><np>'+title+'</np></div>'+document.getElementById("achievments").innerHTML;
+    }
+    else{
     document.getElementById("achievments").innerHTML='<div class="booster ach" id="achev-'+id+'"><span class="booster-title">Achievement Unlocked</span><br><np>'+title+'</np></div>'+document.getElementById("achievments").innerHTML;
+    }
     Cookies.set('achievements',thing+" "+id,  {
       expires: 1000000
       });
@@ -698,7 +1043,7 @@ else{
       if(document.getElementById('achievments').innerHTML.includes("achev-")!=true){    
    hideacheivments()
       }
-      }, 4000)
+      }, 7000)
 
     
   }
@@ -707,7 +1052,7 @@ else{
       if(randomate(0, 5000) == 10){
        oat_count+=oat_count;
        console.log('wow! double oats!');
-       acheive("lottery","you won the lottery!")
+       achieve("lottery","you won the lottery!","BIG WIN!");
        Cookies.set('oat_count', oats, {
       expires: 1000000
     });
@@ -722,7 +1067,8 @@ else{
 <!-- aw man, that was a lot of JavaScript-->
 
 <div id="loading" ><br><br> <span class="scores">Loading...</span>
-<br><br><br><span id="loader-text" > </span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" onload="loading()"></div>
+<br><br><br><span id="loader-text" > <noscript>Sorry, Oat Clicker does not work on your browser. :(<br><br> Try <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>?</noscript></span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" onload="loading()">
+</div>
 <div id="merch-box" class="hid-merch-box" onclick="window.open('https://teespring.com/stores/oat-clicker'); document.getElementById('merch-box').classList.remove('merch-box'); document.getElementById('merch-box').classList.add('hid-merch-box'); achieve('merch','you saw the merch!');">
   <div class="arrow_box">
   <div class="before-merch-box"></div>
@@ -750,13 +1096,14 @@ else{
     <tr draggable="false">
       <th draggable="false" id="main-thing">
         <br>
-        <br>
+        <div ondblclick="toggleps()">
         <span class="scores">
-          <span id="oats" ondblclick="toggleps()">Oats: 0</span>
+          <span id="oats" ondblclick="">Oats: 0</span>
         </span>
         <br>
-        <span class="ops" id="ops" ondblclick="toggleps()">Per second: 0</span>
+        <span class="ops" id="ops" >Per second: 0</span>
         <br>
+        </div>
         <br>
         <br>
         <img src="https://oatmeal.gq/oat2.png" draggable=false class="main-clicker" onclick="oat_clicked()" id="oat_image">
@@ -771,11 +1118,23 @@ else{
           <span class="booster-title">Spoon</span>
           <p style="padding-left:20%">  Scoops up more oats every 10 seconds <span class="not-enough-money" id="spoon_label"><span id="spoon_prices"  price="50" class="not-enough-money">50</span> oats</span><span id="spoon-things">Owned: 0</span></p>
         </div>
+        <div class="booster" onclick="temple_clicked()" id="temple">
+          <br><span style="width:30%; height:100%; display: inline-block;"></span>
+          <span class="booster-title">Temple</span>
+          <p style="padding-left:35%"><pp id="godgods">Appeases the oat god </pp><span class="not-enough-money" id="temple_label"><span id="temple_prices" price="5000"
+                class="not-enough-money">5000  </span> oats</span> <span id="temple-things">Owned: 0</span></p>
+        </div>
         <div class="booster" onclick="oat_bowl()" id="bowl">
           <br><span style="width:15%; height:100%; display: inline-block;"></span>
           <span class="booster-title">Oat Bowl</span>
           <p style="padding-left:20%"> A place to store oats <span class="not-enough-money" id="bowl_label"><span id="bowl_prices" price="100"
                 class="not-enough-money">100</span> oats</span> <span id="bowl-things">Owned: 0</span></p>
+        </div>
+        <div class="booster" onclick="granary_clicked()" id="granary">
+          <br><span style="width:20%; height:100%; display: inline-block;"></span>
+          <span class="booster-title">Granary</span>
+          <p style="padding-left:30%">Mills you five oats every other second <span class="not-enough-money" id="granary_label"><span id="granary_prices" price="700"
+                class="not-enough-money">700  </span> oats</span> <span id="granary-things">Owned: 0</span></p>
         </div>
         <div class="booster" onclick="cow_clicked()" id="cow">
           <br><span style="width:15%; height:100%; display: inline-block;"></span>
@@ -801,6 +1160,11 @@ else{
                 <span class="booster-title">Bigger Spoons</span>
                 <p style="padding-left:25%"> Increases how many oats 1 spoon gives<span class="not-enough-money" id="bs_label"><span id="bs_prices" price="200" class="not-enough-money">200</span> oats</span> <span id="bs-things">Spoon size: 1</span></p>
             </div>
+            <div class="booster" onclick="polytheism_clicked()" id="polytheism">
+              <br><span style="width:30%; height:100%; display: inline-block;"></span>
+              <span class="booster-title">Polytheism</span>
+              <p style="padding-left:35%"> Appease more gods with your temples<span class="not-enough-money" id="polytheism_label"><span id="polytheism_prices" price="6000" class="not-enough-money">6000</span> oats</span> <span id="polytheism-things">Gods: 1</span></p>
+          </div>
             <div class="booster" onclick="cinnamon_clicked()" id="cinnamon">
                 <br><span style="width:20%; height:100%; display: inline-block;"></span>
                 <span class="booster-title">Cinnamon</span>

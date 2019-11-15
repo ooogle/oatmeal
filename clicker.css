@@ -400,6 +400,21 @@
   background-repeat: no-repeat !important;
   background-position: 0% 60% !important;
 }
+#granary,#granary:hover{
+  background-image: url(https://oatmeal.gq/sprites/granery.png) !important;
+  background-repeat: no-repeat !important;
+  background-position: 0% 20% !important;
+}
+#temple,#temple:hover{
+  background-image: url(https://oatmeal.gq/sprites/temple.png) !important;
+  background-repeat: no-repeat !important;
+  background-position: 0% 20% !important;
+}
+#polytheism,#polytheism:hover{
+  background-image: url(https://oatmeal.gq/sprites/polytheism.png) !important;
+  background-repeat: no-repeat !important;
+  background-position: 0% 20% !important;
+}
 .arrow_box {
 	position: relative;
 	background: #0068df;

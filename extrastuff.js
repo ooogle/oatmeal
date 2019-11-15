@@ -1,7 +1,4 @@
 function checkacheivs(){
-    var ops = spoons*spoon_addition;
-    ops = ops/10;
-    ops += cows/2;
     if(achevs.includes('1click') == false && oat_count == 1){
         achieve('1click','Click: you clicked the oat!');
     }
@@ -59,6 +56,18 @@ function checkacheivs(){
     if(achevs.includes('10-ops') == false && ops >= 10){
         achieve('10-ops','Ten OPS! That\'s a lotta OATS!');
     }
+    if(achevs.includes('100-ops') == false && ops >= 100){
+        achieve('100-ops','You are making one hundred oats every second. That\'s amazing.');
+    }
+    if(achevs.includes('1000-ops') == false && ops >= 1000){
+        achieve('1000-ops','Thousand red mills: you have 1,000 OPS');
+    }
+    if(achevs.includes('1000-ops') == false && ops >= 10000){
+        achieve('1000-ops','INSANE OPS: you have 1,0000 OPS');
+    }
+    if(achevs.includes('10000-ops') == false && ops >= 100000){
+        achieve('10000-ops','Oat hero: you have 100,000 OPS');
+    }
     if(achevs.includes('cinnamon1') == false && cinnamons >= 1){
         achieve('cinnamon1','The lottery is a risky business');
     }
@@ -104,8 +113,29 @@ function checkacheivs(){
     if(achevs.includes('2-mil_oats') == false && oat_count >= 2000000){
         achieve('2-mil_oats','A whole 2 million oats');
     }
+    if(achevs.includes('3-mil_oats') == false && oat_count >= 3000000){
+        achieve('3-mil_oats','Oat fetish: you are <a href="https://answers.yahoo.com/question/index?qid=20110813210020AAzGwIe" target="_blank" style="pointer-events:all !important; z-index:30;">sexually attracted to oats</a>');
+    }
     if(achevs.includes('pressed_g') == false && fall_sprite=="https://raw.githubusercontent.com/ooogle/oatmeal/master/fly.png"){
         achieve('pressed_g','You absolutely terrible person! I<i>told</i> you not to press G!');
+    }
+    if(achevs.includes('granary1') == false && granarys >= 1){
+        achieve('granary1','You have a granary!');
+    }
+    if(achevs.includes('temple1') == false && temples >= 1){
+        achieve('temple1','You have founded a new religion');
+    }
+    if(achevs.includes('priest') == false && temples >= 5){
+        achieve('priest','Priest: you are a powerful leader');
+    }
+    if(achevs.includes('poly1') == false && god_count >= 2){
+        achieve('poly1','Two Gods are better than one.');
+    }
+    if(achevs.includes('poly5') == false && god_count >= 5){
+        achieve('poly5','Suck-up: you please five gods');
+    }
+    if(achevs.includes('poly10') == false && god_count >= 10){
+        achieve('poly10','Your many gods love you almost as much as you love them.');
     }
 }
 function spoon() {
@@ -119,7 +149,7 @@ function spoon() {
   }
   
   function cow() {
-    setTimeout(function () {
+    setTimeout(function() {
         var thinggg = 0;
         if(cows <= 50){
       for (var i = 0; i < cows; i++) {
@@ -132,5 +162,35 @@ function spoon() {
             }
         }
       cow();
+    }, 2000);
+  }
+  function granary() {
+    setTimeout(function() {
+        if(granarys <= 50){
+      for (var i = 0; i < granarys; i++) {
+        oat_clicked_by_boost(5); 
+          }
+        }
+        else{
+            for(var i = 0; i < granarys; i+=3){
+                oat_clicked_by_boost(15);
+            }
+        }
+      granary();
+    }, 2000);
+  }
+  function temple() {
+    setTimeout(function() {
+        if(temples <= 50){
+      for (var i = 0; i < temples; i++) {
+        oat_clicked_by_boost(god_count*15); 
+          }
+        }
+        else{
+            for(var i = 0; i < temples; i+=3){
+                oat_clicked_by_boost(god_count*15*3);
+            }
+        }
+      temple();
     }, 2000);
   }
