@@ -114,7 +114,7 @@ function checkacheivs(){
         achieve('2-mil_oats','A whole 2 million oats');
     }
     if(achevs.includes('3-mil_oats') == false && oat_count >= 3000000){
-        achieve('3-mil_oats','Oat fetish: you are <a href="https://answers.yahoo.com/question/index?qid=20110813210020AAzGwIe" target="_blank" style="pointer-events:all !important; z-index:30;">sexually attracted to oats</a>');
+        achieve('3-mil_oats','Oat fetish: you are <a href="https://answers.yahoo.com/question/index?qid=20110813210020AAzGwIe" target="_blank" style="pointer-events:all !important; z-index:30; color:	#00df12 !important;" title="click me!">sexually attracted to oats</a>');
     }
     if(achevs.includes('pressed_g') == false && fall_sprite=="https://raw.githubusercontent.com/ooogle/oatmeal/master/fly.png"){
         achieve('pressed_g','You absolutely terrible person! I<i>told</i> you not to press G!');
