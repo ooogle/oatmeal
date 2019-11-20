@@ -7,8 +7,8 @@
   background-image: url('https://oatmeal.gq/oats1.jpg');
   background-size: cover;
   display: block;
-  filter: blur(2px) brightness(90%);
-  -webkit-filter: blur(2px) brightness(90%);;
+  filter: blur(4px) brightness(85%);
+  -webkit-filter: blur(4px) brightness(85%);;
   height: 100%;
   width: 100%;
   left: 0;
@@ -21,6 +21,12 @@
 .appear{
   animation: appear 0.4s;
 }
+.hidden{
+  display: none;
+}
+.fadein{
+  animation: fadein 0.5s;
+}
   body,html {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -32,9 +38,14 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-
-  @media only screen and (min-width: 600px) {
-    
+  .big-image:active{
+    transform: scale(0.6);
+  }
+  @media only screen and (min-width: 950px) {
+    .big-image{
+      width: 30%;
+      transition: 0.3s;
+    }
     html,body{
       overflow-y: hidden;
     }
@@ -136,7 +147,11 @@
     display:none;
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 949px) {
+    .big-image{
+      width: 60%;
+      transition: 0.3s;
+    }
     #oats{
     font-size:30px;
   }
@@ -146,6 +161,10 @@
   }
   .falling-oat{
     position: absolute;
+  }
+  #falling-oats{
+    width: 600px !important;
+    overflow-x: hidden !important;
   }
   .hid-merch-box{
     left:30%;
@@ -487,13 +506,30 @@ animation: merch 0.25s;
 #loading{
   z-index: 12;
   width:100% !important;
-  height: 100% !important;;
+  height: 100% !important;
+  pointer-events: all;
   background:black;
   color:white;
   position: fixed;
   top:0px;
   left:0px;
   text-align: center;
+}
+#sped-offers{
+  z-index: 12;
+  width:100% !important;
+  height:100% !important;
+  color:white;
+  height: 100% !important;
+  position: fixed;
+  top:0px;
+  left:0px;
+  text-align: center;
+  background:rgba(0, 0, 0, 0.6);
+}
+.infront{
+  z-index:20;
+  opacity: 10 !important
 }
 .fadeout{
   opacity: 0;
@@ -502,13 +538,35 @@ animation: merch 0.25s;
 @keyframes fadeout {
   0%{
     display: block !important;
+    filter: blur(0px);
+    -webkit-filter: blur(0px);
     opacity:1;
   }
   99%{
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
     opacity:0;
   }
   100%{
     display:none;
+  }
+}
+@keyframes fadein{
+  0%{
+    display:none;
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+  }
+  1%{
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+    opacity:0;
+  }
+  100%{
+    display: block !important;
+    filter: blur(0px);
+    -webkit-filter: blur(0px);
+    opacity:1;
   }
 }
 @keyframes appear{

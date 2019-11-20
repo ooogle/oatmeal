@@ -2,8 +2,8 @@
 <html>
 <title>Oat Clicker</title>
 <!-- start meta tags -->
-<link rel="shortcut icon" href="https://oatmeal.gq/oat2.png">
-<link rel="stylesheet" href="clicker.css">
+<link rel="shortcut icon" href="https://oatmeal.gq/oat2.png" rel="preload">
+<link rel="stylesheet" href="clicker.css" rel="preload">
 <meta name="title" content="Oat Clicker">
 <meta name="description" content="The latest in idle gaming, OAT CLICKER!">
 <meta content="https://oatmeal.gq/oat_clicker_logo.png" itemprop="image">
@@ -18,14 +18,14 @@
 <meta property="twitter:description" content="The latest in idle gaming, OAT CLICKER!">
 <meta property="twitter:image" content="https://oatmeal.gq/oat_clicker_logo.png">
 <!-- *phew* meta tags are over! -->
-<script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
-<script src="//cdn.rawgit.com/erosson/swarm-numberformat/v0.1.0/dist/swarm-numberformat.min.js"></script>
-<script src="extrastuff.js"></script>
-<script src="https://madrobby.github.io/keymaster/keymaster.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js" rel="preload"></script>
+<script src="//cdn.rawgit.com/erosson/swarm-numberformat/v0.1.0/dist/swarm-numberformat.min.js" rel="preload"></script>
+<script src="extrastuff.js" rel="preload"></script>
+<script src="https://madrobby.github.io/keymaster/keymaster.js" rel="preload"></script>
 <link href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap" rel="stylesheet">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png" rel="preload">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, height=device-height, target-densitydpi=device-dpi" />
 <!-- oop! nevermind ^^ -->
 <script>
   var oat_count = 0;
@@ -33,7 +33,9 @@
   var bowls = 0;
   var spoons = 0;
   var pots = 0;
-  var version = "version";
+  var deal = false;
+  var ads = true;
+  var version = "update with epic deals";
   var achevs ="0";
   var clicksound = null;
   let root = document.documentElement;
@@ -76,6 +78,13 @@ key('s', function(){prompt('PRESS CONTROL+C TO COPY \n here is your save code:',
   });
   reck.open("GET", "version.txt");
   reck.send();
+  if(ads){
+  document.getElementById("ads").innerHTML=document.getElementById("ads").innerHTML.replace('<iframe data-aa="1256773" src="//acceptable.a-ads.com/1256773" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe><iframe data-aa="1256773" src="//acceptable.a-ads.com/1256773" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe><iframe data-aa="1256773" src="//acceptable.a-ads.com/1256773" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe>','<iframe data-aa="1256773" src="//acceptable.a-ads.com/1256773" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe><iframe data-aa="1256773" src="//acceptable.a-ads.com/1256773" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe><iframe data-aa="1256773" src="//acceptable.a-ads.com/1256773" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe>');
+  ads = false;
+  }
+  else{
+    ads = true;
+  }
   setTimeout(function(){checkupdates()}, 720000);
   }
   function merch(){
@@ -1054,6 +1063,42 @@ function temple_clicked() {
 
     
   }
+
+  function epic_deal(name,item,imageurl,dealid){
+    deal = true;
+    Cookies.set('achievements',achevs+" "+dealid,  {
+      expires: 1000000
+      });
+      achevs=Cookies.get("achievements");
+    document.getElementById("sped-offers").classList.remove("hidden");
+    document.getElementById('sped-offers').classList.remove('fadeout');
+    document.getElementById("sped-offers").classList.add("fadein");
+    document.getElementById("sped-thing").innerHTML=name;
+    document.getElementById("sped-image").src=imageurl;
+    document.getElementById("sped-price").innerHTML="1";
+    document.getElementById('sped-price').setAttribute('price', "1");
+    document.getElementById("sped-image").setAttribute('onclick',''+item+"+=1; deal=false; oat_count=oat_count- Number(document.getElementById('sped-price').getAttribute('price')); updatecount(); Cookies.set('"+item+"',Number("+item+"), {expires: 1000000 });");
+    deal_countup();
+  }
+  function deal_countup(){
+    if(deal){
+      document.getElementById('sped-price').innerHTML=numberformat.format(Number(document.getElementById('sped-price').getAttribute('price'))+1, {sigfigs:4});
+      document.getElementById('sped-price').setAttribute('price', Number(document.getElementById('sped-price').getAttribute('price'))+1);
+      if(oat_count >= Number(document.getElementById('sped-price').getAttribute('price'))){
+        document.getElementById('sped-price').classList.add('enough-money');
+        document.getElementById('sped-price').classList.remove('not-enough-money');
+      }
+      else{
+        document.getElementById('sped-price').classList.remove('enough-money');
+        document.getElementById('sped-price').classList.add('not-enough-money');
+      }
+      setTimeout(function(){deal_countup()}, 200);
+    }
+    else{
+    document.getElementById("sped-offers").classList.add("fadeout");
+    setTimeout(function(){ document.getElementById("sped-offers").classList.add("hidden")}, 500)
+    }
+  }
   function cinnamon() {
     setTimeout(function () {
       if(randomate(0, 5000) == 10){
@@ -1097,6 +1142,12 @@ function temple_clicked() {
 </div>
 <div id="x-box" class="booster" onclick="hideacheivments()"></div>
 <div class="background-image"></div>
+<div id="sped-offers" class="hidden">
+  <br><br><br>
+  <span class="scores infront">Epic Deal!</span><br><br><br>
+  <span>Get this <span id="sped-thing"></span> for <span id="sped-price"></span> oats</span><br>
+  <img src="https://oatmeal.gq/sprites/oat_cow.png" id="sped-image" class="big-image">
+</div>
 <body onload="startgame()">
   
   <table style="width:100%" draggable="false">
@@ -1190,6 +1241,6 @@ function temple_clicked() {
     
   </table>
   <br><br><br><br>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5dacd166e355a3bd"></script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5dacd166e355a3bd" rel="preload"></script>
 </body>
 </html>

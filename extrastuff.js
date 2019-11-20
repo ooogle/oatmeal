@@ -113,6 +113,12 @@ function checkacheivs(){
     if(achevs.includes('2-mil_oats') == false && oat_count >= 2000000){
         achieve('2-mil_oats','A whole 2 million oats');
     }
+    if(achevs.includes('4-mil_oats') == false && oat_count >= 4000000){
+        achieve('4-mil_oats','Oat country: you have enough oats to start a small nation');
+    }
+    if(achevs.includes('10-mil_oats') == false && oat_count >= 10000000){
+        achieve('10-mil_oats','Ten million oats... You sure could buy a lotta oat cows with that!');
+    }
     if(achevs.includes('3-mil_oats') == false && oat_count >= 3000000){
         achieve('3-mil_oats','Oat fetish: you are <a href="https://answers.yahoo.com/question/index?qid=20110813210020AAzGwIe" target="_blank" style="pointer-events:all !important; z-index:30; color:	#00df12 !important;" title="click me!">sexually attracted to oats</a>');
     }
@@ -121,6 +127,9 @@ function checkacheivs(){
     }
     if(achevs.includes('granary1') == false && granarys >= 1){
         achieve('granary1','You have a granary!');
+    }
+    if(achevs.includes("debt1") == false && oat_count < 0){
+        achieve('debt1','Debt: your oat balance is in the negatives');
     }
     if(achevs.includes('temple1') == false && temples >= 1){
         achieve('temple1','You have founded a new religion');
@@ -136,6 +145,50 @@ function checkacheivs(){
     }
     if(achevs.includes('poly10') == false && god_count >= 10){
         achieve('poly10','Your many gods love you almost as much as you love them.');
+    }
+    if(achevs.includes('poly50') == false && god_count >= 50){
+        achieve('poly50','The fifty gods way up in the sky just gave you fifty oats each');
+        oat_count+=50*50;
+    }
+    if(achevs.includes('poly100') == false && god_count >= 100){
+        achieve('poly100','Oat Messiah: Your religion has inspred the popular prog rock band "No" to create their latest album, "Neymarism"   ');
+    }
+    // Epic deals:
+    if(achevs.includes("cow-deal1") == false && deal == false && oat_count >= 1000){
+        epic_deal('Oat Cow','cows','https://oatmeal.gq/sprites/oat_cow.png','cow-deal1');
+    }
+    if(achevs.includes("granary-deal1") == false && deal == false && oat_count >= 10000){
+        epic_deal('Granary','granarys','https://oatmeal.gq/sprites/granery.png','granary-deal1');
+    }
+    if(achevs.includes("temple-deal1") == false && deal == false && oat_count >= 6000){
+        epic_deal('Temple','temples','https://oatmeal.gq/sprites/temple.png','temple-deal1');
+    }
+    if(achevs.includes("god-deal1") == false && deal == false && temples >= 1 && oat_count >= 1000){
+        epic_deal('God','god_count','https://oatmeal.gq/sprites/polytheism.png','god-deal1');
+    }
+    if(achevs.includes("god-deal2") == false && deal == false && temples >= 1 && oat_count >= 10000){
+        epic_deal('God','god_count','https://oatmeal.gq/sprites/polytheism.png','god-deal2');
+    }
+    if(achevs.includes("temple-deal2") == false && deal == false && oat_count >= 1000100){
+        epic_deal('EPIC Temple','temples','https://oatmeal.gq/sprites/temple.png','temple-deal2');
+    }
+    if(achevs.includes("cinnamon-deal1") == false && deal == false && oat_count >= 5000){
+        epic_deal('Cinnamon','cinnamons','https://oatmeal.gq/sprites/cinnamon.png','cinnamon-deal1');
+    }
+    if(achevs.includes("bowl-deal1") == false && deal == false && oat_count >= 3000){
+        epic_deal('Bowl','addition','https://oatmeal.gq/sprites/oat_bowl.png','bowl-deal1');
+    }
+    if(achevs.includes("spoon-deal1") == false && deal == false && oat_count >= 8000){
+        epic_deal('Spoon','spoons','https://oatmeal.gq/sprites/spoon.png','spoon-deal1');
+    }
+    if(achevs.includes("temple-deal3") == false && deal == false && oat_count >= 8000){
+        epic_deal('Temple, ready to worship all your gods, ','temples','https://oatmeal.gq/sprites/temple.png','temple-deal3');
+    }
+    if(achevs.includes("god-deal3") == false && deal == false && oat_count >= 2000000){
+        epic_deal('GOD','god_count','https://oatmeal.gq/sprites/polytheism.png','god-deal3');
+    }
+    if(achevs.includes("granary-deal2") == false && deal == false && oat_count >= 2000000){
+        epic_deal('Granary','granarys','https://oatmeal.gq/sprites/granery.png','granary-deal2');
     }
 }
 function spoon() {
