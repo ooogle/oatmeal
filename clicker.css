@@ -558,8 +558,6 @@ animation: merch 0.25s;
     -webkit-filter: blur(3px);
   }
   1%{
-    filter: blur(3px);
-    -webkit-filter: blur(3px);
     opacity:0;
   }
   100%{

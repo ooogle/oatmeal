@@ -116,6 +116,9 @@ function checkacheivs(){
     if(achevs.includes('4-mil_oats') == false && oat_count >= 4000000){
         achieve('4-mil_oats','Oat country: you have enough oats to start a small nation');
     }
+    if(achevs.includes('100-mil_oats') == false && oat_count >= 100000000){
+        achieve('100-mil_oats','Boomer: you have been playing this game so long society simply responds to all you say with "ok boomer"');
+    }
     if(achevs.includes('10-mil_oats') == false && oat_count >= 10000000){
         achieve('10-mil_oats','Ten million oats... You sure could buy a lotta oat cows with that!');
     }
@@ -190,28 +193,47 @@ function checkacheivs(){
     if(achevs.includes("granary-deal2") == false && deal == false && oat_count >= 2000000){
         epic_deal('Granary','granarys','https://oatmeal.gq/sprites/granery.png','granary-deal2');
     }
+    if(achevs.includes("pot-deal1") == false && deal == false && oat_count >= 3000000){
+        epic_deal('Oat Pot','addition','https://oatmeal.gq/sprites/oat_pot.png','pot-deal1');
+        addition += 5;
+    }
+    if(achevs.includes("pot-deal2") == false && deal == false && oat_count >= 10000000){
+        epic_deal('Pot','addition','https://oatmeal.gq/sprites/oat_pot.png','pot-deal2');
+        addition += 5;
+    }
 }
 function spoon() {
     setTimeout(function () {
+        if(ops <= 300){
       for (var i = 0; i < spoons; i++) {
         oat_clicked_by_boost(Number(spoon_addition)); 
       }
+    }
+    else{
+        for (var i = 0; i <= spoons; i+=3) {
+            oat_clicked_by_boost(Number(spoon_addition)*3); 
+          }
+    }
       spoon();
     }, 10000);
-    return "you have " + spoons + " spoons!";
   }
   
   function cow() {
     setTimeout(function() {
         var thinggg = 0;
-        if(cows <= 50){
-      for (var i = 0; i < cows; i++) {
+        if(ops <= 50){
+      for (var i = 0; i <= cows; i++) {
         oat_clicked_by_boost(1); 
           }
         }
-        else{
-            for(var i = 0; i < cows; i+=3){
+        else if(ops <= 50000){
+            for(var i = 0; i <= cows; i+=3){
                 oat_clicked_by_boost(3);
+            }
+        }
+        else{
+            for(var i = 0; i <= cows; i+=10){
+                oat_clicked_by_boost(10);
             }
         }
       cow();
@@ -219,14 +241,19 @@ function spoon() {
   }
   function granary() {
     setTimeout(function() {
-        if(granarys <= 50){
+        if(ops <= 50){
       for (var i = 0; i < granarys; i++) {
         oat_clicked_by_boost(5); 
           }
         }
-        else{
+        else if(ops <= 30000){
             for(var i = 0; i < granarys; i+=3){
                 oat_clicked_by_boost(15);
+            }
+        }
+        else{
+            for(var i = 0; i <= granarys; i+=10){
+                oat_clicked_by_boost(50)
             }
         }
       granary();
@@ -234,14 +261,34 @@ function spoon() {
   }
   function temple() {
     setTimeout(function() {
-        if(temples <= 50){
+        if(ops <= 50){
       for (var i = 0; i < temples; i++) {
         oat_clicked_by_boost(god_count*15); 
           }
         }
-        else{
+        else if(ops <= 1000){
             for(var i = 0; i < temples; i+=3){
                 oat_clicked_by_boost(god_count*15*3);
+            }
+        }
+        else if(ops <= 10000){
+            for(var i = 0; i < temples; i+=10){
+                oat_clicked_by_boost(god_count*15*10);
+            }
+        }
+        else if(ops <= 50000){
+            for(var i = 0; i < temples; i+=100){
+                oat_clicked_by_boost(god_count*15*100);
+            }
+        }
+        else if(ops <= 150000){
+            for(var i = 0; i < temples; i+=500){
+                oat_clicked_by_boost(god_count*15*500);
+            }
+        }
+        else{
+            for(var i = 0; i < temples; i+=1000){
+                oat_clicked_by_boost(god_count*15*1000);
             }
         }
       temple();
