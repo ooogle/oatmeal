@@ -104,6 +104,9 @@ function checkacheivs(){
     if(achevs.includes('300_oats') == false && oat_count >= 300){
         achieve('300_oats','A whole 300 oats');
     }
+    if((cow_addition == 2 || cow_addition == -2) && achevs.includes("cow_rebellion") == false && new Date().getMinutes() - minjection >= 5 && cows >= 30){
+        cow_rebellion();
+    }
     if(achevs.includes('600_oats') == false && oat_count >= 600){
         achieve('600_oats','Man, six hundred');
     }
@@ -134,6 +137,9 @@ function checkacheivs(){
     if(achevs.includes("debt1") == false && oat_count < 0){
         achieve('debt1','Debt: your oat balance is in the negatives');
     }
+    if(cow_addition > 1 && achevs.includes("peta-kill") == false){
+        achieve("peta-kill","Peta wants you dead for animal abuse. Preferably burned at a stake, but any form of cruel execution will do.")
+    }
     if(achevs.includes('temple1') == false && temples >= 1){
         achieve('temple1','You have founded a new religion');
     }
@@ -158,48 +164,98 @@ function checkacheivs(){
     }
     // Epic deals:
     if(achevs.includes("cow-deal1") == false && deal == false && oat_count >= 1000){
-        epic_deal('Oat Cow','cows','https://oatmeal.gq/sprites/oat_cow.png','cow-deal1');
+        epic_deal('Oat Cow','cows','https://oatmeal.gq/sprites/big/oat_cow.png','cow-deal1');
     }
     if(achevs.includes("granary-deal1") == false && deal == false && oat_count >= 10000){
-        epic_deal('Granary','granarys','https://oatmeal.gq/sprites/granery.png','granary-deal1');
+        epic_deal('Granary','granarys','https://oatmeal.gq/sprites/big/granery.png','granary-deal1');
     }
     if(achevs.includes("temple-deal1") == false && deal == false && oat_count >= 6000){
-        epic_deal('Temple','temples','https://oatmeal.gq/sprites/temple.png','temple-deal1');
+        epic_deal('Temple','temples','https://oatmeal.gq/sprites/big/temple.png','temple-deal1');
     }
-    if(achevs.includes("god-deal1") == false && deal == false && temples >= 1 && oat_count >= 1000){
-        epic_deal('God','god_count','https://oatmeal.gq/sprites/polytheism.png','god-deal1');
+    if(achevs.includes("god-deal1") == false && deal == false && temples >= 1 && oat_count >= 1000 && god_count >=3){
+        epic_deal('God','god_count','https://oatmeal.gq/sprites/big/polytheism.png','god-deal1');
     }
-    if(achevs.includes("god-deal2") == false && deal == false && temples >= 1 && oat_count >= 10000){
-        epic_deal('God','god_count','https://oatmeal.gq/sprites/polytheism.png','god-deal2');
+    if(achevs.includes("god-deal2") == false && deal == false && temples >= 1 && oat_count >= 10000 && god_count >= 3){
+        epic_deal('God','god_count','https://oatmeal.gq/sprites/big/polytheism.png','god-deal2');
     }
     if(achevs.includes("temple-deal2") == false && deal == false && oat_count >= 1000100){
-        epic_deal('EPIC Temple','temples','https://oatmeal.gq/sprites/temple.png','temple-deal2');
+        epic_deal('EPIC Temple','temples','https://oatmeal.gq/sprites/big/temple.png','temple-deal2');
     }
     if(achevs.includes("cinnamon-deal1") == false && deal == false && oat_count >= 5000){
-        epic_deal('Cinnamon','cinnamons','https://oatmeal.gq/sprites/cinnamon.png','cinnamon-deal1');
+        epic_deal('Cinnamon','cinnamons','https://oatmeal.gq/sprites/big/cinnamon.png','cinnamon-deal1');
     }
     if(achevs.includes("bowl-deal1") == false && deal == false && oat_count >= 3000){
-        epic_deal('Bowl','addition','https://oatmeal.gq/sprites/oat_bowl.png','bowl-deal1');
+        epic_deal('Bowl','addition','https://oatmeal.gq/sprites/big/oat_bowl.png','bowl-deal1');
     }
     if(achevs.includes("spoon-deal1") == false && deal == false && oat_count >= 8000){
-        epic_deal('Spoon','spoons','https://oatmeal.gq/sprites/spoon.png','spoon-deal1');
+        epic_deal('Spoon','spoons','https://oatmeal.gq/sprites/big/spoon.png','spoon-deal1');
     }
     if(achevs.includes("temple-deal3") == false && deal == false && oat_count >= 8000){
-        epic_deal('Temple, ready to worship all your gods, ','temples','https://oatmeal.gq/sprites/temple.png','temple-deal3');
+        epic_deal('Temple, ready to worship all your gods, ','temples','https://oatmeal.gq/sprites/big/temple.png','temple-deal3');
     }
-    if(achevs.includes("god-deal3") == false && deal == false && oat_count >= 2000000){
-        epic_deal('GOD','god_count','https://oatmeal.gq/sprites/polytheism.png','god-deal3');
+    if(achevs.includes("god-deal3") == false && deal == false && oat_count >= 2000000 && god_count >= 3){
+        epic_deal('GOD','god_count','https://oatmeal.gq/sprites/big/polytheism.png','god-deal3');
     }
     if(achevs.includes("granary-deal2") == false && deal == false && oat_count >= 2000000){
-        epic_deal('Granary','granarys','https://oatmeal.gq/sprites/granery.png','granary-deal2');
+        epic_deal('Granary','granarys','https://oatmeal.gq/sprites/big/granery.png','granary-deal2');
     }
     if(achevs.includes("pot-deal1") == false && deal == false && oat_count >= 3000000){
-        epic_deal('Oat Pot','addition','https://oatmeal.gq/sprites/oat_pot.png','pot-deal1');
+        epic_deal('Oat Pot','addition','https://oatmeal.gq/sprites/big/oat_pot.png','pot-deal1');
         addition += 5;
     }
     if(achevs.includes("pot-deal2") == false && deal == false && oat_count >= 10000000){
-        epic_deal('Pot','addition','https://oatmeal.gq/sprites/oat_pot.png','pot-deal2');
+        epic_deal('Pot','addition','https://oatmeal.gq/sprites/big/oat_pot.png','pot-deal2');
         addition += 5;
+    }
+    if(achevs.includes("barrel-deal1") == false && deal == false && oat_count >= 1500000){
+        epic_deal('Oat Barrel','addition','https://oatmeal.gq/sprites/barrel.png','barrel-deal1');
+        addition += 100;
+    }
+    if(achevs.includes("barrel-deal2") == false && deal == false && oat_count >= 2000000){
+        epic_deal('Oat Barrel','addition','https://oatmeal.gq/sprites/barrel.png','barrel-deal2');
+        addition += 100;
+    }
+    if(achevs.includes("god-deal4") == false && deal == false && temples >= 1 && oat_count >= 2500000 && god_count >=3){
+        epic_deal('God','god_count','https://oatmeal.gq/sprites/big/polytheism.png','god-deal4');
+    }
+    if(achevs.includes("barrel-deal3") == false && deal == false && oat_count >= 3000000){
+        epic_deal('Oat Barrel','addition','https://oatmeal.gq/sprites/barrel.png','barrel-deal3');
+        addition += 111;
+    }
+    if(achevs.includes("granary-deal3") == false && deal == false && oat_count >= 3500000){
+        epic_deal('Granary','granarys','https://oatmeal.gq/sprites/big/granery.png','granary-deal3');
+    }
+    if(achevs.includes("temple-deal4") == false && deal == false && oat_count >= 4500000){
+        epic_deal('sacred place of holy worship ','temples','https://oatmeal.gq/sprites/big/temple.png','temple-deal4');
+        addition+=500;
+    }
+    if(achevs.includes("barrel-deal4") == false && deal == false && oat_count >= 4000000){
+        epic_deal('Oat Barrel','addition','https://oatmeal.gq/sprites/barrel.png','barrel-deal4');
+        addition += 150;
+    }
+    if(achevs.includes("barrel-deal5") == false && deal == false && oat_count >= 5000000){
+        epic_deal('Oat Barrel','addition','https://oatmeal.gq/sprites/barrel.png','barrel-deal5');
+        addition += 200;
+    }
+    if(achevs.includes("cow-deal2") == false && deal == false && oat_count >= 5500000){
+        epic_deal('Oat Cow but there\'s ten of them','cows','https://oatmeal.gq/sprites/big/oat_cow.png','cow-deal2');
+        cows+=9;
+    }
+    if(achevs.includes("barrel-deal6") == false && deal == false && oat_count >= 8000000){
+        epic_deal('Oat Barrel','addition','https://oatmeal.gq/sprites/barrel.png','barrel-deal6');
+        addition += 1000;
+    }
+    if(achevs.includes("spoon-deal2") == false && deal == false && oat_count >= 9000000){
+        epic_deal('Spoon cuz why not','spoons','https://oatmeal.gq/sprites/big/spoon.png','spoon-deal2');
+    }
+    if(achevs.includes("barrel-deal7") == false && deal == false && oat_count >= 10000000){
+        epic_deal('Oat Barrel','addition','https://oatmeal.gq/sprites/barrel.png','barrel-deal7');
+        addition += 3000;
+    }
+    if(achevs.includes("temple-deal5") == false && deal == false && oat_count >= 10000000){
+        epic_deal('holy land full of temples ','temples','https://oatmeal.gq/sprites/big/temple.png','temple-deal5');
+        addition+=400;
+        temples+=10;
     }
 }
 function spoon() {
@@ -223,17 +279,17 @@ function spoon() {
         var thinggg = 0;
         if(ops <= 50){
       for (var i = 0; i <= cows; i++) {
-        oat_clicked_by_boost(1); 
+        oat_clicked_by_boost(cow_addition); 
           }
         }
         else if(ops <= 50000){
             for(var i = 0; i <= cows; i+=3){
-                oat_clicked_by_boost(3);
+                oat_clicked_by_boost(cow_addition*3);
             }
         }
         else{
             for(var i = 0; i <= cows; i+=10){
-                oat_clicked_by_boost(10);
+                oat_clicked_by_boost(cow_addition*10);
             }
         }
       cow();
@@ -251,9 +307,14 @@ function spoon() {
                 oat_clicked_by_boost(15);
             }
         }
-        else{
+        else if(ops <= 90000){
             for(var i = 0; i <= granarys; i+=10){
                 oat_clicked_by_boost(50)
+            }
+        }
+        else{
+            for(var i = 0; i <= granarys; i+=100){
+                oat_clicked_by_boost(500)
             }
         }
       granary();
@@ -293,4 +354,32 @@ function spoon() {
         }
       temple();
     }, 2000);
+  }
+  function cinnamon() {
+    setTimeout(function () {
+    for(var i=0; i < cinnamons; i++){
+      if (randomate(0, 5000) == 10) {
+        oat_count += oat_count;
+        console.log('wow! double oats!');
+        achieve("lottery", "you won the lottery!", "BIG WIN!");
+        updatecount();
+
+      }
+    }
+      cinnamon();
+    }, 60000);
+  }
+  function oatnog(){
+      setTimeout(function(){
+    if(new Date().getMonth() == 11){
+        for(var i=0; i < oatnogs; i++){
+          if(randomate(0, 10) == 5){
+              console.log("oatnog rules");
+              achieve("oatNog", "Oatnog just got you "+oat_count*0.2+" oats!", "EPIC GIFT!");
+              oat_count = oat_count*1.2;
+          }
+        }
+    }
+          oatnog();
+      }, 60000);
   }
