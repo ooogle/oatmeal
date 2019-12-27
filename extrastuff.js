@@ -162,6 +162,21 @@ function checkacheivs(){
     if(achevs.includes('poly100') == false && god_count >= 100){
         achieve('poly100','Oat Messiah: Your religion has inspred the popular prog rock band "No" to create their latest album, "Neymarism"   ');
     }
+    if(achevs.includes('fistgold') == false && addition_multiplier >= 2){
+        achieve('fistgold','Gold is better than wood!');
+    }
+    if(achevs.includes('gold5') == false && addition_multiplier >= 5){
+        achieve('gold5','Dat Gold Powa: you got dat clicki\'n powa!');
+    }
+    if(achevs.includes('gold15') == false && addition_multiplier >= 15){
+        achieve('gold15','Super cookware: your cookware is of immense power');
+    }
+    if(achevs.includes('gold30') == false && addition_multiplier >= 30){
+        achieve('gold30','Thiccccccc pots: your pots are hella thicccccccc');
+    }
+    if(achevs.includes('gold50') == false && addition_multiplier >= 50){
+        achieve('gold50','Crazy Clicker: you click like crazy!');
+    }
     // Epic deals:
     if(achevs.includes("cow-deal1") == false && deal == false && oat_count >= 1000){
         epic_deal('Oat Cow','cows','https://oatmeal.gq/sprites/big/oat_cow.png','cow-deal1');
