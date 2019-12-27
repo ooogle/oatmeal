@@ -45,7 +45,7 @@
   var firsttimeoatnog = true;
   var firsttimegold = true;
   var ads = true;
-  var version = "golden stuff";
+  var version = "EMERGENCY";
   var achevs = "0";
   var clicksound = null;
   let root = document.documentElement;
@@ -755,6 +755,9 @@
         if (addition_multiplier != 1) {
           firsttimegold = false;
         }
+      }
+      else{
+        addition_multiplier = 1;
       }
       //granary stuff:
       if (Cookies.get("granarys") != null) {
