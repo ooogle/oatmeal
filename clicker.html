@@ -345,9 +345,9 @@
     else {
       document.getElementById("cow").style.display = "none";
     }
-    if ((oat_count >= 8000000 || cow_addition > 1 || achevs.includes("injection_unlocked")) && cow_addition != 5) {
+    if ((oat_count >= 8000000 || cow_addition > 1 || achevs.includes("injection_unlocked")) && cow_addition != 5 && achevs.includes("cow_rebellion") == false) {
       document.getElementById("moo").style.display = "block";
-      if (firsttimeinjection && cow_addition != 2 && cow_addition != 5 && cow_addition != -2 && cow_addition != -3 && achevs.includes("cow_rebellion") == false) {
+      if (firsttimeinjection && cow_addition != 2 && cow_addition != 5 && cow_addition != -2 && cow_addition != -3) {
         firsttimeinjection = false;
         achieve("injection_unlocked", "You unlocked Moo Injection!", "Upgrade Unlocked");
         document.getElementById("moo").classList.add("appear");
