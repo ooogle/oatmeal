@@ -390,7 +390,7 @@ function spoon() {
         for(var i=0; i < oatnogs; i++){
           if(randomate(0, 10) == 5){
               console.log("oatnog rules");
-              achieve("oatNog", "Oatnog just got you "+oat_count*0.2+" oats!", "EPIC GIFT!");
+              achieve("oatNog", "Oatnog just got you "+Math.round(oat_count*0.2)+" oats!", "EPIC GIFT!");
               oat_count = oat_count*1.2;
           }
         }

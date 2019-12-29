@@ -49,13 +49,13 @@
   color: orange;
 }
 85%{
-  color: black;
+  color: rgb(31, 160, 81);
 }
 90%{
-  color: teal;
+  color: turquoise;
 }
 100%{
-  color:turquoise;
+  color:teal;
 }
 }
 .rainbow{
