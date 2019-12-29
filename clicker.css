@@ -502,8 +502,8 @@
     position: absolute;
   }
   #falling-oats{
-    width: 600px !important;
-    -webkit-transform: translateZ(0);
+    width: 600px !important;  
+    -webkit-transform: translateZ(1);
     overflow-x: hidden !important;
   }
   .hid-merch-box{

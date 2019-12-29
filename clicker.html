@@ -45,7 +45,7 @@
   var firsttimeoatnog = true;
   var firsttimegold = true;
   var ads = true;
-  var version = "EMERGENCY";
+  var version = "small fixes";
   var achevs = "0";
   var clicksound = null;
   let root = document.documentElement;
@@ -76,7 +76,7 @@
   var oatsgained = 0;
   var oatslost = 0;
   var fighting = false;
-  var addition_multiplier;
+  var addition_multiplier = 1;
   var boosters = ["spoon", "cow", "bowl", "pot", "moo", "oatnog", "temple", "granary", "polytheism", "cinnamon", "gold"]
   var minjection = new Date().getMinutes();
   if (minjection >= 55) {
@@ -1872,6 +1872,19 @@
                     id="bs_label"><span id="bs_prices" price="200" class="not-enough-money">200</span> oats</span> <span
                     id="bs-things">Spoon size: 1</span></p>
               </div>
+              <div class="booster" onclick="moo_injection()" id="moo">
+                <br><span style="width:50%; height:100%; display: inline-block;"></span>
+                <span class="booster-title">Moo<span style="width:50%; height:100%; display: inline-block;"></span>
+                  Injection</span>
+                <p style="padding-left:50%">
+                  <pp>DOUBLES cow production <ppp
+                      title="the expirement could go wrong, causing issues, but it's not that likely.">(experimental)
+                    </ppp>
+                  </pp><span class="not-enough-money" id="moo_label"><span id="moo_prices" price="10000000"
+                      class="not-enough-money">10 million </span> oats</span> <span id="moo-things"
+                    class="not-enough-money">not enabled</span>
+                </p>
+              </div>
               <div class="booster" onclick="gold_clicked()" id="gold">
                 <br><span style="width:30%; height:100%; display: inline-block;"></span>
                 <span class="booster-title">Gold Pots & Bowls</span>
@@ -1887,19 +1900,6 @@
                   or water (December exclusive)<span class="not-enough-money" id="oatnog_label"><span id="oatnog_prices"
                       price="400" class="not-enough-money">400</span>
                     oats</span> <span id="oatnog-things">Big Tastiness: 0</span></p>
-              </div>
-              <div class="booster" onclick="moo_injection()" id="moo">
-                <br><span style="width:50%; height:100%; display: inline-block;"></span>
-                <span class="booster-title">Moo<span style="width:50%; height:100%; display: inline-block;"></span>
-                  Injection</span>
-                <p style="padding-left:50%">
-                  <pp>DOUBLES cow production <ppp
-                      title="the expirement could go wrong, causing issues, but it's not that likely.">(experimental)
-                    </ppp>
-                  </pp><span class="not-enough-money" id="moo_label"><span id="moo_prices" price="10000000"
-                      class="not-enough-money">10 million </span> oats</span> <span id="moo-things"
-                    class="not-enough-money">not enabled</span>
-                </p>
               </div>
               <div class="booster" onclick="polytheism_clicked()" id="polytheism">
                 <br><span style="width:30%; height:100%; display: inline-block;"></span>
