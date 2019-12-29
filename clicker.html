@@ -45,7 +45,7 @@
   var firsttimeoatnog = true;
   var firsttimegold = true;
   var ads = true;
-  var version = "small fixes";
+  var version = "fixed-eee-ee-a";
   var achevs = "0";
   var clicksound = null;
   let root = document.documentElement;
@@ -469,82 +469,8 @@
   }
   function reset() {
     if (confirm("are you sure you would like to reset your game? \n you will lose all of your oats and buildings")) {
-      Cookies.set("bowl_price", 100, {
-        expires: 1000000
-      });
-      Cookies.set('achievements', 0, {
-        expires: 1000000
-      });
-      Cookies.set("pot_price", 1500, {
-        expires: 1000000
-      });
-      Cookies.set("bs_price", 200, {
-        expires: 1000000
-      });
-      Cookies.set("cows", 0, {
-        expires: 1000000
-      });
-      Cookies.set("cow_price", 230, {
-        expires: 1000000
-      });
-      Cookies.set("spoon_price", 50, {
-        expires: 1000000
-      });
-      Cookies.set("cinnamon_price", 400, {
-        expires: 1000000
-      });
-      Cookies.set('oat_count', 0, {
-        expires: 1000000
-      });
-      Cookies.set('spoons', 0, {
-        expires: 1000000
-      });
-      Cookies.set('granarys', 0, {
-        expires: 1000000
-      });
-      Cookies.set('granary_price', 700, {
-        expires: 1000000
-      });
-      Cookies.set('temples', 0, {
-        expires: 1000000
-      });
-      Cookies.set('temple_price', 5000, {
-        expires: 1000000
-      });
-      Cookies.set('god_count', 1, {
-        expires: 1000000
-      });
-      Cookies.set('polytheism_price', 6000, {
-        expires: 1000000
-      });
-      Cookies.set('bowls', 0, {
-        expires: 1000000
-      });
-      Cookies.set('pots', 0, {
-        expires: 1000000
-      });
-      Cookies.set('cinnamons', 0, {
-        expires: 1000000
-      });
-      Cookies.set('addition', 1, {
-        expires: 1000000
-      });
-      Cookies.set('addition_multiplier', 1, {
-        expires: 1000000
-      });
-      Cookies.set('spoon_addition', 1, {
-        expires: 1000000
-      });
-      Cookies.set('username', "", {
-        expires: 1000000
-      });
-      Cookies.set('cow_addition', 1, {
-        expires: 1000000
-      });
-      Cookies.set('oatnogs', 0, {
-        expires: 1000000
-      });
-      oat_count = 0
+      Cookies.remove('oat_count');
+      oat_count = 0;
       window.location = window.location;
     }
   }
@@ -949,7 +875,6 @@
         expires: 1000000
       });
     }
-
     document.getElementById("cow").style.display = "none";
     document.getElementById("granary").style.display = "none";
     document.getElementById("temple").style.display = "none";
