@@ -45,7 +45,7 @@
   var firsttimeoatnog = true;
   var firsttimegold = true;
   var ads = true;
-  var version = "bg-stoff-Ymctc3RvZmY=";
+  var version = "array_achevs_YXJyYXlfYWNoZXZzXw==_";
   var achevs = "0";
   var clicksound = null;
   let root = document.documentElement;
@@ -249,11 +249,7 @@
     }, 15000);
   }
   function updatecount() {
-    ops = spoons * spoon_addition;
-    ops = ops / 10;
-    ops += cows * cow_addition / 2;
-    ops += granarys * 5 / 2;
-    ops += temples * god_count * 15 / 2;
+    ops = ((spoons * spoon_addition)/10)+(cows*cow_addition/2)+(granarys*5/2)+(temples*god_count*15/2);
     if (pso) {
       if (ops > 999999) {
         document.getElementById("ops").innerHTML = "Per second: " + numberformat.formatShort(ops, { sigfigs: 4 });
@@ -423,7 +419,7 @@
     if (rebellion == false) {
       checkacheivs();
     }
-    Cookies.set("lastsave", Date.now(), { expires: 100000000000000000000 });
+    Cookies.set("lastsave", Date.now(), { expires: 1000000 });
   }
   function randomate(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
@@ -509,7 +505,7 @@
         addition_multiplier = save.addition_multiplier;
         document.getElementById("gold_prices").setAttribute("price", save.gold_price);
         Cookies.set("gold_price", document.getElementById("gold_prices").getAttribute("price"), { expires: 10000000 });
-        Cookies.set("addition_multiplier", addition_multiplier, { expires: 10000000000000000 });
+        Cookies.set("addition_multiplier", addition_multiplier, { expires: 1000000 });
       }
       else {
         addition_multiplier = 1
@@ -567,7 +563,7 @@
       achevs = save.achevs;
       if (achevs.includes("cow_rebellion")) {
         cow_addition = 5;
-        Cookies.set("cow_addition", 5, { expires: 100000000000000000000000000 });
+        Cookies.set("cow_addition", 5, { expires: 1000000 });
       }
       document.getElementById("bowl_prices").setAttribute("price", save.bowl_price);
       document.getElementById("bowl_prices").innerHTML = numberformat.format(Number(save.bowl_price), { sigfigs: 4 });
@@ -631,7 +627,7 @@
           }
           else if (achevs.includes("cow_rebellion")) {
             cow_addition = 5;
-            Cookies.set("cow_addition", 5, { expires: 100000000000000000000000000 });
+            Cookies.set("cow_addition", 5, { expires: 1000000 });
             username = Cookies.get("username");
             if (username != null && username != "") {
               if (username.includes("class='rainbow'")) {
@@ -799,11 +795,7 @@
         var lss = Number(Cookies.get("lastsave"));
         lss = Date.now() - lss;
         lss = Math.round(lss / 1000);
-        ops = spoons * spoon_addition;
-        ops = ops / 10;
-        ops += cows * cow_addition / 2;
-        ops += granarys * 5 / 2;
-        ops += temples * god_count * 15 / 2;
+        ops = ((spoons * spoon_addition)/10)+(cows*cow_addition/2)+(granarys*5/2)+(temples*god_count*15/2);
         if (lss / 60 >= 1 && ops >= 0.3) {
           oat_count += lss * ops / 52.3;
           achieve("", "You gained " + numberformat.formatShort(lss * ops / 3) + " oats.", "While you were gone...");

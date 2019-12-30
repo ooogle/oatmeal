@@ -1,182 +1,22 @@
 function checkacheivs(){
-    if(achevs.includes('1click') == false && oat_count == 1){
-        achieve('1click','Click: you clicked the oat!');
+    var acks = [{id:"1click",text:'Click: you clicked the oat!',req: oat_count==1},{id:"2click",text:'Double-Click: you clicked the oat twice!',req: oat_count==2},{id:"10click",text:'Deca-Clicker: you clicked the oat ten times!',req: oat_count == 10},{id:"69_",text:'69 oats. nice.',req: oat_count >= 69},{id:"first-spoon",text:'You have a spoon!',req: spoons >= 1},{id: '100-oats', text: '100 oats! wow! That\'s a lot!', req: oat_count >= 100},{id: '50-oats', text: '50 oats! wow!', req: oat_count >= 50},{id: 'bow1', text: 'Your first oat bowl', req:  bowls >= 1},{id: 'pot1', text: 'Your first oat pot', req: pots >= 1},{id: 'cow1', text: 'Your first oat cow', req:  cows >= 1},{id: 'cow10', text: 'Farmer: you have lots of cows', req: cows >= 10},{id: 'cow20', text: 'Local legend: you are known for your numerous cows', req: cows >= 20},{id: 'cow30', text: 'Mad cow disease: you are obsessed with your cows', req: cows >= 30},{id: 'cow40', text: 'PETA has its eye on you. One wrong move and your cows could be confiscated', req: cows >= 40},{id: 'cow50', text: 'Great cow Guru: keep an eye on your feilds...', req: cows >= 50},{id: '200-oats', text: 'Two Hundred oats! wow!', req: oat_count >= 200},{id: '500-oats', text: 'Five Hundred oats! wow!', req: oat_count >= 500},{id: '1000-oats', text: 'Bob\'s red mill: you have one thousand oats', req: oat_count >= 1000},{id: '10-ops', text: 'Ten OPS! That\'s a lotta OATS!', req:  ops >= 10},{id: '100-ops', text: 'You are making one hundred oats every second. That\'s amazing.', req: ops >= 100},{id: '1000-ops', text: 'Thousand red mills: you have 1,000 OPS', req: ops >= 1000},{id: '10000-ops', text: 'Oat hero: you have 100,000 OPS', req: ops >= 100000},{id: 'gold50', text: 'Crazy Clicker: you click like crazy!', req: addition_multiplier >= 50},{id: 'cinnamon1', text: 'The lottery is a risky business', req: cinnamons >= 1},{id: 'spoon_guru', text: 'Spoon Guru: you have fifty spoons', req:  spoons >= 50},{id: 'spoon_lord', text: 'Spoon lord: you have one hundred spoons', req: spoons >= 100},{id: '150_oats', text: 'You have 150 oats! That\'s a lot!', req: oat_count >= 150},{id: '420_oats', text: '420 oats: blaze it!', req: oat_count >= 420},{id: 'bil_oats', text: 'One billion oats oats... wow. just wow.', req: oat_count >= 1000000000},{id: 'million_oats', text: 'A whole million oats', req: oat_count >= 1000000},{id: '25_oats', text: 'A whole twenty five oats', req: oat_count >= 25},{id: '30_oats', text: 'Quaker: you have 30 oats', req: oat_count >= 30},{id: '45_oats', text: 'Brother, may I have some oats?', req: oat_count >= 45},{id: 'lottery_master', text: 'Lottery master: You\'re a real big gambler', req: cinnamons >= 20},{id: '300_oats', text: 'A whole 300 oats', req:  oat_count >= 300},{id: '600_oats', text: 'Man, six hundred', req: oat_count >= 600},{id: '2-mil_oats', text: 'A whole 2 million oats', req: oat_count >= 2000000},{id: '4-mil_oats', text: 'Oat country: you have enough oats to start a small nation', req: oat_count >= 4000000},{id: '100-mil_oats', text: 'Boomer: you have been playing this game so long society simply responds to all you say with "ok boomer"', req: oat_count >= 100000000},{id: '10-mil_oats', text: 'Ten million oats... You sure could buy a lotta oat cows with that!', req: oat_count >= 10000000},{id:'3-mil_oats',text:'Oat fetish: you are <a href="https://answers.yahoo.com/question/index?qid=20110813210020AAzGwIe" target="_blank" style="pointer-events:all !important; z-index:30; color:	#00df12 !important;" title="click me!">sexually attracted to oats</a>',req:oat_count >= 3000000},{id: 'tril', text: 'Oat Lord: you have a trillion oats', req: oat_count >= 1000000000000},{id: '2tril', text: 'TWO TRILLION OATS OH MY GAWD THAT\'S INSANE!!!!!!!!!!!!!', req: oat_count >= 2000000000000},{id: '10tril', text: 'you have 10 trillion oats. crazy.', req: oat_count >= 10000000000000},{id: '100tril', text: 'one hundred trillion oats. that\'s 100,000,000,000,000', req: oat_count >= 100000000000000},{id: 'quad', text: 'you have a quadrillion oats', req:  oat_count >= 1000000000000000},{id: 'pressed_g', text: 'You absolutely terrible person! I<i>told</i> you not to press G!', req: fall_sprite=="https://raw.githubusercontent.com/ooogle/oatmeal/master/fly.png"},{id: 'granary1', text: 'You have a granary!', req: granarys >= 1},{id: 'debt1', text: 'Debt: your oat balance is in the negatives', req: oat_count < 0},{id: 'peta-kill', text: 'Peta wants you dead for animal abuse. Preferably burned at a stake, but any form of cruel execution will do.', req: cow_addition > 1},{id: 'temple1', text: 'You have founded a new religion', req: temples >= 1},{id: 'priest', text: 'Priest: you are a powerful leader', req: temples >= 5},{id: 'poly1', text: 'Two Gods are better than one.', req:  god_count >= 2},{id: 'poly5', text: 'Suck-up: you please five gods', req: god_count >= 5},{id: 'poly10', text: 'Your many gods love you almost as much as you love them.', req:  god_count >= 10},{id: 'poly100', text: 'Oat Messiah: Your religion has inspred the popular prog rock band "No" to create their latest album, "Neymarism"', req: god_count >= 100},{id: 'fistgold', text: 'Gold is better than wood!', req: addition_multiplier >= 2},{id: 'gold5', text: 'Dat Gold Powa: you got dat clicki\'n powa!', req: addition_multiplier >= 5},{id: 'gold15', text: 'Super cookware: your cookware is of immense power', req: addition_multiplier >= 15},{id: 'gold30', text: 'Thiccccccc pots: your pots are hella thicccccccc', req: addition_multiplier >= 30}];
+    for(var i=0; i < acks.length; i++){
+        if(achevs.includes(acks[i].id) == false && acks[i].req){
+            achieve(acks[i].id,acks[i].text);
+        }
     }
-    if(achevs.includes('2click') == false && oat_count == 2){
-        achieve('2click','Double-Click: you clicked the oat twice!');
-    }
-    if(achevs.includes('10click') == false && oat_count == 10){
-        achieve('10click','Deca-Clicker: you clicked the oat ten times!');
-    }
-    if(achevs.includes('69_') == false && oat_count >= 69){
-        achieve('69_','69 oats. nice.');
-    }
-    if(achevs.includes('first-spoon') == false && spoons >= 1){
-        achieve('first-spoon','You have a spoon!');
-    }
-    if(achevs.includes('50-oats') == false && oat_count >= 50){
-        achieve('50-oats','50 oats! wow!');
-    }
-    if(achevs.includes('100-oats') == false && oat_count >= 100){
-        achieve('100-oats','100 oats! wow! That\'s a lot!');
-    }
-    if(achevs.includes('bow1') == false && bowls >= 1){
-        achieve('bow1','Your first oat bowl');
-    }
-    if(achevs.includes('pot1') == false && pots >= 1){
-        achieve('pot1','Your first oat pot');
-    }
-    if(achevs.includes('cow1') == false && cows >= 1){
-        achieve('cow1','Your first oat cow');
-    }
-    if(achevs.includes('cow10') == false && cows >= 10){
-        achieve('cow10','Farmer: you have lots of cows');
-    }
-    if(achevs.includes('cow20') == false && cows >= 20){
-        achieve('cow20','Local legend: you are known for your numerous cows');
-    }
-    if(achevs.includes('cow30') == false && cows >= 30){
-        achieve('cow30','Mad cow disease: you are obsessed with your cows');
-    }
-    if(achevs.includes('cow40') == false && cows >= 40){
-        achieve('cow40','PETA has its eye on you. One wrong move and your cows could be confiscated');
-    }
-    if(achevs.includes('cow50') == false && cows >= 50){
-        achieve('cow50','Great cow Guru: keep an eye on your feilds...');
-    }
-    if(achevs.includes('200-oats') == false && oat_count >= 200){
-        achieve('200-oats','Two Hundred oats! wow!');
-    }
-    if(achevs.includes('500-oats') == false && oat_count >= 500){
-        achieve('500-oats','Five Hundred oats! wow!');
-    }
-    if(achevs.includes('1000-oats') == false && oat_count >= 1000){
-        achieve('1000-oats','Bob\'s red mill: you have one thousand oats');
-    }
-    if(achevs.includes('10-ops') == false && ops >= 10){
-        achieve('10-ops','Ten OPS! That\'s a lotta OATS!');
-    }
-    if(achevs.includes('100-ops') == false && ops >= 100){
-        achieve('100-ops','You are making one hundred oats every second. That\'s amazing.');
-    }
-    if(achevs.includes('1000-ops') == false && ops >= 1000){
-        achieve('1000-ops','Thousand red mills: you have 1,000 OPS');
-    }
-    if(achevs.includes('1000-ops') == false && ops >= 10000){
-        achieve('1000-ops','INSANE OPS: you have 1,0000 OPS');
-    }
-    if(achevs.includes('10000-ops') == false && ops >= 100000){
-        achieve('10000-ops','Oat hero: you have 100,000 OPS');
-    }
-    if(achevs.includes('cinnamon1') == false && cinnamons >= 1){
-        achieve('cinnamon1','The lottery is a risky business');
-    }
-    if(achevs.includes('spoon_guru') == false && spoons >= 50){
-        achieve('spoon_guru','Spoon Guru: you have fifty spoons');
-    }
-    if(achevs.includes('spoon_lord') == false && spoons >= 100){
-        achieve('spoon_lord','Spoon lord: you have one hundred spoons');
-    }
-    if(achevs.includes('150_oats') == false && oat_count >= 150){
-        achieve('150_oats','You have 150 oats! That\'s a lot!');
-    }
-    if(achevs.includes('420_oats') == false && oat_count >= 420){
-        achieve('420_oats','420 oats: blaze it!');
-    }
-    if(achevs.includes('bil_oats') == false && oat_count >= 1000000000){
-        achieve('bil_oats','One billion oats oats... wow. just wow.');
-    }
-    if(achevs.includes('million_oats') == false && oat_count >= 1000000){
-        achieve('million_oats','A whole million oats');
-    }
-    if(achevs.includes('25_oats') == false && oat_count >= 25){
-        achieve('25_oats','A whole twenty five oats');
-    }
-    if(achevs.includes('30_oats') == false && oat_count >= 30){
-        achieve('30_oats','Quaker: you have 30 oats');
-    }
-    if(achevs.includes('45_oats') == false && oat_count >= 45){
-        achieve('45_oats','Brother, may I have some oats?');
-    }
-    if(achevs.includes('lottery_master') == false && cinnamons >= 20){
-        achieve('lottery_master','Lottery master: You\'re a real big gambler');
-    }
-    if(achevs.includes('300_oats') == false && oat_count >= 300){
-        achieve('300_oats','A whole 300 oats');
-    }
-    if((cow_addition == 2 || cow_addition == -2) && achevs.includes("cow_rebellion") == false && new Date().getMinutes() - minjection >= 5 && cows >= 30){
-        cow_rebellion();
-    }
-    if(achevs.includes('600_oats') == false && oat_count >= 600){
-        achieve('600_oats','Man, six hundred');
-    }
-    if(achevs.includes('600_oats') == false && oat_count >= 600){
-        achieve('600_oats','Man, six hundred');
-    }
-    if(achevs.includes('2-mil_oats') == false && oat_count >= 2000000){
-        achieve('2-mil_oats','A whole 2 million oats');
-    }
-    if(achevs.includes('4-mil_oats') == false && oat_count >= 4000000){
-        achieve('4-mil_oats','Oat country: you have enough oats to start a small nation');
-    }
-    if(achevs.includes('100-mil_oats') == false && oat_count >= 100000000){
-        achieve('100-mil_oats','Boomer: you have been playing this game so long society simply responds to all you say with "ok boomer"');
-    }
-    if(achevs.includes('10-mil_oats') == false && oat_count >= 10000000){
-        achieve('10-mil_oats','Ten million oats... You sure could buy a lotta oat cows with that!');
-    }
-    if(achevs.includes('3-mil_oats') == false && oat_count >= 3000000){
-        achieve('3-mil_oats','Oat fetish: you are <a href="https://answers.yahoo.com/question/index?qid=20110813210020AAzGwIe" target="_blank" style="pointer-events:all !important; z-index:30; color:	#00df12 !important;" title="click me!">sexually attracted to oats</a>');
-    }
-    if(achevs.includes('pressed_g') == false && fall_sprite=="https://raw.githubusercontent.com/ooogle/oatmeal/master/fly.png"){
-        achieve('pressed_g','You absolutely terrible person! I<i>told</i> you not to press G!');
-    }
-    if(achevs.includes('granary1') == false && granarys >= 1){
-        achieve('granary1','You have a granary!');
-    }
-    if(achevs.includes("debt1") == false && oat_count < 0){
-        achieve('debt1','Debt: your oat balance is in the negatives');
-    }
-    if(cow_addition > 1 && achevs.includes("peta-kill") == false){
-        achieve("peta-kill","Peta wants you dead for animal abuse. Preferably burned at a stake, but any form of cruel execution will do.")
-    }
-    if(achevs.includes('temple1') == false && temples >= 1){
-        achieve('temple1','You have founded a new religion');
-    }
-    if(achevs.includes('priest') == false && temples >= 5){
-        achieve('priest','Priest: you are a powerful leader');
-    }
-    if(achevs.includes('poly1') == false && god_count >= 2){
-        achieve('poly1','Two Gods are better than one.');
-    }
-    if(achevs.includes('poly5') == false && god_count >= 5){
-        achieve('poly5','Suck-up: you please five gods');
-    }
-    if(achevs.includes('poly10') == false && god_count >= 10){
-        achieve('poly10','Your many gods love you almost as much as you love them.');
-    }
+    //shpeshul things:
     if(achevs.includes('poly50') == false && god_count >= 50){
         achieve('poly50','The fifty gods way up in the sky just gave you fifty oats each');
         oat_count+=50*50;
     }
-    if(achevs.includes('poly100') == false && god_count >= 100){
-        achieve('poly100','Oat Messiah: Your religion has inspred the popular prog rock band "No" to create their latest album, "Neymarism"   ');
+    if((cow_addition == 2 || cow_addition == -2) && achevs.includes("cow_rebellion") == false && new Date().getMinutes() - minjection >= 5 && cows >= 30){
+        cow_rebellion();
     }
-    if(achevs.includes('fistgold') == false && addition_multiplier >= 2){
-        achieve('fistgold','Gold is better than wood!');
-    }
-    if(achevs.includes('gold5') == false && addition_multiplier >= 5){
-        achieve('gold5','Dat Gold Powa: you got dat clicki\'n powa!');
-    }
-    if(achevs.includes('gold15') == false && addition_multiplier >= 15){
-        achieve('gold15','Super cookware: your cookware is of immense power');
-    }
-    if(achevs.includes('gold30') == false && addition_multiplier >= 30){
-        achieve('gold30','Thiccccccc pots: your pots are hella thicccccccc');
-    }
-    if(achevs.includes('gold50') == false && addition_multiplier >= 50){
-        achieve('gold50','Crazy Clicker: you click like crazy!');
-    }
+    /*
+    to do:
+    - make the deals an array like how the achevs are
+    */
     // Epic deals:
     if(achevs.includes("cow-deal1") == false && deal == false && oat_count >= 1000){
         epic_deal('Oat Cow','cows','https://oatmeal.gq/sprites/big/oat_cow.png','cow-deal1');
@@ -375,10 +215,17 @@ function spoon() {
     for(var i=0; i < cinnamons; i++){
       if (randomate(0, 5000) == 10) {
         oat_count += oat_count;
-        console.log('wow! double oats!');
-        achieve("lottery", "you won the lottery!", "BIG WIN!");
+        if(randomate(0,5) == 2){
+            oat_count+=oat_count*0.5;
+            if(randomate(0, 5000) == 10){
+                oat_count=oat_count*5;
+                if(randomate(0, 800000) == 10){
+                oat_count+= randomate(100000, 1000000000000);
+                }
+            }
+        }
+        achieve("", "you won the cinnamon lottery!", "BIG WIN!");
         updatecount();
-
       }
     }
       cinnamon();
@@ -390,7 +237,7 @@ function spoon() {
         for(var i=0; i < oatnogs; i++){
           if(randomate(0, 10) == 5){
               console.log("oatnog rules");
-              achieve("oatNog", "Oatnog just got you "+Math.round(oat_count*0.2)+" oats!", "EPIC GIFT!");
+              achieve("", "Oatnog just got you "+Math.round(oat_count*0.2)+" oats!", "EPIC GIFT!");
               oat_count = oat_count*1.2;
           }
         }
