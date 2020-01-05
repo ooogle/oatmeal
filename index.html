@@ -36,13 +36,15 @@
             color: white;
             overflow-x: hidden;
         }
-
         @media only screen and (min-width: 950px) {
             body {
                 background-size: 100%;
             }
-            .mb{
+            .mb {
                 display: none;
+            }
+            .pushy {
+                width: 40%;
             }
             .fly {
                 animation: fly 19s linear infinite;
@@ -53,30 +55,30 @@
                 height: calc(3em + 10px);
             }
         }
-
         @media only screen and (max-width: 949px) {
             body {
                 background-size: 1000px;
             }
-            .fly{
+            .fly {
                 display: none;
             }
-            .mb{
+            .pushy {
+                width: 90%;
+            }
+            .mb {
                 display: inline;
             }
         }
-
         * {
             scrollbar-width: none, -moz-scrollbars-none !important;
         }
-
         .pushy {
-            width: 40%;
             overflow: hidden;
             margin-left: auto;
             margin-right: auto;
             background: #2115c7;
             height: 50px;
+            font-size: 40px;
             text-align: center;
             color: white;
             margin-top: 15px;
@@ -84,32 +86,26 @@
             font-weight: lighter;
             border-color: white;
             border-style: solid;
-            font-size: 40px;
             cursor: pointer;
             transition: 0.2s;
         }
-
         .pushy:hover {
             transform: scale(1.2);
         }
-
         .pushy:active {
             transform: scale(1.1);
         }
-
         .center {
             margin-left: auto;
             margin-right: auto;
             text-align: center;
         }
-
         h1 {
             font-family: sans-serif;
             font-weight: lighter;
             font-size: 3em;
             overflow: hidden;
         }
-
         @keyframes fly {
             0% {
                 transform: translateX(0%);
@@ -119,14 +115,17 @@
                 transform: translateX(-65%);
                 opacity: 1;
             }
-            50.01%{
+
+            50.01% {
                 transform: translateX(65%);
                 opacity: 0;
             }
-            50.02%{
+
+            50.02% {
                 opacity: 1;
             }
-            100%{
+
+            100% {
                 transform: translateX(0%);
             }
         }
