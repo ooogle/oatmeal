@@ -1,73 +1,166 @@
 <!doctype html>
-OATS
-<title>Oatmeal</title>
-<link rel="shortcut icon" href="oat2.png">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta content="oats1.jpg" itemprop="image" draggable="true">
-<meta name="description" content="Ah yes, oats">
-<meta property="og:image" content="oats1.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="manifest" href="manifest.json">
-<meta property="og:type" content="website">
-<meta name="twitter:image" content="oats1.jpg">
-<h1> Ya like oats?</h1>
-<br>
-<style>
-  body{
-  background-image:url('https://oatmeal.gq/oats1.jpg');
-    background-size:cover;
-   background-attachment: fixed;
-  }
-  @media only screen and (max-width: 600px) {
-  div.gallery {
-  margin: 5px;
-  width: 96%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-}
- @media only screen and (min-width: 600px) {
-  div.gallery {
-  margin: 5px;
-  float: left;
-  width: 30%;
-}
-}
-div.gallery img {
-  width: 100%;
-  height: auto;
-}
-  </style>
-<br><br><br><br><br><br><br><br><br><br>
-<div class="gallery">
-<a href="https://oatmeal.gq/clicker">
-<img src="https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/rounded_oat_clicker_logo.png" alt="oat clicker" />
-</a>
-</div>
-<div class="gallery">
-<img src="https://feelgoodfoodie.net/wp-content/uploads/2019/01/How-to-Make-Oatmeal-10.jpg" />
-</div>
-<div class="gallery">
-<img src="https://lexiscleankitchen.com/wp-content/uploads/2018/11/How-to-make-oatmeal2.jpg" />
-</div>
-<div class="gallery">
-<img src="https://img1.cookinglight.timeinc.net/sites/default/files/styles/4_3_horizontal_-_1200x900/public/1515172142/1801w-basic-oatmeal-recipe.jpg?itok=s5mnyKnc" />
-</div>
-<div class="gallery">
-<img src="https://i2.wp.com/wellplated.com/wp-content/uploads/2018/05/Steel-Cut-Oats-Recipe-600x716.jpg" />
-</div>
-<div class="gallery">
-<iframe data-aa="1256773" src="//acceptable.a-ads.com/1256773" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe>
-</div>
-<div class="gallery">
-<img src="https://amindfullmom.com/wp-content/uploads/2018/02/Instant-Pot-Creamy-Oatmeal_.jpg" />
-</div>
-<div class="gallery">
-<img src="https://asweetspoonful.com/wp-content/uploads/2019/02/20190225_BlogCoconutOatmeal-100-675x675.jpg" />
-</div>
-<div class="gallery">
-<iframe data-aa="1256773" src="//acceptable.a-ads.com/1256773" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe>
-</div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<a href="http://oogle.gq">Oogle</a>
+<html>
+
+<head>
+    <link rel="shortcut icon" href="https://oatmeal.gq/oat2.png" rel="preload">
+    <title>Play Oat Clicker</title>
+    <meta name="title" content="Oat Clicker">
+    <meta charset="UTF-8">
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap" rel="stylesheet">
+    <meta name="description"
+        content="The latest in idle gaming, OAT CLICKER! Click oats, then buy things using your oats to help you get more oats. It's a fun, pleasantly scary and exhilarating ride! Play oat clicker every day for extreme thrills and heart-healthy action">
+    <meta content="https://oatmeal.gq/oat_clicker_logo.png" itemprop="image">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://oatmeal.gq/clicker">
+    <meta property="og:title" content="Oat Clicker">
+    <meta property="og:description"
+        content="The latest in idle gaming, OAT CLICKER! Click oats, then buy things using your oats to help you get more oats. It's a fun, pleasantly scary and exhilarating ride! Play oat clicker every day for extreme thrills and heart-healthy action">
+    <meta property="og:image" content="https://oatmeal.gq/oat_clicker_logo.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://oatmeal.gq/clicker">
+    <meta property="twitter:title" content="Oat Clicker">
+    <meta property="twitter:description"
+        content="The latest in idle gaming, OAT CLICKER! Click oats, then buy things using your oats to help you get more oats. It's a fun, pleasantly scary and exhilarating ride! Play oat clicker every day for extreme thrills and heart-healthy action">
+    <meta property="twitter:image" content="https://oatmeal.gq/oat_clicker_logo.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" rel="preload">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, height=device-height, target-densitydpi=device-dpi" />
+    <style>
+        body {
+            background-color: black;
+            background-image: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/oc-bg.png);
+            background-repeat: no-repeat;
+            background-position: bottom;
+            background-attachment: fixed;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        @media only screen and (min-width: 950px) {
+            body {
+                background-size: 100%;
+            }
+
+            .fly {
+                animation: fly 38s linear infinite;
+            }
+
+            .fly1 {
+                top: 0px;
+                position: absolute;
+                animation: fly1 38s linear infinite;
+                opacity: 0;
+            }
+
+            .masked {
+                clip-path: inset(0 15% 0 15%);
+                width: 100%;
+                height: calc(3em + 10px);
+            }
+        }
+
+        @media only screen and (max-width: 949px) {
+            body {
+                background-size: 1000px;
+            }
+
+            .fly1 {
+                display: none;
+            }
+        }
+
+        * {
+            scrollbar-width: none, -moz-scrollbars-none !important;
+        }
+
+        .pushy {
+            width: 40%;
+            overflow: hidden;
+            margin-left: auto;
+            margin-right: auto;
+            background: #2115c7;
+            height: 50px;
+            text-align: center;
+            color: white;
+            margin-top: 15px;
+            font-family: sans-serif;
+            font-weight: lighter;
+            border-color: white;
+            border-style: solid;
+            font-size: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .pushy:hover {
+            transform: scale(1.2);
+        }
+
+        .pushy:active {
+            transform: scale(1.1);
+        }
+
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: sans-serif;
+            font-weight: lighter;
+            font-size: 3em;
+            overflow: hidden;
+        }
+
+        @keyframes fly {
+            0% {
+                transform: translateX(10%);
+            }
+
+            50% {
+                transform: translateX(-100%);
+            }
+
+            50.01% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(10%);
+            }
+        }
+
+        @keyframes fly1 {
+            34% {
+                opacity: 0;
+            }
+
+            35% {
+                opacity: 1;
+                transform: translateX(130%);
+            }
+
+            100% {
+                transform: translateX(-190%);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <div class="masked center">
+            <h1 class="fly1">Oat Clicker - The Latest in Idle Gaming</h1>
+            <h1 class="fly">Oat Clicker - The Latest in Idle Gaming</h1>
+        </div>
+        <br>
+        <a href="https://oatmeal.gq/clicker">
+            <button class="pushy">Play Now!</button>
+        </a>
+    </div>
+</body>
+</html>
