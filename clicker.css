@@ -2,7 +2,7 @@
     --x-value:1700%;
     --z:-9;
     --height: 1500%;
-    --player-location: 100px;
+    --player-location: 300px;
     --enemy-location: 400px;
   }
   .background-image {
@@ -122,7 +122,7 @@
     transform: scale(0.6) !important;
   }
   .big-image:hover{
-    transform: scale(1.2);
+    transform: scale(1.15);
   }
   @media only screen and (min-width: 950px) {
     .big-image{
