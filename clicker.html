@@ -15,6 +15,7 @@
 <meta property="og:title" content="Oat Clicker">
 <meta property="og:description"
   content="The latest in idle gaming, OAT CLICKER! Click oats, then buy things using your oats to help you get more oats. It's a fun, pleasantly scary and exhilarating ride! Play oat clicker every day for extreme thrills and heart-healthy action">
+<meta name="keywords" content="game,clicker,oat clicker,clicker game,video game,games,clicking,oatmeal">
 <meta property="og:image" content="https://oatmeal.gq/oat_clicker_logo.png">
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="https://oatmeal.gq/clicker">
@@ -45,7 +46,7 @@
   var firsttimeoatnog = true;
   var firsttimegold = true;
   var ads = true;
-  var version = "bugghsfickxed_YnVnZ2hzZmlja3hlZA==";
+  var version = "just some normAuGy5t8^69anVzdCBzb21lIG5vcm1BdUd5NXQ4XjY5al updates.";
   var achevs = "0";
   var clicksound = null;
   let root = document.documentElement;
@@ -416,7 +417,7 @@
       document.getElementById("oatnog").style.display = "none";
     }
     //check for acheivments
-    if (rebellion == false) {
+    if (!rebellion && !document.hidden) {
       checkacheivs();
     }
     Cookies.set("lastsave", Date.now(), { expires: 1000000 });
@@ -431,7 +432,12 @@
       imagE.src = fall_sprite;
       imagE.className = "falling-oat";
       imagE.id = idd;
+      if(window.innerWidth >= 950){
       imagE.style = "left: " + randomate(5, 410) + "px; top: " + randomate(-50, 80) + "px;";
+      }
+      else{
+        imagE.style = "left: " + randomate(5, window.innerWidth - 80) + "px; top: " + randomate(-50, 80) + "px;";
+      }
       document.getElementById('falling-oats').appendChild(imagE);
       setTimeout(function () { document.getElementById(idd).remove(); }, 7900);
     }
@@ -798,81 +804,12 @@
       }
     }
     else {
-      Cookies.set("bowl_price", 100, {
+      var normalcooks = [{name:"bowl_price", value:100},{name:"pot_price", value:1500},{name:"cows",value:0},{name:"cow_price",value:230},{name:"granarys", value:0},{name:"granary_price", value:700},{name:"temples",value:0},{name:"temple_price",value:5000},{name:"god_count", value:1},{name:"polytheism_price",value:6000},{name:"bs_price", value:200},{name:"spoon_price", value:50},{name:"cinnamon_price", value:400},{name:"oat_count", value:0},{name:'spoons',value:0},{name:'bowls',value:0},{name:'pots',value:0},{name:"cinnamons",value:0},{name:'achievements',value:0},{name:"addition",value:1},{name:"addition_multiplier",value:1},{name:"spoon_addition",value:1},{name:"username",value:""},{name:"cow_addition",value:1},{name:"oatnogs",value:0}];
+      for(var i=0; i < normalcooks.length; i++){
+        Cookies.set(normalcooks[i].name, normalcooks[i].value, {
         expires: 1000000
       });
-      Cookies.set("pot_price", 1500, {
-        expires: 1000000
-      });
-      Cookies.set("cows", 0, {
-        expires: 1000000
-      });
-      Cookies.set("cow_price", 230, {
-        expires: 1000000
-      });
-      Cookies.set("granarys", 0, {
-        expires: 1000000
-      });
-      Cookies.set("granary_price", 700, {
-        expires: 1000000
-      });
-      Cookies.set("temples", 0, {
-        expires: 1000000
-      });
-      Cookies.set("temple_price", 5000, {
-        expires: 1000000
-      });
-      Cookies.set("god_count", 1, {
-        expires: 1000000
-      });
-      Cookies.set("polytheism_price", 6000, {
-        expires: 1000000
-      });
-      Cookies.set("bs_price", 200, {
-        expires: 1000000
-      });
-      Cookies.set("spoon_price", 50, {
-        expires: 1000000
-      });
-      Cookies.set("cinnamon_price", 400, {
-        expires: 1000000
-      });
-      Cookies.set('oat_count', 0, {
-        expires: 1000000
-      });
-      Cookies.set('spoons', 0, {
-        expires: 1000000
-      });
-      Cookies.set('bowls', 0, {
-        expires: 1000000
-      });
-      Cookies.set('pots', 0, {
-        expires: 1000000
-      });
-      Cookies.set('cinnamons', 0, {
-        expires: 1000000
-      });
-      Cookies.set('achievements', 0, {
-        expires: 1000000
-      });
-      Cookies.set('addition', 1, {
-        expires: 1000000
-      });
-      Cookies.set('addition_multiplier', 1, {
-        expires: 1000000
-      });
-      Cookies.set('spoon_addition', 1, {
-        expires: 1000000
-      });
-      Cookies.set('username', "", {
-        expires: 1000000
-      });
-      Cookies.set('cow_addition', 1, {
-        expires: 1000000
-      });
-      Cookies.set('oatnogs', 0, {
-        expires: 1000000
-      });
+      }
     }
     document.getElementById("cow").style.display = "none";
     document.getElementById("granary").style.display = "none";
@@ -1163,7 +1100,7 @@
     });
   }
   function loading() {
-    var quotes = ["Press P or double-click to switch between oats per second and per click", "Don't press G", "Cinnamon is a bad investment", "Screw cookies", "Click that oat!", 'Oat clicker merch! <a href="https://oatmeal.gq/merch" style="pointer-events:all !important; z-index:30; color:	#00df12 !important;" title="click me!"> Click Here!</a>', "Oat Pots are expensive for a reason", "<q>This is a dictatorship!</q> —Jim the Spoon", "Hey kid, want some oats?", "water is wet", "Got 99 spoons but slow ain't one", "Is this <i>really</i> a good use of your time?", "Winning the oat lottery is unlikely, but nice", "OATS!?!??!", "no, it's not <q>just like cookie clicker.</q>", "<q>nice</q> — your 69th oat", "what do you mean, <q>undefined</q>?", "ALL HAIL", "Take a moment to ask youself: <q>Am I mentally insane?</q> <br>If you answered <q>yes</q> to any of the ten above questions, then you probably are. If not, then you probably are not insane.<br> If you are insane, please contact a doctore immediately", "i'll give you an oat if you get in my van", "no, it's not a dumb game", "IT'S RAINING OATS!!!", "Fun fact: October 29th is National Oatmeal Day", "Fun fact: January is National Oatmeal Month", "Ya liek oats?", "Spoons, now with extra-strong handles!", "Beware of the spoons", "Cinnamon is a lottery ticket to riches and fortune", "Fun fact: Oat milk comes from oat cows", "Press R to reset your game.", "Cinnamon is a scam", "Brother, may I have some oats?", "Praying to the oat god twice a day may grant you a longer life", "Oats are good for your bones", "Eat Oats!", "Fun fact: Cookie Clicker game saves are just base64 encoded with the string %21END%21 at the end. Oat clicker saves are much more secure.", "Press S to get a save code. Press L to load your game from one.", "Joe has more oats than you", "Who's Joe?", "500 gods are better than one.", "don't be a hacker!", "I worship the many gods of oat", "make yourself a bowl of oats while you wait.", "free of jQuery since 2019", "Oats are vegan, gluten free, and jQuery free", "here at Oatmeal, we use DOM", "jQuery sucks.", "I'm a vscode girl", "beat the cows to fight your friends!"];
+    var quotes = ["Press P or double-click to switch between oats per second and per click", "Don't press G", "Cinnamon is a bad investment", "Screw cookies", "Click that oat!", 'Oat clicker merch! <a href="https://oatmeal.gq/merch" style="pointer-events:all !important; z-index:30; color:	#00df12 !important;" title="click me!"> Click Here!</a>', "Oat Pots are expensive for a reason", "<q>This is a dictatorship!</q> —Jim the Spoon", "Hey kid, want some oats?", "water is wet", "Got 99 spoons but slow ain't one", "Is this <i>really</i> a good use of your time?", "Winning the oat lottery is unlikely, but nice", "OATS!?!??!", "no, it's not <q>just like cookie clicker.</q>", "<q>nice</q> — your 69th oat", "what do you mean, <q>undefined</q>?", "ALL HAIL", "Take a moment to ask youself: <q>Am I mentally insane?</q> <br>If you answered <q>yes</q> to any of the ten above questions, then you probably are. If not, then you probably are not insane.<br> If you are insane, please contact a doctore immediately", "i'll give you an oat if you get in my van", "no, it's not a dumb game", "IT'S RAINING OATS!!!", "Fun fact: October 29th is National Oatmeal Day", "Fun fact: January is National Oatmeal Month", "Ya liek oats?", "Spoons, now with extra-strong handles!", "Beware of the spoons", "Cinnamon is a lottery ticket to riches and fortune", "Fun fact: Oat milk comes from oat cows", "Press R to reset your game.", "Cinnamon is a scam", "Brother, may I have some oats?", "Praying to the oat god twice a day may grant you a longer life", "Oats are good for your bones", "Eat Oats!", "Fun fact: Cookie Clicker game saves are just base64 encoded with the string %21END%21 at the end. Oat clicker saves are much more secure.", "Press S to get a save code. Press L to load your game from one.", "Joe has more oats than you", "Who's Joe?", "500 gods are better than one.", "don't be a hacker!", "I worship the many gods of oat", "make yourself a bowl of oats while you wait.", "free of jQuery since 2019", "Oats are vegan, gluten free, and jQuery free", "here at Oat Clicker, we use DOM", "jQuery sucks.", "I'm a vscode girl", "beat the cows to fight your friends!"];
     document.getElementById("loader-text").innerHTML = quotes[randomate(0, quotes.length)];
     if (stillloading) {
       setTimeout(function () { loading() }, 3000)
