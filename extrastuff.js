@@ -43,7 +43,7 @@ function spoon() {
             }
         }
         else {
-            for (var i = 0; i <= spoons; i += 3) {
+            for (var i = 0; i < spoons; i += 3) {
                 oat_clicked_by_boost(Number(spoon_addition) * 3);
             }
         }
@@ -55,17 +55,17 @@ function cow() {
     setTimeout(function () {
         var thinggg = 0;
         if (ops <= 50) {
-            for (var i = 0; i <= cows; i++) {
+            for (var i = 0; i < cows; i++) {
                 oat_clicked_by_boost(cow_addition);
             }
         }
         else if (ops <= 50000) {
-            for (var i = 0; i <= cows; i += 3) {
+            for (var i = 0; i < cows; i += 3) {
                 oat_clicked_by_boost(cow_addition * 3);
             }
         }
         else {
-            for (var i = 0; i <= cows; i += 10) {
+            for (var i = 0; i < cows; i += 10) {
                 oat_clicked_by_boost(cow_addition * 10);
             }
         }
@@ -85,12 +85,12 @@ function granary() {
             }
         }
         else if (ops <= 90000) {
-            for (var i = 0; i <= granarys; i += 10) {
+            for (var i = 0; i < granarys; i += 10) {
                 oat_clicked_by_boost(50)
             }
         }
         else {
-            for (var i = 0; i <= granarys; i += 100) {
+            for (var i = 0; i < granarys; i += 100) {
                 oat_clicked_by_boost(500)
             }
         }
@@ -146,6 +146,8 @@ function cinnamon() {
                         }
                     }
                 }
+                
+                console.log("cinnamon")
                 achieve("", "you won the cinnamon lottery!", "BIG WIN!");
                 updatecount();
             }

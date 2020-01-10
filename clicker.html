@@ -26,7 +26,7 @@
 <!-- *phew* meta tags are over! -->
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js" rel="preload"></script>
 <script src="//cdn.rawgit.com/erosson/swarm-numberformat/v0.1.0/dist/swarm-numberformat.min.js" rel="preload"></script>
-<script src="extrastuff.js" rel="preload"></script>
+<script src="extrastuff.js" rel="preload" defer="defer"></script>
 <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.27.2.min.js" rel="preload"></script>
 <script src="https://madrobby.github.io/keymaster/keymaster.js" rel="preload"></script>
 <link href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
   var firsttimeoatnog = true;
   var firsttimegold = true;
   var ads = true;
-  var version = "just some normAuGy5t8^69anVzdCBzb21lIG5vcm1BdUd5NXQ4XjY5al updates.";
+  var version = "stuff&stoof";
   var achevs = "0";
   var clicksound = null;
   let root = document.documentElement;
@@ -78,7 +78,7 @@
   var oatslost = 0;
   var fighting = false;
   var addition_multiplier = 1;
-  var boosters = ["spoon", "cow", "bowl", "pot", "moo", "oatnog", "temple", "granary", "polytheism", "cinnamon", "gold","bs"];
+  var boosters = ["spoon", "cow", "bowl", "pot", "moo", "oatnog", "temple", "granary", "polytheism", "cinnamon", "gold", "bs"];
   var minjection = new Date().getMinutes();
   if (minjection >= 55) {
     minjection = 0;
@@ -172,6 +172,7 @@
         setTimeout(function () { document.getElementById(idd).remove(); }, 1450);
         if (m.message.subtraction != 0 && m.message.subtraction != null && typeof (m.message.subtraction) == "number") {
           oat_count -= m.message.subtraction;
+          
           oatslost += m.message.subtraction;
         }
       }
@@ -250,7 +251,7 @@
     }, 15000);
   }
   function updatecount() {
-    ops = ((spoons * spoon_addition)/10)+(cows*cow_addition/2)+(granarys*5/2)+(temples*god_count*15/2);
+    ops = ((spoons * spoon_addition) / 10) + (cows * cow_addition / 2) + (granarys * 5 / 2) + (temples * god_count * 15 / 2);
     if (pso) {
       if (ops > 999999) {
         document.getElementById("ops").innerHTML = "Per second: " + numberformat.formatShort(ops, { sigfigs: 4 });
@@ -432,10 +433,10 @@
       imagE.src = fall_sprite;
       imagE.className = "falling-oat";
       imagE.id = idd;
-      if(window.innerWidth >= 950){
-      imagE.style = "left: " + randomate(5, 410) + "px; top: " + randomate(-50, 80) + "px;";
+      if (window.innerWidth >= 950) {
+        imagE.style = "left: " + randomate(5, 410) + "px; top: " + randomate(-50, 80) + "px;";
       }
-      else{
+      else {
         imagE.style = "left: " + randomate(5, window.innerWidth - 80) + "px; top: " + randomate(-50, 80) + "px;";
       }
       document.getElementById('falling-oats').appendChild(imagE);
@@ -449,12 +450,16 @@
       var a = new Audio(clicksound);
       a.play()
     }
+    if (oat_count - addition * addition_multiplier == shouldbe) {
+      
+    }
     updatecount();
     oat_fall();
   }
   function oat_clicked_by_boost(adishin) {
     oat_count += Number(adishin);
     oat_count = roundate(Number(oat_count));
+    
     updatecount();
     setTimeout(function () {
       oat_fall();
@@ -477,10 +482,10 @@
     }
   }
   function createsave() {
-    var save = {oats: oat_count, addition:  addition, gold_price: document.getElementById('gold_prices').getAttribute('price') , addition_multiplier:  addition_multiplier  , achevs:   achevs  , bowls:  bowls  , cinnamons:  cinnamons   ,spoons:  spoons   , pots:  pots   , cows:  cows   , granarys:  granarys   , username:  username    ,temples:  temples    , god_count:  god_count   , spoon_addition:  spoon_addition, cow_addition:  cow_addition   , oatnogs:  oatnogs   ,bowl_price:  Number(document.getElementById('bowl_prices').getAttribute('price')),pot_price:  Number(document.getElementById('pot_prices').getAttribute('price')), cow_price:  Number(document.getElementById('cow_prices').getAttribute('price')), granary_price:  Number(document.getElementById('granary_prices').getAttribute('price')), spoon_price:  Number(document.getElementById('spoon_prices').getAttribute('price')), polytheism_price:  Number(document.getElementById('polytheism_prices').getAttribute('price')),bs_price:  Number(document.getElementById('bs_prices').getAttribute('price')), temple_price:  Number(document.getElementById('temple_prices').getAttribute('price')),cinnamon_price:  Number(document.getElementById('cinnamon_prices').getAttribute('price'))};
+    var save = { oats: oat_count, addition: addition, gold_price: document.getElementById('gold_prices').getAttribute('price'), addition_multiplier: addition_multiplier, achevs: achevs, bowls: bowls, cinnamons: cinnamons, spoons: spoons, pots: pots, cows: cows, granarys: granarys, username: username, temples: temples, god_count: god_count, spoon_addition: spoon_addition, cow_addition: cow_addition, oatnogs: oatnogs, bowl_price: Number(document.getElementById('bowl_prices').getAttribute('price')), pot_price: Number(document.getElementById('pot_prices').getAttribute('price')), cow_price: Number(document.getElementById('cow_prices').getAttribute('price')), granary_price: Number(document.getElementById('granary_prices').getAttribute('price')), spoon_price: Number(document.getElementById('spoon_prices').getAttribute('price')), polytheism_price: Number(document.getElementById('polytheism_prices').getAttribute('price')), bs_price: Number(document.getElementById('bs_prices').getAttribute('price')), temple_price: Number(document.getElementById('temple_prices').getAttribute('price')), cinnamon_price: Number(document.getElementById('cinnamon_prices').getAttribute('price')) };
     save = JSON.stringify(save);
     save = window.btoa(save);
-    save = save +"-oat-clicker-save";
+    save = save + "-oat-clicker-save";
     save = window.btoa(save);
     return save;
   }
@@ -535,14 +540,14 @@
       if (save.granarys != null) {
         granarys = save.granarys;
         document.getElementById("granary_prices").innerHTML = numberformat.format(Number(save.granary_price), { sigfigs: 4 });
-        Cookies.set("granary_price",save.granary_price,{expires:100000})
+        Cookies.set("granary_price", save.granary_price, { expires: 100000 })
         Cookies.set("granarys", granarys, { expires: 1000000 });
         temples = save.temples
-        Cookies.set("temple_price",save.temple_price,{expires:100000});
+        Cookies.set("temple_price", save.temple_price, { expires: 100000 });
         document.getElementById("temple_prices").setAttribute('price', save.temple_price);
         Cookies.set("temples", temples, { expires: 1000000 });
         god_count = save.god_count
-        Cookies.set("polytheism_price",save.polytheism_price,{expires:100000});
+        Cookies.set("polytheism_price", save.polytheism_price, { expires: 100000 });
         Cookies.set("god_count", god_count, { expires: 1000000 });
       }
       else {
@@ -616,7 +621,9 @@
           achevs = Cookies.get("achievements");
           if ((oatnogs != 0 || achevs.includes("oatnog_unlocked")) && new Date().getMonth() == 11) {
             firsttimeoatnog = false;
-            oatnog();
+            if (oatnogs != 0) {
+              oatnog();
+            }
           }
           username = Cookies.get("username");
           if (username != null && username != "") {
@@ -663,7 +670,9 @@
       achevs = Cookies.get("achievements");
       if (cows != 0 || achevs.includes("cow_unlocked")) {
         firsttimecow = false;
-        cow();
+        if (cows != 0) {
+          cow();
+        }
       }
       if (oat_count >= 230 || cows > 0) {
         document.getElementById("cow").style.display = "block";
@@ -703,7 +712,9 @@
       }
       if (granarys != 0 || achevs.includes("granary_unlocked")) {
         firsttimegranary = false;
-        granary();
+        if (granarys != 0) {
+          granary();
+        }
       }
       if (oat_count >= 500 || granarys > 0) {
         document.getElementById("granary").style.display = "block";
@@ -732,7 +743,9 @@
       }
       if (temples != 0 || achevs.includes("temple_unlocked")) {
         firsttimetemple = false;
-        temple();
+        if (temples != 0) {
+          temple();
+        }
       }
       if (oat_count >= 500 || temples > 0) {
         document.getElementById("temple").style.display = "block";
@@ -796,21 +809,23 @@
         var lss = Number(Cookies.get("lastsave"));
         lss = Date.now() - lss;
         lss = Math.round(lss / 1000);
-        ops = ((spoons * spoon_addition)/10)+(cows*cow_addition/2)+(granarys*5/2)+(temples*god_count*15/2);
+        ops = ((spoons * spoon_addition) / 10) + (cows * cow_addition / 2) + (granarys * 5 / 2) + (temples * god_count * 15 / 2);
         if (lss / 60 >= 1 && ops >= 0.3) {
           oat_count += lss * ops / 3;
+          
           achieve("", "You gained " + numberformat.formatShort(lss * ops / 3) + " oats.", "While you were gone...");
         }
       }
     }
     else {
-      var normalcooks = [{name:"bowl_price", value:100},{name:"pot_price", value:1500},{name:"cows",value:0},{name:"cow_price",value:230},{name:"granarys", value:0},{name:"granary_price", value:700},{name:"temples",value:0},{name:"temple_price",value:5000},{name:"god_count", value:1},{name:"polytheism_price",value:6000},{name:"bs_price", value:200},{name:"spoon_price", value:50},{name:"cinnamon_price", value:400},{name:"oat_count", value:0},{name:'spoons',value:0},{name:'bowls',value:0},{name:'pots',value:0},{name:"cinnamons",value:0},{name:'achievements',value:0},{name:"addition",value:1},{name:"addition_multiplier",value:1},{name:"spoon_addition",value:1},{name:"username",value:""},{name:"cow_addition",value:1},{name:"oatnogs",value:0}];
-      for(var i=0; i < normalcooks.length; i++){
+      var normalcooks = [{ name: "bowl_price", value: 100 }, { name: "pot_price", value: 1500 }, { name: "cows", value: 0 }, { name: "cow_price", value: 230 }, { name: "granarys", value: 0 }, { name: "granary_price", value: 700 }, { name: "temples", value: 0 }, { name: "temple_price", value: 5000 }, { name: "god_count", value: 1 }, { name: "polytheism_price", value: 6000 }, { name: "bs_price", value: 200 }, { name: "spoon_price", value: 50 }, { name: "cinnamon_price", value: 400 }, { name: "oat_count", value: 0 }, { name: 'spoons', value: 0 }, { name: 'bowls', value: 0 }, { name: 'pots', value: 0 }, { name: "cinnamons", value: 0 }, { name: 'achievements', value: 0 }, { name: "addition", value: 1 }, { name: "addition_multiplier", value: 1 }, { name: "spoon_addition", value: 1 }, { name: "username", value: "" }, { name: "cow_addition", value: 1 }, { name: "oatnogs", value: 0 }];
+      for (var i = 0; i < normalcooks.length; i++) {
         Cookies.set(normalcooks[i].name, normalcooks[i].value, {
-        expires: 1000000
-      });
+          expires: 1000000
+        });
       }
     }
+    
     document.getElementById("cow").style.display = "none";
     document.getElementById("granary").style.display = "none";
     document.getElementById("temple").style.display = "none";
@@ -820,7 +835,6 @@
     setTimeout(function () {
       document.getElementById("loading").classList.add("hidden");
     }, 600);
-
     stillloading = false;
     setTimeout(function () { checkupdates() }, 720000);
   }
@@ -834,6 +848,7 @@
           expires: 1000000
         });
         oat_count = oat_count - Number(document.getElementById("bowl_prices").getAttribute("price"));
+        
         updatecount();
       }
       else {
@@ -847,6 +862,7 @@
           addition = addition + 1;
         }
         oat_count = oat_count - Number(document.getElementById("bowl_prices").getAttribute("price"));
+        
         document.getElementById("bowl_prices").innerHTML = "" + numberformat.format(roundate(Number(document.getElementById("bowl_prices").getAttribute("price")) * 1.15), { sigfigs: 4 });
         document.getElementById("bowl_prices").setAttribute("price", roundate(Number(document.getElementById("bowl_prices").getAttribute("price")) * 1.15));
         Cookies.set('addition', addition, {
@@ -874,6 +890,7 @@
           expires: 1000000
         });
         oat_count = oat_count - Number(document.getElementById("pot_prices").getAttribute('price'));
+        
         updatecount();
       }
       else {
@@ -886,6 +903,7 @@
           addition = addition + 5;
         }
         oat_count = oat_count - Number(document.getElementById("pot_prices").getAttribute("price"));
+        
         document.getElementById("pot_prices").innerHTML = "" + numberformat.format(roundate(Number(document.getElementById("pot_prices").getAttribute("price")) * 5.34), { sigfigs: 4 });
 
         document.getElementById("pot_prices").setAttribute("price", roundate(Number(document.getElementById("pot_prices").getAttribute("price")) * 5.34));
@@ -911,6 +929,7 @@
         expires: 1000000
       });
       oat_count = oat_count - Number(document.getElementById("bs_prices").getAttribute('price'));
+      
       document.getElementById("bs_prices").innerHTML = "" + numberformat.format(roundate(Number(document.getElementById("bs_prices").getAttribute("price")) * 2.33), { sigfigs: 4 });
       document.getElementById("bs_prices").setAttribute("price", roundate(Number(document.getElementById("bs_prices").getAttribute("price")) * 2.33))
 
@@ -930,11 +949,13 @@
           expires: 1000000
         });
         oat_count = oat_count - Number(document.getElementById("spoon_prices").getAttribute('price'));
+        
         updatecount();
       }
       else {
         spoons += 1;
         oat_count = oat_count - Number(document.getElementById("spoon_prices").getAttribute('price'));
+        
         document.getElementById("spoon_prices").innerHTML = "" + numberformat.format(roundate(Number(document.getElementById("spoon_prices").getAttribute('price')) * 1.15), { sigfigs: 4 });
         document.getElementById("spoon_prices").setAttribute('price', roundate(Number(document.getElementById("spoon_prices").getAttribute('price')) * 1.15));
         Cookies.set('spoons', spoons, {
@@ -960,11 +981,13 @@
           expires: 1000000
         });
         oat_count = oat_count - Number(document.getElementById("cow_prices").getAttribute('price'));
+        
         updatecount();
       }
       else {
         cows += 1;
         oat_count = oat_count - Number(document.getElementById("cow_prices").getAttribute('price'));
+        
         document.getElementById("cow_prices").innerHTML = "" + numberformat.format(roundate(Number(document.getElementById("cow_prices").getAttribute('price')) * 1.25), { sigfigs: 4 });
         document.getElementById("cow_prices").setAttribute('price', roundate(Number(document.getElementById("cow_prices").getAttribute('price')) * 1.15));
         Cookies.set('cows', cows, {
@@ -987,6 +1010,7 @@
       if (cinnamons == 0) {
         cinnamons = 1;
         oat_count = oat_count - Number(document.getElementById("cinnamon_prices").getAttribute('price'));
+        
         updatecount();
         Cookies.set('cinnamons', cinnamons, {
           expires: 1000000
@@ -995,6 +1019,7 @@
       else {
         cinnamons += 1;
         oat_count = oat_count - Number(document.getElementById("cinnamon_prices").getAttribute('price'));
+        
         document.getElementById("cinnamon_prices").innerHTML = "" + numberformat.format(roundate(Number(document.getElementById("cinnamon_prices").getAttribute('price')) * 1.15), { sigfigs: 4 });
         document.getElementById('cinnamon_prices').setAttribute('price', roundate(Number(document.getElementById("cinnamon_prices").getAttribute('price')) * 1.15))
         Cookies.set('cinnamons', cinnamons, {
@@ -1020,11 +1045,13 @@
           expires: 1000000
         });
         oat_count = oat_count - Number(document.getElementById("granary_prices").getAttribute('price'));
+        
         updatecount();
       }
       else {
         granarys += 1;
         oat_count = oat_count - Number(document.getElementById("granary_prices").getAttribute('price'));
+        
         document.getElementById("granary_prices").innerHTML = "" + numberformat.format(roundate(Number(document.getElementById("granary_prices").getAttribute('price')) * 1.25), { sigfigs: 4 });
         document.getElementById("granary_prices").setAttribute('price', roundate(Number(document.getElementById("granary_prices").getAttribute('price')) * 1.25));
         Cookies.set('granarys', granarys, {
@@ -1051,11 +1078,13 @@
           expires: 1000000
         });
         oat_count = oat_count - Number(document.getElementById("temple_prices").getAttribute('price'));
+        
         updatecount();
       }
       else {
         temples += 1;
         oat_count = oat_count - Number(document.getElementById("temple_prices").getAttribute('price'));
+        
         document.getElementById("temple_prices").innerHTML = "" + numberformat.format(roundate(Number(document.getElementById("temple_prices").getAttribute('price')) * 1.1), { sigfigs: 4 });
         document.getElementById("temple_prices").setAttribute('price', roundate(Number(document.getElementById("temple_prices").getAttribute('price')) * 1.1));
         Cookies.set('temples', temples, {
@@ -1081,6 +1110,7 @@
         expires: 1000000
       });
       oat_count = oat_count - Number(document.getElementById("polytheism_prices").getAttribute('price'));
+      
       document.getElementById("polytheism_prices").innerHTML = "" + numberformat.format(roundate(Number(document.getElementById("polytheism_prices").getAttribute("price")) * 1.13), { sigfigs: 4 });
       document.getElementById("polytheism_prices").setAttribute("price", roundate(Number(document.getElementById("polytheism_prices").getAttribute("price")) * 1.13))
 
@@ -1424,6 +1454,7 @@
   function moo_injection() {
     if (oat_count >= 10000000 && cow_addition < 2 && cow_addition > 0) {
       oat_count -= 10000000;
+      
       cow_addition = 2;
       document.getElementById("moo-things").innerHTML = "enabled";
       document.getElementById("moo-things").classList.remove("not-enough-money");
@@ -1484,6 +1515,7 @@
     if (typeof (addition) == "number") {
       oat_count += addition * addition_multiplier;
       oatsgained += addition * addition_multiplier;
+      
       sendmessage(fightchannel, {
         type: "stuff",
         subtraction: addition * addition_multiplier,
@@ -1520,6 +1552,7 @@
       if (oatnogs == 0) {
         oatnogs = 1;
         oat_count = oat_count - Number(document.getElementById("oatnog_prices").getAttribute('price'));
+        
         updatecount();
         Cookies.set('oatnogs', oatnogs, {
           expires: 1000000
@@ -1528,6 +1561,7 @@
       else {
         oatnogs += 1;
         oat_count = oat_count - Number(document.getElementById("oatnog_prices").getAttribute('price'));
+        
         document.getElementById("oatnog_prices").innerHTML = "" + numberformat.format(roundate(oat_count * 1.2), { sigfigs: 4 });
         document.getElementById('oatnog_prices').setAttribute('price', roundate(oat_count * 1.2))
         Cookies.set('oatnogs', oatnogs, {
@@ -1545,6 +1579,7 @@
   function gold_clicked() {
     if (oat_count >= Number(document.getElementById("gold_prices").getAttribute("price"))) {
       oat_count = oat_count - Number(document.getElementById("gold_prices").getAttribute("price"));
+      
       addition_multiplier++;
       document.getElementById("gold_prices").setAttribute("price", Number(document.getElementById("gold_prices").getAttribute("price")) * 1.15);
       Cookies.set("addition_multiplier", addition_multiplier, { expires: 100000 });
@@ -1800,7 +1835,7 @@
       </table>
       <br><br><br><br>
       <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5dacd166e355a3bd"
-        rel="preload"></script>
+        rel="preload" defer="defer"></script>
   </body>
 
 </html>
