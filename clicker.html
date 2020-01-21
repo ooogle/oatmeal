@@ -46,7 +46,7 @@
   var firsttimeoatnog = true;
   var firsttimegold = true;
   var ads = true;
-  var version = "whooooopzadoo-abiggo bugggggo_d2hvb29vb3B6YWRvby1hYmlnZ28gYnVnZ2dnZ28=";
+  var version = "better multiplayyyyy";
   var achevs = "0";
   var clicksound = null;
   let root = document.documentElement;
@@ -139,6 +139,9 @@
     fighting = true;
     document.getElementById("battle-oat").classList.remove("hidden");
     document.getElementById("opponent-label").innerHTML = u + "'s oat";
+    document.getElementById('countdown').classList.remove("hidden");
+        document.getElementById('countdown').innerHTML="69";
+        startbattlecountdown();
     pubnub.subscribe({
       channels: [c]
     })
@@ -146,7 +149,6 @@
   function handlemsg(m) {
     if (m.channel == "requests") {
       if (m.message.to == username || m.message.to == alusername) {
-
         //show message
         document.getElementById("battle-request").classList.remove('hid-merch-box');
         document.getElementById("battle-request").classList.add('merch-box');
@@ -190,6 +192,9 @@
         oatsgained = 0;
         oatslost = 0;
         fighting = true;
+        document.getElementById('countdown').classList.remove("hidden");
+        document.getElementById('countdown').innerHTML="69";
+        startbattlecountdown();
         document.getElementById("fightchoose").classList.add("hidden");
         document.getElementById("battle-oat").classList.remove("hidden");
       }
@@ -205,6 +210,9 @@
       }
       else if (m.message.type == "end") {
         document.getElementById("battle-oat").classList.add("hidden");
+        document.getElementById("fightchoose").classList.add("hidden");
+        document.getElementById("battle-oat").classList.add("hidden");
+       document.getElementById('countdown').classList.add("hidden")
         pubnub.unsubscribe({
           channels: [fightchannel]
         });
@@ -219,6 +227,24 @@
         }
         fighting = false;
       }
+    }
+  }
+  function startbattlecountdown(){
+    if(fighting){
+    setTimeout(function(){
+      if(Number(document.getElementById("countdown").innerHTML) > 10){
+      document.getElementById("countdown").innerHTML=Number(document.getElementById("countdown").innerHTML)-1;
+      document.getElementById("countdown").classList.remove("not-enough-money");
+      }
+      else{
+        document.getElementById("countdown").innerHTML="0"+String(Number(document.getElementById("countdown").innerHTML)-1);
+        document.getElementById("countdown").classList.add("not-enough-money");
+      }
+      if(Number(document.getElementById("countdown").innerHTML)==0){
+        fightend();
+      }
+      startbattlecountdown();
+    }, 1000);
     }
   }
   function checkupdates() {
@@ -296,11 +322,9 @@
     }
     if ((username != null && username != "") && fighting == false) {
       document.getElementById("fightbutton").classList.remove("hidden");
-      document.getElementById("e-fightbutton").classList.add("hidden");
     }
     else if (username != null && username != "") {
       document.getElementById("fightbutton").classList.add("hidden");
-      document.getElementById("e-fightbutton").classList.remove("hidden");
     }
     document.getElementById("oats").innerHTML = "Oats: " + numberformat.format(Math.round(oat_count), { sigfigs: 4 }).replace(" thousand", "k");
     document.getElementById("spoon-things").innerHTML = "Owned: " + numberformat.format(spoons, { sigfigs: 4 });
@@ -437,7 +461,7 @@
         imagE.style = "left: " + randomate(5, 410) + "px; top: " + randomate(-50, 80) + "px;";
       }
       else {
-        imagE.style = "left: " + randomate(5, window.innerWidth - 80) + "px; top: " + randomate(-50, 80) + "px;";
+        imagE.style = "left: " + randomate(5, window.innerWidth - 8) + "px; top: " + randomate(-50, 80) + "px;";
       }
       document.getElementById('falling-oats').appendChild(imagE);
       setTimeout(function () { document.getElementById(idd).remove(); }, 7900);
@@ -1543,6 +1567,7 @@
     fighting = false;
     document.getElementById("fightchoose").classList.add("hidden");
     document.getElementById("battle-oat").classList.add("hidden");
+    document.getElementById('countdown').classList.add("hidden");
   }
   function oatnog_clicked() {
     if (oat_count >= Number(document.getElementById("oatnog_prices").getAttribute('price'))) {
@@ -1682,8 +1707,7 @@
       </div>
       <div class="hidden booster fightbutton" onclick="fightshow()" id="fightbutton"><span
           class="booster-title">Battle!</span></div>
-      <div class="hidden booster fightbutton" onclick="fightend()" id="e-fightbutton"><span class="booster-title">End
-          Battle</span></div>
+      <span id="countdown" class="scores center hidden">69</span>
       <table style="width:100%" draggable="false">
         <tr draggable="false">
           <th draggable="false" id="main-thing">
