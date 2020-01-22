@@ -64,9 +64,14 @@ function cow() {
                 oat_clicked_by_boost(cow_addition * 3);
             }
         }
-        else {
+        else if(ops <= 100000){
             for (var i = 0; i < cows; i += 10) {
                 oat_clicked_by_boost(cow_addition * 10);
+            }
+        }
+        else {
+            for (var i = 0; i < cows; i += 1000) {
+                oat_clicked_by_boost(cow_addition * 1000);
             }
         }
         cow();
@@ -89,9 +94,14 @@ function granary() {
                 oat_clicked_by_boost(50)
             }
         }
+        else if(ops <= 1000000){
+            for (var i = 0; i < granarys; i += 1000) {
+                oat_clicked_by_boost(5000)
+            }
+        }
         else {
-            for (var i = 0; i < granarys; i += 100) {
-                oat_clicked_by_boost(500)
+            for (var i = 0; i < granarys; i += 100000) {
+                oat_clicked_by_boost(500000)
             }
         }
         granary();
@@ -124,9 +134,19 @@ function temple() {
                 oat_clicked_by_boost(god_count * 15 * 500);
             }
         }
-        else {
+        else if(ops <= 500000){
             for (var i = 0; i < temples; i += 1000) {
                 oat_clicked_by_boost(god_count * 15 * 1000);
+            }
+        }
+        else if(ops <= 1000000){
+            for (var i = 0; i < temples; i += 10000) {
+                oat_clicked_by_boost(god_count * 15 * 10000);
+            }
+        }
+        else {
+            for (var i = 0; i < temples; i += 100000) {
+                oat_clicked_by_boost(god_count * 15 * 100000);
             }
         }
         temple();

@@ -4,6 +4,8 @@
     --height: 1500%;
     --player-location: 300px;
     --enemy-location: 400px;
+    --boost-bg: #0068df;
+    --boost-bg-h: #0276fc;
   }
   #countdown{
     font-size: 80px;
@@ -341,6 +343,10 @@
     cursor: pointer;
     position: fixed;
     z-index: 30;
+    transition: 0.5s ease;
+  }
+  .fightbutton:hover{
+    transform: scale(1.1);
   }
 #choose-name{
   padding-top: 15%;
@@ -580,12 +586,12 @@
     margin-top: 20px;
     border-color: #00008b;
     border-style: solid;
-    background: #0068df;
+    background: var(--boost-bg);
     text-align: left;
     transition: 0.15s;
   }
   .booster:hover{
-    background: #0276fc;
+    background: var(--boost-bg-h)
   }
   .booster:active {
     transform: scale(0.9);
@@ -748,64 +754,64 @@
   pointer-events: none;
  }
 #spoon,#spoon:hover{
-  background-image: url(https://oatmeal.gq/sprites/spoon.png) !important;
+  background: url(https://oatmeal.gq/sprites/spoon.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 0% 100% !important;
 }
 #bowl,#bowl:hover{
-  background-image: url(https://oatmeal.gq/sprites/oat_bowl.png) !important;
+  background: url(https://oatmeal.gq/sprites/oat_bowl.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 0% 100% !important;
 }
 #pot,#pot:hover{
-  background-image: url(https://oatmeal.gq/sprites/oat_pot.png) !important;
+  background: url(https://oatmeal.gq/sprites/oat_pot.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 0% 100% !important; 
 }
 #cow,#cow:hover{
-  background-image: url(https://oatmeal.gq/sprites/oat_cow.png) !important;
+  background: url(https://oatmeal.gq/sprites/oat_cow.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 0% 100% !important; 
 }
 #bs,#bs:hover{
-  background-image: url(https://oatmeal.gq/sprites/big-spoon.png) !important;
+  background: url(https://oatmeal.gq/sprites/big-spoon.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 0% 75% !important;
   background-size: 85px !important;
 }
 #cinnamon,#cinnamon:hover{
-  background-image: url(https://oatmeal.gq/sprites/cinnamon.png) !important;
+  background: url(https://oatmeal.gq/sprites/cinnamon.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 0% 60% !important;
 }
 #granary,#granary:hover{
-  background-image: url(https://oatmeal.gq/sprites/granery.png) !important;
+  background: url(https://oatmeal.gq/sprites/granery.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 0% 20% !important;
 }
 #temple,#temple:hover{
-  background-image: url(https://oatmeal.gq/sprites/temple.png) !important;
+  background: url(https://oatmeal.gq/sprites/temple.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 0% 20% !important;
 }
 #polytheism,#polytheism:hover{
-  background-image: url(https://oatmeal.gq/sprites/polytheism.png) !important;
+  background: url(https://oatmeal.gq/sprites/polytheism.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 0% 20% !important;
 }
 #oatnog,#oatnog:hover{
-  background-image: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/oatnog.png) !important;
+  background: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/oatnog.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 0% 30% !important;
 }
 #gold,#gold:hover{
-  background-image: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/gold_pots_bowls.png) !important;
+  background: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/gold_pots_bowls.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 10% 30% !important;
 }
 .arrow_box {
 	position: relative;
-	background: #0068df;
+	background: var(--boost-bg);
 	border: 4px solid #00008b;
   height:125px;
   background-image: url(https://oatmeal.gq/sprites/merch.png);
@@ -821,7 +827,7 @@
 }
 .arrow_box1 {
 	position: relative;
-	background: #0068df;
+	background:var(--boost-bg);
 	border: 4px solid #00008b;
   background-repeat: no-repeat;
   background-position: 10% 20px;
