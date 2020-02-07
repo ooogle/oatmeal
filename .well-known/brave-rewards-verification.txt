@@ -1,4 +1,0 @@
-This is a Brave Rewards publisher verification file.
-
-Domain: oatmeal.gq
-Token: f8ee6616b894f280dbfe4db5dada80cf2fd2bbc688d2aace3b3aa3bf4aa6b0b0
