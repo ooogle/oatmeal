@@ -6,6 +6,8 @@
     --enemy-location: 400px;
     --boost-bg: #0068df;
     --boost-bg-h: #0276fc;
+    --booster-border:  #00008b solid;
+    --boost-bg-s: 100% 100%;
   }
   #countdown{
     font-size: 80px;
@@ -145,12 +147,6 @@
     }
     .reset{
       display: none;
-    }
-    #moo,#moo:hover{
-      background-image: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/moo_injection.png)!important;
-      background-repeat: no-repeat !important;
-      background-position: 5% 20% !important;
-      background-size: 55%  !important;
     }
     #ohno{
       position: absolute;
@@ -432,12 +428,6 @@
       -webkit-transform: translateZ(1);
       overflow-x: hidden !important;
     }
-    #moo,#moo:hover{
-      background-image: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/moo_injection.png)!important;
-      background-repeat: no-repeat !important;
-      background-position: 5% 20% !important;
-      background-size: calc(55% - 8em) !important;
-    }
     #ohno{
       position: absolute;
       z-index: 35;
@@ -584,14 +574,14 @@
 
   .booster {
     margin-top: 20px;
-    border-color: #00008b;
-    border-style: solid;
+    border:var(--booster-border);
     background: var(--boost-bg);
     text-align: left;
     transition: 0.15s;
+    cursor: pointer;
   }
   .booster:hover{
-    background: var(--boost-bg-h)
+    background: var(--boost-bg-h);
   }
   .booster:active {
     transform: scale(0.9);
@@ -686,46 +676,6 @@
     width: 0px !important;
     -webkit-appearance: none;
    }
-  @keyframes gold {
-    0% {
-      transform: translate(80%, 0%);
-      opacity: 0;
-    }
-
-    10% {
-      transform: translate(60%, 800%);
-      opacity: 1;
-    }
-
-    25% {
-      transform: translate(50%, 00%);
-    }
-
-    35% {
-      transform: translate(40%, 900%);
-    }
-
-    50% {
-      transform: translate(30%, 00%);
-
-    }
-
-    70% {
-      transform: translate(20%, 700%);
-
-    }
-
-    80% {
-      transform: translate(10%, 00%);
-      opacity: 1;
-    }
-
-    100% {
-      transform: translate(0%, 0%);
-      opacity: 0;
-    }
-  }
-
   @keyframes falling-oat{
     0% {
       transform: translate(0%, -80%);
@@ -753,60 +703,149 @@
   -webkit-filter: blur(5px);
   pointer-events: none;
  }
-#spoon,#spoon:hover{
+#spoon{
   background: url(https://oatmeal.gq/sprites/spoon.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 0% 100% !important;
+  background-size: 90px, var(--boost-bg-s) !important;
 }
-#bowl,#bowl:hover{
+#spoon:hover{
+  background: url(https://oatmeal.gq/sprites/spoon.png), var(--boost-bg-h) !important;
+  background-repeat: no-repeat !important;
+  background-position: 0% 100% !important;
+  background-size: 90px, var(--boost-bg-s) !important;
+}
+#bowl{
   background: url(https://oatmeal.gq/sprites/oat_bowl.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 0% 100% !important;
+  background-size: auto auto, var(--boost-bg-s) !important;
 }
-#pot,#pot:hover{
+#bowl:hover{
+  background: url(https://oatmeal.gq/sprites/oat_bowl.png), var(--boost-bg-h) !important;
+  background-repeat: no-repeat !important;
+  background-position: 0% 100% !important;
+  background-size: auto auto, var(--boost-bg-s) !important;
+}
+#pot{
   background: url(https://oatmeal.gq/sprites/oat_pot.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 0% 100% !important; 
+  background-size: 110px, var(--boost-bg-s) !important;
 }
-#cow,#cow:hover{
+#pot:hover{
+  background: url(https://oatmeal.gq/sprites/oat_pot.png), var(--boost-bg-h) !important;
+  background-repeat: no-repeat !important;
+  background-position: 0% 100% !important; 
+  background-size: 110px, var(--boost-bg-s) !important;
+}
+#cow{
   background: url(https://oatmeal.gq/sprites/oat_cow.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 0% 100% !important; 
+  background-size: 150px, var(--boost-bg-s) !important;
 }
-#bs,#bs:hover{
+#cow:hover{
+  background: url(https://oatmeal.gq/sprites/oat_cow.png), var(--boost-bg-h) !important;
+  background-repeat: no-repeat !important;
+  background-position: 0% 100% !important; 
+  background-size: 150px, var(--boost-bg-s) !important;
+}
+#bs{
   background: url(https://oatmeal.gq/sprites/big-spoon.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 0% 75% !important;
-  background-size: 85px !important;
+  background-size: 85px, var(--boost-bg-s) !important;
 }
-#cinnamon,#cinnamon:hover{
+#bs:hover{
+  background: url(https://oatmeal.gq/sprites/big-spoon.png), var(--boost-bg-h) !important;
+  background-repeat: no-repeat !important;
+  background-position: 0% 75% !important;
+  background-size: 85px, var(--boost-bg-s) !important;
+}
+#cinnamon{
   background: url(https://oatmeal.gq/sprites/cinnamon.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 0% 60% !important;
+  background-size: 100px, var(--boost-bg-s) !important;
 }
-#granary,#granary:hover{
+#cinnamon:hover{
+  background: url(https://oatmeal.gq/sprites/cinnamon.png), var(--boost-bg-h) !important;
+  background-repeat: no-repeat !important;
+  background-position: 0% 60% !important;
+  background-size: 100px, var(--boost-bg-s) !important;
+}
+#granary{
   background: url(https://oatmeal.gq/sprites/granery.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 0% 20% !important;
+  background-size: 100px, var(--boost-bg-s) !important;
 }
-#temple,#temple:hover{
+#granary:hover{
+  background: url(https://oatmeal.gq/sprites/granery.png), var(--boost-bg-h) !important;
+  background-repeat: no-repeat !important;
+  background-position: 0% 20% !important;
+  background-size: 100px, var(--boost-bg-s) !important;
+}
+#temple{
   background: url(https://oatmeal.gq/sprites/temple.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 0% 20% !important;
+  background-size: 130px, var(--boost-bg-s) !important;
 }
-#polytheism,#polytheism:hover{
+#temple:hover{
+    background: url(https://oatmeal.gq/sprites/temple.png), var(--boost-bg-h) !important;
+  background-repeat: no-repeat !important;
+  background-position: 0% 20% !important;
+  background-size: 130px, var(--boost-bg-s) !important;
+}
+#polytheism{
   background: url(https://oatmeal.gq/sprites/polytheism.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 0% 20% !important;
+  background-size: 150px, var(--boost-bg-s) !important;
 }
-#oatnog,#oatnog:hover{
+#polytheism:hover{
+  background: url(https://oatmeal.gq/sprites/polytheism.png), var(--boost-bg-h) !important;
+  background-repeat: no-repeat !important;
+  background-position: 0% 20% !important;
+  background-size: 150px, var(--boost-bg-s) !important;
+}
+#oatnog{
   background: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/oatnog.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
   background-position: 0% 30% !important;
+  background-size: 150px, var(--boost-bg-s) !important;
 }
-#gold,#gold:hover{
+#oatnog:hover{
+  background: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/oatnog.png), var(--boost-bg-h) !important;
+  background-repeat: no-repeat !important;
+  background-position: 0% 30% !important;
+  background-size: 150px, var(--boost-bg-s) !important;
+}
+#gold{
   background: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/gold_pots_bowls.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
+  background-position: 10% 30% !important;
+  background-size: 120px, var(--boost-bg-s) !important;
+
+}
+#gold:hover{
+  background: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/gold_pots_bowls.png), var(--boost-bg-h) !important;
+  background-repeat: no-repeat !important;
+  background-position: 10% 30% !important;
+  background-size: 120px, var(--boost-bg-s) !important;
+}
+#moo{
+  background: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/moo_injection.png), var(--boost-bg) !important;
+  background-repeat: no-repeat !important;
+  background-size: 150px, var(--boost-bg-s) !important;
+  background-position: 10% 30% !important;
+}
+#moo:hover{
+  background: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/moo_injection.png), var(--boost-bg-h) !important;
+  background-repeat: no-repeat !important;
+  background-size: 150px, var(--boost-bg-s)!important;
   background-position: 10% 30% !important;
 }
 .arrow_box {
@@ -1034,5 +1073,32 @@ animation: merch 0.25s;
   }
   100%{
     background-image: url(https://oatmeal.gq/sprites/animations/boss-bullet/bullet-3.png);
+  }
+}
+.cookie{
+  position: fixed;
+  animation: cookie 10s;
+  z-index: 20;
+}
+@keyframes cookie {
+  0%{
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+  }
+  50%{
+    display: none;
+    position:fixed;
+    top: 40%;
+    left:50%;
+  }
+  60%{
+    top: 55%;
+    left: 30%;
+  }
+  100%{
+    top: 99%;
+    left: 80%;
   }
 }
