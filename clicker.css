@@ -15,6 +15,28 @@
     pointer-events: none;
     top: 50px;
   }
+  .popup{
+    position: fixed;
+    right:0;
+    bottom: 75px;
+    z-index: 25;
+    background: rgba(0,0,0,0);
+  }
+  #popup-hover{
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    border: var(--booster-border);
+    display: inline-block;
+    position: fixed;
+    bottom:20px;
+    right:20px;
+    cursor: pointer;
+    background: url(https://oatmeal.gq/sprites/burger.png), var(--boost-bg);
+    background-position:center,center;
+    background-size: 35px, 150% 150%;
+    background-repeat: no-repeat,no-repeat;
+  }
   .background-image {
   background-image: url('https://oatmeal.gq/oats1.jpg');
   background-size: cover;
@@ -82,6 +104,7 @@
 }
 .appear{
   animation: appear 0.4s;
+  pointer-events: none;
 }
 .hidden{
   display: none;
@@ -144,9 +167,6 @@
       width: 600px !important;  
       -webkit-transform: translateZ(1);
       overflow-x: hidden !important;
-    }
-    .reset{
-      display: none;
     }
     #ohno{
       position: absolute;
@@ -706,13 +726,13 @@
 #spoon{
   background: url(https://oatmeal.gq/sprites/spoon.png), var(--boost-bg) !important;
   background-repeat: no-repeat !important;
-  background-position: 0% 100% !important;
+  background-position: 0% 10% !important;
   background-size: 90px, var(--boost-bg-s) !important;
 }
 #spoon:hover{
   background: url(https://oatmeal.gq/sprites/spoon.png), var(--boost-bg-h) !important;
   background-repeat: no-repeat !important;
-  background-position: 0% 100% !important;
+  background-position: 0% 10% !important;
   background-size: 90px, var(--boost-bg-s) !important;
 }
 #bowl{
@@ -850,10 +870,10 @@
 }
 .arrow_box {
 	position: relative;
-	background: var(--boost-bg);
+	background: url(https://oatmeal.gq/sprites/merch.png),var(--boost-bg);
 	border: 4px solid #00008b;
   height:125px;
-  background-image: url(https://oatmeal.gq/sprites/merch.png);
+  background-size: auto, 100% 100%;
   background-repeat: no-repeat;
   background-position: 10% 20px;
   background-size: 100px;

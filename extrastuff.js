@@ -186,7 +186,7 @@ function cinnamon() {
                 updatecount();
             }
         }
-        if(randomate(0, 100) == 10 && oat_count >= 10000000 && ops >= 100000 && !achevs.includes('cookie-clicker')){
+        if(randomate(0, 100) == 10 && oat_count >= 1000000 &&  !achevs.includes('cookie-clicker')){
             cookieclicker();
         }
         cinnamon();
