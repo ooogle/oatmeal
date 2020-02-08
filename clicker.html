@@ -48,7 +48,7 @@
   var firsttimeoatnog = true;
   var firsttimegold = true;
   var ads = true;
-  var version = "new hovermenuthing";
+  var version = "youuuuuseeackkks";
   var achevs = "0";
   var clicksound = null;
   let root = document.documentElement;
@@ -1655,9 +1655,9 @@
   function popupmenu(){
     if(document.getElementById('popup').classList.contains('hidden')){
     document.getElementById('popup').classList.remove("hidden");
-    document.getElementById('popup').classList.add("appear");
+    document.getElementById('popup').classList.add("fadein");
     setTimeout(function(){
-      document.getElementById('popup').classList.remove("appear");
+      document.getElementById('popup').classList.remove("fadein");
       }, 450);
       return true
     }
@@ -1675,6 +1675,32 @@
       hidepopup()
     }
   }
+  function showwhatiacheived(){
+    document.getElementById('myachevs').classList.remove("hidden");
+    document.getElementById('myachevs').classList.add('fadein');
+    setTimeout(function(){
+      document.getElementById('myachevs').classList.remove('fadein');
+    }, 800);
+    achevs = Cookies.get("achievements");
+    document.getElementById('achevol').innerHTML="";
+    var hasnone = true;
+    for(var i=0; i < acks.length; i++){
+      if(achevs.includes(acks[i].id)){
+        document.getElementById('achevol').innerHTML+="<li>"+acks[i].text+"</li>";
+        hasnone = false;
+      }
+    }
+    if(hasnone){
+      document.getElementById('achevol').innerHTML="you have no achievements"
+    }
+  }
+  function hidemyakks(){
+    document.getElementById('myachevs').classList.add('fadeout');
+    setTimeout(function(){
+      document.getElementById('myachevs').classList.remove('fadeout');
+      document.getElementById('myachevs').classList.add("hidden");
+    }, 800);
+  }
 </script>
 <!-- aw man, that was a lot of JavaScript-->
 <div id="loading"><br><br> <span class="scores">Loading...</span>
@@ -1689,6 +1715,9 @@
     src="https://vignette.wikia.nocookie.net/cookieclicker/images/5/5a/PerfectCookie.png/revision/latest/scale-to-width-down/250?cb=20130827014912"
     class="center main-clicker" style="width: 150px !important;">
 </div>
+<div id="myachevs" class="hidden"><div id="hide-akkk" class="booster" onclick="hidemyakks()"></div><div class="center scores"><br><br><br><span class="scores center">Your Achievements</span><ol class="booster-title" id="achevol" style="line-height: 180%;">
+  <li>stuff</li>
+</ol></div></div>
 <!-- multiplayer stuff-->
 <div id="choose-name" class="hidden">
   <div class="center">
@@ -1917,6 +1946,7 @@
 
       </table>
       <div class="popup hidden" id="popup" onmouseleave="hidepopup()">
+        <div class="booster reset" onclick="showwhatiacheived()"><span class="booster-title">View Achievements</span></div>
         <div class="booster reset" onclick="reset()"><span class="booster-title">Reset game</span></div>
         <div class="booster reset" onclick="prompt('COPY THE TEXT IN THE BOX \n here is your save code:',createsave())">
           <span class="booster-title">Save game</span></div>

@@ -138,6 +138,7 @@
 }
 .fadein{
   animation: fadein 0.5s;
+  pointer-events: none;
 }
   body,html {
     -webkit-touch-callout: none;
@@ -345,6 +346,19 @@
     background-position: center;
     background-size: 25px;
     display:none;
+  }
+  #hide-akkk{
+    width:20px;
+    height:20px;
+    z-index:18;
+    position: fixed;
+    left:10%;
+    top: 19px;
+    z-index: 501;
+    background-image:url(https://oatmeal.gq/sprites/x-icon.png);
+    background-attachment: scroll;
+    background-position: center;
+    background-size: 25px;
   }
   .fightbutton{
     width: 80px;
@@ -1012,11 +1026,22 @@ animation: merch 0.25s;
     opacity: 1;
   }
   99%{
-    height: 140px;
+    height: 10em;
   }
   100%{
     height: auto;
   }
+}
+#myachevs{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 500;
+  top:0;
+  left:0;
+  overflow-y: scroll;
+  background: rgba(0,0,0,0.6);
+  user-select: text;
 }
 @keyframes shootah{
   0%{
