@@ -1,100 +1,112 @@
 :root {
-    --x-value:1700%;
-    --z:-9;
-    --height: 1500%;
-    --player-location: 300px;
-    --enemy-location: 400px;
-    --boost-bg: #0068df;
-    --boost-bg-h: #0276fc;
-    --booster-border:  #00008b solid;
-    --boost-bg-s: 100% 100%;
-  }
-  #countdown{
-    font-size: 80px;
-    position: absolute;
-    pointer-events: none;
-    top: 50px;
-  }
-  .popup{
-    position: fixed;
-    right:0;
-    bottom: 75px;
-    z-index: 25;
-    background: rgba(0,0,0,0);
-  }
-  #popup-hover{
-    height: 42px;
-    width: 42px;
-    border-radius: 50%;
-    border: var(--booster-border);
-    display: inline-block;
-    position: fixed;
-    bottom:20px;
-    right:20px;
-    cursor: pointer;
-    background: url(https://oatmeal.gq/sprites/burger.png), var(--boost-bg);
-    background-position:center,center;
-    background-size: 35px, 150% 150%;
-    background-repeat: no-repeat,no-repeat;
-  }
-  .background-image {
+  --x-value: 1700%;
+  --z: -9;
+  --height: 1500%;
+  --player-location: 300px;
+  --enemy-location: 400px;
+  --boost-bg: #0068df;
+  --boost-bg-h: #0276fc;
+  --booster-border: #00008b solid;
+  --boost-bg-s: 100% 100%;
+}
+
+#countdown {
+  font-size: 80px;
+  position: absolute;
+  pointer-events: none;
+  top: 50px;
+}
+
+.popup {
+  position: fixed;
+  right: 0;
+  bottom: 75px;
+  z-index: 25;
+  background: rgba(0, 0, 0, 0);
+}
+
+#update-notes {
+  color: white;
+}
+
+#popup-hover {
+  height: 42px;
+  width: 42px;
+  border-radius: 50%;
+  border: var(--booster-border);
+  display: inline-block;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: url(https://oatmeal.gq/sprites/burger.png), var(--boost-bg);
+  background-position: center, center;
+  background-size: 33px, 150% 150%;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.background-image {
   background-image: url('https://oatmeal.gq/oats1.jpg');
   background-size: cover;
   display: block;
   filter: blur(4px) brightness(85%);
-  -webkit-filter: blur(4px) brightness(85%);;
+  -webkit-filter: blur(4px) brightness(85%);
+  ;
   height: 100%;
   width: 100%;
   left: 0;
-  top:0;
+  top: 0;
   position: fixed;
   right: 0;
   z-index: -10;
   overflow: hidden;
 }
-@keyframes rainbow{
-0%{
-  color:blue;
+
+@keyframes rainbow {
+  0% {
+    color: blue;
+  }
+  10% {
+    color: red;
+  }
+  20% {
+    color: yellow;
+  }
+  30% {
+    color: green;
+  }
+  40% {
+    color: purple;
+  }
+  50% {
+    color: navy;
+  }
+  60% {
+    color: magenta;
+  }
+  70% {
+    color: white;
+  }
+  75% {
+    color: orange;
+  }
+  85% {
+    color: rgb(31, 160, 81);
+  }
+  90% {
+    color: turquoise;
+  }
+  100% {
+    color: teal;
+  }
 }
-10%{
-  color:red;
-}
-20%{
-  color:yellow;
-}
-30%{
-  color:green;
-}
-40%{
-  color:purple;
-}
-50%{
-  color: navy;
-}
-60%{
-  color: magenta;
-}
-70%{
-  color:white;
-}
-75%{
-  color: orange;
-}
-85%{
-  color: rgb(31, 160, 81);
-}
-90%{
-  color: turquoise;
-}
-100%{
-  color:teal;
-}
-}
-.rainbow{
+
+.rainbow {
   animation: rainbow 10s alternate;
   animation-iteration-count: infinite;
 }
-.ohno{
+
+.ohno {
   font-size: 50px;
   pointer-events: none;
   font-family: sans-serif;
@@ -102,14 +114,17 @@
   position: absolute;
   animation: floataway 1.5s;
 }
-.appear{
+
+.appear {
   animation: appear 0.4s;
   pointer-events: none;
 }
-.hidden{
+
+.hidden {
   display: none;
 }
-#gamescores{
+
+#gamescores {
   position: fixed;
   height: 100%;
   width: 100%;
@@ -118,397 +133,417 @@
   z-index: 18;
   top: 0px;
   color: white;
-  left:0px;
+  left: 0px;
   font-family: sans-serif;
   font-weight: lighter;
   pointer-events: all;
 }
-#messages{
+
+#messages {
   position: fixed;
-  width:100%;
+  width: 100%;
   text-align: center;
-  margin-left:auto;
-  margin-right:auto;
-  left:0px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0px;
   color: white;
   font-family: sans-serif;
   font-weight: lighter;
   pointer-events: none;
   z-index: 18;
 }
-.fadein{
+
+.fadein {
   animation: fadein 0.5s;
   pointer-events: none;
 }
-  body,html {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -o-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -ms-overflow-style: none;
-    scrollbar-width: none, -moz-scrollbars-none;
-    transition: 0.5s;
-  }
-  .big-image:active{
-    transform: scale(0.6) !important;
-  }
-  .big-image:hover{
-    transform: scale(1.15);
-  }
-  @media only screen and (min-width: 950px) {
-    .big-image{
-      width: 30%;
-      transition: 0.3s;
-      -webkit-transform: translateZ(0);
-    }
-    #falling-oats{
-      width: 600px !important;  
-      -webkit-transform: translateZ(1);
-      overflow-x: hidden !important;
-    }
-    #ohno{
-      position: absolute;
-      z-index: 35;
-      top:350px;
-      left: 220px;
-    }
-    .fightbutton{
-      left:92%;
-    }
-    #messages{
-      font-size: 50px;
-      padding-top: 150px;
-    }
-    #gamescore{
-      font-size: 100px;
-    }
-    .shooter{
-      padding-top: 40px;
-      position: fixed;
-      z-index: 19;
-      height: 100px;
-      top: var(--player-location);
-    }
-    .en_shooter{
-      padding-top: 40px;
-      position: fixed;
-      z-index: 19;
-      height: 100px;
-      top: var(--enemy-location);
-    }
-    .shooting-co{
-      width: 150px;
-      position: fixed;
-      animation: shootah 0.5s;
-      -webkit-transform: translateZ(0);
-    }
-    #battle-oat{
-      position: fixed;
-      z-index: 30;
-      -webkit-transform: translateZ(0);
-      top:10%;
-      left: 55%;
-      text-align: center;
-      transform: scale(0.9);
-    }
-    .back-shooting-co{
-      width: 150px;
-      position: fixed;
-      width: 128px;
-      height: 72px;
-      padding-top: 30px;
-      background-size: 100%;
-      background-repeat: no-repeat;
-      animation: shootah 1.5s reverse, evilbullet 1s infinite;
-      -webkit-transform: translateZ(0);
-      animation-timing-function: linear;
-    }
-    .player{
-      position: fixed;
-      z-index: 20;
-      width: 250px;
-      height: 125px;
-      pointer-events: none;
-      top: var(--player-location);
-      background-repeat: no-repeat;
-      -webkit-transform: translateZ(0);
-      background-image: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/spaceship.png);
-      background-size:100%;
-    }
-    .enemy{
-      position: fixed;
-      background-size: cover;
-      z-index: 20;
-      width: 220px;
-      height: 120px;
-      pointer-events: none;
-      transition: 0.3s;
-      animation: evilcow 0.55s infinite;
-      -webkit-transform: translateZ(0);
-      top: var(--enemy-location);
-      right: 10px;
-    }
-    html,body{
-      overflow-y: hidden;
-      position: fixed;
-    }
-    .booster-container{
-      bottom:10px;
-      height: 85vh;
-      overflow-x: hidden,  -moz-scrollbars-none;
-      overflow-y: scroll;
-      scrollbar-width: none;
-    }
-    table{
-      position: inherit;
-    }
-    th {
-      padding-left: 20px;
-      padding-right: 20px;
-      word-wrap: normal;
-      overflow-y: hidden, -moz-scrollbars-none;
-      scrollbar-width: none;
 
-    }
-    .falling-oat{
-      position:fixed;
-    }
-    .hid-merch-box{
-      left:630px;
-    }
-    .merch-box{
-      left:630px;
-    }
-    tr,table{
-      top:100px;
-    }
-    #boosterz{
-      width:37%;
-      padding-left: 0px;
-    }
-   
-    .scores {
+body, html {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none, -moz-scrollbars-none;
+  transition: 0.5s;
+}
+
+.big-image:active {
+  transform: scale(0.6) !important;
+}
+
+.big-image:hover {
+  transform: scale(1.15);
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 950px) {
+  .big-image {
+    width: 30%;
+    transition: 0.3s;
+    -webkit-transform: translateZ(0);
+  }
+  #falling-oats {
+    width: 600px !important;
+    -webkit-transform: translateZ(1);
+    overflow-x: hidden !important;
+  }
+  #ohno {
+    position: absolute;
+    z-index: 35;
+    top: 350px;
+    left: 220px;
+  }
+  .fightbutton {
+    left: 92%;
+  }
+  #messages {
+    font-size: 50px;
+    padding-top: 150px;
+  }
+  #gamescore {
+    font-size: 100px;
+  }
+  .shooter {
+    padding-top: 40px;
+    position: fixed;
+    z-index: 19;
+    height: 100px;
+    top: var(--player-location);
+  }
+  .en_shooter {
+    padding-top: 40px;
+    position: fixed;
+    z-index: 19;
+    height: 100px;
+    top: var(--enemy-location);
+  }
+  .shooting-co {
+    width: 150px;
+    position: fixed;
+    animation: shootah 0.5s;
+    -webkit-transform: translateZ(0);
+  }
+  #battle-oat {
+    position: fixed;
+    z-index: 30;
+    -webkit-transform: translateZ(0);
+    top: 10%;
+    left: 55%;
+    text-align: center;
+    transform: scale(0.9);
+  }
+  .back-shooting-co {
+    width: 150px;
+    position: fixed;
+    width: 128px;
+    height: 72px;
+    padding-top: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    animation: shootah 1.5s reverse, evilbullet 1s infinite;
+    -webkit-transform: translateZ(0);
+    animation-timing-function: linear;
+  }
+  .player {
+    position: fixed;
+    z-index: 20;
+    width: 250px;
+    height: 125px;
+    pointer-events: none;
+    top: var(--player-location);
+    background-repeat: no-repeat;
+    -webkit-transform: translateZ(0);
+    background-image: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/spaceship.png);
+    background-size: 100%;
+  }
+  .enemy {
+    position: fixed;
+    background-size: cover;
+    z-index: 20;
+    width: 220px;
+    height: 120px;
+    pointer-events: none;
+    transition: 0.3s;
+    animation: evilcow 0.55s infinite;
+    -webkit-transform: translateZ(0);
+    top: var(--enemy-location);
+    right: 10px;
+  }
+  html, body {
+    overflow-y: hidden;
+    position: fixed;
+  }
+  .booster-container {
+    bottom: 10px;
+    height: 85vh;
+    overflow-x: hidden, -moz-scrollbars-none;
+    overflow-y: scroll;
+    scrollbar-width: none;
+  }
+  table {
+    position: inherit;
+  }
+  th {
+    padding-left: 20px;
+    padding-right: 20px;
+    word-wrap: normal;
+    overflow-y: hidden, -moz-scrollbars-none;
+    scrollbar-width: none;
+  }
+  .falling-oat {
+    position: fixed;
+  }
+  .hid-merch-box {
+    left: 630px;
+  }
+  .merch-box {
+    left: 630px;
+  }
+  tr, table {
+    top: 100px;
+  }
+  #boosterz {
+    width: 37%;
+    padding-left: 0px;
+  }
+  .scores {
     color: white;
     text-shadow: 0px 0px 10px rgba(0, 0, 0, 1), 0px 0px 20px rgba(0, 0, 0, 1), 0px 0px 30px rgba(0, 0, 0, 1), 0px 0px 80px rgba(0, 0, 0, 1);
     font-size: 25px;
     font-family: sans-serif;
     font-weight: lighter;
   }
-  #ads{
-    width:5%;
+  #ads {
+    width: 5%;
   }
-  #booster-box{
+  #booster-box {
     padding-left: 80px;
   }
-  #main-thing{
-    padding-left:110px;
-    padding-right:10px;
+  #main-thing {
+    padding-left: 110px;
+    padding-right: 10px;
   }
-  #oats{
-    font-size:31.5px;
+  #oats {
+    font-size: 31.5px;
   }
-  #gamescores{
+  #gamescores {
     font-size: 100px;
   }
-  }
-  #achievments{
-    overflow-y: scroll, -moz-scrollbars-none;
-    scrollbar-width: none;
-    z-index: 15;
-    pointer-events: none;
-    height: 100%;
-    position: fixed;
-    left:100px;
-  }
-  .slightly-transparent{
-    opacity: 0.9;
-    transform: scale(0.99);
-    pointer-events: none;
-  }
-  .ach{
-    bottom:0% !important;
-    margin-block: 5px !important;
-    z-index: 12 !important;
-  }
-  
-  #x-box{
-    width:20px;
-    height:20px;
-    z-index:18;
-    position: fixed;
-    left:33.3%;
-    top: -19px;
-    background-image:url(https://oatmeal.gq/sprites/x-icon.png);
-    background-attachment: scroll;
-    background-position: center;
-    background-size: 25px;
-    display:none;
-  }
-  #hide-akkk{
-    width:20px;
-    height:20px;
-    z-index:18;
-    position: fixed;
-    left:10%;
-    top: 19px;
-    z-index: 501;
-    background-image:url(https://oatmeal.gq/sprites/x-icon.png);
-    background-attachment: scroll;
-    background-position: center;
-    background-size: 25px;
-  }
-  .fightbutton{
-    width: 80px;
-    cursor: pointer;
-    position: fixed;
-    z-index: 30;
-    transition: 0.5s ease;
-  }
-  .fightbutton:hover{
-    transform: scale(1.1);
-  }
-#choose-name{
+}
+
+#achievments {
+  overflow-y: scroll, -moz-scrollbars-none;
+  scrollbar-width: none;
+  z-index: 15;
+  pointer-events: none;
+  height: 100%;
+  position: fixed;
+  left: 100px;
+}
+
+.slightly-transparent {
+  opacity: 0.9;
+  transform: scale(0.99);
+  pointer-events: none;
+}
+
+.ach {
+  bottom: 0% !important;
+  margin-block: 5px !important;
+  z-index: 12 !important;
+}
+
+#x-box {
+  width: 20px;
+  height: 20px;
+  z-index: 18;
+  position: fixed;
+  left: 33.3%;
+  top: -19px;
+  background-image: url(https://oatmeal.gq/sprites/x-icon.png);
+  background-attachment: scroll;
+  background-position: center;
+  background-size: 25px;
+  display: none;
+}
+
+#hide-akkk {
+  width: 20px;
+  height: 20px;
+  z-index: 18;
+  position: fixed;
+  left: 10%;
+  top: 19px;
+  z-index: 501;
+  background-image: url(https://oatmeal.gq/sprites/x-icon.png);
+  background-attachment: scroll;
+  background-position: center;
+  background-size: 25px;
+}
+
+.fightbutton {
+  width: 80px;
+  cursor: pointer;
+  position: fixed;
+  z-index: 30;
+  transition: 0.5s ease;
+}
+
+.fightbutton:hover {
+  transform: scale(1.1);
+}
+
+#choose-name {
   padding-top: 15%;
   width: 100%;
-  height:100%;
+  height: 100%;
   position: fixed;
   pointer-events: all;
-  color:white;
+  color: white;
   background: rgba(0, 0, 0, 0.6);
-  top:0px;
-  left:0px;
+  top: 0px;
+  left: 0px;
   z-index: 25;
 }
-#fightchoose{
+
+#fightchoose {
   padding-top: 15%;
   width: 100%;
-  height:100%;
+  height: 100%;
   position: fixed;
   pointer-events: all;
-  color:white;
+  color: white;
   background: rgba(0, 0, 0, 0.6);
-  top:0px;
-  left:0px;
+  top: 0px;
+  left: 0px;
   z-index: 25;
 }
-.inputty{
+
+.inputty {
   width: 100%;
-  outline:0;
+  outline: 0;
   height: 30px;
   margin-left: auto;
   margin-right: auto;
-  color:white;
+  color: white;
   font-size: 25px;
   border-width: 0 0 1px;
   transition: 0.3s;
   background: none;
 }
-.center{
+
+.center {
   margin-left: auto;
   margin-right: auto;
-  width:65%;
+  width: 65%;
   text-align: center;
 }
-.pushy{
-  width:40%;
+
+.pushy {
+  width: 40%;
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
   background: #2115c7;
   height: 50px;
   text-align: center;
-  color:white;
+  color: white;
   margin-top: 15px;
   font-family: sans-serif;
   font-weight: lighter;
   border-color: white;
   border-style: solid;
-  font-size:40px;
+  font-size: 40px;
   cursor: pointer;
   transition: 0.2s;
 }
-.pushy:hover{
+
+.pushy:hover {
   transform: scale(1.2);
 }
-.pushy:active{
+
+.pushy:active {
   transform: scale(1.1);
 }
-.inputty:focus{
+
+.inputty:focus {
   border-width: 0 0 3px;
 }
-  @media only screen and (max-width: 949px) {
-    #battle-oat{
-      position: absolute;
-      z-index: 30;
-      top:60%;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-      transform: scale(0.7);
-    }
-    #falling-oats{
-      width: 100% !important;  
-      -webkit-transform: translateZ(1);
-      overflow-x: hidden !important;
-    }
-    #ohno{
-      position: absolute;
-      z-index: 35;
-      top:350px;
-      left: 40%;
-      text-align: center;
-    }
-    .big-image{
-      width: 60%;
-      transition: 0.3s;
-    }
-    #oats{
-    font-size:30px;
-    }
-    .fightbutton{
-      left:72%;
-    }
-    #messages{
-      font-size: 25px;
-      padding-top: 100px;
-    }
-    #gamescores{
-      font-size: 60px;
-    }
-    .shooter{
-      padding-top: 40px;
-      position: fixed;
-      z-index: 19;
-      height: 50px;
-      top: var(--player-location);
-    }
-    .en_shooter{
-      padding-top: 19px;
-      position: fixed;
-      z-index: 19;
-      height: 50px;
-      top: var(--enemy-location);
-    }
-    .shooting-co{
-      width: 75px;
-      transform: translate(0%, -180%);
-      position: fixed;
-      animation: shootah 0.5s;
-    }
-    .back-shooting-co{
-      transform: translate(0%, 0%);
-      width: 64px;
-      height: 36px;
-      position: fixed; 
-      background-size: 100%;
-      background-repeat: no-repeat;
-      animation: shootah 1.5s reverse, evilbullet 1s infinite;
-      animation-timing-function: linear;
-    }
-  .player{
+
+@media only screen and (max-width: 949px) {
+  #battle-oat {
+    position: absolute;
+    z-index: 30;
+    top: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    transform: scale(0.7);
+  }
+  #falling-oats {
+    width: 100% !important;
+    -webkit-transform: translateZ(1);
+    overflow-x: hidden !important;
+  }
+  #ohno {
+    position: absolute;
+    z-index: 35;
+    top: 350px;
+    left: 40%;
+    text-align: center;
+  }
+  .big-image {
+    width: 60%;
+    transition: 0.3s;
+  }
+  #oats {
+    font-size: 30px;
+  }
+  .fightbutton {
+    left: 72%;
+  }
+  #messages {
+    font-size: 25px;
+    padding-top: 100px;
+  }
+  #gamescores {
+    font-size: 60px;
+  }
+  .shooter {
+    padding-top: 40px;
+    position: fixed;
+    z-index: 19;
+    height: 50px;
+    top: var(--player-location);
+  }
+  .en_shooter {
+    padding-top: 19px;
+    position: fixed;
+    z-index: 19;
+    height: 50px;
+    top: var(--enemy-location);
+  }
+  .shooting-co {
+    width: 75px;
+    transform: translate(0%, -180%);
+    position: fixed;
+    animation: shootah 0.5s;
+  }
+  .back-shooting-co {
+    transform: translate(0%, 0%);
+    width: 64px;
+    height: 36px;
+    position: fixed;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    animation: shootah 1.5s reverse, evilbullet 1s infinite;
+    animation-timing-function: linear;
+  }
+  .player {
     position: fixed;
     z-index: 20;
     width: 100px;
@@ -518,9 +553,9 @@
     top: var(--player-location);
     background-image: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/spaceship.png);
     background-repeat: no-repeat;
-    background-size:100%;
+    background-size: 100%;
   }
-  .enemy{
+  .enemy {
     position: fixed;
     z-index: 20;
     background-size: 100%;
@@ -532,40 +567,40 @@
     top: var(--enemy-location);
     right: 10px;
   }
-  .reset{
+  .reset {
     display: block;
     margin-top: 5px !important;
   }
-  .falling-oat{
+  .falling-oat {
     position: absolute;
   }
-  .hid-merch-box{
-    left:30%;
-  }
-  .merch-box{
+  .hid-merch-box {
     left: 30%;
   }
-  #ads{
+  .merch-box {
+    left: 30%;
+  }
+  #ads {
     width: 90%;
   }
-  #bowl{
+  #bowl {
     background-position-y: 8% !important;
   }
-    th {
-      width: 90%;
-      height: 33.33%;
-      padding-top: 20px;
-      padding-bottom: 20px;
-      margin-left: auto;
-      margin-right: auto;
-      word-wrap: normal;
-      display: table;
-    }
-    html, body {
+  th {
+    width: 90%;
+    height: 33.33%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    word-wrap: normal;
+    display: table;
+  }
+  html, body {
     max-width: 100%;
     overflow-x: hidden;
-}
-    .scores {
+  }
+  .scores {
     color: white;
     text-shadow: 0px 0px 10px rgba(0, 0, 0, 1), 0px 0px 20px rgba(0, 0, 0, 1), 0px 0px 30px rgba(0, 0, 0, 1), 0px 0px 80px rgba(0, 0, 0, 1);
     font-size: 20px;
@@ -574,567 +609,613 @@
     margin-left: auto;
     margin-right: auto;
   }
-  }
-
-  .main-clicker {
-    transition: 0.15s;
-    display: block; 
-    -webkit-transform: translateZ(0);
-    z-index: 12;
-    margin-left: auto;
-    margin-right: auto;
-    width: 263px;
-    cursor: pointer;
-  }
-
-  .main-clicker:hover {
-    animation: wiggle 2s;
-  }
-
-  .main-clicker:active {
-    transform: scale(0.8);
-  }
-.icon{
-  display:inline;
 }
 
-  .booster {
-    margin-top: 20px;
-    border:var(--booster-border);
-    background: var(--boost-bg);
-    text-align: left;
-    transition: 0.15s;
-    cursor: pointer;
+.main-clicker {
+  transition: 0.15s;
+  display: block;
+  -webkit-transform: translateZ(0);
+  z-index: 12;
+  margin-left: auto;
+  margin-right: auto;
+  width: 263px;
+  cursor: pointer;
+}
+
+.main-clicker:hover {
+  animation: wiggle 2s;
+}
+
+.main-clicker:active {
+  transform: scale(0.8);
+}
+
+.icon {
+  display: inline;
+}
+
+.booster {
+  margin-top: 20px;
+  border: var(--booster-border);
+  background: var(--boost-bg);
+  text-align: left;
+  transition: 0.15s;
+  cursor: pointer;
+}
+
+.booster:hover {
+  background: var(--boost-bg-h);
+}
+
+.booster:active {
+  transform: scale(0.9);
+}
+
+.booster * {
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+}
+
+.booster-title {
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px !important;
+}
+
+.not-enough-money {
+  color: red !important;
+}
+
+.enough-money {
+  color: rgb(0, 255, 0) !important;
+}
+
+.falling-oat {
+  animation: falling-oat 8s;
+  width: 30px;
+  display: block;
+  z-index: var(--z);
+  -webkit-transform: translateZ(0);
+  filter: brightness(105%);
+  -webkit-filter: brightness(105%);
+}
+
+@keyframes wiggle {
+  0% {
+    transform: scale(1);
   }
-  .booster:hover{
-    background: var(--boost-bg-h);
+  6.25% {
+    transform: scale(0.75);
   }
-  .booster:active {
-    transform: scale(0.9);
+  8.75% {
+    transform: scale(0.7);
   }
- 
-  .booster * {
-    padding-left: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    font-size: 13px;
+  25% {
+    transform: scale(1);
   }
-
-  .booster-title {
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    font-size: 20px !important;
+  32.5% {
+    transform: scale(0.95);
   }
-
-  .not-enough-money {
-    color: red !important;
+  42.5% {
+    transform: scale(1.0);
   }
-
-  .enough-money {
-    color: rgb(0, 255, 0) !important;
+  52% {
+    transform: scale(0.97);
   }
-  .falling-oat{
-    animation: falling-oat 8s;
-    width:30px;
-    display:block;
-    z-index: var(--z);
-    -webkit-transform: translateZ(0);
-    filter: brightness(105%);
-    -webkit-filter: brightness(105%);
+  62% {
+    transform: scale(1);
   }
-  @keyframes wiggle {
-    0% {
-      transform: scale(1);
-    }
-
-    6.25% {
-      transform: scale(0.75);
-    }
-
-    8.75% {
-      transform: scale(0.7);
-    }
-
-    25% {
-      transform: scale(1);
-    }
-
-    32.5% {
-      transform: scale(0.95);
-    }
-
-    42.5% {
-      transform: scale(1.0);
-    }
-
-    52% {
-      transform: scale(0.97);
-    }
-
-    62% {
-      transform: scale(1);
-    }
-
-    72% {
-      transform: scale(0.98);
-    }
-
-    82% {
-      transform: scale(1);
-    }
-
-    93% {
-      transform: scale(0.99);
-    }
+  72% {
+    transform: scale(0.98);
   }
-  .booster-container{
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    overflow:scroll, -moz-scrollbars-none !important;
-    top: 10px;
-    padding-right: 17px;
-    box-sizing: content-box;
+  82% {
+    transform: scale(1);
   }
-  .booster-container::-webkit-scrollbar { width: 0px !important }
-  *::-webkit-scrollbar { 
-    width: 0px !important;
-    -webkit-appearance: none;
-   }
-  @keyframes falling-oat{
-    0% {
-      transform: translate(0%, -80%);
-      opacity: 0;
-    }
-
-    30% {
-      opacity: 1;
-    }
-
-    100% {
-      transform: translate(0%, var(--height));
-      opacity: 0;
-    }
+  93% {
+    transform: scale(0.99);
   }
- .ops{
-   font: size 15px;
-   color:white;
-   text-shadow: 0px 0px 10px rgba(0, 0, 0, 1), 0px 0px 20px rgba(0, 0, 0, 1), 0px 0px 30px rgba(0, 0, 0, 1), 0px 0px 80px rgba(0, 0, 0, 1);
-   font-family: sans-serif;
-    font-weight: lighter;
- }
- .blurry{
+}
+
+.booster-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow: scroll, -moz-scrollbars-none !important;
+  top: 10px;
+  padding-right: 17px;
+  box-sizing: content-box;
+}
+
+.booster-container::-webkit-scrollbar {
+  width: 0px !important
+}
+
+*::-webkit-scrollbar {
+  width: 0px !important;
+  -webkit-appearance: none;
+}
+
+@keyframes falling-oat {
+  0% {
+    transform: translate(0%, -80%);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0%, var(--height));
+    opacity: 0;
+  }
+}
+
+.ops {
+  font: size 15px;
+  color: white;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 1), 0px 0px 20px rgba(0, 0, 0, 1), 0px 0px 30px rgba(0, 0, 0, 1), 0px 0px 80px rgba(0, 0, 0, 1);
+  font-family: sans-serif;
+  font-weight: lighter;
+}
+
+.blurry {
   filter: blur(5px);
   -webkit-filter: blur(5px);
   pointer-events: none;
- }
-#spoon{
+}
+
+#spoon {
   background: url(https://oatmeal.gq/sprites/spoon.png), var(--boost-bg);
   background-repeat: no-repeat !important;
   background-position: 0% 10% !important;
   background-size: 90px, var(--boost-bg-s) !important;
 }
-#spoon:hover{
+
+#spoon:hover {
   background: url(https://oatmeal.gq/sprites/spoon.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
   background-position: 0% 10% !important;
   background-size: 90px, var(--boost-bg-s) !important;
 }
-#bowl{
+
+#bowl {
   background: url(https://oatmeal.gq/sprites/oat_bowl.png), var(--boost-bg);
   background-repeat: no-repeat !important;
   background-position: 0% 100% !important;
   background-size: auto auto, var(--boost-bg-s) !important;
 }
-#bowl:hover{
+
+#bowl:hover {
   background: url(https://oatmeal.gq/sprites/oat_bowl.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
   background-position: 0% 100% !important;
   background-size: auto auto, var(--boost-bg-s) !important;
 }
-#pot{
+
+#pot {
   background: url(https://oatmeal.gq/sprites/oat_pot.png), var(--boost-bg);
   background-repeat: no-repeat !important;
-  background-position: 0% 100% !important; 
+  background-position: 0% 100% !important;
   background-size: 110px, var(--boost-bg-s) !important;
 }
-#pot:hover{
+
+#pot:hover {
   background: url(https://oatmeal.gq/sprites/oat_pot.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
-  background-position: 0% 100% !important; 
+  background-position: 0% 100% !important;
   background-size: 110px, var(--boost-bg-s) !important;
 }
-#cow{
+
+#cow {
   background: url(https://oatmeal.gq/sprites/oat_cow.png), var(--boost-bg);
   background-repeat: no-repeat !important;
-  background-position: 0% 100% !important; 
+  background-position: 0% 100% !important;
   background-size: 150px, var(--boost-bg-s) !important;
 }
-#cow:hover{
+
+#cow:hover {
   background: url(https://oatmeal.gq/sprites/oat_cow.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
-  background-position: 0% 100% !important; 
+  background-position: 0% 100% !important;
   background-size: 150px, var(--boost-bg-s) !important;
 }
-#bs{
+
+#bs {
   background: url(https://oatmeal.gq/sprites/big-spoon.png), var(--boost-bg);
   background-repeat: no-repeat !important;
   background-position: 0% 75% !important;
   background-size: 85px, var(--boost-bg-s) !important;
 }
-#bs:hover{
+
+#bs:hover {
   background: url(https://oatmeal.gq/sprites/big-spoon.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
   background-position: 0% 75% !important;
   background-size: 85px, var(--boost-bg-s) !important;
 }
-#cinnamon{
+
+#cinnamon {
   background: url(https://oatmeal.gq/sprites/cinnamon.png), var(--boost-bg);
   background-repeat: no-repeat !important;
   background-position: 0% 60% !important;
   background-size: 100px, var(--boost-bg-s) !important;
 }
-#cinnamon:hover{
+
+#cinnamon:hover {
   background: url(https://oatmeal.gq/sprites/cinnamon.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
   background-position: 0% 60% !important;
   background-size: 100px, var(--boost-bg-s) !important;
 }
-#granary{
+
+#granary {
   background: url(https://oatmeal.gq/sprites/granery.png), var(--boost-bg);
   background-repeat: no-repeat !important;
   background-position: 0% 20% !important;
   background-size: 100px, var(--boost-bg-s) !important;
 }
-#granary:hover{
+
+#granary:hover {
   background: url(https://oatmeal.gq/sprites/granery.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
   background-position: 0% 20% !important;
   background-size: 100px, var(--boost-bg-s) !important;
 }
-#temple{
+
+#temple {
   background: url(https://oatmeal.gq/sprites/temple.png), var(--boost-bg);
   background-repeat: no-repeat !important;
   background-position: 0% 20% !important;
   background-size: 130px, var(--boost-bg-s) !important;
 }
-#temple:hover{
-    background: url(https://oatmeal.gq/sprites/temple.png), var(--boost-bg-h);
+
+#temple:hover {
+  background: url(https://oatmeal.gq/sprites/temple.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
   background-position: 0% 20% !important;
   background-size: 130px, var(--boost-bg-s) !important;
 }
-#polytheism{
+
+#polytheism {
   background: url(https://oatmeal.gq/sprites/polytheism.png), var(--boost-bg);
   background-repeat: no-repeat !important;
   background-position: 0% 20% !important;
   background-size: 150px, var(--boost-bg-s) !important;
 }
-#polytheism:hover{
+
+#polytheism:hover {
   background: url(https://oatmeal.gq/sprites/polytheism.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
   background-position: 0% 20% !important;
   background-size: 150px, var(--boost-bg-s) !important;
 }
-#oatnog{
+
+#oatnog {
   background: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/oatnog.png), var(--boost-bg);
   background-repeat: no-repeat !important;
   background-position: 0% 30% !important;
   background-size: 150px, var(--boost-bg-s) !important;
 }
-#oatnog:hover{
+
+#oatnog:hover {
   background: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/oatnog.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
   background-position: 0% 30% !important;
   background-size: 150px, var(--boost-bg-s) !important;
 }
-#gold{
+
+#gold {
   background: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/gold_pots_bowls.png), var(--boost-bg);
   background-repeat: no-repeat !important;
   background-position: 10% 30% !important;
   background-size: 120px, var(--boost-bg-s) !important;
-
 }
-#gold:hover{
+
+#gold:hover {
   background: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/gold_pots_bowls.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
   background-position: 10% 30% !important;
   background-size: 120px, var(--boost-bg-s) !important;
 }
-#moo{
+
+#moo {
   background: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/moo_injection.png), var(--boost-bg);
   background-repeat: no-repeat !important;
   background-size: 150px, var(--boost-bg-s) !important;
   background-position: 10% 30% !important;
 }
-#moo:hover{
+
+#moo:hover {
   background: url(https://raw.githubusercontent.com/ooogle/oatmeal/master/sprites/moo_injection.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
   background-size: 150px, var(--boost-bg-s)!important;
   background-position: 10% 30% !important;
 }
+
 .arrow_box {
-	position: relative;
-	background: url(https://oatmeal.gq/sprites/merch.png),var(--boost-bg);
-	border: 4px solid #00008b;
-  height:125px;
+  position: relative;
+  background: url(https://oatmeal.gq/sprites/merch.png), var(--boost-bg);
+  border: 4px solid #00008b;
+  height: 125px;
   background-size: auto, 100% 100%;
   background-repeat: no-repeat;
   background-position: 10% 20px;
   background-size: 100px;
 }
-#battlething-nobg{
+
+#battlething-nobg {
   background-image: none !important;
-  color:white;
-  height: 100px;  
+  color: white;
+  height: 100px;
   cursor: default;
 }
+
 .arrow_box1 {
-	position: relative;
-	background:var(--boost-bg);
-	border: 4px solid #00008b;
+  position: relative;
+  background: var(--boost-bg);
+  border: 4px solid #00008b;
   background-repeat: no-repeat;
   background-position: 10% 20px;
   background-size: 100px;
 }
-.before-merch-box, .after-merch-box{
-	bottom: 100%;
-	left: 5%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
+
+.before-merch-box, .after-merch-box {
+  bottom: 100%;
+  left: 5%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
 }
 
 .after-merch-box {
-	border-color: rgba(0, 104, 223, 0);
-	border-bottom-color: #0068df;
-	border-width: 10px;
-	margin-left: 3px;
+  border-color: rgba(0, 104, 223, 0);
+  border-bottom-color: #0068df;
+  border-width: 10px;
+  margin-left: 3px;
   z-index: 12;
 }
+
 .before-merch-box {
-	border-color: rgba(0, 0, 139, 0);
-	border-bottom-color: #00008b;
-	border-width: 16px;
-	margin-left: -3px;
-  z-index:12;
+  border-color: rgba(0, 0, 139, 0);
+  border-bottom-color: #00008b;
+  border-width: 16px;
+  margin-left: -3px;
+  z-index: 12;
 }
-.merch-box{
-position:fixed;
-z-index: 12;
-top:20px;
-overflow: visible !important;
-cursor: pointer;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 1), 0px 0px 20px;
-animation: merch 0.25s;
+
+.merch-box {
+  position: fixed;
+  z-index: 1200;
+  top: 20px;
+  overflow: visible !important;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1), 0px 0px 20px;
+  animation: merch 0.25s;
 }
-#requestpopup{
+
+#requestpopup {
   z-index: 25;
 }
-.hid-merch-box{
-  position:fixed;
+
+.hid-merch-box {
+  position: fixed;
   opacity: 0;
   transition: 0.25s;
   z-index: 12;
   top: -2000px;
 }
+
 @keyframes merch {
-  0%{
-    top:-50px;
+  0% {
+    top: -50px;
     opacity: 0;
   }
-  100%{
-    top:20px;
+  100% {
+    top: 20px;
     opacity: 1;
   }
 }
-#loading{
+
+#loading {
   z-index: 3000;
-  width:100% !important;
+  width: 100% !important;
   height: 100% !important;
   -webkit-transform: translateZ(1);
   pointer-events: all;
-  background:black;
-  color:white;
+  background: black;
+  color: white;
   position: fixed;
-  top:0px;
-  left:0px;
+  top: 0px;
+  left: 0px;
   text-align: center;
 }
-#sped-offers{
+
+#sped-offers {
   z-index: 13;
-  width:100% !important;
-  height:100% !important;
-  color:white;
+  width: 100% !important;
+  height: 100% !important;
+  color: white;
   height: 100% !important;
   position: fixed;
-  top:0px;
-  left:0px;
+  top: 0px;
+  left: 0px;
   text-align: center;
-  background:rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.6);
 }
-.infront{
-  z-index:20;
+
+.infront {
+  z-index: 20;
   opacity: 10 !important
 }
-.fadeout{
+
+.fadeout {
   opacity: 0;
   animation: fadeout 0.5s;
 }
+
 @keyframes fadeout {
-  0%{
+  0% {
     display: block !important;
     filter: blur(0px);
     -webkit-filter: blur(0px);
-    opacity:1;
+    opacity: 1;
   }
-  99%{
+  99% {
     filter: blur(3px);
     -webkit-filter: blur(3px);
-    opacity:0;
+    opacity: 0;
   }
-  100%{
-    display:none;
+  100% {
+    display: none;
   }
 }
-@keyframes fadein{
-  0%{
-    display:none;
+
+@keyframes fadein {
+  0% {
+    display: none;
     filter: blur(3px);
     -webkit-filter: blur(3px);
   }
-  1%{
-    opacity:0;
+  1% {
+    opacity: 0;
   }
-  100%{
+  100% {
     display: block !important;
     filter: blur(0px);
     -webkit-filter: blur(0px);
-    opacity:1;
+    opacity: 1;
   }
 }
-@keyframes appear{
-  0%{
+
+@keyframes appear {
+  0% {
     opacity: 0;
     height: 0px;
   }
-  30%{
+  30% {
     opacity: 1;
   }
-  99%{
+  99% {
     height: 10em;
   }
-  100%{
+  100% {
     height: auto;
   }
 }
-#myachevs{
+
+#myachevs {
   width: 100%;
   height: 100%;
   position: fixed;
   z-index: 500;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   overflow-y: scroll;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   user-select: text;
 }
-@keyframes shootah{
-  0%{
+
+@keyframes shootah {
+  0% {
     left: 20px;
   }
-  70%{
-  }
-  100%{
+  70% {}
+  100% {
     left: 80%;
   }
 }
-@keyframes floataway{
-  0%{
-    transform: translate(0%,0%);
+
+@keyframes floataway {
+  0% {
+    transform: translate(0%, 0%);
     opacity: 1;
   }
-  60%{
+  60% {
     opacity: 0.9;
   }
-  100%{
-    transform: translate(0%,-400%);
+  100% {
+    transform: translate(0%, -400%);
     opacity: 0;
   }
 }
-@keyframes evilcow{
-  0%{
+
+@keyframes evilcow {
+  0% {
     background-image: url(https://oatmeal.gq/sprites/animations/evil_cow/bull-1.png);
   }
-  44%{
+  44% {
     background-image: url(https://oatmeal.gq/sprites/animations/evil_cow/bull-1.png);
   }
-  45%{
+  45% {
     background-image: url(https://oatmeal.gq/sprites/animations/evil_cow/bull-2.png);
   }
-  62%{
+  62% {
     background-image: url(https://oatmeal.gq/sprites/animations/evil_cow/bull-2.png);
   }
-  63%{
+  63% {
     background-image: url(https://oatmeal.gq/sprites/animations/evil_cow/bull-3.png);
   }
-  80%{
+  80% {
     background-image: url(https://oatmeal.gq/sprites/animations/evil_cow/bull-3.png);
   }
-  81%{
+  81% {
     background-image: url(https://oatmeal.gq/sprites/animations/evil_cow/bull-4.png);
   }
-  100%{
+  100% {
     background-image: url(https://oatmeal.gq/sprites/animations/evil_cow/bull-4.png);
   }
 }
-@keyframes evilbullet{
-  0%{
+
+@keyframes evilbullet {
+  0% {
     background-image: url(https://oatmeal.gq/sprites/animations/boss-bullet/bullet-1.png);
   }
-  32%{
+  32% {
     background-image: url(https://oatmeal.gq/sprites/animations/boss-bullet/bullet-1.png);
   }
-  33%{
+  33% {
     background-image: url(https://oatmeal.gq/sprites/animations/boss-bullet/bullet-2.png);
   }
-  65%{
+  65% {
     background-image: url(https://oatmeal.gq/sprites/animations/boss-bullet/bullet-2.png);
   }
-  66%{
+  66% {
     background-image: url(https://oatmeal.gq/sprites/animations/boss-bullet/bullet3.png);
   }
-  100%{
+  100% {
     background-image: url(https://oatmeal.gq/sprites/animations/boss-bullet/bullet-3.png);
   }
 }
-.cookie{
+
+.cookie {
   position: fixed;
   animation: cookie 10s;
   z-index: 20;
 }
+
 @keyframes cookie {
-  0%{
+  0% {
     display: none;
     position: fixed;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
   }
-  50%{
+  50% {
     display: none;
-    position:fixed;
+    position: fixed;
     top: 40%;
-    left:50%;
+    left: 50%;
   }
-  60%{
+  60% {
     top: 55%;
     left: 30%;
   }
-  100%{
+  100% {
     top: 99%;
     left: 80%;
   }

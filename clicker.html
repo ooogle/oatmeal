@@ -42,13 +42,14 @@
   var oat_count = 0;
   var addition = 1;
   var bowls = 0;
+  var newacks = [];
   var spoons = 0;
   var pots = 0;
   var deal = false;
   var firsttimeoatnog = true;
   var firsttimegold = true;
   var ads = true;
-  var version = "youuuuuseeackkks";
+  var version = "procedural_akkks";
   var achevs = "0";
   var clicksound = null;
   let root = document.documentElement;
@@ -262,17 +263,38 @@
   function checkupdates() {
     var reck = new XMLHttpRequest();
     reck.addEventListener("load", function () {
-      console.log(reck)
-      console.log(reck.responseText != version)
-      if (reck.responseText != version) {
+      var datasa = JSON.parse(reck.responseText);
+      if (datasa.version != version) {
         document.getElementById("update-box").classList.add("merch-box");
         document.getElementById("update-box").classList.remove("hid-merch-box");
+        for(var i=0; i < datasa.notes.length; i++){
+          document.getElementById('update-notes').innerHTML+="<li>"+datasa.notes[i]+"</li>"
+        }
       }
     });
-    reck.open("GET", "version.txt");
+    reck.open("GET", "version.json");
     reck.send();
+    if (oat_count >= 1000000000000000 && oat_count != Infinity) {
+      var akhev;
+      var exclaims = ["wow!", "that's amazing!", "increible", "really. that is really a huge amount of oats.", "crazy!", "that is insane!!!", "that's a TON", "that. is. a. lot. of. oatmeal.", "just crazy, man", "a lot. that's a lot.", "lots of oats", "that's a nice amount of oats", "oats galore!", "oatmeal is a lot of what you have",'oh my oat gods.','dude, that is truly mental','bloody hell, that\'s a lot']
+      var amounttochangeocby = (randomate(0,15)/10)+1;
+      for (var i = 1; i < 6; i++) {
+        amounttochangeocby = (randomate(0,159)/100)+1;
+        akhev = { req: '  return oat_count >= '+oat_count*amounttochangeocby*i, id: numberformat.formatShort(oat_count*amounttochangeocby*i), text: numberformat.format(oat_count*amounttochangeocby*i) + " oats. " + exclaims[randomate(0, exclaims.length)] };
+        newacks.push(akhev);
+      }
+      var tempcooknewacks = [];
+      for (var i = 0; i < newacks.length; i++) {
+        tempcooknewacks.push(JSON.stringify(newacks[i]));
+      }
+      var stringnewacks = "";
+      for (var i = 0; i < tempcooknewacks.length; i++) {
+        stringnewacks += tempcooknewacks[i] + "^%*;";
+      }
+      Cookies.set("newacks", stringnewacks, { expires: 100000 });
+    }
     if (ads) {
-      document.getElementById("ads").innerHTML = document.getElementById("ads").innerHTML.replace('<iframe data-aa="1256773" src="//acceptable.a-ads.com/1256773" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe><iframe data-aa="1256773" src="//acceptable.a-ads.com/1256773" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe><iframe data-aa="1256773" src="//acceptable.a-ads.com/1256773" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe>', '<iframe data-aa="1256773" src="//acceptable.a-ads.com/1256773" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe><iframe data-aa="1256773" src="//acceptable.a-ads.com/1256773" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe><iframe data-aa="1256773" src="//acceptable.a-ads.com/1256773" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe>');
+      document.getElementById("ads").innerHTML = document.getElementById("ads").innerHTML = '<iframe data-aa="1256773" src="//acceptable.a-ads.com/1256773" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe><iframe data-aa="1256773" src="//acceptable.a-ads.com/1256773" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe><iframe data-aa="1256773" src="//acceptable.a-ads.com/1256773" scrolling="no" style="border:0px; padding:0; width: 100%; height: 100%; overflow:hidden" allowtransparency="true"></iframe>';
       ads = false;
     }
     else {
@@ -380,6 +402,9 @@
         firsttimecow = false;
         achieve("cow_unlocked", "You unlocked Oat Cows!", "Booster Unlocked");
         document.getElementById("cow").classList.add("appear");
+        setTimeout(function(){
+          document.getElementById("cow").classList.remove("appear");
+        },550)
       }
     }
     else {
@@ -391,6 +416,9 @@
         firsttimeinjection = false;
         achieve("injection_unlocked", "You unlocked Moo Injection!", "Upgrade Unlocked");
         document.getElementById("moo").classList.add("appear");
+        setTimeout(function(){
+          document.getElementById("moo").classList.remove("appear");
+        },550)
       }
     }
     else {
@@ -402,6 +430,9 @@
         firsttimegranary = false;
         achieve("granary_unlocked", "You unlocked Granaries!", "Booster Unlocked");
         document.getElementById("granary").classList.add("appear");
+        setTimeout(function(){
+          document.getElementById("granary").classList.remove("appear");
+        },550)
       }
     }
     else {
@@ -414,6 +445,9 @@
         firsttimetemple = false;
         achieve("temple_unlocked", "You unlocked Temples!", "Booster Unlocked");
         document.getElementById("temple").classList.add("appear");
+        setTimeout(function(){
+          document.getElementById("temple").classList.remove("appear");
+        },550)
       }
     }
     else {
@@ -426,6 +460,9 @@
         firsttimegold = false;
         achieve("gold_unlocked", "You unlocked Gold pots & bowls!", "Booster Unlocked");
         document.getElementById("gold").classList.add("appear");
+        setTimeout(function(){
+          document.getElementById("gold").classList.remove("appear");
+        },550)
       }
     }
     else {
@@ -438,6 +475,9 @@
         firsttimepoly = false;
         achieve("poly_unlocked", "You unlocked Polytheism!", "Upgrade Unlocked");
         document.getElementById("polytheism").classList.add("appear");
+        setTimeout(function(){
+          document.getElementById("polytheism").classList.remove("appear");
+        },550)
       }
     }
     else {
@@ -450,6 +490,9 @@
         firsttimeoatnog = false;
         achieve("oatnog_unlocked", "It's the season to be jolly! You unlocked Oatnog!", "Upgrade Unlocked");
         document.getElementById("oatnog").classList.add("appear");
+        setTimeout(function(){
+          document.getElementById("cow").classList.remove("oatnog");
+        },550)
       }
       document.getElementById("oatnog").style.display = "block";
     }
@@ -716,6 +759,12 @@
       else {
         document.getElementById("cow").style.display = "none";
       }
+      if(Cookies.get("newacks") != null){
+        newacks = Cookies.get("newacks").split("^%*;");
+        for(var i=0; i < newacks.length-1; i++){
+          newacks[i] = JSON.parse(newacks[i]);
+        }
+      }
       if (Cookies.get("addition_multiplier") != null) {
         addition_multiplier = Number(Cookies.get("addition_multiplier"));
         document.getElementById("gold_prices").setAttribute("price", Cookies.get("gold_price"));
@@ -857,7 +906,7 @@
       }
     }
     else {
-      var normalcooks = [{ name: "bowl_price", value: 100 }, { name: "pot_price", value: 1500 }, { name: "cows", value: 0 }, { name: "cow_price", value: 230 }, { name: "granarys", value: 0 }, { name: "granary_price", value: 700 }, { name: "temples", value: 0 }, { name: "temple_price", value: 5000 }, { name: "god_count", value: 1 }, { name: "polytheism_price", value: 6000 }, { name: "bs_price", value: 200 }, { name: "spoon_price", value: 50 }, { name: "cinnamon_price", value: 400 }, { name: "oat_count", value: 0 }, { name: 'spoons', value: 0 }, { name: 'bowls', value: 0 }, { name: 'pots', value: 0 }, { name: "cinnamons", value: 0 }, { name: 'achievements', value: 0 }, { name: "addition", value: 1 }, { name: "addition_multiplier", value: 1 }, { name: "spoon_addition", value: 1 }, { name: "username", value: "" }, { name: "cow_addition", value: 1 }, { name: "oatnogs", value: 0 }];
+      var normalcooks = [{ name: "bowl_price", value: 100 }, { name: "pot_price", value: 1500 }, { name: "cows", value: 0 }, { name: "cow_price", value: 230 }, { name: "granarys", value: 0 }, { name: "granary_price", value: 700 }, { name: "temples", value: 0 }, { name: "temple_price", value: 5000 }, { name: "god_count", value: 1 }, { name: "polytheism_price", value: 6000 }, { name: "bs_price", value: 200 }, { name: "spoon_price", value: 50 }, { name: "cinnamon_price", value: 400 }, { name: "oat_count", value: 0 }, { name: 'spoons', value: 0 }, { name: 'bowls', value: 0 }, { name: 'pots', value: 0 }, { name: "cinnamons", value: 0 }, { name: 'achievements', value: 0 }, { name: "addition", value: 1 }, { name: "addition_multiplier", value: 1 }, { name: "spoon_addition", value: 1 }, { name: "username", value: "" }, { name: "cow_addition", value: 1 }, { name: "oatnogs", value: 0 },{name:"newacks", value:null}];
       for (var i = 0; i < normalcooks.length; i++) {
         Cookies.set(normalcooks[i].name, normalcooks[i].value, {
           expires: 1000000
@@ -877,14 +926,14 @@
       }, 600);
     }
     else {
-      document.title="Oat Clicker - you cheater";
+      document.title = "Oat Clicker - you cheater";
       setTimeout(function () {
         document.getElementById("loader-text").innerHTML = "You are a cheater. You have just been banned. Come back later to see when your ban will end.";
-        document.title="Oat Clicker - you cheater";
+        document.title = "Oat Clicker - you cheater";
       }, 3200)
     }
     stillloading = false;
-    setTimeout(function () { checkupdates() }, 720000);
+       setTimeout(function () { checkupdates() }, 720000);
   }
   // stuff getting clicked
   function oat_bowl() {
@@ -927,7 +976,8 @@
       }
       updatecount();
     }
-    updatecount()
+    updatecount();
+
   }
   function oat_pot() {
     if (oat_count >= Number(document.getElementById("pot_prices").getAttribute('price'))) {
@@ -1478,6 +1528,9 @@
     document.getElementById("sped-price").innerHTML = "1";
     document.getElementById('sped-price').setAttribute('price', "1");
     document.getElementById("sped-image").setAttribute('onclick', '' + item + "+=1; deal=false; oat_count=oat_count- Number(document.getElementById('sped-price').getAttribute('price')); updatecount(); Cookies.set('" + item + "',Number(" + item + "), {expires: 1000000 });");
+    setTimeout(function () {
+      document.getElementById("sped-offers").classList.remove("fadein");
+    }, 550);
     deal_countup();
   }
   function deal_countup() {
@@ -1652,51 +1705,51 @@
       updatecount();
     }
   }
-  function popupmenu(){
-    if(document.getElementById('popup').classList.contains('hidden')){
-    document.getElementById('popup').classList.remove("hidden");
-    document.getElementById('popup').classList.add("fadein");
-    setTimeout(function(){
-      document.getElementById('popup').classList.remove("fadein");
+  function popupmenu() {
+    if (document.getElementById('popup').classList.contains('hidden')) {
+      document.getElementById('popup').classList.remove("hidden");
+      document.getElementById('popup').classList.add("fadein");
+      setTimeout(function () {
+        document.getElementById('popup').classList.remove("fadein");
       }, 450);
       return true
     }
     return false
   }
-  function hidepopup(){
+  function hidepopup() {
     document.getElementById('popup').classList.add("fadeout");
-    setTimeout(function(){
+    setTimeout(function () {
       document.getElementById('popup').classList.add("hidden");
       document.getElementById('popup').classList.remove("fadeout");
-      }, 550)
+    }, 550)
   }
-  function togglepopup(){
-    if(!popupmenu()){
+  function togglepopup() {
+    if (!popupmenu()) {
       hidepopup()
     }
   }
-  function showwhatiacheived(){
+  function showwhatiacheived() {
     document.getElementById('myachevs').classList.remove("hidden");
     document.getElementById('myachevs').classList.add('fadein');
-    setTimeout(function(){
+    setTimeout(function () {
       document.getElementById('myachevs').classList.remove('fadein');
     }, 800);
     achevs = Cookies.get("achievements");
-    document.getElementById('achevol').innerHTML="";
+    document.getElementById('achevol').innerHTML = "";
     var hasnone = true;
-    for(var i=0; i < acks.length; i++){
-      if(achevs.includes(acks[i].id)){
-        document.getElementById('achevol').innerHTML+="<li>"+acks[i].text+"</li>";
+    for (var i = 0; i < acks.length; i++) {
+      if (achevs.includes(acks[i].id)) {
+        document.getElementById('achevol').innerHTML += "<li>" + acks[i].text + "</li>";
         hasnone = false;
       }
     }
-    if(hasnone){
-      document.getElementById('achevol').innerHTML="you have no achievements"
+    if (hasnone) {
+      document.getElementById('achevol').innerHTML = "you have no achievements"
     }
   }
-  function hidemyakks(){
+  function hidemyakks() {
     document.getElementById('myachevs').classList.add('fadeout');
-    setTimeout(function(){
+    setTimeout(function () {
       document.getElementById('myachevs').classList.remove('fadeout');
       document.getElementById('myachevs').classList.add("hidden");
     }, 800);
@@ -1715,9 +1768,14 @@
     src="https://vignette.wikia.nocookie.net/cookieclicker/images/5/5a/PerfectCookie.png/revision/latest/scale-to-width-down/250?cb=20130827014912"
     class="center main-clicker" style="width: 150px !important;">
 </div>
-<div id="myachevs" class="hidden"><div id="hide-akkk" class="booster" onclick="hidemyakks()"></div><div class="center scores"><br><br><br><span class="scores center">Your Achievements</span><ol class="booster-title" id="achevol" style="line-height: 180%;">
-  <li>stuff</li>
-</ol></div></div>
+<div id="myachevs" class="hidden">
+  <div id="hide-akkk" class="booster" onclick="hidemyakks()"></div>
+  <div class="center scores"><br><br><br><span class="scores center">Your Achievements</span>
+    <ol class="booster-title" id="achevol" style="line-height: 180%;">
+      <li>stuff</li>
+    </ol>
+  </div>
+</div>
 <!-- multiplayer stuff-->
 <div id="choose-name" class="hidden">
   <div class="center">
@@ -1774,6 +1832,9 @@
       <div class="before-merch-box"></div>
       <span class="booster-title" style="margin: 20px;">New update available! </span><br>
       <np style="color:white; margin-left:20px;">click to update</np>
+      <ul id="update-notes">
+
+      </ul>
       <div class="after-merch-box"></div>
     </div>
   </div>
@@ -1946,7 +2007,8 @@
 
       </table>
       <div class="popup hidden" id="popup" onmouseleave="hidepopup()">
-        <div class="booster reset" onclick="showwhatiacheived()"><span class="booster-title">View Achievements</span></div>
+        <div class="booster reset" onclick="showwhatiacheived()"><span class="booster-title">View Achievements</span>
+        </div>
         <div class="booster reset" onclick="reset()"><span class="booster-title">Reset game</span></div>
         <div class="booster reset" onclick="prompt('COPY THE TEXT IN THE BOX \n here is your save code:',createsave())">
           <span class="booster-title">Save game</span></div>
