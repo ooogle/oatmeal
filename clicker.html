@@ -48,8 +48,9 @@
   var deal = false;
   var firsttimeoatnog = true;
   var firsttimegold = true;
+  var firsttimebeetle = true;
   var ads = true;
-  var version = "procedural_akkks";
+  var version = "oat_beetles";
   var achevs = "0";
   var clicksound = null;
   let root = document.documentElement;
@@ -69,6 +70,7 @@
   var stillloading = true;
   var merchable = true;
   var ops = 0;
+  var beetles = 0;
   var alusername = ""
   var dodging = false;
   var rebellion = false;
@@ -81,7 +83,7 @@
   var oatslost = 0;
   var fighting = false;
   var addition_multiplier = 1;
-  var boosters = ["spoon", "cow", "bowl", "pot", "moo", "oatnog", "temple", "granary", "polytheism", "cinnamon", "gold", "bs"];
+  var boosters = ["spoon", "cow", "bowl", "pot", "moo", "oatnog", "temple", "granary", "polytheism", "cinnamon", "gold", "bs",'beetle'];
   var minjection = new Date().getMinutes();
   if (minjection >= 55) {
     minjection = 0;
@@ -311,7 +313,7 @@
     }, 15000);
   }
   function updatecount() {
-    ops = ((spoons * spoon_addition) / 10) + (cows * cow_addition / 2) + (granarys * 5 / 2) + (temples * god_count * 15 / 2);
+    ops = ((spoons * spoon_addition) / 10) + (cows * cow_addition / 2) + (granarys * 5 / 2) + (temples * god_count * 15 / 2) + beetles * 27;
     if (pso) {
       if (ops > 999999) {
         document.getElementById("ops").innerHTML = "Per second: " + numberformat.formatShort(ops, { sigfigs: 4 });
@@ -329,12 +331,12 @@
     if (String(oat_count) == "NaN") {
       oat_count = 0;
     }
-    if (merchable && oat_count >= 100000 && document.hidden == false && rebellion == false) {
+    if (merchable && oat_count >= 1000000 && document.hidden == false && rebellion == false) {
       merch();
       merchable = false;
       setTimeout(function () {
         merchable = true;
-      }, 2400000)
+      }, 240000000);
     }
     if (cow_addition == 5) {
       document.getElementById("moo-things").innerHTML = "enabled";
@@ -363,7 +365,7 @@
     else if (username != null && username != "") {
       document.getElementById("fightbutton").classList.add("hidden");
     }
-    document.getElementById("oats").innerHTML = "Oats: " + numberformat.format(Math.round(oat_count), { sigfigs: 4 }).replace(" thousand", "k").replace("Infinity", "it's a lot, ok");;
+    document.getElementById("oats").innerHTML = "Oats: " + numberformat.format(Math.round(oat_count), { sigfigs: 4 }).replace(" thousand", "k").replace("Infinity", "it's a lot, ok");
     document.getElementById("spoon-things").innerHTML = "Owned: " + numberformat.format(spoons, { sigfigs: 4 });
     document.getElementById("bowl-things").innerHTML = " Owned: " + numberformat.format(bowls, { sigfigs: 4 });
     document.getElementById("pot-things").innerHTML = " Owned: " + numberformat.format(pots, { sigfigs: 4 });
@@ -375,6 +377,7 @@
     document.getElementById("polytheism-things").innerHTML = " Gods: " + numberformat.format(god_count, { sigfigs: 4 });
     document.getElementById("bs-things").innerHTML = " Spoon size: " + numberformat.format(spoon_addition, { sigfigs: 4 });
     document.getElementById("gold-things").innerHTML = " Fancyness: " + numberformat.format(addition_multiplier - 1, { sigfigs: 4 });
+    document.getElementById("beetle-things").innerHTML = " Owned: " + numberformat.format(beetles, { sigfigs: 4 });
     for (var i = 0; i < boosters.length; i++) {
       if (oat_count >= Number(document.getElementById(boosters[i] + "_prices").getAttribute('price'))) {
         document.getElementById(boosters[i] + "_prices").classList.remove("not-enough-money");
@@ -409,6 +412,20 @@
     }
     else {
       document.getElementById("cow").style.display = "none";
+    }
+    if (oat_count >= 1000000000000000000 || beetles > 0 || achevs.includes("beetle_unlocked")) {
+      document.getElementById("beetle").style.display = "block";
+      if (firsttimebeetle) {
+        firsttimebeetle = false;
+        achieve("beetle_unlocked", "You unlocked Oat Beetles!", "Booster Unlocked");
+        document.getElementById("beetle").classList.add("appear");
+        setTimeout(function(){
+          document.getElementById("beetle").classList.remove("appear");
+        },550)
+      }
+    }
+    else {
+      document.getElementById("beetle").style.display = "none";
     }
     if ((oat_count >= 8000000 || cow_addition > 1 || achevs.includes("injection_unlocked")) && cow_addition != 5 && achevs.includes("cow_rebellion") == false) {
       document.getElementById("moo").style.display = "block";
@@ -561,7 +578,7 @@
     }
   }
   function createsave() {
-    var save = { oats: oat_count, addition: addition, gold_price: document.getElementById('gold_prices').getAttribute('price'), addition_multiplier: addition_multiplier, achevs: achevs, bowls: bowls, cinnamons: cinnamons, spoons: spoons, pots: pots, cows: cows, granarys: granarys, username: username, temples: temples, god_count: god_count, spoon_addition: spoon_addition, cow_addition: cow_addition, oatnogs: oatnogs, bowl_price: Number(document.getElementById('bowl_prices').getAttribute('price')), pot_price: Number(document.getElementById('pot_prices').getAttribute('price')), cow_price: Number(document.getElementById('cow_prices').getAttribute('price')), granary_price: Number(document.getElementById('granary_prices').getAttribute('price')), spoon_price: Number(document.getElementById('spoon_prices').getAttribute('price')), polytheism_price: Number(document.getElementById('polytheism_prices').getAttribute('price')), bs_price: Number(document.getElementById('bs_prices').getAttribute('price')), temple_price: Number(document.getElementById('temple_prices').getAttribute('price')), cinnamon_price: Number(document.getElementById('cinnamon_prices').getAttribute('price')) };
+    var save = { oats: oat_count, addition: addition, gold_price: document.getElementById('gold_prices').getAttribute('price'), addition_multiplier: addition_multiplier, achevs: achevs, bowls: bowls, cinnamons: cinnamons, spoons: spoons, pots: pots, cows: cows, granarys: granarys, username: username, temples: temples, god_count: god_count, spoon_addition: spoon_addition, cow_addition: cow_addition, oatnogs: oatnogs, bowl_price: Number(document.getElementById('bowl_prices').getAttribute('price')), pot_price: Number(document.getElementById('pot_prices').getAttribute('price')), cow_price: Number(document.getElementById('cow_prices').getAttribute('price')), granary_price: Number(document.getElementById('granary_prices').getAttribute('price')), spoon_price: Number(document.getElementById('spoon_prices').getAttribute('price')), polytheism_price: Number(document.getElementById('polytheism_prices').getAttribute('price')), bs_price: Number(document.getElementById('bs_prices').getAttribute('price')), temple_price: Number(document.getElementById('temple_prices').getAttribute('price')), cinnamon_price: Number(document.getElementById('cinnamon_prices').getAttribute('price')),beetles:beetles, beetle_price:Number(document.getElementById('beetle_prices').getAttribute('price'))};
     save = JSON.stringify(save);
     save = window.btoa(save);
     save = save + "-oat-clicker-save";
@@ -615,6 +632,15 @@
         oatnogs = 0;
         Cookies.set("cow_addition", 1, { expires: 1000000 });
         Cookies.set("username", "", { expires: 1000000 });
+      }
+      if(save.beetles != null){
+        beetles = save.beetles;
+        Cookies.set('beetles',beetles,{expires:100000});
+        Cookies.set('beetle_price',save.beetle_price,{expires:100000});
+      }
+      else{
+        Cookies.set('beetles',0,{expires:100000});
+        Cookies.set('beetle_price',1000000,{expires:100000});
       }
       if (save.granarys != null) {
         granarys = save.granarys;
@@ -776,6 +802,18 @@
       else {
         addition_multiplier = 1;
       }
+      //beetle stuff:
+      if(Cookies.get('beetles') != null){
+        beetles = Number(Cookies.get('beetles'));
+        document.getElementById('beetle_prices').setAttribute('price',Cookies.get('beetle_price'));
+        document.getElementById('beetle_prices').innerHTML =  numberformat.format(Number(Cookies.get("beetle_price")), { sigfigs: 4 });
+        if(beetles != 0 || achevs.includes('beetle_unlocked')){
+          firsttimebeetle = false;
+          if(beetles > 0){
+            beetle();
+          }
+        }
+      }
       //granary stuff:
       if (Cookies.get("granarys") != null) {
         granarys = Number(Cookies.get("granarys"));
@@ -906,7 +944,7 @@
       }
     }
     else {
-      var normalcooks = [{ name: "bowl_price", value: 100 }, { name: "pot_price", value: 1500 }, { name: "cows", value: 0 }, { name: "cow_price", value: 230 }, { name: "granarys", value: 0 }, { name: "granary_price", value: 700 }, { name: "temples", value: 0 }, { name: "temple_price", value: 5000 }, { name: "god_count", value: 1 }, { name: "polytheism_price", value: 6000 }, { name: "bs_price", value: 200 }, { name: "spoon_price", value: 50 }, { name: "cinnamon_price", value: 400 }, { name: "oat_count", value: 0 }, { name: 'spoons', value: 0 }, { name: 'bowls', value: 0 }, { name: 'pots', value: 0 }, { name: "cinnamons", value: 0 }, { name: 'achievements', value: 0 }, { name: "addition", value: 1 }, { name: "addition_multiplier", value: 1 }, { name: "spoon_addition", value: 1 }, { name: "username", value: "" }, { name: "cow_addition", value: 1 }, { name: "oatnogs", value: 0 },{name:"newacks", value:null}];
+      var normalcooks = [{ name: "bowl_price", value: 100 }, { name: "pot_price", value: 1500 }, { name: "cows", value: 0 }, { name: "cow_price", value: 230 }, { name: "granarys", value: 0 }, { name: "granary_price", value: 700 }, { name: "temples", value: 0 }, { name: "temple_price", value: 5000 }, { name: "god_count", value: 1 }, { name: "polytheism_price", value: 6000 }, { name: "bs_price", value: 200 }, { name: "spoon_price", value: 50 }, { name: "cinnamon_price", value: 400 }, { name: "oat_count", value: 0 }, { name: 'spoons', value: 0 }, { name: 'bowls', value: 0 }, { name: 'pots', value: 0 }, { name: "cinnamons", value: 0 }, { name: 'achievements', value: 0 }, { name: "addition", value: 1 }, { name: "addition_multiplier", value: 1 }, { name: "spoon_addition", value: 1 }, { name: "username", value: "" }, { name: "cow_addition", value: 1 }, { name: "oatnogs", value: 0 },{name:"newacks", value:null},{name:"beetles",value:0}];
       for (var i = 0; i < normalcooks.length; i++) {
         Cookies.set(normalcooks[i].name, normalcooks[i].value, {
           expires: 1000000
@@ -1069,6 +1107,22 @@
       }
 
       updatecount();
+    }
+  }
+  function beetle_clicked(){
+    if(oat_count >= Number(document.getElementById('beetle_prices').getAttribute('price'))){
+      oat_count -= Number(document.getElementById('beetle_prices').getAttribute('price'));
+      beetles += 1;
+      Cookies.set("beetles",beetles,{expires:100000});
+      document.getElementById('beetle_prices').setAttribute('price',Number(document.getElementById('beetle_prices').getAttribute('price'))*1.1);
+      document.getElementById('beetle_prices').innerHTML = numberformat.format(Number(document.getElementById('beetle_prices').getAttribute('price')),{sigfigs: 4})
+      Cookies.set('beetle_price',document.getElementById('beetle_prices').getAttribute('price'),{expires:1000000000});
+      addition += 1;
+      Cookies.set('addition',addition,{expires:1000000})
+      updatecount();
+      if(beetles == 1){
+        beetle();
+      }
     }
   }
   function cow_clicked() {
@@ -1789,6 +1843,7 @@
 </div>
 <div id="fightchoose" class="hidden">
   <div class="center">
+    <div id="hide-battle" class="booster" onclick="fightend()"></div>
     <span class="scores center">All friends fight. <br> Who do you want to battle? </span><br><br>
     <span class="ops" id="pez">there are 0 other people online</span>
     <p class="center not-enough-money hidden" id="waitinggg">waiting for user to accept...</p>
@@ -1895,6 +1950,13 @@
                 <p style="padding-left:20%"> Scoops up more oats every 10 seconds <span class="not-enough-money"
                     id="spoon_label"><span id="spoon_prices" price="50" class="not-enough-money">50</span>
                     oats</span><span id="spoon-things">Owned: 0</span></p>
+              </div>
+              <div class="booster" onclick="beetle_clicked()" id="beetle">
+                <br><span style="width:20%; height:100%; display: inline-block;"></span>
+                <span class="booster-title">Oat Beetle</span>
+                <p style="padding-left:23%">Rolls up balls of oats for you <span class="not-enough-money"
+                    id="beetle_label"><span id="beetle_prices" price="1000000" class="not-enough-money">1 million </span>
+                    oats</span> <span id="beetle-things">Owned: 0</span></p>
               </div>
               <div class="booster" onclick="temple_clicked()" id="temple">
                 <br><span style="width:30%; height:100%; display: inline-block;"></span>

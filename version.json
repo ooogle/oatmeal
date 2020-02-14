@@ -1,4 +1,4 @@
 {
-    "version":"procedural_akkks",
-    "notes":["Fixed a bunch of bugs with .appear & .fadein","Procedural achievements","don't press G","new version notes system","other random bug fixes","report bugs <a href='https://github.com/ooogle/oatmeal/issues/new' target='_blank'>here</a>"]
+    "version":"oat_beetles",
+    "notes":["Added Oat Beetles","Replaced setTimeout with setInterval in the upgrade functions","Added X button to battle menu","For some reason, if you have 999 quadrillion oats, it displays as 1000 quadrillion","Don't press G","Made merch less annoying","report bugs <a href='https://github.com/ooogle/oatmeal/issues/new' target='_blank'>here</a>"]
 }

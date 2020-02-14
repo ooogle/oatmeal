@@ -371,7 +371,7 @@ body, html {
   display: none;
 }
 
-#hide-akkk {
+#hide-akkk,#hide-battle {
   width: 20px;
   height: 20px;
   z-index: 18;
@@ -779,7 +779,19 @@ body, html {
   background-position: 0% 10% !important;
   background-size: 90px, var(--boost-bg-s) !important;
 }
+#beetle {
+  background: url(https://oatmeal.gq/sprites/beetle.png), var(--boost-bg);
+  background-repeat: no-repeat !important;
+  background-position: 5% 15% !important;
+  background-size: 100px, var(--boost-bg-s) !important;
+}
 
+#beetle:hover {
+  background: url(https://oatmeal.gq/sprites/beetle.png), var(--boost-bg-h);
+  background-repeat: no-repeat !important;
+  background-position: 5% 15% !important;
+  background-size: 100px, var(--boost-bg-s) !important;
+}
 #bowl {
   background: url(https://oatmeal.gq/sprites/oat_bowl.png), var(--boost-bg);
   background-repeat: no-repeat !important;
