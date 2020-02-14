@@ -50,7 +50,7 @@
   var firsttimegold = true;
   var firsttimebeetle = true;
   var ads = true;
-  var version = "oat_beetles";
+  var version = "justacoupleasmallbugfixesnstuff";
   var achevs = "0";
   var clicksound = null;
   let root = document.documentElement;
@@ -276,15 +276,12 @@
     });
     reck.open("GET", "version.json");
     reck.send();
-    if (oat_count >= 1000000000000000 && oat_count != Infinity) {
+    if (oat_count >= 1000000000000000 && oat_count != Infinity && randomate(0,3) < 1) {
       var akhev;
-      var exclaims = ["wow!", "that's amazing!", "increible", "really. that is really a huge amount of oats.", "crazy!", "that is insane!!!", "that's a TON", "that. is. a. lot. of. oatmeal.", "just crazy, man", "a lot. that's a lot.", "lots of oats", "that's a nice amount of oats", "oats galore!", "oatmeal is a lot of what you have",'oh my oat gods.','dude, that is truly mental','bloody hell, that\'s a lot']
-      var amounttochangeocby = (randomate(0,15)/10)+1;
-      for (var i = 1; i < 6; i++) {
-        amounttochangeocby = (randomate(0,159)/100)+1;
-        akhev = { req: '  return oat_count >= '+oat_count*amounttochangeocby*i, id: numberformat.formatShort(oat_count*amounttochangeocby*i), text: numberformat.format(oat_count*amounttochangeocby*i) + " oats. " + exclaims[randomate(0, exclaims.length)] };
+      var exclaims = ["wow!", "that's amazing!", "increible", "really. that is really a huge amount of oats.", "crazy!", "that is insane!!!", "that's a TON", "that. is. a. lot. of. oatmeal.", "just crazy, man", "a lot. that's a lot.", "lots of oats", "that's a nice amount of oats", "oats galore!", "oatmeal is a lot of what you have",'oh my oat gods.','dude, that is truly mental','bloody hell, that\'s a lot',"INSANE!!!!!"]
+      var amounttochangeocby = (randomate(0,159)/100)+0.3;
+        akhev = { req: '  return oat_count >= '+oat_count*amounttochangeocby, id: numberformat.formatShort(oat_count*amounttochangeocby), text: numberformat.format(oat_count*amounttochangeocby) + " oats. " + exclaims[randomate(0, exclaims.length)] };
         newacks.push(akhev);
-      }
       var tempcooknewacks = [];
       for (var i = 0; i < newacks.length; i++) {
         tempcooknewacks.push(JSON.stringify(newacks[i]));
@@ -331,7 +328,7 @@
     if (String(oat_count) == "NaN") {
       oat_count = 0;
     }
-    if (merchable && oat_count >= 1000000 && document.hidden == false && rebellion == false) {
+    if (merchable && oat_count >= 1000000 && document.hidden == false && rebellion == false && randomate(0,3) > 1) {
       merch();
       merchable = false;
       setTimeout(function () {
@@ -427,7 +424,7 @@
     else {
       document.getElementById("beetle").style.display = "none";
     }
-    if ((oat_count >= 8000000 || cow_addition > 1 || achevs.includes("injection_unlocked")) && cow_addition != 5 && achevs.includes("cow_rebellion") == false) {
+    if ((oat_count >= 8000000 || cow_addition > 1 || achevs.includes("injection_unlocked")) && cow_addition != 5 && achevs.includes("cow_rebellion") == false && cows >= 10) {
       document.getElementById("moo").style.display = "block";
       if (firsttimeinjection && cow_addition != 2 && cow_addition != 5 && cow_addition != -2 && cow_addition != -3) {
         firsttimeinjection = false;
@@ -935,11 +932,10 @@
         var lss = Number(Cookies.get("lastsave"));
         lss = Date.now() - lss;
         lss = Math.round(lss / 1000);
-        ops = ((spoons * spoon_addition) / 10) + (cows * cow_addition / 2) + (granarys * 5 / 2) + (temples * god_count * 15 / 2);
+        ops = ((spoons * spoon_addition) / 10) + (cows * cow_addition / 2) + (granarys * 5 / 2) + (temples * god_count * 15 / 2) + beetles * 27;
         if (lss / 60 >= 1 && ops >= 0.3) {
-          oat_count += lss * ops / 3;
-
-          achieve("", "You gained " + numberformat.formatShort(lss * ops / 3) + " oats.", "While you were gone...");
+          oat_count += lss * ops / 2;
+          achieve("", "You gained " + numberformat.formatShort(lss * ops / 2) + " oats.", "While you were gone...");
         }
       }
     }

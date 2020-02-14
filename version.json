@@ -1,4 +1,4 @@
 {
-    "version":"oat_beetles",
-    "notes":["Added Oat Beetles","Replaced setTimeout with setInterval in the upgrade functions","Added X button to battle menu","For some reason, if you have 999 quadrillion oats, it displays as 1000 quadrillion","Don't press G","Made merch less annoying","report bugs <a href='https://github.com/ooogle/oatmeal/issues/new' target='_blank'>here</a>"]
+    "version":"justacoupleasmallbugfixesnstuff",
+    "notes":["Made procedural acheivements not explode in your face all crazy like before","Fixed bug where you wouldn't get as much oats as you should have while you were gone","Made it so you have to have 10 cows to unlock moo injection","made merch even less annoying","report bugs <a href='https://github.com/ooogle/oatmeal/issues/new' target='_blank'>here</a>"]
 }
