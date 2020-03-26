@@ -1,24 +1,24 @@
 function checkacheivs() {
-    acks = [{ id: "1click", text: 'Click: you clicked the oat!', req: oat_count >= 1 }, { id: "2click", text: 'Double-Click: you clicked the oat twice!', req: oat_count >= 2 }, { id: "10click", text: 'Deca-Clicker: you clicked the oat ten times!', req: oat_count >= 10 }, { id: "69_", text: '69 oats. nice.', req: oat_count >= 69 }, { id: "first-spoon", text: 'You have a spoon!', req: spoons >= 1 }, { id: '100-oats', text: '100 oats! wow! That\'s a lot!', req: oat_count >= 100 }, { id: '50-oats', text: '50 oats! wow!', req: oat_count >= 50 }, { id: 'bow1', text: 'Your first oat bowl', req: bowls >= 1 }, { id: 'pot1', text: 'Your first oat pot', req: pots >= 1 }, { id: 'cow1', text: 'Your first oat cow', req: cows >= 1 }, { id: 'cow10', text: 'Farmer: you have lots of cows', req: cows >= 10 }, { id: 'cow20', text: 'Local legend: you are known for your numerous cows', req: cows >= 20 }, { id: 'cow30', text: 'Mad cow disease: you are obsessed with your cows', req: cows >= 30 }, { id: 'cow40', text: 'PETA has its eye on you. One wrong move and your cows could be confiscated', req: cows >= 40 }, { id: 'cow50', text: 'Great cow Guru: keep an eye on your feilds...', req: cows >= 50 }, { id: '200-oats', text: 'Two Hundred oats! wow!', req: oat_count >= 200 }, { id: '500-oats', text: 'Five Hundred oats! wow!', req: oat_count >= 500 }, { id: '1000-oats', text: 'Bob\'s red mill: you have one thousand oats', req: oat_count >= 1000 }, { id: '10-ops', text: 'Ten OPS! That\'s a lotta OATS!', req: ops >= 10 }, { id: '100-ops', text: 'You are making one hundred oats every second. That\'s amazing.', req: ops >= 100 }, { id: '1000-ops', text: 'Thousand red mills: you have 1,000 OPS', req: ops >= 1000 }, { id: '10000-ops', text: 'Oat hero: you have 100,000 OPS', req: ops >= 100000 }, { id: 'gold50', text: 'Crazy Clicker: you click like crazy!', req: addition_multiplier >= 50 }, { id: 'cinnamon1', text: 'The lottery is a risky business', req: cinnamons >= 1 }, { id: 'spoon_guru', text: 'Spoon Guru: you have fifty spoons', req: spoons >= 50 }, { id: 'spoon_lord', text: 'Spoon lord: you have one hundred spoons', req: spoons >= 100 }, { id: '150_oats', text: 'You have 150 oats! That\'s a lot!', req: oat_count >= 150 }, { id: '420_oats', text: '420 oats: blaze it!', req: oat_count >= 420 }, { id: 'bil_oats', text: 'One billion oats oats... wow. just wow.', req: oat_count >= 1000000000 }, { id: 'million_oats', text: 'A whole million oats', req: oat_count >= 1000000 }, { id: '25_oats', text: 'A whole twenty five oats', req: oat_count >= 25 }, { id: '30_oats', text: 'Quaker: you have 30 oats', req: oat_count >= 30 }, { id: '45_oats', text: 'Brother, may I have some oats?', req: oat_count >= 45 }, { id: 'lottery_master', text: 'Lottery master: You\'re a real big gambler', req: cinnamons >= 20 }, { id: '300_oats', text: 'A whole 300 oats', req: oat_count >= 300 }, { id: '600_oats', text: 'Man, six hundred', req: oat_count >= 600 }, { id: '2-mil_oats', text: 'A whole 2 million oats', req: oat_count >= 2000000 }, { id: '4-mil_oats', text: 'Oat country: you have enough oats to start a small nation', req: oat_count >= 4000000 },{id: 'beetle-1', text: 'You have an Oat Beetle', req: beetles > 0},{id: 'beetle-2', text: 'You have two beetles', req: beetles > 1},{id: '50-beetles', text: 'Beetle master: you have 50 beetles', req: beetles >= 50},{id: '200-beetles', text: 'The Beetles: your beetles have inspired the pop band The Beetles to write their hit song, <i>I am the Beetle, I am the oat man</i>.', req: beetles >= 200}, { id: '100-mil_oats', text: 'Boomer: you have been playing this game so long society simply responds to all you say with "ok boomer"', req: oat_count >= 100000000 }, { id: '10-mil_oats', text: 'Ten million oats... You sure could buy a lotta oat cows with that!', req: oat_count >= 10000000 }, { id: '3-mil_oats', text: 'Oat fetish: you are <a href="https://answers.yahoo.com/question/index?qid=20110813210020AAzGwIe" target="_blank" style="pointer-events:all !important; z-index:30; color:	#00df12 !important;" title="click me!">sexually attracted to oats</a>', req: oat_count >= 3000000 }, { id: 'tril', text: 'Oat Lord: you have a trillion oats', req: oat_count >= 1000000000000 }, { id: '2tril', text: 'TWO TRILLION OATS OH MY GAWD THAT\'S INSANE!!!!!!!!!!!!!', req: oat_count >= 2000000000000 }, { id: '10tril', text: 'you have 10 trillion oats. crazy.', req: oat_count >= 10000000000000 }, { id: '100tril', text: 'one hundred trillion oats. that\'s 100,000,000,000,000', req: oat_count >= 100000000000000 }, { id: 'quad', text: 'you have a quadrillion oats', req: oat_count >= 1000000000000000 }, { id: 'pressed_g', text: 'You absolutely terrible person! I <i>told</i> you not to press G!', req: fall_sprite == "https://raw.githubusercontent.com/ooogle/oatmeal/master/fly.png" }, { id: 'granary1', text: 'You have a granary!', req: granarys >= 1 }, { id: 'debt1', text: 'Debt: your oat balance is in the negatives', req: oat_count < 0 }, { id: 'peta-kill', text: 'Peta wants you dead for animal abuse. Preferably burned at a stake, but any form of cruel execution will do.', req: cow_addition > 1 }, { id: 'temple1', text: 'You have founded a new religion', req: temples >= 1 }, { id: 'priest', text: 'Priest: you are a powerful leader', req: temples >= 5 }, { id: 'poly1', text: 'Two Gods are better than one.', req: god_count >= 2 }, { id: 'poly5', text: 'Suck-up: you please five gods', req: god_count >= 5 }, { id: 'poly10', text: 'Your many gods love you almost as much as you love them.', req: god_count >= 10 }, { id: 'poly100', text: 'Oat Messiah: Your religion has inspred the popular prog rock band "No" to create their latest album, "Neymarism"', req: god_count >= 100 }, { id: 'fistgold', text: 'Gold is better than wood!', req: addition_multiplier >= 2 }, { id: 'gold5', text: 'Dat Gold Powa: you got dat clicki\'n powa!', req: addition_multiplier >= 5 }, { id: 'gold15', text: 'Super cookware: your cookware is of immense power', req: addition_multiplier >= 15 }, { id: 'gold30', text: 'Thiccccccc pots: your pots are hella thicccccccc', req: addition_multiplier >= 30 }, { req: oat_count + spoons == 869, text: "Your oat count plus your spoon count is excactly 869!", id: "869_spoon_oats" },{req: god_count >= 50, id:'poly50',text:"The fifty gods way up in the sky just gave you fifty oats each", action:function(){oat_count += 50 * 50;}},{req:addition_multiplier >= 300, text:"You have "+addition_multiplier*addition+" oats per click!", id:"300gold"},{req: 5 == 2,id:"cookie-clicker",text:"Betrayer: you have blasphemed ALL THE OATS!!!!!"}];
-    for(var i=0; i < newacks.length; i++){
+    acks = [{ id: "1click", text: 'Click: you clicked the oat!', req: oat_count >= 1 }, { id: "2click", text: 'Double-Click: you clicked the oat twice!', req: oat_count >= 2 }, { id: "10click", text: 'Deca-Clicker: you clicked the oat ten times!', req: oat_count >= 10 }, { id: "69_", text: '69 oats. nice.', req: oat_count >= 69 }, { id: "first-spoon", text: 'You have a spoon!', req: spoons >= 1 }, { id: '100-oats', text: '100 oats! wow! That\'s a lot!', req: oat_count >= 100 }, { id: '50-oats', text: '50 oats! wow!', req: oat_count >= 50 }, { id: 'bow1', text: 'Your first oat bowl', req: bowls >= 1 }, { id: 'pot1', text: 'Your first oat pot', req: pots >= 1 }, { id: 'cow1', text: 'Your first oat cow', req: cows >= 1 }, { id: 'cow10', text: 'Farmer: you have lots of cows', req: cows >= 10 }, { id: 'cow20', text: 'Local legend: you are known for your numerous cows', req: cows >= 20 }, { id: 'cow30', text: 'Mad cow disease: you are obsessed with your cows', req: cows >= 30 }, { id: 'cow40', text: 'PETA has its eye on you. One wrong move and your cows could be confiscated', req: cows >= 40 }, { id: 'cow50', text: 'Great cow Guru: keep an eye on your feilds...', req: cows >= 50 }, { id: '200-oats', text: 'Two Hundred oats! wow!', req: oat_count >= 200 }, { id: '500-oats', text: 'Five Hundred oats! wow!', req: oat_count >= 500 }, { id: '1000-oats', text: 'Bob\'s red mill: you have one thousand oats', req: oat_count >= 1000 }, { id: '10-ops', text: 'Ten OPS! That\'s a lotta OATS!', req: ops >= 10 }, { id: '100-ops', text: 'You are making one hundred oats every second. That\'s amazing.', req: ops >= 100 }, { id: '1000-ops', text: 'Thousand red mills: you have 1,000 OPS', req: ops >= 1000 }, { id: '10000-ops', text: 'Oat hero: you have 100,000 OPS', req: ops >= 100000 }, { id: 'gold50', text: 'Crazy Clicker: you click like crazy!', req: addition_multiplier >= 50 }, { id: 'cinnamon1', text: 'The lottery is a risky business', req: cinnamons >= 1 }, { id: 'spoon_guru', text: 'Spoon Guru: you have fifty spoons', req: spoons >= 50 }, { id: 'spoon_lord', text: 'Spoon lord: you have one hundred spoons', req: spoons >= 100 }, { id: '150_oats', text: 'You have 150 oats! That\'s a lot!', req: oat_count >= 150 }, { id: '420_oats', text: '420 oats: blaze it!', req: oat_count >= 420 }, { id: 'bil_oats', text: 'One billion oats oats... wow. just wow.', req: oat_count >= 1000000000 }, { id: 'million_oats', text: 'A whole million oats', req: oat_count >= 1000000 }, { id: '25_oats', text: 'A whole twenty five oats', req: oat_count >= 25 }, { id: '30_oats', text: 'Quaker: you have 30 oats', req: oat_count >= 30 }, { id: '45_oats', text: 'Brother, may I have some oats?', req: oat_count >= 45 }, { id: 'lottery_master', text: 'Lottery master: You\'re a real big gambler', req: cinnamons >= 20 }, { id: '300_oats', text: 'A whole 300 oats', req: oat_count >= 300 }, { id: '600_oats', text: 'Man, six hundred', req: oat_count >= 600 }, { id: '2-mil_oats', text: 'A whole 2 million oats', req: oat_count >= 2000000 }, { id: '4-mil_oats', text: 'Oat country: you have enough oats to start a small nation', req: oat_count >= 4000000 }, { id: 'beetle-1', text: 'You have an Oat Beetle', req: beetles > 0 }, { id: 'beetle-2', text: 'You have two beetles', req: beetles > 1 }, { id: '50-beetles', text: 'Beetle master: you have 50 beetles', req: beetles >= 50 }, { id: '200-beetles', text: 'The Beetles: your beetles have inspired the pop band The Beetles to write their hit song, <i>I am the Beetle, I am the oat man</i>.', req: beetles >= 200 }, { id: '100-mil_oats', text: 'Boomer: you have been playing this game so long society simply responds to all you say with "ok boomer"', req: oat_count >= 100000000 }, { id: '10-mil_oats', text: 'Ten million oats... You sure could buy a lotta oat cows with that!', req: oat_count >= 10000000 }, { id: '3-mil_oats', text: 'Oat fetish: you are <a href="https://answers.yahoo.com/question/index?qid=20110813210020AAzGwIe" target="_blank" style="pointer-events:all !important; z-index:30; color:	#00df12 !important;" title="click me!">sexually attracted to oats</a>', req: oat_count >= 3000000 }, { id: 'tril', text: 'Oat Lord: you have a trillion oats', req: oat_count >= 1000000000000 }, { id: '2tril', text: 'TWO TRILLION OATS OH MY GAWD THAT\'S INSANE!!!!!!!!!!!!!', req: oat_count >= 2000000000000 }, { id: '10tril', text: 'you have 10 trillion oats. crazy.', req: oat_count >= 10000000000000 }, { id: '100tril', text: 'one hundred trillion oats. that\'s 100,000,000,000,000', req: oat_count >= 100000000000000 }, { id: 'quad', text: 'you have a quadrillion oats', req: oat_count >= 1000000000000000 }, { id: 'pressed_g', text: 'You absolutely terrible person! I <i>told</i> you not to press G!', req: fall_sprite == "https://raw.githubusercontent.com/ooogle/oatmeal/master/fly.png" }, { id: 'granary1', text: 'You have a granary!', req: granarys >= 1 }, { id: 'debt1', text: 'Debt: your oat balance is in the negatives', req: oat_count < 0 }, { id: 'peta-kill', text: 'Peta wants you dead for animal abuse. Preferably burned at a stake, but any form of cruel execution will do.', req: cow_addition > 1 }, { id: 'temple1', text: 'You have founded a new religion', req: temples >= 1 }, { id: 'priest', text: 'Priest: you are a powerful leader', req: temples >= 5 }, { id: 'poly1', text: 'Two Gods are better than one.', req: god_count >= 2 }, { id: 'poly5', text: 'Suck-up: you please five gods', req: god_count >= 5 }, { id: 'poly10', text: 'Your many gods love you almost as much as you love them.', req: god_count >= 10 }, { id: 'poly100', text: 'Oat Messiah: Your religion has inspred the popular prog rock band "No" to create their latest album, "Neymarism"', req: god_count >= 100 },{id: 'betterthan-jesus', text: 'Better than Jesus: your oat Gods are way cooler than the messiah', req: god_count >=200}, { id: 'fistgold', text: 'Gold is better than wood!', req: addition_multiplier >= 2 }, { id: 'gold5', text: 'Dat Gold Powa: you got dat clicki\'n powa!', req: addition_multiplier >= 5 }, { id: 'gold15', text: 'Super cookware: your cookware is of immense power', req: addition_multiplier >= 15 }, { id: 'gold30', text: 'Thiccccccc pots: your pots are hella thicccccccc', req: addition_multiplier >= 30 }, { req: oat_count + spoons == 869, text: "Your oat count plus your spoon count is excactly 869!", id: "869_spoon_oats" }, { req: god_count >= 50, id: 'poly50', text: "The fifty gods way up in the sky just gave you fifty oats each", action: function () { oat_count += 50 * 50; } }, { req: addition_multiplier >= 300, text: "You have " + addition_multiplier * addition + " oats per click!", id: "300gold" }, { req: 5 == 2, id: "cookie-clicker", text: "Betrayer: you have blasphemed ALL THE OATS!!!!!" }];
+    for (var i = 0; i < newacks.length; i++) {
         acks.push(newacks[i])
     }
-    acks.push({id:"inifinity",req:oat_count == Infinity, text:"Oat master: you own every oat in existence"});
+    acks.push({ id: "inifinity", req: oat_count == Infinity, text: "Oat master: you own every oat in existence" });
     for (var i = 0; i < acks.length; i++) {
-        if (!achevs.includes(acks[i].id) && acks[i].req && typeof(acks[i].req) == "boolean") {
+        if (!achevs.includes(acks[i].id) && acks[i].req && typeof (acks[i].req) == "boolean") {
             achieve(acks[i].id, acks[i].text);
             if (acks[i].action != null) {
                 acks[i].action();
             }
         }
-        else if(!achevs.includes(acks[i].id) && typeof(acks[i].req) != "boolean"){
+        else if (!achevs.includes(acks[i].id) && typeof (acks[i].req) != "boolean") {
             var chkker = new Function(acks[i].req);
-            if(chkker()){
+            if (chkker()) {
                 achieve(acks[i].id, acks[i].text);
             }
         }
     }
-    if ((cow_addition == 2 || cow_addition == -2) && achevs.includes("cow_rebellion") == false && new Date().getMinutes() - minjection >= 5 && cows >= 30) {
+    if ((cow_addition == 2 || cow_addition == -2) && !achevs.includes("cow_rebellion") && new Date().getMinutes() - minjection >= 5 && cows >= 30) {
         cow_rebellion();
     }
     var images = {
@@ -67,9 +67,7 @@ function spoon() {
             }
         }
         else {
-            for (var i = 0; i < spoons; i += 3) {
-                oat_clicked_by_boost(Number(spoon_addition) * 3);
-            }
+            oat_clicked_by_boost(spoon_addition * spoons);
         }
     }, 10000);
 }
@@ -77,115 +75,73 @@ function spoon() {
 function cow() {
     setInterval(function () {
         var thinggg = 0;
-        if (ops <= 50) {
+        if (cows <= 10) {
             for (var i = 0; i < cows; i++) {
                 oat_clicked_by_boost(cow_addition);
             }
         }
-        else if (ops <= 50000) {
-            for (var i = 0; i < cows; i += 3) {
-                oat_clicked_by_boost(cow_addition * 3);
-            }
-        }
-        else if (ops <= 100000) {
-            for (var i = 0; i < cows; i += 10) {
-                oat_clicked_by_boost(cow_addition * 10);
-            }
-        }
         else {
-            for (var i = 0; i < cows; i += 1000) {
-                oat_clicked_by_boost(cow_addition * 1000);
-            }
+            oat_clicked_by_boost(cows * cow_addition)
         }
+
     }, 2000);
 }
 function granary() {
     setInterval(function () {
-        if (ops <= 50) {
+        if (granarys <= 15) {
             for (var i = 0; i < granarys; i++) {
                 oat_clicked_by_boost(5);
             }
         }
-        else if (ops <= 30000) {
-            for (var i = 0; i < granarys; i += 3) {
-                oat_clicked_by_boost(15);
-            }
-        }
-        else if (ops <= 90000) {
-            for (var i = 0; i < granarys; i += 10) {
-                oat_clicked_by_boost(50)
-            }
-        }
-        else if (ops <= 1000000) {
-            for (var i = 0; i < granarys; i += 1000) {
-                oat_clicked_by_boost(5000)
-            }
-        }
         else {
-            for (var i = 0; i < granarys; i += 100000) {
-                oat_clicked_by_boost(500000)
-            }
+            oat_clicked_by_boost(5 * granarys)
         }
     }, 2000);
 }
 function temple() {
     setInterval(function () {
-        if (ops <= 50) {
+        if (temples <= 15) {
             for (var i = 0; i < temples; i++) {
                 oat_clicked_by_boost(god_count * 15);
             }
         }
-        else if (ops <= 1000) {
-            for (var i = 0; i < temples; i += 3) {
-                oat_clicked_by_boost(god_count * 15 * 3);
-            }
-        }
-        else if (ops <= 10000) {
-            for (var i = 0; i < temples; i += 10) {
-                oat_clicked_by_boost(god_count * 15 * 10);
-            }
-        }
-        else if (ops <= 50000) {
-            for (var i = 0; i < temples; i += 100) {
-                oat_clicked_by_boost(god_count * 15 * 100);
-            }
-        }
-        else if (ops <= 150000) {
-            for (var i = 0; i < temples; i += 500) {
-                oat_clicked_by_boost(god_count * 15 * 500);
-            }
-        }
-        else if (ops <= 500000) {
-            for (var i = 0; i < temples; i += 1000) {
-                oat_clicked_by_boost(god_count * 15 * 1000);
-            }
-        }
-        else if (ops <= 1000000) {
-            for (var i = 0; i < temples; i += 10000) {
-                oat_clicked_by_boost(god_count * 15 * 10000);
-            }
-        }
         else {
-            for (var i = 0; i < temples; i += 100000) {
-                oat_clicked_by_boost(god_count * 15 * 100000);
+            for (var i = 0; i < 2; i++) {
+                oat_clicked_by_boost(god_count * 15 * temples / 10);
             }
-        };
+        }
     }, 2000);
 }
 function cinnamon() {
     setInterval(function () {
-        for (var i = 0; i < cinnamons; i++) {
-            if (randomate(0, 5000) == 10) {
-                oat_count += oat_count;
-                if (randomate(0, 5) == 2) {
-                    oat_count += oat_count * 0.5;
-                    if (randomate(0, 5000) == 10) {
-                        oat_count = oat_count * 5;
-                        if (randomate(0, 800000) == 10) {
-                            oat_count += randomate(100000, 1000000000000000);
+        if (cinnamons < 100) {
+            for (var i = 0; i < cinnamons; i++) {
+                if (randomate(0, 5000) == 10) {
+                    oat_count += oat_count;
+                    if (randomate(0, 5) == 2) {
+                        oat_count += oat_count * 0.5;
+                        if (randomate(0, 5000) == 10) {
+                            oat_count = oat_count * 5;
+                            if (randomate(0, 800000) == 10) {
+                                oat_count += randomate(100000, 1000000000000000);
+                            }
                         }
                     }
+                    achieve("", "you won the cinnamon lottery!", "BIG WIN!");
+                    updatecount();
                 }
+            }
+        }
+        else if (cinnamons <= 5000) {
+            if (randomate(0, 5000) <= cinnamons) {
+                oat_count += oat_count;
+                achieve("", "you won the cinnamon lottery!", "BIG WIN!");
+                updatecount();
+            }
+        }
+        else {
+            if (randomate(0, 5000 + cinnamons) <= cinnamons) {
+                oat_count += oat_count;
                 achieve("", "you won the cinnamon lottery!", "BIG WIN!");
                 updatecount();
             }
@@ -208,10 +164,10 @@ function oatnog() {
         }
     }, 60000);
 }
-function beetle(){
-    setInterval(function(){
-            oat_clicked_by_boost((27*beetles)/2);
-            oat_clicked_by_boost((27*beetles)/2);
+function beetle() {
+    setInterval(function () {
+        oat_clicked_by_boost((27 * beetles) / 2);
+        oat_clicked_by_boost((27 * beetles) / 2);
     }, 1000)
 }
 function setbg(id) {

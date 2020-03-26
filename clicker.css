@@ -44,7 +44,19 @@
   background-size: 33px, 150% 150%;
   background-repeat: no-repeat, no-repeat;
 }
-
+/* Battle attacks */
+#shield{
+  background-image: url(https://oatmeal.gq/sprites/big-shield.png);
+  background-size: 90px 90px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#smite{
+  background-image: url(https://oatmeal.gq/sprites/smite.png);
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 .background-image {
   background-image: url('https://oatmeal.gq/oats1.jpg');
   background-size: cover;
@@ -52,16 +64,15 @@
   filter: blur(4px) brightness(85%);
   -webkit-filter: blur(4px) brightness(85%);
   ;
-  height: 100%;
-  width: 100%;
+  height: 120%;
+  width: 120%;
   left: 0;
-  top: 0;
+  top: -50px;
   position: fixed;
   right: 0;
   z-index: -10;
   overflow: hidden;
 }
-
 @keyframes rainbow {
   0% {
     color: blue;
@@ -121,7 +132,7 @@
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 #gamescores {
@@ -157,7 +168,9 @@
   animation: fadein 0.5s;
   pointer-events: none;
 }
-
+.nopoints{
+  pointer-events: none;
+}
 body, html {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -370,7 +383,80 @@ body, html {
   background-size: 25px;
   display: none;
 }
-
+.attack{
+  width:100px;
+  height: 100px;
+  color: white;
+  display: inline-block;
+  margin-left: 10px;
+  text-align: center;
+}
+.shielding{
+  filter:drop-shadow(3px 3px 12px red) drop-shadow(-3px -3px 12px red);
+  -webkit-filter:drop-shadow(3px 3px 12px red) drop-shadow(-3px -3px 12px red);
+  -moz-filter:drop-shadow(3px 3px 12px red) drop-shadow(-3px -3px 12px red);
+  transform: scale(1.03);
+}
+.dying{
+  animation: dying 5s ;
+}
+.shaking{
+  animation: shake 0.5s;
+}
+@keyframes shake {
+  0% { transform: translate(1px, 10px) rotate(0deg) scale(1.05); }
+  10% { transform: translate(-10px, -2px) rotate(-3deg)scale(1.05); }
+  20% { transform: translate(-3px, 0px) rotate(3deg)scale(1.05); }
+  30% { transform: translate(3px, 2px) rotate(0deg)scale(1.05); }
+  40% { transform: translate(10px, -10px) rotate(3deg)scale(1.05); }
+  50% { transform: translate(-10px, 2px) rotate(-3deg)scale(1.05); }
+  60% { transform: translate(-3px, 10px) rotate(0deg)scale(1.05); }
+  70% { transform: translate(3px, 10px) rotate(-3deg)scale(1.05); }
+  80% { transform: translate(-10px, -10px) rotate(3deg)scale(1.05); }
+  90% { transform: translate(10px, 2px) rotate(0deg)scale(1.05); }
+  100% { transform: translate(0px, -1px) rotate(-1deg)scale(1.0); }
+}
+@keyframes dying{
+  0%{
+    filter:drop-shadow(3px 3px 12px red) drop-shadow(-3px -3px 12px red);
+  }
+  2%{
+    filter:drop-shadow(3px 3px 12px #0068df) drop-shadow(-3px -3px 12px #0068df);
+    transform: scale(1.1);
+  }
+  5%{
+    filter:drop-shadow(3px 3px 12px red) drop-shadow(-3px -3px 12px red);
+    transform: scale(0.8);
+  }
+  6%{
+    filter:drop-shadow(3px 3px 12px #0068df) drop-shadow(-3px -3px 12px #0068df);
+    transform: scale(1.05);
+  }
+  10%{
+    filter:drop-shadow(3px 3px 12px red) drop-shadow(-3px -3px 12px red);
+    transform: scale(0.75);
+  }
+  12%{
+    filter:drop-shadow(3px 3px 12px #0068df) drop-shadow(-3px -3px 12px #0068df);
+    transform: scale(1.1);
+  }
+  22%{
+    filter:drop-shadow(3px 3px 12px red) drop-shadow(-3px -3px 12px red);
+    transform: scale(0.7);
+  }
+  25%{
+    filter:drop-shadow(3px 3px 12px #0068df) drop-shadow(-3px -3px 12px #0068df);
+    transform: scale(1.15);
+  }
+  60%{
+    filter:drop-shadow(3px 3px 12px #004fa8) drop-shadow(-3px -3px 12px #1658a3);
+    opacity: 1;
+  }
+  95%{
+    transform: scale(0.15);
+    opacity: 0.3;
+  }
+}
 #hide-akkk,#hide-battle {
   width: 20px;
   height: 20px;
@@ -479,10 +565,11 @@ body, html {
     position: absolute;
     z-index: 30;
     top: 60%;
+    left:30%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    transform: scale(0.7);
+    transform: scale(0.8);
   }
   #falling-oats {
     width: 100% !important;
@@ -567,9 +654,8 @@ body, html {
     top: var(--enemy-location);
     right: 10px;
   }
-  .reset {
-    display: block;
-    margin-top: 5px !important;
+  html{
+    scroll-behavior: smooth;
   }
   .falling-oat {
     position: absolute;
@@ -614,7 +700,6 @@ body, html {
 .main-clicker {
   transition: 0.15s;
   display: block;
-  -webkit-transform: translateZ(0);
   z-index: 12;
   margin-left: auto;
   margin-right: auto;
@@ -1067,26 +1152,8 @@ body, html {
 
 .fadeout {
   opacity: 0;
-  animation: fadeout 0.5s;
+  animation: fadein 0.5s reverse;
 }
-
-@keyframes fadeout {
-  0% {
-    display: block !important;
-    filter: blur(0px);
-    -webkit-filter: blur(0px);
-    opacity: 1;
-  }
-  99% {
-    filter: blur(3px);
-    -webkit-filter: blur(3px);
-    opacity: 0;
-  }
-  100% {
-    display: none;
-  }
-}
-
 @keyframes fadein {
   0% {
     display: none;
@@ -1136,7 +1203,6 @@ body, html {
   0% {
     left: 20px;
   }
-  70% {}
   100% {
     left: 80%;
   }
@@ -1197,7 +1263,7 @@ body, html {
     background-image: url(https://oatmeal.gq/sprites/animations/boss-bullet/bullet-2.png);
   }
   66% {
-    background-image: url(https://oatmeal.gq/sprites/animations/boss-bullet/bullet3.png);
+    background-image: url(https://oatmeal.gq/sprites/animations/boss-bullet/bullet-3.png);
   }
   100% {
     background-image: url(https://oatmeal.gq/sprites/animations/boss-bullet/bullet-3.png);

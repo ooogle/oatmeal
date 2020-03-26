@@ -1,4 +1,4 @@
 {
-    "version":"justacoupleasmallbugfixesnstuff",
-    "notes":["Made procedural acheivements not explode in your face all crazy like before","Fixed bug where you wouldn't get as much oats as you should have while you were gone","Made it so you have to have 10 cows to unlock moo injection","made merch even less annoying","report bugs <a href='https://github.com/ooogle/oatmeal/issues/new' target='_blank'>here</a>"]
+    "version":"thebigbadbattleupdate-dGhlYmlnYmFkYmF0dGxldXBkYXRl",
+    "notes":["Shields added to battle","Now you know when your ban will end","If you have pressed G, stuff happens during battle","Added system notifications for battle requests","Smites added to battle","Fixed beetle bug","Cinnamon doesn't kill your computer","Don't press G","OPS is scaled down so your computer doesn't kill itself","Procedural acheivements now have randomated punctuation","You can change your username now","The cow rebellion now has a cap on how much you can fire so you can't just hold space to win","Replaced document.hidden with document.hasFocus() for better performance","Countless bug fixes","Report bugs <a href='https://github.com/ooogle/oatmeal/issues/new' target='_blank'>here</a>"]
 }
