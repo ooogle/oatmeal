@@ -1,0 +1,421 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Wyvernland - Oat Clicker</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, height=device-height, target-densitydpi=device-dpi" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" rel="preload">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js" rel="preload"></script>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <link rel="manifest" href="/manifest.json">
+  <script src="//cdn.rawgit.com/erosson/swarm-numberformat/v0.1.0/dist/swarm-numberformat.min.js"
+    rel="preload"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/keymaster/1.6.1/keymaster.js" rel="preload"></script>
+  <link rel="shortcut icon" href="https://oatmeal.gq/oat2.png" rel="preload">
+  <link rel="stylesheet" href="wyverns.css">
+  <script src="wyverns.js" rel="preload" defer="defer"></script>
+  <script>
+    var oat_count = 0;
+    var ops = 0;
+    var cinnamons = 0;
+    var beetles = 0;
+    var addition_multiplier = 0;
+    var saver = 0;
+    var cows = 0;
+    var oatnogs = 0;
+    var granarys = 0;
+    var temples = 0;
+    var upgrader = false;
+    var spoons = 0;
+    var whatup = "";
+    var pots = 0;
+    var bowls = 0;
+    var minutes = 15;
+    var seconds = 0;
+    var loadscreengone = false;
+    var upgrades = {
+      cow: {
+        name: "Milkers",
+        price: 1000,
+        affects: "cow_addition",
+        id: "cow",
+        amount: 0,
+        priceaffects: "milker_price"
+      },
+      spoon: {
+        name: "Spoons",
+        price: Number(Cookies.get("bs_price")),
+        affects: "spoon_addition",
+        id: "spoon",
+        amount: 0,
+        priceaffects: "bs_price"
+      },
+      temple: {
+        name: "Polytheism",
+        price: Number(Cookies.get("polytheism_price")),
+        affects: "god_count",
+        id: "temple",
+        amount: 0,
+        priceaffects: "polytheism_price"
+      },
+      granary:{
+        name: "Granaries",
+        price:800,
+        affects: "granary_addition",
+        amount: 1,
+        priceaffects: "granary_addition_price",
+        id: "granary"
+      },
+      beetle:{
+        name: "Beetles",
+        price:6900,
+        affects: "beetle_addition",
+        amount: 1,
+        priceaffects: "beetle_addition_price",
+        id: "beetle"
+      },
+      bowl:{
+        name: "Pots & Bowls",
+        price:800,
+        affects:"addition_multiplier",
+        amount:1,
+        priceaffects:"shpeshul_gold_price",
+        id:"bowl"
+      }
+    }
+    key("esc",function(){if(upgrader){hideupgrades()}});
+    function checkwidth(){
+      if(!loadscreengone && window.innerWidth < 514){
+        document.getElementById("loadtext").innerHTML="Rotate your device";
+      }
+      else if(!loadscreengone){
+        document.getElementById("loading").classList.add("fadeout");
+        setTimeout(function () {
+          document.getElementById("loading").classList.add("hidden");
+          document.getElementById("loading").classList.remove("fadeout");
+        }, 550);
+        loadscreengone = true;
+      }
+      else if(window.innerWidth < 514){
+        document.getElementById("loading").classList.remove("hidden");
+        document.getElementById("loadtext").innerHTML="Rotate your device";
+      }
+      else{
+        document.getElementById("loading").classList.add("hidden");
+      }
+    }
+    function countdown(){
+      setInterval(function(){
+        seconds -= 1;
+        if(seconds < 0){
+          seconds = 59;
+          minutes -= 1;
+        }
+        if(seconds >= 10 && minutes >= 10){
+        document.getElementById("countdown").innerHTML = minutes+":"+seconds;
+        }
+        else if(minutes >= 10){
+          document.getElementById("countdown").innerHTML = minutes+":0"+seconds;
+        }
+        else if(seconds < 10){
+          document.getElementById("countdown").innerHTML = "0"+minutes+":0"+seconds;
+        }
+        else{
+          document.getElementById("countdown").innerHTML = "0"+minutes+":"+seconds;
+        }
+        if(minutes == 0 && seconds == 0){
+          backtonormaloc();
+        }
+        var d = new Date();
+        d.setTime(minutes*60*1000 + d.getTime() + seconds*1000);
+        Cookies.set("wyverntimeleft",minutes+":"+seconds,{expires:d});
+        
+      }, 1000)
+    }
+    function dragElement(elmnt) {
+      var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+      elmnt.onmousedown = dragMouseDown;
+      function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+        elmnt.style.cursor = "move";
+      }
+      function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        var distFromBottom = window.innerHeight - elmnt.offsetTop - elmnt.clientHeight;
+        var distFromRight = window.innerWidth - elmnt.offsetLeft - elmnt.clientWidth;
+        if (elmnt.offsetTop - pos2 < 20 && elmnt.offsetLeft - pos1 < 20) {
+          if (distFromBottom <= 20) {
+            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+          }
+          else {
+            elmnt.style.top = window.innerHeight - elmnt.clientHeight - 20 + "px";
+          }
+          if (distFromRight <= 20) {
+            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+          }
+          else {
+            elmnt.style.left = window.innerWidth - elmnt.clientWidth - 20 + "px";
+          }
+        }
+      }
+      function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+        elmnt.style.cursor = "default";
+      }
+    }
+    function startgame() {
+      if (Cookies.get("wyvernning") != null) {
+        dragElement(document.getElementById("game"));
+        oat_count = Number(Cookies.get("oat_count"));
+        if (Cookies.get("oatnogs") != null) {
+          oatnogs = Number(Cookies.get("oatnogs"));
+        }
+        ops = Number(Cookies.get("ops"));
+        cows = Number(Cookies.get("cows"));
+        cinnamons = Number(Cookies.get("cinnamons"));
+        granarys = Number(Cookies.get("granarys"));
+        temples = Number(Cookies.get("temples"));
+        god_count = Number(Cookies.get("god_count"));
+        spoons = Number(Cookies.get("spoons"));
+        beetles = Number(Cookies.get("beetles"));
+        bowls = Number(Cookies.get("bowls"));
+        pots = Number(Cookies.get("pots"))
+        addition_multiplier = Number(Cookies.get("addition_multiplier"));
+        if(Cookies.get("wyverntimeleft") != null){
+          minutes = Number(Cookies.get("wyverntimeleft").split(":")[0]);
+          seconds = Number(Cookies.get("wyverntimeleft").split(":")[1]);
+        }
+        countdown();
+       for(i in upgrades){
+          if(Cookies.get(upgrades[i].affects) != null){
+          upgrades[i].amount = Cookies.get(upgrades[i].affects);
+          if(Cookies.get(upgrades[i].priceaffects) != null){
+            upgrades[i].price = Cookies.get(upgrades[i].priceaffects)
+          }
+          }
+        }
+        setup_boosters();
+        do_ops();
+        updatecount();
+        checkwidth();
+      }
+      else {
+        window.location = "/clicker.html";
+      }
+    }
+    function setup_boosters() {
+      var elem;
+      for (var i = 0; i < cows; i++) {
+        elem = document.createElement("div");
+        elem.classList.add("cow");
+        elem.style.transform = "scale(" + randomate(8, 15) / 10 + ")";
+        elem.style.backgroundPosition = randomate(0, 15) + "px " + randomate(0, 10) + "px";
+        document.getElementById("cows").appendChild(elem);
+      }
+      if (granarys <= 799) {
+        for (var i = 0; i < granarys; i += 3.4) {
+          elem = document.createElement("div");
+          if (randomate(0, 100) <= 50) {
+            elem.classList.add("granary");
+          }
+          else {
+            elem.classList.add("staticgranary");
+          }
+          elem.style.transform = "scale(" + randomate(10, 12) / 10 + ")";
+          document.getElementById("granarys").appendChild(elem);
+        }
+      }
+      else {
+        for (var i = 0; i < Math.log(granarys) * 10; i++) {
+          elem = document.createElement("div");
+          if (randomate(0, 100) <= 50) {
+            elem.classList.add("granary");
+          }
+          else {
+            elem.classList.add("staticgranary");
+          }
+          elem.style.transform = "scale(" + randomate(10, 12) / 10 + ")";
+          document.getElementById("granarys").appendChild(elem);
+        }
+      }
+      if (temples <= 800) {
+        for (var i = 0; i < temples; i += Math.log(temples + 1) * 2) {
+          elem = document.createElement("div");
+          elem.classList.add("temple");
+          document.getElementById("temples").appendChild(elem);
+        }
+      }
+      else {
+        for (var i = 0; i < Math.log(temples) * 10; i++) {
+          elem = document.createElement("div");
+          elem.classList.add("temple");
+          document.getElementById("temples").appendChild(elem);
+        }
+      }
+        for (var i = 0; i < spoons; i += Math.log(spoons + 1) ) {
+          elem = document.createElement("div");
+          elem.classList.add("spoon");
+          document.getElementById("spoons").appendChild(elem);
+        }
+        for (var i = 0; i < Math.log(beetles + 1) * 10; i++) {
+          elem = document.createElement("div");
+          elem.classList.add("beetle");
+          elem.style.transform = "scale(" + randomate(8, 12) / 10 + ")";
+          elem.style.backgroundPosition = randomate(0, 10) + "px " + randomate(0, 10) + "px";
+          document.getElementById("beetles").appendChild(elem);
+        }
+        for (var i = 0; i < pots + bowls; i += 2) {
+          elem = document.createElement("div");
+          if(randomate(0,2) != 1 && document.getElementsByClassName("pot").length < pots /2){
+          elem.classList.add("pot");
+          document.getElementById("bowls-pots").appendChild(elem);
+          }
+          else if(randomate(0,5) == 1){
+          elem.classList.add("bowl");
+          document.getElementById("bowls-pots").appendChild(elem);
+          }
+        }
+    }
+    function updatecount() {
+      document.getElementById("oats").innerHTML = numberformat.format(oat_count, { sigfigs: 4 }) + " oats";
+        document.getElementById("persecond").innerHTML = numberformat.format(ops) + " oats per second"
+        ops = ((spoons * upgrades.spoon.amount) / 10) + (cows * upgrades.cow.amount / 2) + (granarys * 5 *upgrades.granary.amount/ 2) + (temples * god_count * 15 / 2) + beetles * 54 *upgrades.bowl.amount/10 + upgrades.beetle.amount;
+      if (saver == 150) {
+        Cookies.set("oat_count", oat_count, { expires: 100000 });
+        Cookies.set("ops", ops, { expires: 100000 });
+        Cookies.set("wyvern-upgrades",JSON.stringify(upgrades),{expires:100000});
+        saver = 0;
+      }
+      else {
+        ++saver;
+      }
+      if(isNaN(oat_count)){
+        oat_count = 0;
+      }
+      if(upgrader){
+        if(upgrades[whatup].price <= oat_count){
+          document.getElementById("price").classList.add("enough-money");
+          document.getElementById("price").classList.remove("not-enough-money");
+          document.getElementById("upgrader-button").classList.remove("nopoints");
+        }
+        else{
+          document.getElementById("price").classList.remove("enough-money");
+          document.getElementById("price").classList.add("not-enough-money");
+          document.getElementById("upgrader-button").classList.add("nopoints");
+        }
+      }
+        checkwidth();
+    }
+    function backtonormaloc() {
+      Cookies.remove("wyvernning");
+      Cookies.remove("wyverntimeleft");
+      Cookies.set("wyvern12hourcountdown","12:0:0",{expires: 100000});
+      window.location = "/clicker.html";
+    }
+    function upgradestuff(w) {
+      if(!upgrader){
+      upgrader = true;
+      whatup = w;
+      document.getElementById("upgrader-title").innerHTML = "Upgrade your " + upgrades[w].name + "!";
+      document.getElementById("price").innerHTML = numberformat.formatShort(upgrades[w].price)+" oats";
+      document.getElementById("upgrader-amount").innerHTML = numberformat.formatShort(upgrades[w].amount);
+      document.getElementById("upgrader").classList.remove("hidden");
+      document.getElementById("upgrader").classList.add("fadein");
+      document.getElementById("upgrader-button").setAttribute('onclick',"upgrade_things('"+upgrades[w].id+"');");
+      setTimeout(function () {
+        document.getElementById("upgrader").classList.remove("fadein");
+      }, 450);
+      }
+    }
+    function hideupgrades() {
+      document.getElementById("upgrader").classList.add("fastfadeout");
+      setTimeout(function () {
+        document.getElementById("upgrader").classList.add("hidden");
+        document.getElementById("upgrader").classList.remove("fastfadeout");
+      }, 310);
+      upgrader = false;
+    }
+    function upgrade_things(a){
+      if(upgrades[a].price <= oat_count){
+      upgrades[a].price = upgrades[a].price*1.15;
+      upgrades[a].amount++;
+      Cookies.set(upgrades[a].affects, upgrades[a].amount, {expires: 100000});
+      Cookies.set(upgrades[a].priceaffects, upgrades[a].price, {expires: 100000});
+      document.getElementById("price").innerHTML = numberformat.formatShort(upgrades[a].price)+" oats";
+      document.getElementById("upgrader-amount").innerHTML = numberformat.formatShort(upgrades[a].amount);
+      }
+    }
+  </script>
+</head>
+
+<body onload="startgame()">
+  <div id="scores">
+    <span class="scores" id="oats">0 Oats</span>
+    <br>
+    <span class="scores" id="persecond">0 Oats Per Second</span>
+  </div>
+  <table id="backtogame"><tr><td class="smalltable scores" id="countdown">15:00</td><td class="smalltable button center"  onclick="backtonormaloc()">Land your wyvern</td></tr></table>
+  <div id="loading" class="loading center"><br><br>
+    <span class="scores center" id="loadtext">Loading...</span>
+  </div>
+  <div id="upgrader" class="center hidden">
+    <div class="xbutton" onclick="hideupgrades()"></div>
+    <br>
+    <span class="scores center" id="upgrader-title">Upgrade your Milkers!</span>
+    <br><br>
+    <span id="price">800 oats</span>
+    <br><br>
+    <table style="width: 30%; margin-left: auto; margin-right: auto;" class="button" id="upgrader-button"><tr><td class="smalltable">Upgrade!</td><td class="smalltable" id="upgrader-amount">69</td></tr></table>
+  </div>
+  <div id="game">
+    <br><br><br><br>
+    <table>
+      <tr>
+        <td class="biggtable">
+          <div id="cows"></div>
+          <br>
+          <div class="button center" onclick="upgradestuff('cow')">Upgrade Milkers</div>
+        </td>
+        <td class="biggtable">
+          <div id="spoons">
+          </div>
+          <div class="button center" onclick="upgradestuff('spoon')">Grow Spoons</div>
+        </td>
+        <td class="biggtable">
+          <div id="granarys">
+          </div>
+          <div class="button center" onclick="upgradestuff('granary')">Upgrade Granaries</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="biggtable">
+          <div id="temples"></div>
+          <div class="button center" onclick="upgradestuff('temple')">Upgrade Religion</div>
+        </td>
+        <td class="biggtable">
+          <div id="beetles"></div>
+          <div class="button center" onclick="upgradestuff('beetle')">Upgrade Beetles</div>
+        </td>
+        <td class="biggtable">
+          <div id="bowls-pots"></div>
+          <div class="button center" onclick="upgradestuff('bowl')">Upgrade Pots & Bowls</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

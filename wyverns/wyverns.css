@@ -1,0 +1,244 @@
+#game{
+    background: rgb(47, 62, 41);
+    width: 1920px;
+    height: auto;
+    top:0;
+    left:0;
+    filter:drop-shadow(3px 3px 3px rgb(47, 62, 41)) drop-shadow(-3px -3px 3px rgb(47, 62, 41));
+}
+.biggtable{
+    text-align: center;
+    width: 10%;
+    border:  5px solid transparent;
+    border-image: url(https://oatmeal.gq/sprites/border.png) 30 stretch;
+}
+.smalltable{
+  text-align: center;
+  width: 50%;
+}
+table{
+    z-index: 999;
+}
+#upgrader{
+  background: rgb(110, 86, 42);
+  position: fixed;
+  z-index: 9999;
+  border:  5px solid transparent;
+    border-image: url(https://oatmeal.gq/sprites/border.png) 30 stretch;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
+}
+.not-enough-money {
+  color: red !important;
+}
+.enough-money {
+  color: rgb(0, 255, 0) !important;
+}
+.nopoints{
+  pointer-events: none !important;
+}
+.scores {
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1), 0px 0px 20px rgba(0, 0, 0, 1), 0px 0px 30px rgba(0, 0, 0, 1), 0px 0px 80px rgba(0, 0, 0, 1);
+    font-size: 25px;
+    font-family: sans-serif;
+    font-weight: lighter;
+  }
+  #scores{
+      position: fixed;
+      z-index: 999;
+  }
+  #backtogame{
+    position: fixed;
+    z-index: 999;
+    right:10px;
+    width: 360px !important;
+  }
+  #persecond, #countdown{
+    font-size: 15px;
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1), 0px 0px 20px rgba(0, 0, 0, 1), 0px 0px 30px rgba(0, 0, 0, 1), 0px 0px 80px rgba(0, 0, 0, 1);
+    font-family: sans-serif;
+    font-weight: lighter;
+  }
+  #countdown{
+    text-align: right;
+    padding-right: 10px;
+  }
+  body{
+      background: rgb(36, 36, 36);
+  }
+  .cow{
+      background-image: url(https://oatmeal.gq/sprites/oat_cow.png);
+      background-size: 95% auto;
+      background-repeat: no-repeat;
+      width: 50px;
+      height:30px;
+      display: inline-block;
+      margin: -5px;
+  }
+  .beetle{
+      background-image: url(https://oatmeal.gq/sprites/beetle.png);
+      background-size: 95% auto;
+      background-repeat: no-repeat;
+      width: 50px;
+      height:50px;
+      display: inline-block;
+      margin: -3px;
+  }
+  .button{
+      background: rgb(218, 180, 111);
+      cursor: pointer;
+      font-family: sans-serif;
+      color:white;
+      text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+      width: 33.333% !important;
+      border:  2px solid transparent;
+      border-image: url(https://oatmeal.gq/sprites/border.png) 30 stretch;
+      margin: 6px;
+      padding: 5px;
+      user-select: none;
+  }
+  
+  .button:hover{
+      background: rgb(238, 197, 121);;
+  }
+  .button:active{
+    background: rgb(189, 155, 93);
+  }
+  .temple{
+    background-image: url(https://oatmeal.gq/sprites/temple.png);
+    background-size: 95% auto;
+    background-repeat: no-repeat;
+    width: 50px;
+    height:30px;
+    display: inline-block;
+    margin: 2px;
+}
+.spoon{
+  background-image: url(https://oatmeal.gq/sprites/spoon.png);
+  background-size: 35px auto;
+  background-repeat: no-repeat;
+  width: 30px;
+  height:60px;
+  display: inline-block;
+  margin: 2px;
+}
+.pot{
+  background-image: url(https://oatmeal.gq/sprites/oat_pot.png);
+  background-size: 60px auto;
+  background-repeat: no-repeat;
+  width: 60px;
+  height:60px;
+  display: inline-block;
+  margin: -5px;
+}
+.bowl{
+  background-image: url(https://oatmeal.gq/sprites/oat_bowl.png);
+  background-size: 60px auto;
+  background-repeat: no-repeat;
+  width: 60px;
+  height:60px;
+  display: inline-block;
+  margin: -5px;
+}
+  .granary{
+    background-image: url(https://oatmeal.gq/sprites/animations/granery.gif);
+    background-size: 95% auto;
+    background-repeat: no-repeat;
+    width: 30px;
+    height:60px;
+    display: inline-block;
+    margin: 1px;
+}
+.staticgranary{
+    background-image: url(https://oatmeal.gq/sprites/granery.png);
+    background-size: 95% auto;
+    background-repeat: no-repeat;
+    width: 25px;
+    height:60px;
+    display: inline-block;
+    margin: 1px;
+}
+  .center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 65%;
+    text-align: center;
+  }
+  .loading{
+      background: black;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      z-index: 100000000000000;
+      top:0;
+      left:0;
+  }
+  .xbutton{
+    background-image: url(https://oatmeal.gq/sprites/x-icon.png);
+    background-attachment: scroll;
+    background-position: center;
+    background-size: 25px;
+    width:30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  .fadein {
+    animation: fadein 0.5s;
+    pointer-events: none;
+  }
+  .fadeout {
+    opacity: 0;
+    animation: fadein 0.5s reverse;
+  }
+  .fastfadeout{
+    opacity: 0;
+    animation: fadein 0.3s reverse;
+  }
+  .hidden{
+      display: none;
+  }
+  #price{
+    font-size: 15px;
+  color: white;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 1), 0px 0px 20px rgba(0, 0, 0, 1), 0px 0px 30px rgba(0, 0, 0, 1), 0px 0px 80px rgba(0, 0, 0, 1);
+  font-family: sans-serif;
+  font-weight: lighter;
+  }
+  @keyframes fadein {
+    0% {
+      display: none;
+      filter: blur(3px);
+      -webkit-filter: blur(3px);
+    }
+    1% {
+      opacity: 0;
+    }
+    100% {
+      display: block !important;
+      filter: blur(0px);
+      -webkit-filter: blur(0px);
+      opacity: 1;
+    }
+  }
+@media only screen and (max-width: 949px){
+    #game{
+        position: absolute;
+    }
+    #upgrader{
+      width: 90%;
+      height: 80%;
+      top:10px;
+      left: 5%;
+    }
+}
+@media only screen and (min-width: 950px){
+    #game{
+        position:fixed;
+    }
+    #upgrader{
+      width: 500px;
+      height: 200px;
+      left: 30%;
+    }
+}
