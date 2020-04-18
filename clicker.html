@@ -45,14 +45,16 @@
   var newacks = [];
   var spoons = 0;
   var pots = 0;
+  var wyvernunllllocked = false;
   var canshoot = true;
+  var granary_addition = 1;
   var shielding = false;
   var deal = false;
   var firsttimeoatnog = true;
   var firsttimegold = true;
   var firsttimebeetle = true;
   var ads = true;
-  var version = "thebigbadbattleupdate-dGhlYmlnYmFkYmF0dGxldXBkYXRl";
+  var version = "wyverns";
   var achevs = "0";
   var clicksound = null;
   let root = document.documentElement;
@@ -63,6 +65,7 @@
   var cowscore = 30;
   var playerscore = 30;
   var firsttimecow = true;
+  var haswyvern = false;
   var granarys = 0;
   var firsttimegranary = true;
   var temples = 0;
@@ -78,6 +81,7 @@
   var alusername = ""
   var dodging = false;
   var rebellion = false;
+  var countingdown = false;
   var cow_addition = 1;
   var oatnogs = 0;
   var firsttimeinjection = true;
@@ -88,6 +92,12 @@
   var fighting = false;
   var addition_multiplier = 1;
   var shield_count = 0;
+  var beetle_addition = 1;
+  var wyverntimeleftuntil = {
+    hours: 12,
+    minutes: 0,
+    seconds: 1
+  }
   var boosters = ["spoon", "cow", "bowl", "pot", "moo", "oatnog", "temple", "granary", "polytheism", "cinnamon", "gold", "bs", 'beetle'];
   var minjection = new Date().getMinutes();
   if (minjection >= 55) {
@@ -128,6 +138,39 @@
     pubnub.unsubscribe({
       channels: [fightchannel, "requests"]
     });
+  }
+  function wyverncountdown(){
+    if(wyverntimeleftuntil.hours + wyverntimeleftuntil.minutes + wyverntimeleftuntil.seconds != 0 && !countingdown){
+      countingdown = true;
+      setInterval(function(){
+        if(wyverntimeleftuntil.hours + wyverntimeleftuntil.minutes + wyverntimeleftuntil.seconds != 0){
+          wyverntimeleftuntil.seconds-=1;
+          if(wyverntimeleftuntil.seconds < 0){
+            wyverntimeleftuntil.seconds = 59;
+            wyverntimeleftuntil.minutes -=1;
+            if(wyverntimeleftuntil.minutes < 0){
+              wyverntimeleftuntil.hours -= 1;
+              wyverntimeleftuntil.minutes = 59;
+            }
+          }
+          document.getElementById("wyverntext").innerHTML = "You may fly on the back of your wyvern to see your lands in "+wyverntimeleftuntil.hours+" hours, "+wyverntimeleftuntil.minutes+" minutes, and "+wyverntimeleftuntil.seconds+" seconds.";
+          document.getElementById("wyvern-button").classList.add("nopoints");
+          var d = new Date();
+          d.setTime(wyverntimeleftuntil.hours*1000*60*60 +wyverntimeleftuntil.minutes*60*1000+wyverntimeleftuntil.seconds*1000 + d.getTime());
+          Cookies.set("wyvern12hourcountdown",wyverntimeleftuntil.hours+":"+wyverntimeleftuntil.minutes+":"+wyverntimeleftuntil.seconds, {expires:  d})
+        }
+        else{
+          document.getElementById("wyverntext").innerHTML = "You may fly on the back of your wyvern to see your lands.";
+          document.getElementById("wyvern-button").classList.remove("nopoints");
+          Cookies.set("wyvern12hourcountdown","0:0:0",{expires: 100000});
+        }
+      }, 1000)
+    }
+    else if(!countingdown){
+      document.getElementById("wyvern-button").classList.remove("nopoints");
+      document.getElementById("wyverntext").innerHTML = "You may fly on the back of your wyvern to see your lands.";
+      Cookies.set("wyvern12hourcountdown","0:0:0",{expires: 100000});
+    }
   }
   function multiinit() {
     pubnub.subscribe({
@@ -387,7 +430,7 @@
     }, 5000);
   }
   function updatecount() {
-    ops = ((spoons * spoon_addition) / 10) + (cows * cow_addition / 2) + (granarys * 5 / 2) + (temples * god_count * 15 / 2) + beetles * 27;
+    ops = ((spoons * spoon_addition) / 10) + (cows * cow_addition / 2) + (granarys * 5 * granary_addition / 2) + (temples * god_count * 15 / 2) + beetles * 54 * addition_multiplier / 10;
     if (pso) {
       if (ops > 999999) {
         document.getElementById("ops").innerHTML = "Per second: " + numberformat.formatShort(ops, { sigfigs: 4 });
@@ -402,9 +445,10 @@
     else {
       document.getElementById("ops").innerHTML = "Per click: " + numberformat.format(addition * addition_multiplier, { sigfigs: 4 });
     }
-    if (String(oat_count) == "NaN") {
+    if (isNaN(oat_count)) {
       oat_count = 0;
     }
+    Cookies.set("ops", ops, { expires: 100000 });
     if (merchable && oat_count >= 1000000 && document.hasFocus() && rebellion == false && randomate(0, 3) > 1) {
       merch();
       merchable = false;
@@ -625,6 +669,12 @@
         }
       }
     }
+    if(haswyvern && wyverntimeleftuntil.hours + wyverntimeleftuntil.minutes + wyverntimeleftuntil.seconds == 0){
+      document.getElementById("wyvern-button").classList.remove("nopoints");
+    }
+    else if(haswyvern){
+      wyverncountdown();
+    }
   }
   function randomate(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
@@ -675,14 +725,14 @@
     updatecount();
   }
   function reset() {
-    if (confirm("are you sure you would like to reset your game? \n you will lose all of your oats and buildings")) {
+    if (confirm("are you sure you would like to reset your game? \n you will lose all of your oats and buildings") && confirm("Are you really sure?")) {
       Cookies.remove('oat_count');
       oat_count = 0;
       window.location = window.location;
     }
   }
   function createsave() {
-    var save = { oats: oat_count, addition: addition, gold_price: document.getElementById('gold_prices').getAttribute('price'), addition_multiplier: addition_multiplier, achevs: achevs, bowls: bowls, cinnamons: cinnamons, spoons: spoons, pots: pots, cows: cows, granarys: granarys, username: username, temples: temples, god_count: god_count, spoon_addition: spoon_addition, cow_addition: cow_addition, oatnogs: oatnogs, bowl_price: Number(document.getElementById('bowl_prices').getAttribute('price')), pot_price: Number(document.getElementById('pot_prices').getAttribute('price')), cow_price: Number(document.getElementById('cow_prices').getAttribute('price')), granary_price: Number(document.getElementById('granary_prices').getAttribute('price')), spoon_price: Number(document.getElementById('spoon_prices').getAttribute('price')), polytheism_price: Number(document.getElementById('polytheism_prices').getAttribute('price')), bs_price: Number(document.getElementById('bs_prices').getAttribute('price')), temple_price: Number(document.getElementById('temple_prices').getAttribute('price')), cinnamon_price: Number(document.getElementById('cinnamon_prices').getAttribute('price')), beetles: beetles, beetle_price: Number(document.getElementById('beetle_prices').getAttribute('price')) };
+    var save = { oats: oat_count, addition: addition, gold_price: document.getElementById('gold_prices').getAttribute('price'), addition_multiplier: addition_multiplier, achevs: achevs, bowls: bowls, cinnamons: cinnamons, spoons: spoons, pots: pots, cows: cows, granarys: granarys, username: username, temples: temples, god_count: god_count, spoon_addition: spoon_addition, cow_addition: cow_addition, oatnogs: oatnogs, bowl_price: Number(document.getElementById('bowl_prices').getAttribute('price')), pot_price: Number(document.getElementById('pot_prices').getAttribute('price')), cow_price: Number(document.getElementById('cow_prices').getAttribute('price')), granary_price: Number(document.getElementById('granary_prices').getAttribute('price')), spoon_price: Number(document.getElementById('spoon_prices').getAttribute('price')), polytheism_price: Number(document.getElementById('polytheism_prices').getAttribute('price')), bs_price: Number(document.getElementById('bs_prices').getAttribute('price')), temple_price: Number(document.getElementById('temple_prices').getAttribute('price')), cinnamon_price: Number(document.getElementById('cinnamon_prices').getAttribute('price')), beetles: beetles, beetle_price: Number(document.getElementById('beetle_prices').getAttribute('price')), haswyvern:haswyvern };
     save = JSON.stringify(save);
     save = window.btoa(save);
     save = save + "-oat-clicker-save";
@@ -695,6 +745,7 @@
       save = save.replace("-oat-clicker-save", "");
       save = window.atob(save);
       save = JSON.parse(save);
+      document.getElementById("bod").classList.add("hidden");
       oat_count = Number(save.oats);
       addition = Number(save.addition);
       bowls = Number(save.bowls);
@@ -713,6 +764,9 @@
         document.getElementById("cow_prices").innerHTML = numberformat.format(Number(230), { sigfigs: 4 });
         document.getElementById("cow_prices").setAttribute('price', 230);
       }
+      if(save.haswyvern != null){
+        Cookies.set("haswyvern",save.haswyvern,{expires:100000});
+      }
       if (save.addition_multiplier != null) {
         addition_multiplier = save.addition_multiplier;
         document.getElementById("gold_prices").setAttribute("price", save.gold_price);
@@ -727,7 +781,7 @@
       if (save.cow_addition != null || save.username != null) {
         cow_addition = save.cow_addition;
         username = save.username;
-        username = username.replace(new RegExp("%20", "g")," ");
+        username = username.replace(new RegExp("%20", "g"), " ");
         oatnogs = save.oatnogs;
         Cookies.set("cow_addition", cow_addition, { expires: 100000 });
         Cookies.set("username", username, { expires: 100000 });
@@ -811,7 +865,8 @@
     }
   }
   function startgame() {
-    if (Cookies.get("thesecretcookie") != "true") {
+    loading();
+    if (Cookies.get("thesecretcookie") != "true" && Cookies.get("wyvernning") == null) {
       if (Cookies.get('oat_count') != null) {
         oat_count = Number(Cookies.get('oat_count'));
         addition = Number(Cookies.get('addition'));
@@ -828,8 +883,8 @@
             if (Cookies.get("cow_addition") != null) {
               cow_addition = Number(Cookies.get("cow_addition"));
             }
-            if(Cookies.get("oatnogs") != null){
-            oatnogs = Number(Cookies.get("oatnogs"));
+            if (Cookies.get("oatnogs") != null) {
+              oatnogs = Number(Cookies.get("oatnogs"));
             }
             achevs = Cookies.get("achievements");
             if ((oatnogs != 0 || achevs.includes("oatnog_unlocked")) && new Date().getMonth() == 11) {
@@ -847,10 +902,10 @@
               else {
                 alusername = username;
               }
-              if('Notification' in window){
+              if ('Notification' in window) {
                 if (Notification.permission == "default") {
-                Notification.requestPermission();
-              }
+                  Notification.requestPermission();
+                }
               }
               multiinit();
             }
@@ -863,11 +918,11 @@
                   alusername = username.replace("<span class='rainbow'>", "");
                   alusername = alusername.replace("</span>", "");
                 }
-              if('Notification' in window){
-                if (Notification.permission == "default") {
-                Notification.requestPermission();
-              }
-              }
+                if ('Notification' in window) {
+                  if (Notification.permission == "default") {
+                    Notification.requestPermission();
+                  }
+                }
                 multiinit();
               }
             }
@@ -914,7 +969,7 @@
         }
         if (Cookies.get("addition_multiplier") != null) {
           addition_multiplier = Number(Cookies.get("addition_multiplier"));
-          if (Cookies.get("gold_price") != "null" && Cookies.get('gold_prices') != "NaN" && Cookies.get('gold_prices') != null) {
+          if (Cookies.get("gold_price") != "null" && Cookies.get('gold_price') != "NaN" && Cookies.get('gold_price') != null) {
             document.getElementById("gold_prices").setAttribute("price", Cookies.get("gold_price"));
             document.getElementById("gold_prices").innerHTML = numberformat.format(Number(document.getElementById("gold_prices").getAttribute("price")));
           }
@@ -963,6 +1018,14 @@
           if (granarys != 0) {
             granary();
           }
+        }
+        if (Cookies.get("granary_addition") != null) {
+          granary_addition = Number(Cookies.get("granary_addition"));
+          beetle_addition = Number(Cookies.get("beetle_addition"));
+        }
+        else {
+          granary_addition = 1;
+          beetle_addition = 1;
         }
         if (oat_count >= 500 || granarys > 0) {
           document.getElementById("granary").style.display = "block";
@@ -1032,6 +1095,17 @@
         if (Cookies.get("bg-stuff") != null) {
           setbg(Cookies.get("bg-stuff"));
         }
+        //wyvern stuff:
+        if(Cookies.get("haswyvern") == "true"){
+          haswyvern = true;
+          if(Cookies.get("wyvern12hourcountdown") != null){
+            wyverntimeleftuntil.minutes = Number(Cookies.get("wyvern12hourcountdown").split(":")[1]);
+            wyverntimeleftuntil.seconds = Number(Cookies.get("wyvern12hourcountdown").split(":")[2]);
+            wyverntimeleftuntil.hours = Number(Cookies.get("wyvern12hourcountdown").split(":")[0]);
+            wyverncountdown();
+          }
+          document.getElementById("wyvern-icon").classList.remove("hidden");
+        }
         //other stuff:
         if (Cookies.get("achievements") != null) {
           achevs = Cookies.get("achievements");
@@ -1060,7 +1134,7 @@
           var lss = Number(Cookies.get("lastsave"));
           lss = Date.now() - lss;
           lss = Math.round(lss / 1000);
-          ops = ((spoons * spoon_addition) / 10) + (cows * cow_addition / 2) + (granarys * 5 / 2) + (temples * god_count * 15 / 2) + beetles * 27;
+          ops = ((spoons * spoon_addition) / 10) + (cows * cow_addition / 2) + (granarys * 5 / 2) + (temples * god_count * 15 / 2) + beetles * 54 * addition_multiplier / 10;
           if (lss / 60 >= 1 && ops >= 0.3) {
             oat_count += lss * ops / 1.8;
             achieve("", "You gained " + numberformat.formatShort(lss * ops / 1.8) + " oats.", "While you were gone...");
@@ -1081,27 +1155,29 @@
       document.getElementById("temple").style.display = "none";
       document.getElementById("polytheism").style.display = "none";
       updatecount();
-
-
-
-      document.getElementById("loading").classList.add("fadeout");
       setTimeout(function () {
-        document.getElementById("loading").classList.add("hidden");
-      }, 600);
-      stillloading = false;
+        document.getElementById("loading").classList.add("fadeout");
+        setTimeout(function () {
+          document.getElementById("loading").classList.add("hidden");
+        }, 600);
+        stillloading = false;
+      }, 500);
       setTimeout(function () { checkupdates() }, 720000);
     }
-    else {
+    else if (Cookies.get("thesecretcookie") != null) {
       document.title = "Oat Clicker, you cheater";
       setTimeout(function () {
         document.getElementById("loader-text").innerHTML = "You are a cheater. You have just been banned. Come back in two days.";
         document.title = "Oat Clicker - you cheater";
-        setTimeout(function(){
-          window.location=window.location;
-        },2*60*60*24*1000)
+        setTimeout(function () {
+          window.location = window.location;
+        }, 2 * 60 * 60 * 24 * 1000)
       }, 3200)
     }
-    console.info("Not here to cheat, are we? \nIf you truly are here for debugging, please report any issues you find at https://github.com/ooogle/oatmeal/issues/new");
+    else {
+      window.location = "wyverns/wyverns.html"
+    }
+    console.log("%cEH!\n%cNot here to cheat, are we? \nIf you truly are here for debugging, please report any issues you find at %chttps://github.com/ooogle/oatmeal/issues/new", "color:blue; font-size: 100px;", "color:#0068df; font-size: 15px;", "font-size:14px; color:#0276fc; background:lightgray;");
   }
   // stuff getting clicked
   function oat_bowl() {
@@ -1412,7 +1488,7 @@
     });
   }
   function loading() {
-    var quotes = ["Press P or double-click to switch between oats per second and per click", "Don't press G", "Cinnamon is a bad investment", "Screw cookies", "Click that oat!", 'Oat clicker merch! <a href="https://oatmeal.gq/merch" style="pointer-events:all !important; z-index:30; color:	#00df12 !important;" title="click me!"> Click Here!</a>', "Oat Pots are expensive for a reason", "<q>This is a dictatorship!</q> —Jim the Spoon", "Hey kid, want some oats?", "water is wet", "Got 99 spoons but slow ain't one", "Is this <i>really</i> a good use of your time?", "Winning the oat lottery is unlikely, but nice", "OATS!?!??!", "no, it's not <q>just like cookie clicker.</q>", "<q>nice</q> — your 69th oat", "what do you mean, <q>undefined</q>?", "ALL HAIL", "Take a moment to ask youself: <q>Am I mentally insane?</q> <br>If you answered <q>yes</q> to any of the ten above questions, then you probably are. If not, then you probably are not insane.<br> If you are insane, please contact a doctore immediately", "i'll give you an oat if you get in my van", "no, it's not a dumb game", "IT'S RAINING OATS!!!", "Fun fact: October 29th is National Oatmeal Day", "Fun fact: January is National Oatmeal Month", "Ya liek oats?", "Spoons, now with extra-strong handles!", "Beware of the spoons", "Cinnamon is a lottery ticket to riches and fortune", "Fun fact: Oat milk comes from oat cows", "Press R to reset your game.", "Cinnamon is a scam", "Brother, may I have some oats?", "Praying to the oat god twice a day may grant you a longer life", "Oats are good for your bones", "Eat Oats!", "Fun fact: Cookie Clicker game saves are just base64 encoded with the string %21END%21 at the end. Oat clicker saves are much more secure.", "Press S to get a save code. Press L to load your game from one.", "Joe has more oats than you", "Who's Joe?", "500 gods are better than one.", "don't be a hacker!", "I worship the many gods of oat", "make yourself a bowl of oats while you wait.", "free of jQuery since 2019", "Oats are vegan, gluten free, and jQuery free", "here at Oat Clicker, we use DOM", "jQuery sucks.", "I'm a vscode girl", "beat the cows to fight your friends!", "God gave us toilets so we could poop in them."];
+    var quotes = ["Press P or double-click to switch between oats per second and per click", "Don't press G", "Cinnamon is a bad investment", "Screw cookies", "Click that oat!", 'Oat clicker merch! <a href="https://oatmeal.gq/merch" style="pointer-events:all !important; z-index:30; color:	#00df12 !important;" title="click me!"> Click Here!</a>', "Oat Pots are expensive for a reason", "<q>This is a dictatorship!</q> —Jim the Spoon", "Hey kid, want some oats?", "water is wet", "Got 99 spoons but slow ain't one", "Is this <i>really</i> a good use of your time?", "Winning the oat lottery is unlikely, but nice", "OATS!?!??!", "no, it's not <q>just like cookie clicker.</q>", "<q>nice</q> — your 69th oat", "what do you mean, <q>undefined</q>?", "ALL HAIL", "Take a moment to ask youself: <q>Am I mentally insane?</q> <br>If you answered <q>yes</q> to any of the ten above questions, then you probably are. If not, then you probably are not insane.<br> If you are insane, please contact a doctore immediately", "i'll give you an oat if you get in my van", "no, it's not a dumb game", "IT'S RAINING OATS!!!", "Fun fact: October 29th is National Oatmeal Day", "Fun fact: January is National Oatmeal Month", "Ya liek oats?", "Spoons, now with extra-strong handles!", "Beware of the spoons", "Cinnamon is a lottery ticket to riches and fortune", "Fun fact: Oat milk comes from oat cows", "Press R to reset your game.", "Cinnamon is a scam", "Brother, may I have some oats?", "Praying to the oat god twice a day may grant you a longer life", "Oats are good for your bones", "Eat Oats!", "Fun fact: Cookie Clicker game saves are just base64 encoded with the string %21END%21 at the end. Oat clicker saves are much more secure.", "Press S to get a save code. Press L to load your game from one.", "Joe has more oats than you", "Who's Joe?", "500 gods are better than one.", "don't be a hacker!", "I worship the many gods of oat", "make yourself a bowl of oats while you wait.", "free of jQuery since 2019", "Oats are vegan, gluten free, and jQuery free", "here at Oat Clicker, we use DOM", "jQuery sucks.", "I'm a vscode girl", "beat the cows to fight your friends!", "God gave us toilets so we could poop in them.", "Write more, do less"];
     document.getElementById("loader-text").innerHTML = quotes[randomate(0, quotes.length)];
     if (stillloading) {
       setTimeout(function () { loading() }, 3000)
@@ -1762,7 +1838,7 @@
     username = username.replace(/>/gi, "&#62");
     username = username.replace(/</gi, "&#60");
     username = username.trim();
-    Cookies.set("username", username, { expires: 100000})
+    Cookies.set("username", username, { expires: 100000 })
   }
   function fightshow() {
     fighting = true;
@@ -1842,7 +1918,7 @@
       requestfight();
     }
   }
-  function changeu(){
+  function changeu() {
     document.getElementById("choose-name").classList.remove("hidden");
     document.getElementById("hide-battle").classList.remove("hidden");
     document.getElementById("mult-unlocked").innerHTML = "Change your username";
@@ -2029,6 +2105,47 @@
       document.getElementById('body').classList.remove('shaking');
     }, 510)
   }
+  function hide_wyvern() {
+    document.getElementById("wyvernunlocked").classList.add("fadeout");
+    setTimeout(function () {
+      document.getElementById("wyvernunlocked").classList.add("hidden");
+      document.getElementById("wyvernunlocked").classList.remove("fadeout");
+    }, 500);
+    haswyvern = true;
+    Cookies.set("haswyvern","true",{expires: 100000});
+    wyverntimeleftuntil = {hours: 0, minutes:0, seconds:0};
+    Cookies.set("wyvern12hourcountdown","0:0:0",{expires: 100000});
+    document.getElementById("wyvern-icon").classList.remove("hidden");
+    wyverncountdown();
+  }
+  function show_wyvern() {
+    document.getElementById("wyvernunlocked").classList.add("fadein");
+    document.getElementById("wyvernunlocked").classList.remove("hidden");
+    setTimeout(function () {
+      document.getElementById("wyvernunlocked").classList.remove("fadein");
+    }, 500)
+  }
+  function hidewyvernthing() {
+    document.getElementById("wyvernthing").classList.add("fadeout");
+    setTimeout(function () {
+      document.getElementById("wyvernthing").classList.add("hidden");
+      document.getElementById("wyvernthing").classList.remove("fadeout");
+    }, 510);
+  }
+  function showwyvernthing() {
+    document.getElementById("wyvernthing").classList.add("fadein");
+    document.getElementById("wyvernthing").classList.remove("hidden");
+    setTimeout(function () {
+      document.getElementById("wyvernthing").classList.remove("fadein");
+    }, 510);
+  }
+  function fly_wyvern() {
+    var d = new Date();
+    d.setTime(d.getTime()+ 15*60*1000);
+    Cookies.set("wyverntimeleft", "15:00", { expires: d });
+    Cookies.set("wyvernning",true,{expires: d});
+    window.location = "/wyverns/wyverns.html"
+  }
 </script>
 <!-- aw man, that was a lot of JavaScript-->
 
@@ -2044,15 +2161,19 @@
       100 - 100</div>
     <div id="messages">Oh No!<br> Your expirement went<wbr> wrong and your cows'<wbr> leader is attacking!</div>
     </div>
+    <div id="wyvernunlocked" class="center hidden">
+      <br><br>
+      <span class="scores infront">You've unlocked Wyverns!</span>
+      <br><br>
+      <img id="wyvern-image" src="https://oatmeal.gq/sprites/big/bigwyvern.png" onclick="hide_wyvern()">
+    </div>
     <div id="bod">
       <div id="falling-oats">
         <!-- Oats will fall below-->
       </div>
       <div id="loading"><br><br> <span class="scores">Loading...</span>
         <br><br><br><span id="loader-text"> <noscript>Sorry, Oat Clicker does not work on your browser. :(<br><br> Try
-            <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>?</noscript></span><img
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-          onload="loading()">
+            <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>?</noscript></span>
       </div>
       <div class="hidden" id="cookie" onclick="cookieclicked()">
         <span class="scores">Don't Click Me</span><br>
@@ -2115,16 +2236,16 @@
       </div>
       <div id="battle-things">
         <div id="hide-battle" class="booster hidden" onclick="fightend()"></div>
-      <div id="battle-request" class="hid-merch-box">
-        <div class="arrow_box" id="battlething-nobg">
-          <div class="before-merch-box"></div>
-          <span class="booster-title" style="margin: 20px;" id="battletitle">___ wants to battle!</span><br>
-          <p style="margin: 20px;"><u style="cursor: pointer;" id="accept">Accept</u> <i>or</i> <u id="decline"
-              style="cursor: pointer;">Decline</u></p>
-          <div class="after-merch-box"></div>
+        <div id="battle-request" class="hid-merch-box">
+          <div class="arrow_box" id="battlething-nobg">
+            <div class="before-merch-box"></div>
+            <span class="booster-title" style="margin: 20px;" id="battletitle">___ wants to battle!</span><br>
+            <p style="margin: 20px;"><u style="cursor: pointer;" id="accept">Accept</u> <i>or</i> <u id="decline"
+                style="cursor: pointer;">Decline</u></p>
+            <div class="after-merch-box"></div>
+          </div>
         </div>
-      </div>
-      <div id="ohno"></div>
+        <div id="ohno"></div>
         <div id="battle-oat" class="hidden">
           <span class="ops" id="opponent-label">___'s oat</span><br>
           <span class="scores">
@@ -2149,6 +2270,17 @@
             <div class="pushy" onclick="requestfight()">Battle!</div>
           </div>
         </div>
+      </div>
+      <!-- Wyvern things-->
+      <div id="wyvernbutton"></div>
+      <div id="wyvernthing" class="center hidden">
+        <div class="xbutton" onclick="hidewyvernthing()"></div>
+        <span class="scores infront">Your Wyvern</span>
+        <br>
+        <img src="https://oatmeal.gq/sprites/big/bigwyvern.png" width="200">
+        <p class="center" style="color:white" id="wyverntext">You may fly on the back of your wyvern to see your lands.
+        </p>
+        <div class="wyvernbutton center nopoints" onclick="fly_wyvern()" id="wyvern-button">Fly!</div>
       </div>
       <table style="width:100%" draggable="false">
         <tr draggable="false">
@@ -2304,12 +2436,15 @@
           <span class="booster-title">Save game</span></div>
         <div class="booster reset" onclick='loadsave(prompt("what is your save code?"))'><span
             class="booster-title">Load game</span></div>
-        <div class="booster reset hidden" id="changeu" onclick="changeu()"><span class="booster-title">Change Username</span></div>
+        <div class="booster reset hidden" id="changeu" onclick="changeu()"><span class="booster-title">Change
+            Username</span></div>
       </div>
       <div id="popup-hover" class="booster" onmouseover="popupmenu()" onclick="togglepopup()"></div>
+      <div id="wyvern-icon" class="hidden" onclick="showwyvernthing()"></div>
       <br><br><br><br>
       <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5dacd166e355a3bd"
         rel="preload" defer="defer"></script>
 </body>
+
 </html>
 </div>

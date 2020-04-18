@@ -17,6 +17,14 @@
   top: 50px;
 }
 
+#wyvernthing{
+  background: rgb(163, 131, 72);
+  position: fixed;
+  z-index: 9999;
+  border:  5px solid transparent;
+    border-image: url(https://oatmeal.gq/sprites/border.png) 30 stretch;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
+}
 .popup {
   position: fixed;
   right: 0;
@@ -192,13 +200,51 @@ body, html {
   transform: scale(1.15);
   cursor: pointer;
 }
-
+.wyvernbutton{
+  background: rgb(218, 180, 111);
+  cursor: pointer;
+  font-family: sans-serif;
+  color:white;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+  width: 33.333% !important;
+  border:  2px solid transparent;
+  border-image: url(https://oatmeal.gq/sprites/border.png) 30 stretch;
+  margin: 6px;
+  padding: 5px;
+  user-select: none;
+}
+#wyvern-image:hover{
+  transform: scale(105%);
+}
 @media only screen and (min-width: 950px) {
   .big-image {
     width: 30%;
     transition: 0.3s;
     -webkit-transform: translateZ(0);
   }
+  
+#wyvern-icon{
+  width: 150px;
+  height: 150px;
+  position: fixed;
+  left: 10px;
+  bottom: 20px;
+  background: url("https://oatmeal.gq/sprites/big/bigwyvern.png");
+  background-size: 150px;
+  cursor: pointer;
+}
+  #wyvernthing{
+    width: 500px;
+    height: auto;
+    left: 30%;
+  }
+#wyvern-image{
+  width: 30%;
+  left: 35%;
+  position: fixed;
+  transition: 0.2s;
+  cursor: pointer;
+}
   #falling-oats {
     width: 600px !important;
     -webkit-transform: translateZ(1);
@@ -547,7 +593,15 @@ body, html {
   cursor: pointer;
   transition: 0.2s;
 }
-
+.xbutton{
+  background-image: url(https://oatmeal.gq/sprites/x-icon.png);
+  background-attachment: scroll;
+  background-position: center;
+  background-size: 25px;
+  width:30px;
+  height: 30px;
+  cursor: pointer;
+}
 .pushy:hover {
   transform: scale(1.2);
 }
@@ -571,6 +625,31 @@ body, html {
     text-align: center;
     transform: scale(0.8);
   }
+  
+#wyvern-icon{
+  width: 110px;
+  height: 110px;
+  position: fixed;
+  left: 10px;
+  bottom: 5px;
+  background: url("https://oatmeal.gq/sprites/big/bigwyvern.png");
+  background-size: 110px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+  #wyvernthing{
+    width: 90%;
+    height: auto;
+    top:10px;
+    left: 5%;
+  }
+#wyvern-image{
+  width: 80%;
+  left: 10%;
+  position: fixed;
+  transition: 0.2s;
+  cursor: pointer;
+}
   #falling-oats {
     width: 100% !important;
     -webkit-transform: translateZ(1);
@@ -838,7 +917,7 @@ body, html {
 }
 
 .ops {
-  font: size 15px;
+  font-size: 15px;
   color: white;
   text-shadow: 0px 0px 10px rgba(0, 0, 0, 1), 0px 0px 20px rgba(0, 0, 0, 1), 0px 0px 30px rgba(0, 0, 0, 1), 0px 0px 80px rgba(0, 0, 0, 1);
   font-family: sans-serif;
@@ -1094,7 +1173,15 @@ body, html {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 1), 0px 0px 20px;
   animation: merch 0.25s;
 }
-
+#wyvernunlocked{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  top:0;
+  left:0;
+  z-index: 40;
+}
 #requestpopup {
   z-index: 25;
 }
@@ -1137,7 +1224,6 @@ body, html {
   width: 100% !important;
   height: 100% !important;
   color: white;
-  height: 100% !important;
   position: fixed;
   top: 0px;
   left: 0px;

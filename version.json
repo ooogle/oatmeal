@@ -1,4 +1,4 @@
 {
-    "version":"thebigbadbattleupdate-dGhlYmlnYmFkYmF0dGxldXBkYXRl",
-    "notes":["Shields added to battle","Now you know when your ban will end","If you have pressed G, stuff happens during battle","Added system notifications for battle requests","Smites added to battle","Fixed beetle bug","Cinnamon doesn't kill your computer","Don't press G","OPS is scaled down so your computer doesn't kill itself","Procedural acheivements now have randomated punctuation","You can change your username now","The cow rebellion now has a cap on how much you can fire so you can't just hold space to win","Replaced document.hidden with document.hasFocus() for better performance","Countless bug fixes","Report bugs <a href='https://github.com/ooogle/oatmeal/issues/new' target='_blank'>here</a>"]
+    "version":"wyverns",
+    "notes":["Fixed gold price bug","HUGE UPDATE! Added Wyverns!","Fixed other random bugs.","Report bugs <a href='https://github.com/ooogle/oatmeal/issues/new' target='_blank'>here</a>"]
 }

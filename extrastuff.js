@@ -21,6 +21,10 @@ function checkacheivs() {
     if ((cow_addition == 2 || cow_addition == -2) && !achevs.includes("cow_rebellion") && new Date().getMinutes() - minjection >= 5 && cows >= 30) {
         cow_rebellion();
     }
+    if(cow_addition > 2 && randomate(0, 20) > 15 && !wyvernunllllocked && !haswyvern){
+        show_wyvern();
+        wyvernunllllocked = true;
+    }
     var images = {
         cow: "https://oatmeal.gq/sprites/big/oat_cow.png",
         granary: "https://oatmeal.gq/sprites/big/granery.png",
@@ -90,11 +94,11 @@ function granary() {
     setInterval(function () {
         if (granarys <= 15) {
             for (var i = 0; i < granarys; i++) {
-                oat_clicked_by_boost(5);
+                oat_clicked_by_boost(5*granary_addition);
             }
         }
         else {
-            oat_clicked_by_boost(5 * granarys)
+            oat_clicked_by_boost(5 * granarys * granary_addition)
         }
     }, 2000);
 }
@@ -107,7 +111,7 @@ function temple() {
         }
         else {
             for (var i = 0; i < 2; i++) {
-                oat_clicked_by_boost(god_count * 15 * temples / 10);
+                oat_clicked_by_boost(god_count * 15 * temples / 2);
             }
         }
     }, 2000);
@@ -166,8 +170,8 @@ function oatnog() {
 }
 function beetle() {
     setInterval(function () {
-        oat_clicked_by_boost((27 * beetles) / 2);
-        oat_clicked_by_boost((27 * beetles) / 2);
+        oat_clicked_by_boost(27 * beetles * addition_multiplier/2 + beetle_addition);
+        oat_clicked_by_boost(27 * beetles * addition_multiplier/2 + beetle_addition);
     }, 1000)
 }
 function setbg(id) {
