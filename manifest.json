@@ -3,12 +3,12 @@
     "name": "Oat Clicker",
     "icons": [
       {
-        "src": "https://oatmeal.gq/sprites/192.png",
+        "src": "/sprites/192.png",
         "type": "image/png",
         "sizes": "192x192"
       },
       {
-        "src": "https://oatmeal.gq/sprites/512.png",
+        "src": "/sprites/512.png",
         "type": "image/png",
         "sizes": "512x512"
       }

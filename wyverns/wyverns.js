@@ -1,6 +1,6 @@
 function do_ops(){
     setInterval(function(){
-        oat_count += ops/100;
+        oat_count += ops / 100;
         updatecount();
     }, 10);
     cinnamon();
@@ -55,4 +55,4 @@ function oatnog() {
 }
 function randomate(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
-  }
+}

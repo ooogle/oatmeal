@@ -26,15 +26,15 @@ function checkacheivs() {
         wyvernunllllocked = true;
     }
     var images = {
-        cow: "https://oatmeal.gq/sprites/big/oat_cow.png",
-        granary: "https://oatmeal.gq/sprites/big/granery.png",
-        temple: 'https://oatmeal.gq/sprites/big/temple.png',
-        polytheism: "https://oatmeal.gq/sprites/big/polytheism.png",
-        cinnamon: "https://oatmeal.gq/sprites/big/cinnamon.png",
-        bowl: "https://oatmeal.gq/sprites/big/oat_bowl.png",
-        spoon: "https://oatmeal.gq/sprites/big/spoon.png",
-        pot: "https://oatmeal.gq/sprites/big/oat_pot.png",
-        barrel: "https://oatmeal.gq/sprites/barrel.png"
+        cow: "/sprites/big/oat_cow.png",
+        granary: "/sprites/big/granery.png",
+        temple: '/sprites/big/temple.png',
+        polytheism: "/sprites/big/polytheism.png",
+        cinnamon: "/sprites/big/cinnamon.png",
+        bowl: "/sprites/big/oat_bowl.png",
+        spoon: "/sprites/big/spoon.png",
+        pot: "/sprites/big/oat_pot.png",
+        barrel: "/sprites/barrel.png"
     }
     var deals = [{ id: "cow-deal1", item: "cows", name: "Oat Cow", img: images.cow, req: oat_count >= 1000 }, { id: 'granary-deal1', item: 'granarys', name: 'Granary', req: oat_count >= 10000, img: images.granary }, { id: 'temple-deal1', item: 'temples', name: 'Temple', req: oat_count >= 6000 && god_count >= 3, img: images.temple }, { id: 'god-deal1', item: 'god_count', name: 'God', req: oat_count >= 1000 && god_count >= 3, img: images.polytheism }, { id: 'god-deal2', item: 'god_count', name: 'God', req: oat_count >= 10000 && god_count >= 3, img: images.polytheism }, { id: 'temple-deal2', item: 'temples', name: 'EPIC Temple', req: oat_count >= 1000100, img: images.temple }, { id: 'cinnamon-deal1', item: 'cinnamons', name: 'Cinnamon', req: oat_count >= 5000, img: images.cinnamon }, { id: 'bowl-deal1', item: 'addition', name: 'bowl', req: oat_count >= 3000, img: images.bowl }, { action: function () { addition += 400; temples += 10; }, name: "holy land full of temples ", id: "temple-deal5", item: "temples", img: images.temple, req: oat_count >= 10000000 }, { id: 'cow-deal2', item: 'cows', name: 'Oat Cow but there\'s ten of them', req: oat_count >= 5500000, img: images.cow, action: function () { cows += 9; } }, { id: 'spoon-deal1', item: 'spoons', name: 'Spoon', req: oat_count >= 8000, img: images.spoon }, { id: 'temple-deal3', item: 'temples', name: 'Temple, ready to worship all your gods, ', req: oat_count >= 8000, img: images.temple }, { id: 'god-deal3', item: 'god_count', name: 'GOD', req: oat_count >= 2000000 && god_count >= 3, img: images.polytheism }, { id: 'granary-deal2', item: 'granarys', name: 'Granary', req: oat_count >= 2000000, img: images.granary }, { id: 'granary-deal2', item: 'granarys', name: 'Granary', req: oat_count >= 30000000000, img: images.granary }, { id: 'pot-deal1', item: 'addition', name: 'Oat Pot', req: oat_count >= 3000000, img: images.pot, action: function () { addition += 5 } }, { id: 'pot-deal2', item: 'addition', name: 'Pot', req: oat_count >= 10000000, img: images.pot, action: function () { addition += 5 } }, { id: 'barrel-deal1', item: 'addition', name: 'Oat Barrel', req: oat_count >= 1500000, img: images.barrel, action: function () { addition += 100; } }, { id: 'barrel-deal2', item: 'addition', name: 'Oat Barrel', req: oat_count >= 2000000, img: images.barrel, action: function () { addition += 100; } }, { id: 'god-deal4', item: 'god_count', name: 'God', req: temples >= 1 && oat_count >= 2500000 && god_count >= 3, img: images.polytheism }, { id: 'barrel-deal3', item: 'addition', name: 'Oat Barrel', req: oat_count >= 3000000, img: images.barrel, action: function () { addition += 111; } }, { id: 'granary-deal3', item: 'granarys', name: 'Granary', req: oat_count >= 3500000, img: images.granary }, { id: 'temple-deal4', item: 'temples', name: 'sacred place of holy worship ', req: oat_count >= 4500000, img: images.temple, action: function () { addition += 500; } }, { id: 'barrel-deal4', item: 'addition', name: 'Barrel', req: oat_count >= 4000000, img: images.barrel, action: function () { addition += 150; } }, { id: 'barrel-deal5', item: 'addition', name: 'Barrel', req: oat_count >= 5000000, img: images.barrel, action: function () { addition += 200; } }, { id: 'barrel-deal6', item: 'addition', name: 'Barrel', req: oat_count >= 8000000, img: images.barrel, action: function () { addition += 1000; } }, { id: 'spoon-deal2', item: 'spoons', name: 'spoon cuz why not', req: oat_count >= 9000000, img: images.spoon }, { id: 'barrel-deal7', item: 'addition', name: 'Barrel', req: oat_count >= 10000000, img: images.barrel, action: function () { addition += 3000; } }];
     //check for deals and trigger them
@@ -51,8 +51,8 @@ function checkacheivs() {
 }
 var bgs = {
     cookie: {
-        image: "url(https://oatmeal.gq/sprites/bags/bgs/cookiebox.png)",
-        hover: "url(https://oatmeal.gq/sprites/bags/bgs/cookiebox.png)",
+        image: "url(/sprites/bags/bgs/cookiebox.png)",
+        hover: "url(/sprites/bags/bgs/cookiebox.png)",
         border: "none",
         size: "100% 100%"
     },

@@ -10,7 +10,7 @@
     text-align: center;
     width: 10%;
     border:  5px solid transparent;
-    border-image: url(https://oatmeal.gq/sprites/border.png) 30 stretch;
+    border-image: url(/sprites/border.png) 30 stretch;
 }
 .smalltable{
   text-align: center;
@@ -24,7 +24,7 @@ table{
   position: fixed;
   z-index: 9999;
   border:  5px solid transparent;
-    border-image: url(https://oatmeal.gq/sprites/border.png) 30 stretch;
+    border-image: url(/sprites/border.png) 30 stretch;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
 }
 .not-enough-money {
@@ -68,7 +68,7 @@ table{
       background: rgb(36, 36, 36);
   }
   .cow{
-      background-image: url(https://oatmeal.gq/sprites/oat_cow.png);
+      background-image: url(/sprites/oat_cow.png);
       background-size: 95% auto;
       background-repeat: no-repeat;
       width: 50px;
@@ -77,7 +77,7 @@ table{
       margin: -5px;
   }
   .beetle{
-      background-image: url(https://oatmeal.gq/sprites/beetle.png);
+      background-image: url(/sprites/beetle.png);
       background-size: 95% auto;
       background-repeat: no-repeat;
       width: 50px;
@@ -93,7 +93,7 @@ table{
       text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
       width: 33.333% !important;
       border:  2px solid transparent;
-      border-image: url(https://oatmeal.gq/sprites/border.png) 30 stretch;
+      border-image: url(/sprites/border.png) 30 stretch;
       margin: 6px;
       padding: 5px;
       user-select: none;
@@ -106,7 +106,7 @@ table{
     background: rgb(189, 155, 93);
   }
   .temple{
-    background-image: url(https://oatmeal.gq/sprites/temple.png);
+    background-image: url(/sprites/temple.png);
     background-size: 95% auto;
     background-repeat: no-repeat;
     width: 50px;
@@ -115,7 +115,7 @@ table{
     margin: 2px;
 }
 .spoon{
-  background-image: url(https://oatmeal.gq/sprites/spoon.png);
+  background-image: url(/sprites/spoon.png);
   background-size: 35px auto;
   background-repeat: no-repeat;
   width: 30px;
@@ -124,7 +124,7 @@ table{
   margin: 2px;
 }
 .pot{
-  background-image: url(https://oatmeal.gq/sprites/oat_pot.png);
+  background-image: url(/sprites/oat_pot.png);
   background-size: 60px auto;
   background-repeat: no-repeat;
   width: 60px;
@@ -133,7 +133,7 @@ table{
   margin: -5px;
 }
 .bowl{
-  background-image: url(https://oatmeal.gq/sprites/oat_bowl.png);
+  background-image: url(/sprites/oat_bowl.png);
   background-size: 60px auto;
   background-repeat: no-repeat;
   width: 60px;
@@ -142,7 +142,7 @@ table{
   margin: -5px;
 }
   .granary{
-    background-image: url(https://oatmeal.gq/sprites/animations/granery.gif);
+    background-image: url(/sprites/animations/granery.gif);
     background-size: 95% auto;
     background-repeat: no-repeat;
     width: 30px;
@@ -151,7 +151,7 @@ table{
     margin: 1px;
 }
 .staticgranary{
-    background-image: url(https://oatmeal.gq/sprites/granery.png);
+    background-image: url(/sprites/granery.png);
     background-size: 95% auto;
     background-repeat: no-repeat;
     width: 25px;
@@ -175,7 +175,7 @@ table{
       left:0;
   }
   .xbutton{
-    background-image: url(https://oatmeal.gq/sprites/x-icon.png);
+    background-image: url(/sprites/x-icon.png);
     background-attachment: scroll;
     background-position: center;
     background-size: 25px;

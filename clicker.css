@@ -22,7 +22,7 @@
   position: fixed;
   z-index: 9999;
   border:  5px solid transparent;
-    border-image: url(https://oatmeal.gq/sprites/border.png) 30 stretch;
+    border-image: url(/sprites/border.png) 30 stretch;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
 }
 .popup {
@@ -47,26 +47,26 @@
   bottom: 20px;
   right: 20px;
   cursor: pointer;
-  background: url(https://oatmeal.gq/sprites/burger.png), var(--boost-bg);
+  background: url(/sprites/burger.png), var(--boost-bg);
   background-position: center, center;
   background-size: 33px, 150% 150%;
   background-repeat: no-repeat, no-repeat;
 }
 /* Battle attacks */
 #shield{
-  background-image: url(https://oatmeal.gq/sprites/big-shield.png);
+  background-image: url(/sprites/big-shield.png);
   background-size: 90px 90px;
   background-repeat: no-repeat;
   background-position: center;
 }
 #smite{
-  background-image: url(https://oatmeal.gq/sprites/smite.png);
+  background-image: url(/sprites/smite.png);
   background-size: 100px 100px;
   background-repeat: no-repeat;
   background-position: center;
 }
 .background-image {
-  background-image: url('https://oatmeal.gq/oats1.jpg');
+  background-image: url('/oats1.jpg');
   background-size: cover;
   display: block;
   filter: blur(4px) brightness(85%);
@@ -208,7 +208,7 @@ body, html {
   text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
   width: 33.333% !important;
   border:  2px solid transparent;
-  border-image: url(https://oatmeal.gq/sprites/border.png) 30 stretch;
+  border-image: url(/sprites/border.png) 30 stretch;
   margin: 6px;
   padding: 5px;
   user-select: none;
@@ -229,7 +229,7 @@ body, html {
   position: fixed;
   left: 10px;
   bottom: 20px;
-  background: url("https://oatmeal.gq/sprites/big/bigwyvern.png");
+  background: url("/sprites/big/bigwyvern.png");
   background-size: 150px;
   cursor: pointer;
 }
@@ -423,7 +423,7 @@ body, html {
   position: fixed;
   left: 33.3%;
   top: -19px;
-  background-image: url(https://oatmeal.gq/sprites/x-icon.png);
+  background-image: url(/sprites/x-icon.png);
   background-attachment: scroll;
   background-position: center;
   background-size: 25px;
@@ -511,7 +511,7 @@ body, html {
   left: 10%;
   top: 19px;
   z-index: 501;
-  background-image: url(https://oatmeal.gq/sprites/x-icon.png);
+  background-image: url(/sprites/x-icon.png);
   background-attachment: scroll;
   background-position: center;
   background-size: 25px;
@@ -594,7 +594,7 @@ body, html {
   transition: 0.2s;
 }
 .xbutton{
-  background-image: url(https://oatmeal.gq/sprites/x-icon.png);
+  background-image: url(/sprites/x-icon.png);
   background-attachment: scroll;
   background-position: center;
   background-size: 25px;
@@ -632,7 +632,7 @@ body, html {
   position: fixed;
   left: 10px;
   bottom: 5px;
-  background: url("https://oatmeal.gq/sprites/big/bigwyvern.png");
+  background: url("/sprites/big/bigwyvern.png");
   background-size: 110px;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -931,138 +931,138 @@ body, html {
 }
 
 #spoon {
-  background: url(https://oatmeal.gq/sprites/spoon.png), var(--boost-bg);
+  background: url(/sprites/spoon.png), var(--boost-bg);
   background-repeat: no-repeat !important;
   background-position: 0% 10% !important;
   background-size: 90px, var(--boost-bg-s) !important;
 }
 
 #spoon:hover {
-  background: url(https://oatmeal.gq/sprites/spoon.png), var(--boost-bg-h);
+  background: url(/sprites/spoon.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
   background-position: 0% 10% !important;
   background-size: 90px, var(--boost-bg-s) !important;
 }
 #beetle {
-  background: url(https://oatmeal.gq/sprites/beetle.png), var(--boost-bg);
+  background: url(/sprites/beetle.png), var(--boost-bg);
   background-repeat: no-repeat !important;
   background-position: 5% 15% !important;
   background-size: 100px, var(--boost-bg-s) !important;
 }
 
 #beetle:hover {
-  background: url(https://oatmeal.gq/sprites/beetle.png), var(--boost-bg-h);
+  background: url(/sprites/beetle.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
   background-position: 5% 15% !important;
   background-size: 100px, var(--boost-bg-s) !important;
 }
 #bowl {
-  background: url(https://oatmeal.gq/sprites/oat_bowl.png), var(--boost-bg);
+  background: url(/sprites/oat_bowl.png), var(--boost-bg);
   background-repeat: no-repeat !important;
   background-position: 0% 100% !important;
   background-size: auto auto, var(--boost-bg-s) !important;
 }
 
 #bowl:hover {
-  background: url(https://oatmeal.gq/sprites/oat_bowl.png), var(--boost-bg-h);
+  background: url(/sprites/oat_bowl.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
   background-position: 0% 100% !important;
   background-size: auto auto, var(--boost-bg-s) !important;
 }
 
 #pot {
-  background: url(https://oatmeal.gq/sprites/oat_pot.png), var(--boost-bg);
+  background: url(/sprites/oat_pot.png), var(--boost-bg);
   background-repeat: no-repeat !important;
   background-position: 0% 100% !important;
   background-size: 110px, var(--boost-bg-s) !important;
 }
 
 #pot:hover {
-  background: url(https://oatmeal.gq/sprites/oat_pot.png), var(--boost-bg-h);
+  background: url(/sprites/oat_pot.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
   background-position: 0% 100% !important;
   background-size: 110px, var(--boost-bg-s) !important;
 }
 
 #cow {
-  background: url(https://oatmeal.gq/sprites/oat_cow.png), var(--boost-bg);
+  background: url(/sprites/oat_cow.png), var(--boost-bg);
   background-repeat: no-repeat !important;
   background-position: 0% 100% !important;
   background-size: 150px, var(--boost-bg-s) !important;
 }
 
 #cow:hover {
-  background: url(https://oatmeal.gq/sprites/oat_cow.png), var(--boost-bg-h);
+  background: url(/sprites/oat_cow.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
   background-position: 0% 100% !important;
   background-size: 150px, var(--boost-bg-s) !important;
 }
 
 #bs {
-  background: url(https://oatmeal.gq/sprites/big-spoon.png), var(--boost-bg);
+  background: url(/sprites/big-spoon.png), var(--boost-bg);
   background-repeat: no-repeat !important;
   background-position: 0% 75% !important;
   background-size: 85px, var(--boost-bg-s) !important;
 }
 
 #bs:hover {
-  background: url(https://oatmeal.gq/sprites/big-spoon.png), var(--boost-bg-h);
+  background: url(/sprites/big-spoon.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
   background-position: 0% 75% !important;
   background-size: 85px, var(--boost-bg-s) !important;
 }
 
 #cinnamon {
-  background: url(https://oatmeal.gq/sprites/cinnamon.png), var(--boost-bg);
+  background: url(/sprites/cinnamon.png), var(--boost-bg);
   background-repeat: no-repeat !important;
   background-position: 0% 60% !important;
   background-size: 100px, var(--boost-bg-s) !important;
 }
 
 #cinnamon:hover {
-  background: url(https://oatmeal.gq/sprites/cinnamon.png), var(--boost-bg-h);
+  background: url(/sprites/cinnamon.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
   background-position: 0% 60% !important;
   background-size: 100px, var(--boost-bg-s) !important;
 }
 
 #granary {
-  background: url(https://oatmeal.gq/sprites/granery.png), var(--boost-bg);
+  background: url(/sprites/granery.png), var(--boost-bg);
   background-repeat: no-repeat !important;
   background-position: 0% 20% !important;
   background-size: 100px, var(--boost-bg-s) !important;
 }
 
 #granary:hover {
-  background: url(https://oatmeal.gq/sprites/granery.png), var(--boost-bg-h);
+  background: url(/sprites/granery.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
   background-position: 0% 20% !important;
   background-size: 100px, var(--boost-bg-s) !important;
 }
 
 #temple {
-  background: url(https://oatmeal.gq/sprites/temple.png), var(--boost-bg);
+  background: url(/sprites/temple.png), var(--boost-bg);
   background-repeat: no-repeat !important;
   background-position: 0% 20% !important;
   background-size: 130px, var(--boost-bg-s) !important;
 }
 
 #temple:hover {
-  background: url(https://oatmeal.gq/sprites/temple.png), var(--boost-bg-h);
+  background: url(/sprites/temple.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
   background-position: 0% 20% !important;
   background-size: 130px, var(--boost-bg-s) !important;
 }
 
 #polytheism {
-  background: url(https://oatmeal.gq/sprites/polytheism.png), var(--boost-bg);
+  background: url(/sprites/polytheism.png), var(--boost-bg);
   background-repeat: no-repeat !important;
   background-position: 0% 20% !important;
   background-size: 150px, var(--boost-bg-s) !important;
 }
 
 #polytheism:hover {
-  background: url(https://oatmeal.gq/sprites/polytheism.png), var(--boost-bg-h);
+  background: url(/sprites/polytheism.png), var(--boost-bg-h);
   background-repeat: no-repeat !important;
   background-position: 0% 20% !important;
   background-size: 150px, var(--boost-bg-s) !important;
@@ -1112,7 +1112,7 @@ body, html {
 
 .arrow_box {
   position: relative;
-  background: url(https://oatmeal.gq/sprites/merch.png), var(--boost-bg);
+  background: url(/sprites/merch.png), var(--boost-bg);
   border: 4px solid #00008b;
   height: 125px;
   background-size: auto, 100% 100%;
@@ -1310,49 +1310,49 @@ body, html {
 
 @keyframes evilcow {
   0% {
-    background-image: url(https://oatmeal.gq/sprites/animations/evil_cow/bull-1.png);
+    background-image: url(/sprites/animations/evil_cow/bull-1.png);
   }
   44% {
-    background-image: url(https://oatmeal.gq/sprites/animations/evil_cow/bull-1.png);
+    background-image: url(/sprites/animations/evil_cow/bull-1.png);
   }
   45% {
-    background-image: url(https://oatmeal.gq/sprites/animations/evil_cow/bull-2.png);
+    background-image: url(/sprites/animations/evil_cow/bull-2.png);
   }
   62% {
-    background-image: url(https://oatmeal.gq/sprites/animations/evil_cow/bull-2.png);
+    background-image: url(/sprites/animations/evil_cow/bull-2.png);
   }
   63% {
-    background-image: url(https://oatmeal.gq/sprites/animations/evil_cow/bull-3.png);
+    background-image: url(/sprites/animations/evil_cow/bull-3.png);
   }
   80% {
-    background-image: url(https://oatmeal.gq/sprites/animations/evil_cow/bull-3.png);
+    background-image: url(/sprites/animations/evil_cow/bull-3.png);
   }
   81% {
-    background-image: url(https://oatmeal.gq/sprites/animations/evil_cow/bull-4.png);
+    background-image: url(/sprites/animations/evil_cow/bull-4.png);
   }
   100% {
-    background-image: url(https://oatmeal.gq/sprites/animations/evil_cow/bull-4.png);
+    background-image: url(/sprites/animations/evil_cow/bull-4.png);
   }
 }
 
 @keyframes evilbullet {
   0% {
-    background-image: url(https://oatmeal.gq/sprites/animations/boss-bullet/bullet-1.png);
+    background-image: url(/sprites/animations/boss-bullet/bullet-1.png);
   }
   32% {
-    background-image: url(https://oatmeal.gq/sprites/animations/boss-bullet/bullet-1.png);
+    background-image: url(/sprites/animations/boss-bullet/bullet-1.png);
   }
   33% {
-    background-image: url(https://oatmeal.gq/sprites/animations/boss-bullet/bullet-2.png);
+    background-image: url(/sprites/animations/boss-bullet/bullet-2.png);
   }
   65% {
-    background-image: url(https://oatmeal.gq/sprites/animations/boss-bullet/bullet-2.png);
+    background-image: url(/sprites/animations/boss-bullet/bullet-2.png);
   }
   66% {
-    background-image: url(https://oatmeal.gq/sprites/animations/boss-bullet/bullet-3.png);
+    background-image: url(/sprites/animations/boss-bullet/bullet-3.png);
   }
   100% {
-    background-image: url(https://oatmeal.gq/sprites/animations/boss-bullet/bullet-3.png);
+    background-image: url(/sprites/animations/boss-bullet/bullet-3.png);
   }
 }
 
